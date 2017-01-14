@@ -5,11 +5,10 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+//import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
-import org.usfirst.frc.team4561.robot.commands.ExampleCommand;
-import org.usfirst.frc.team4561.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team4561.robot.subsystems.DriveTrain;
+//import org.usfirst.frc.team4561.robot.subsystems.Shooter;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -18,24 +17,30 @@ import org.usfirst.frc.team4561.robot.subsystems.ExampleSubsystem;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
-public class Robot extends IterativeRobot {
+public class Robot extends IterativeRobot 
+{
 
-	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
-
+	public static DriveTrain driveTrain;
+	//public static Shooter shooter;
+	//public static Intake intake;
+	//public static RopeClimber ropeclimber;
+	//public static GearManipulator gearmanipulator;
+	//static NetworkTable debugTable;
+	
+	
 	Command autonomousCommand;
-	SendableChooser<Command> chooser = new SendableChooser<>();
 
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
 	 */
 	@Override
-	public void robotInit() {
+	public void robotInit() 
+	{
 		oi = new OI();
-		chooser.addDefault("Default Auto", new ExampleCommand());
-		// chooser.addObject("My Auto", new MyAutoCommand());
-		SmartDashboard.putData("Auto mode", chooser);
+		driveTrain = new DriveTrain();
+																				//TODO ADD OTHER SUBSYSTEMS HERE
 	}
 
 	/**
@@ -44,12 +49,14 @@ public class Robot extends IterativeRobot {
 	 * the robot is disabled.
 	 */
 	@Override
-	public void disabledInit() {
+	public void disabledInit() 
+	{
 
 	}
 
 	@Override
-	public void disabledPeriodic() {
+	public void disabledPeriodic() 
+	{
 		Scheduler.getInstance().run();
 	}
 
@@ -65,8 +72,8 @@ public class Robot extends IterativeRobot {
 	 * to the switch structure below with additional strings & commands.
 	 */
 	@Override
-	public void autonomousInit() {
-		autonomousCommand = chooser.getSelected();
+	public void autonomousInit() 
+	{
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -84,12 +91,14 @@ public class Robot extends IterativeRobot {
 	 * This function is called periodically during autonomous
 	 */
 	@Override
-	public void autonomousPeriodic() {
+	public void autonomousPeriodic() 
+	{
 		Scheduler.getInstance().run();
 	}
 
 	@Override
-	public void teleopInit() {
+	public void teleopInit() 
+	{
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
@@ -102,7 +111,8 @@ public class Robot extends IterativeRobot {
 	 * This function is called periodically during operator control
 	 */
 	@Override
-	public void teleopPeriodic() {
+	public void teleopPeriodic() 
+	{
 		Scheduler.getInstance().run();
 	}
 
@@ -110,7 +120,8 @@ public class Robot extends IterativeRobot {
 	 * This function is called periodically during test mode
 	 */
 	@Override
-	public void testPeriodic() {
+	public void testPeriodic() 
+	{
 		LiveWindow.run();
 	}
 }
