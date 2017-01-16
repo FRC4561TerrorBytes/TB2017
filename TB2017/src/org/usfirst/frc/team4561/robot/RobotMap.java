@@ -27,6 +27,8 @@ public class RobotMap
 	public static final int ROPE_DOWN_BUTTON = 10000; //TODO: fix them
 	public static final int CLIMBER_LIMIT_SWITCH = 0;
 	public static final int SHOOT_BUTTON = 9;
+	public static final int MID_RIGHT_MOTOR_PORT = 0;
+	public static final int MID_LEFT_MOTOR_PORT = 0;
 	
 	
 	

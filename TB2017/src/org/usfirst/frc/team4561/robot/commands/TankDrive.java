@@ -22,7 +22,7 @@ public class TankDrive extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	//This makes 2-stick tank drive work
-    	Robot.driveTrain.driveTank(Robot.oi.getLeftStickY(), Robot.oi.getRightStickY());
+    	Robot.driveTrain.tankDrive(Robot.oi.getLeftStickY(), Robot.oi.getRightStickY());
     }
 
     // Make this return true when this Command no longer needs to run execute()
