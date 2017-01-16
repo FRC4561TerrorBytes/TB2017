@@ -2,6 +2,7 @@ package org.usfirst.frc.team4561.robot;
 
 import edu.wpi.first.wpilibj.Joystick;													//imports libraries
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -12,6 +13,10 @@ public class OI
 	//JOYSTICK DECLARATION
 	private static Joystick RightStick = new Joystick(RobotMap.RIGHT_JOYSTICK);			//declares a right stick
 	private static Joystick LeftStick = new Joystick(RobotMap.LEFT_JOYSTICK);			//declares a left stick
+	
+	private JoystickButton ropeupbutton = new JoystickButton(RightStick, RobotMap.ROPE_UP_BUTTON)
+	private JoystickButton ropedownbutton = new JoystickButton(RightStick, RobotMap.ROPE_DOWN_BUTTON);
+	
 	
 	//JOYSTICK INPUTS
 	public double getRightStickY() 														//gets input from right stick y axis
@@ -42,7 +47,7 @@ public class OI
 		}
 		return RightStickY;
 	}
-	
+
 	/**
 	 * Get the value given by the right stick's X-axis. Applies dead zone and reduction.
      * @return Right Joystick's X-axis
