@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 //import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
 import org.usfirst.frc.team4561.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team4561.robot.subsystems.Shooter;
 //import org.usfirst.frc.team4561.robot.subsystems.Shooter;
 
 /**
@@ -22,6 +23,7 @@ public class Robot extends IterativeRobot
 
 	public static OI oi;
 	public static DriveTrain driveTrain;
+	public static Shooter shooter;
 	//public static Shooter shooter;
 	//public static Intake intake;
 	//public static RopeClimber ropeclimber;

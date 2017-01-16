@@ -23,9 +23,10 @@ public class RobotMap
 	public static final double RIGHT_JOYSTICK_REDUCTION = 0.25;					//sets joystick reduction values
 	public static final double LEFT_JOYSTICK_REDUCTION = 0.25;
 	// Rope Buttons
-	public static final int ROPE_UP_BUTTON = 600;
-	public static final int ROPE_DOWN_BUTTON = 10000;
+	public static final int ROPE_UP_BUTTON = 600; //TODO: The port numbers
+	public static final int ROPE_DOWN_BUTTON = 10000; //TODO: fix them
 	public static final int CLIMBER_LIMIT_SWITCH = 0;
+	public static final int SHOOT_BUTTON = 9;
 	
 	
 	
