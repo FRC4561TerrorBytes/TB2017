@@ -2,12 +2,13 @@ package org.usfirst.frc.team4561.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class RopeClimbUp extends Command {
+public class RopeClimbUp extends Command
+{
 
 	@Override
-	protected boolean isFinished() {
-		// TODO Auto-generated method stub
-		return false;
+	protected boolean isFinished() 
+	{
+		return false;				// TODO Auto-generated method stub
 	}
 
 }

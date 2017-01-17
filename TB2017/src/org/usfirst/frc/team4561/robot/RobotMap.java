@@ -14,6 +14,7 @@ public class RobotMap
 	public static final int REAR_RIGHT_MOTOR_PORT = 2;
 	public static final int REAR_LEFT_MOTOR_PORT = 3;
 	public static final int CLIMBER_MOTOR = 4;
+	
 	//JOYSTICK CONFIGURATION
 	public static final int RIGHT_JOYSTICK = 0;									//sets joystick ports
 	public static final int LEFT_JOYSTICK = 1;
@@ -22,6 +23,7 @@ public class RobotMap
 	public static final double LEFT_JOYSTICK_DEAD_ZONE = 0.25;
 	public static final double RIGHT_JOYSTICK_REDUCTION = 0.25;					//sets joystick reduction values
 	public static final double LEFT_JOYSTICK_REDUCTION = 0.25;
+	
 	// Rope Buttons
 	public static final int ROPE_UP_BUTTON = 600; //TODO: The port numbers
 	public static final int ROPE_DOWN_BUTTON = 10000; //TODO: fix them

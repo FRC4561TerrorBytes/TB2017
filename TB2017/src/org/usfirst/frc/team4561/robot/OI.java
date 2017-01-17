@@ -21,7 +21,9 @@ public class OI
 	private JoystickButton ropeupbutton = new JoystickButton(RightStick, RobotMap.ROPE_UP_BUTTON);
 	private JoystickButton ropedownbutton = new JoystickButton(RightStick, RobotMap.ROPE_DOWN_BUTTON);
 	private JoystickButton shootButton = new JoystickButton(RightStick, RobotMap.SHOOT_BUTTON);
-	public OI(){
+	
+	public OI()
+	{
 		shootButton.whileHeld(new Shoot());
 		ropeupbutton.whileHeld(new RopeClimbUp());
 		ropedownbutton.whileHeld(new RopeClimbDown());

@@ -8,7 +8,8 @@ import com.ctre.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class RopeClimber extends Subsystem {
+public class RopeClimber extends Subsystem 
+{
 	
 	private CANTalon climberMotor = new CANTalon(RobotMap.CLIMBER_MOTOR);
 	public static final int CLIMBER_LIMIT_SWITCH = 0;
@@ -23,15 +24,18 @@ public class RopeClimber extends Subsystem {
 *		rollerMotor.setInverted(true);
 *	}
 */
-	public void initDefaultCommand() {
+	public void initDefaultCommand() 
+	{
 		//TODO: Create command commandsetDefaultCommand(new );
 	}
 	
-	public void setClimber(double power) {
+	public void setClimber(double power) 
+	{
 		climberMotor.set(power);
 	}
 	
-	public void stop() {
+	public void stop() 
+	{
 		climberMotor.set(0);
 	}
 }
