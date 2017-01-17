@@ -14,6 +14,8 @@ public class RobotMap {
 	public static final int REAR_RIGHT_MOTOR_PORT = 2;
 	public static final int REAR_LEFT_MOTOR_PORT = 3;
 	public static final int CLIMBER_MOTOR = 4;
+	public static final int LEFT_INTAKE_MOTOR_PORT = 5;
+	public static final int RIGHT_INTAKE_MOTOR_PORT = 6;
 	
 	//JOYSTICK CONFIGURATION
 	public static final int RIGHT_JOYSTICK = 0;									//sets joystick ports
@@ -35,6 +37,9 @@ public class RobotMap {
 	// Gear buttons TODO: Port numbers
 	public static final int GEAR_IN_BUTTON = 42;
 	public static final int GEAR_OUT_BUTTON = 420;
+	
+	// Intake Button
+	public static final int INTAKE_BUTTON_PORT = 1000; // TODO: Find port
 	
 	
 	// For example to map the left and right motors, you could define the

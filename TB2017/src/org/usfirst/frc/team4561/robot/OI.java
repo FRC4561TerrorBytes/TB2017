@@ -3,6 +3,7 @@ package org.usfirst.frc.team4561.robot;
 import edu.wpi.first.wpilibj.Joystick;													//imports libraries
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
+import org.usfirst.frc.team4561.robot.commands.IntakeBall;
 import org.usfirst.frc.team4561.robot.commands.ManipulatorIn;
 import org.usfirst.frc.team4561.robot.commands.ManipulatorOut;
 import org.usfirst.frc.team4561.robot.commands.RopeClimbDown;
@@ -28,6 +29,7 @@ public class OI {
 	private JoystickButton gearinbutton = new JoystickButton(RightStick, RobotMap.GEAR_IN_BUTTON);
 	private JoystickButton gearoutbutton = new JoystickButton(RightStick, RobotMap.GEAR_OUT_BUTTON);
 	
+	private JoystickButton intakeButton = new JoystickButton(RightStick, RobotMap.INTAKE_BUTTON_PORT); // declares a button for ball intake
 	public OI() {
 		//Initializing buttons
 		shootButton.whileHeld(new Shoot());
@@ -37,6 +39,8 @@ public class OI {
 		
 		gearinbutton.whenPressed(new ManipulatorIn());
 		gearoutbutton.whenPressed(new ManipulatorOut());
+		
+		intakeButton.whileHeld(new IntakeBall()); // while intake button held, run intake motors
 	}
 	
 	//JOYSTICK INPUTS

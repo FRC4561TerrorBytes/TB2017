@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team4561.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4561.robot.subsystems.GearManipulator;
+import org.usfirst.frc.team4561.robot.subsystems.Intake;
 import org.usfirst.frc.team4561.robot.subsystems.Shooter;
 //import org.usfirst.frc.team4561.robot.subsystems.Shooter;
 
@@ -26,7 +27,7 @@ public class Robot extends IterativeRobot
 	public static DriveTrain driveTrain;
 	public static Shooter shooter;
 	//public static Shooter shooter;
-	//public static Intake intake;
+	public static Intake intake;
 	//public static RopeClimber ropeclimber;
 	public static GearManipulator gearmanipulator;
 	//static NetworkTable debugTable;
@@ -43,7 +44,9 @@ public class Robot extends IterativeRobot
 	{
 		oi = new OI();
 		driveTrain = new DriveTrain();
-		gearmanipulator = new GearManipulator();																		//TODO ADD OTHER SUBSYSTEMS HERE
+		gearmanipulator = new GearManipulator();	
+		intake = new Intake(); // make a new ball intake object
+		//TODO ADD OTHER SUBSYSTEMS HERE
 	}
 
 	/**
