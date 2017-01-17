@@ -6,8 +6,8 @@ package org.usfirst.frc.team4561.robot;
  * the wiring easier and significantly reduces the number of magic numbers
  * floating around.
  */
-public class RobotMap 
-{
+public class RobotMap {
+	
 	//MOTOR CONFIGURATION
 	public static final int FRONT_RIGHT_MOTOR_PORT = 0;							//sets motor ports
 	public static final int FRONT_LEFT_MOTOR_PORT = 1;
@@ -32,6 +32,9 @@ public class RobotMap
 	public static final int MID_RIGHT_MOTOR_PORT = 0;
 	public static final int MID_LEFT_MOTOR_PORT = 0;
 	
+	// Gear buttons TODO: Port numbers
+	public static final int GEAR_IN_BUTTON = 42;
+	public static final int GEAR_OUT_BUTTON = 420;
 	
 	
 	// For example to map the left and right motors, you could define the

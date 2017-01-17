@@ -1,9 +1,10 @@
 package org.usfirst.frc.team4561.robot;
 
 import edu.wpi.first.wpilibj.Joystick;													//imports libraries
-import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
+import org.usfirst.frc.team4561.robot.commands.ManipulatorIn;
+import org.usfirst.frc.team4561.robot.commands.ManipulatorOut;
 import org.usfirst.frc.team4561.robot.commands.RopeClimbDown;
 import org.usfirst.frc.team4561.robot.commands.RopeClimbUp;
 import org.usfirst.frc.team4561.robot.commands.Shoot;
@@ -12,21 +13,30 @@ import org.usfirst.frc.team4561.robot.commands.Shoot;
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
-public class OI 
-{
+public class OI {
+
 	//JOYSTICK DECLARATION
 	private static Joystick RightStick = new Joystick(RobotMap.RIGHT_JOYSTICK);			//declares a right stick
 	private static Joystick LeftStick = new Joystick(RobotMap.LEFT_JOYSTICK);			//declares a left stick
 	
-	private JoystickButton ropeupbutton = new JoystickButton(RightStick, RobotMap.ROPE_UP_BUTTON);
-	private JoystickButton ropedownbutton = new JoystickButton(RightStick, RobotMap.ROPE_DOWN_BUTTON);
+	//Button Declaration
 	private JoystickButton shootButton = new JoystickButton(RightStick, RobotMap.SHOOT_BUTTON);
 	
-	public OI()
-	{
+	private JoystickButton ropeupbutton = new JoystickButton(RightStick, RobotMap.ROPE_UP_BUTTON);
+	private JoystickButton ropedownbutton = new JoystickButton(RightStick, RobotMap.ROPE_DOWN_BUTTON);
+	
+	private JoystickButton gearinbutton = new JoystickButton(RightStick, RobotMap.GEAR_IN_BUTTON);
+	private JoystickButton gearoutbutton = new JoystickButton(RightStick, RobotMap.GEAR_OUT_BUTTON);
+	
+	public OI() {
+		//Initializing buttons
 		shootButton.whileHeld(new Shoot());
+		
 		ropeupbutton.whileHeld(new RopeClimbUp());
 		ropedownbutton.whileHeld(new RopeClimbDown());
+		
+		gearinbutton.whenPressed(new ManipulatorIn());
+		gearoutbutton.whenPressed(new ManipulatorOut());
 	}
 	
 	//JOYSTICK INPUTS
