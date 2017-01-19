@@ -1,30 +1,30 @@
 package org.usfirst.frc.team4561.robot.commands;
 
+
 import org.usfirst.frc.team4561.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- * TODO: Document
- * @author TODO
- */
-public class Shoot extends Command {
-	
-	public Shoot() {
+public class Shoot extends Command 
+{
+	private final double speed = 1;
+	public Shoot()
+	{
 		requires(Robot.shooter);
 	}
 	
-	protected void execute() {
-		Robot.shooter.setPower(255);
+	protected void execute()
+	{
+		Robot.shooter.ShootAtSpeed(speed);
 	}
 	
-	protected void stop() {
-		Robot.shooter.stopLeftMotor();
-		Robot.shooter.stopRightMotor();
+	protected void stop()
+	{
+		Robot.shooter.ShootAtSpeed(0);
 	}
 	
-	protected boolean isFinished() {
-		// TODO Auto-generated method stub
+	protected boolean isFinished()
+	{
 		return false;
 	}
 

@@ -8,42 +8,41 @@ package org.usfirst.frc.team4561.robot;
  */
 public class RobotMap {
 	
-	// Motor ports (CAN)
-	public static final int FRONT_RIGHT_MOTOR_PORT = 0;		//TODO: Port number
-	public static final int FRONT_LEFT_MOTOR_PORT = 1;		//TODO: Port number
-	public static final int REAR_RIGHT_MOTOR_PORT = 2;		//TODO: Port number
-	public static final int REAR_LEFT_MOTOR_PORT = 3;		//TODO: Port number
-	public static final int CLIMBER_MOTOR = 4;				//TODO: Port number
-	public static final int LEFT_INTAKE_MOTOR_PORT = 5;		//TODO: Port number
-	public static final int RIGHT_INTAKE_MOTOR_PORT = 6;	//TODO: Port number
-	public static final int SHOOTER_LEFT_MOTOR_PORT = 7;	//TODO: Port number
-	public static final int SHOOTER_RIGHT_MOTOR_PORT = 8;	//TODO: Port number
-	public static final int MID_RIGHT_MOTOR_PORT = 0;		//TODO: Port number
-	public static final int MID_LEFT_MOTOR_PORT = 0;		//TODO: Port number
+	//MOTOR CONFIGURATION
+	public static final int FRONT_RIGHT_MOTOR_PORT = 0;							//sets motor ports
+	public static final int FRONT_LEFT_MOTOR_PORT = 1;
+	public static final int REAR_RIGHT_MOTOR_PORT = 2;
+	public static final int REAR_LEFT_MOTOR_PORT = 3;
+	public static final int CLIMBER_MOTOR = 4;
+	public static final int LEFT_INTAKE_MOTOR_PORT = 5;
+	public static final int RIGHT_INTAKE_MOTOR_PORT = 6;
 	
-	
-	// Joystick ports (USB)
-	public static final int RIGHT_JOYSTICK = 0;
+	//JOYSTICK CONFIGURATION
+	public static final int RIGHT_JOYSTICK = 0;									//sets joystick ports
 	public static final int LEFT_JOYSTICK = 1;
 	
-	// Joystick config
-	public static final double RIGHT_JOYSTICK_DEAD_ZONE = 0.25;	//TODO: Test
-	public static final double LEFT_JOYSTICK_DEAD_ZONE = 0.25;	//TODO: Test
-	public static final double RIGHT_JOYSTICK_REDUCTION = 0.25;	//TODO: Test
-	public static final double LEFT_JOYSTICK_REDUCTION = 0.25;	//TODO: Test
+	public static final double RIGHT_JOYSTICK_DEAD_ZONE = 0.25;					//sets joystick deadzone values
+	public static final double LEFT_JOYSTICK_DEAD_ZONE = 0.25;
+	public static final double RIGHT_JOYSTICK_REDUCTION = 0.25;					//sets joystick reduction values
+	public static final double LEFT_JOYSTICK_REDUCTION = 0.25;
 	
-	// Rope buttons
-	public static final int ROPE_UP_BUTTON = 0;			//TODO: Port number
-	public static final int ROPE_DOWN_BUTTON = 0;		//TODO: Port number
-	public static final int CLIMBER_LIMIT_SWITCH = 0;	//TODO: Port number
-	public static final int SHOOT_BUTTON = 9;			//TODO: Port number
+	// Rope Buttons
+	public static final int ROPE_UP_BUTTON = 600; //TODO: The port numbers
+	public static final int ROPE_DOWN_BUTTON = 10000; //TODO: fix them
+	public static final int CLIMBER_LIMIT_SWITCH = 0;
+	public static final int SHOOT_BUTTON = 9;
+	public static final int MID_RIGHT_MOTOR_PORT = 0;
+	public static final int MID_LEFT_MOTOR_PORT = 0;
 	
-	// Gear buttons
-	public static final int GEAR_IN_BUTTON = 0;			//TODO: Port number
-	public static final int GEAR_OUT_BUTTON = 0;		//TODO: Port number
+	// Gear buttons TODO: Port numbers
+	public static final int GEAR_IN_BUTTON = 42;
+	public static final int GEAR_OUT_BUTTON = 420;
 	
-	// Intake button
-	public static final int INTAKE_BUTTON_PORT = 0;		//TODO: Port number
+	// Intake Button
+	public static final int INTAKE_BUTTON_PORT = 1000; // TODO: Find port
+	
+	// Shooter Button
+	public static final int SHOOTER_MOTOR_PORT = 0; //TODO: Find port
 	
 	
 	// For example to map the left and right motors, you could define the

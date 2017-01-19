@@ -8,37 +8,21 @@ import com.ctre.CANTalon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- * TODO: Document
- * @author Alek L
+ *@author alekj
  */
 public class Shooter extends Subsystem {
 	
-	private CANTalon shootLeft = new CANTalon(RobotMap.SHOOTER_LEFT_MOTOR_PORT);
-	private CANTalon shootRight = new CANTalon(RobotMap.SHOOTER_RIGHT_MOTOR_PORT);
+	public CANTalon ShootMotor = new CANTalon(RobotMap.SHOOTER_MOTOR_PORT);
+    // Put methods for controlling this subsystem
+    // here. Call these from Commands.
 
     public void initDefaultCommand() {
         setDefaultCommand(new Shoot());
     }
     
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
-    
-    /**
-     * Sets the power going to the shooter motors.
-     * @param power
-     */
-    public void setPower(double power) {
-    	//TODO: Stub
+    public void ShootAtSpeed(double speed){
+    	if (speed < 1.0 && speed > -1.0)    	ShootMotor.set(speed);
     }
     
-    /** Stops the left shooter motor. */
-    public void stopLeftMotor() {
-    	//TODO: Stub
-    }
-    
-    /** Stops the right shooter motor. */
-    public void stopRightMotor() {
-    	//TODO: Stub
-    }
 }
 
