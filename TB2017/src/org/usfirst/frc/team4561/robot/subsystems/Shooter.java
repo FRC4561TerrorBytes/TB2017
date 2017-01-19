@@ -12,17 +12,22 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Shooter extends Subsystem {
 	
-	public CANTalon ShootMotor = new CANTalon(RobotMap.SHOOTER_MOTOR_PORT); //The Shooter's sole motor
-    
+	public CANTalon ShootMotor = new CANTalon(RobotMap.SHOOTER_MOTOR_PORT);
+    // Put methods for controlling this subsystem
+    // here. Call these from Commands.
 
     public void initDefaultCommand() {
     	
         setDefaultCommand(new Shoot());
     }
     
+<<<<<<< HEAD
     public void shootAtSpeed(double speed){
     	
     	//If a valid value, run the shooter motor at the given speed
+=======
+    public void ShootAtSpeed(double speed){
+>>>>>>> parent of c1d9962... AL - Untested - Commented and Stylized Shooter subsystem
     	if (speed < 1.0 && speed > -1.0)    	ShootMotor.set(speed);
     }
     
