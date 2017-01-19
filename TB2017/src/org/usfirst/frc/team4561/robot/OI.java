@@ -30,6 +30,7 @@ public class OI {
 	private JoystickButton gearoutbutton = new JoystickButton(RightStick, RobotMap.GEAR_OUT_BUTTON);
 	
 	private JoystickButton intakeButton = new JoystickButton(RightStick, RobotMap.INTAKE_BUTTON_PORT); // declares a button for ball intake
+	
 	public OI() {
 		//Initializing buttons
 		shootButton.whileHeld(new Shoot());

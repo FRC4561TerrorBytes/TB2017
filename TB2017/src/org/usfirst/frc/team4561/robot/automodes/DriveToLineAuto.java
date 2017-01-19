@@ -3,7 +3,8 @@ package org.usfirst.frc.team4561.robot.automodes;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- *
+ * TODO: Document
+ * @author TODO
  */
 public class DriveToLineAuto extends CommandGroup {
 

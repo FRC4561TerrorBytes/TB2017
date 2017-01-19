@@ -5,13 +5,12 @@ import org.usfirst.frc.team4561.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * TODO: Document
+ * @author TODO
  */
 public class IntakeBall extends Command {
 
     public IntakeBall() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     	requires(Robot.intake);
     }
 
@@ -21,8 +20,9 @@ public class IntakeBall extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	// intake motors at full speed
-    	Robot.intake.intakeBall(255);
+    	
+    	// Intake at full speed
+    	Robot.intake.intakeBall(1);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -32,7 +32,6 @@ public class IntakeBall extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	// stopping intake motors
     	Robot.intake.stop();
     }
 

@@ -4,34 +4,32 @@ import org.usfirst.frc.team4561.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class RopeClimbUp extends Command 
-    {
+/**
+ * TODO: Document
+ * @author TODO
+ */
+public class RopeClimbUp extends Command {
 
-
-      public RopeClimbUp() {
-          requires(Robot.ropeclimber);
-
-      }
+    public RopeClimbUp() {
+    	requires(Robot.ropeClimber);
+    }
       
   	protected void execute() {
-  		Robot.ropeclimber.setClimber(.5); //CHANGE IT FROM HALF POWER YOU FOOLS @Joseph
-  		
+  		Robot.ropeClimber.setClimber(.5); //TODO: Change this from half power @Joseph
   	}
-  	
   	
     protected boolean isFinished() {
         // TODO Auto-generated method stub
-        return false;
-        
+        return false;  
     }
 
     protected void end() {
-        Robot.ropeclimber.stop();
+        Robot.ropeClimber.stop();
         System.out.println("Stopping RopeClimbUp");
     }
+    
     protected void interrupted() {
         end();
     }
- 
-    }
+ }
     

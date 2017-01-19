@@ -12,7 +12,7 @@ import org.usfirst.frc.team4561.robot.subsystems.GearManipulator;
 import org.usfirst.frc.team4561.robot.subsystems.Intake;
 import org.usfirst.frc.team4561.robot.subsystems.RopeClimber;
 import org.usfirst.frc.team4561.robot.subsystems.Shooter;
-//import org.usfirst.frc.team4561.robot.subsystems.Shooter;
+import org.usfirst.frc.team4561.robot.subsystems.Shooter;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -21,17 +21,16 @@ import org.usfirst.frc.team4561.robot.subsystems.Shooter;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
-public class Robot extends IterativeRobot 
-{
+public class Robot extends IterativeRobot {
 
 	public static OI oi;
 	public static DriveTrain driveTrain;
 	public static Shooter shooter;
 	//public static Shooter shooter;
 	public static Intake intake;
-	public static RopeClimber ropeclimber;
-	public static GearManipulator gearmanipulator;
-	//static NetworkTable debugTable;
+	public static RopeClimber ropeClimber;
+	public static GearManipulator gearManipulator;
+	//private static NetworkTable debugTable;
 	
 	
 	Command autonomousCommand;
@@ -41,13 +40,12 @@ public class Robot extends IterativeRobot
 	 * used for any initialization code.
 	 */
 	@Override
-	public void robotInit() 
-	{
+	public void robotInit() {
 		oi = new OI();
 		driveTrain = new DriveTrain();
-		gearmanipulator = new GearManipulator();	
-		intake = new Intake(); // make a new ball intake object
-		//TODO ADD OTHER SUBSYSTEMS HERE
+		gearManipulator = new GearManipulator();	
+		intake = new Intake(); // Makes a new ball intake object
+		//TODO: Add other subsystems here
 	}
 
 	/**
@@ -56,14 +54,12 @@ public class Robot extends IterativeRobot
 	 * the robot is disabled.
 	 */
 	@Override
-	public void disabledInit() 
-	{
+	public void disabledInit() {
 
 	}
 
 	@Override
-	public void disabledPeriodic() 
-	{
+	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 	}
 
@@ -79,8 +75,7 @@ public class Robot extends IterativeRobot
 	 * to the switch structure below with additional strings & commands.
 	 */
 	@Override
-	public void autonomousInit() 
-	{
+	public void autonomousInit() {
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -98,14 +93,12 @@ public class Robot extends IterativeRobot
 	 * This function is called periodically during autonomous
 	 */
 	@Override
-	public void autonomousPeriodic() 
-	{
+	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
 	}
 
 	@Override
-	public void teleopInit() 
-	{
+	public void teleopInit() {
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
@@ -118,8 +111,7 @@ public class Robot extends IterativeRobot
 	 * This function is called periodically during operator control
 	 */
 	@Override
-	public void teleopPeriodic() 
-	{
+	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 	}
 
@@ -127,8 +119,7 @@ public class Robot extends IterativeRobot
 	 * This function is called periodically during test mode
 	 */
 	@Override
-	public void testPeriodic() 
-	{
+	public void testPeriodic() {
 		LiveWindow.run();
 	}
 }

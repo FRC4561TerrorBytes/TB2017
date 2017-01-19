@@ -1,6 +1,6 @@
 package org.usfirst.frc.team4561.robot.subsystems;
 
-import edu.wpi.first.wpilibj.command.Subsystem;											//imports libraries
+import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team4561.robot.RobotMap;
 import org.usfirst.frc.team4561.robot.commands.ArcadeDrive;
 import org.usfirst.frc.team4561.robot.commands.TankDrive;
@@ -8,49 +8,48 @@ import org.usfirst.frc.team4561.robot.commands.TankDrive;
 import com.ctre.CANTalon;
 import edu.wpi.first.wpilibj.RobotDrive; 
 
-public class DriveTrain extends Subsystem 
-{
-	CANTalon FrontRight = new CANTalon(RobotMap.FRONT_RIGHT_MOTOR_PORT);				//sets front motor ports
-	CANTalon FrontLeft = new CANTalon(RobotMap.FRONT_LEFT_MOTOR_PORT);
+/**
+ * TODO: Document
+ * @author Jonah W
+ */
+public class DriveTrain extends Subsystem {
 	
-	CANTalon MidRight = new CANTalon(RobotMap.MID_RIGHT_MOTOR_PORT);
-	CANTalon MidLeft = new CANTalon(RobotMap.MID_LEFT_MOTOR_PORT);
+	private CANTalon frontRight = new CANTalon(RobotMap.FRONT_RIGHT_MOTOR_PORT);		// Sets front motor ports
+	private CANTalon frontLeft = new CANTalon(RobotMap.FRONT_LEFT_MOTOR_PORT);
 	
-	CANTalon RearRight = new CANTalon(RobotMap.REAR_RIGHT_MOTOR_PORT);					//sets rear motor ports
-	CANTalon RearLeft = new CANTalon(RobotMap.REAR_LEFT_MOTOR_PORT);
+	private CANTalon midRight = new CANTalon(RobotMap.MID_RIGHT_MOTOR_PORT);
+	private CANTalon midLeft = new CANTalon(RobotMap.MID_LEFT_MOTOR_PORT);
 	
-	RobotDrive robotDrive = new RobotDrive(FrontLeft, FrontRight);						//puts motors into robot drive class
+	private CANTalon rearRight = new CANTalon(RobotMap.REAR_RIGHT_MOTOR_PORT);			// Sets rear motor ports
+	private CANTalon rearLeft = new CANTalon(RobotMap.REAR_LEFT_MOTOR_PORT);
 	
+	private RobotDrive robotDrive = new RobotDrive(frontLeft, frontRight);				// Puts motors into RobotDrive class
 	
-	public DriveTrain()
-	{
-		MidRight.changeControlMode(CANTalon.TalonControlMode.Follower);					//sets other motors as slaves to masters FrontLeft/Right
-		MidRight.set(RobotMap.FRONT_RIGHT_MOTOR_PORT);
+	public DriveTrain() {
+		midRight.changeControlMode(CANTalon.TalonControlMode.Follower);					// Sets other motors as slaves to masters FrontLeft/Right
+		midRight.set(RobotMap.FRONT_RIGHT_MOTOR_PORT);
 		
-		RearRight.changeControlMode(CANTalon.TalonControlMode.Follower);
-		RearRight.set(RobotMap.FRONT_RIGHT_MOTOR_PORT);
+		rearRight.changeControlMode(CANTalon.TalonControlMode.Follower);
+		rearRight.set(RobotMap.FRONT_RIGHT_MOTOR_PORT);
 		
-		MidLeft.changeControlMode(CANTalon.TalonControlMode.Follower);
-		MidLeft.set(RobotMap.FRONT_LEFT_MOTOR_PORT);
+		midLeft.changeControlMode(CANTalon.TalonControlMode.Follower);
+		midLeft.set(RobotMap.FRONT_LEFT_MOTOR_PORT);
 		
-		RearLeft.changeControlMode(CANTalon.TalonControlMode.Follower);
-		RearLeft.set(RobotMap.FRONT_LEFT_MOTOR_PORT);
+		rearLeft.changeControlMode(CANTalon.TalonControlMode.Follower);
+		rearLeft.set(RobotMap.FRONT_LEFT_MOTOR_PORT);
 	}
     
-	public void initDefaultCommand() 
-    {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+	public void initDefaultCommand() {
 		setDefaultCommand(new TankDrive());
     }
 	
-	public void arcadeDrive(double drive, double rot ) 
-	{
+	public void arcadeDrive(double drive, double rot) {
 		robotDrive.arcadeDrive(drive, rot);
 	}
-
-	public void tankDrive(double x, double y)
-	{
+	
+	public void tankDrive(double x, double y) { // TODO: These parameter names are inaccurate
 		robotDrive.tankDrive(x, y);
 	}
+	
+	// TODO: Create setter methods for motor power
 }         

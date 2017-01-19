@@ -4,25 +4,27 @@ import org.usfirst.frc.team4561.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class RopeClimbDown extends Command 
-{
+/**
+ * TODO: Document
+ * @author TODO
+ */
+public class RopeClimbDown extends Command {
 
     public RopeClimbDown() {
-        requires(Robot.ropeclimber);
-
+        requires(Robot.ropeClimber);
     }
+    
 	protected void execute() {
-		Robot.ropeclimber.setClimber(-.5); //CHANGE IT FROM HALF POWER YOU FOOLS @Joseph	
+		Robot.ropeClimber.setClimber(-.5); //TODO: Change this from half power @Joseph	
 	}
-
 	
 	@Override
-	protected boolean isFinished() 
-	{
-		return false;					// TODO Auto-generated method stub
+	protected boolean isFinished() {
+		//TODO: Auto-generated method stub
+		return false;
 	}
 
-	   // Called once after isFinished returns true
+	// Called once after isFinished returns true
     protected void end() {
     }
 
@@ -30,5 +32,4 @@ public class RopeClimbDown extends Command
     // subsystems is scheduled to run
     protected void interrupted() {
     }
-    
 }

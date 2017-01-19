@@ -4,15 +4,15 @@ import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team4561.robot.Robot;
 import org.usfirst.frc.team4561.robot.subsystems.GearManipulator;
+
 /**
- *
+ * TODO: Document
+ * @author: TODO
  */
 public class ManipulatorIn extends Command {
 
     public ManipulatorIn() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires(Robot.gearmanipulator);
+    	requires(Robot.gearManipulator);
     }
 
     // Called just before this Command runs the first time
@@ -21,7 +21,7 @@ public class ManipulatorIn extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.gearmanipulator.manipulatorIn();
+    	Robot.gearManipulator.manipulatorIn();
     }
 
     // Make this return true when this Command no longer needs to run execute()

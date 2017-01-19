@@ -7,15 +7,13 @@ import org.usfirst.frc.team4561.robot.RobotMap;
 import com.ctre.CANTalon;
 
 /**
- *
+ * TODO: Document
+ * @author Ben G
  */
 public class Intake extends Subsystem {
 
 	private CANTalon leftIntakeMotor = new CANTalon(RobotMap.LEFT_INTAKE_MOTOR_PORT);
 	private CANTalon rightIntakeMotor = new CANTalon(RobotMap.RIGHT_INTAKE_MOTOR_PORT);
-
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -32,4 +30,3 @@ public class Intake extends Subsystem {
 		rightIntakeMotor.set(0);
     }
 }
-
