@@ -16,10 +16,12 @@ public class Shooter extends Subsystem {
     
 
     public void initDefaultCommand() {
+    	
         setDefaultCommand(new Shoot());
     }
     
     public void shootAtSpeed(double speed){
+    	
     	//If a valid value, run the shooter motor at the given speed
     	if (speed < 1.0 && speed > -1.0)    	ShootMotor.set(speed);
     }
