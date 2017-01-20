@@ -21,13 +21,9 @@ public class Shooter extends Subsystem {
         setDefaultCommand(new Shoot());
     }
     
-<<<<<<< HEAD
     public void shootAtSpeed(double speed){
     	
     	//If a valid value, run the shooter motor at the given speed
-=======
-    public void ShootAtSpeed(double speed){
->>>>>>> parent of c1d9962... AL - Untested - Commented and Stylized Shooter subsystem
     	if (speed < 1.0 && speed > -1.0)    	ShootMotor.set(speed);
     }
     

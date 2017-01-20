@@ -15,12 +15,12 @@ public class Shoot extends Command
 	
 	protected void execute()
 	{
-		Robot.shooter.ShootAtSpeed(speed);
+		Robot.shooter.shootAtSpeed(speed);
 	}
 	
 	protected void stop()
 	{
-		Robot.shooter.ShootAtSpeed(0);
+		Robot.shooter.shootAtSpeed(0);
 	}
 	
 	protected boolean isFinished()
