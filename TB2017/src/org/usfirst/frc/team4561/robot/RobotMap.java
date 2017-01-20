@@ -44,6 +44,10 @@ public class RobotMap {
 	// Shooter Button
 	public static final int SHOOTER_MOTOR_PORT = 0; //TODO: Find port
 	
+	// Agitator
+	public static final int AGITATOR_MOTOR_PORT = 0; // TODO: Find port
+	public static final int AGITATOR_BUTTON_PORT = 0;
+	
 	
 	// For example to map the left and right motors, you could define the
 	// following variables to use with your drivetrain subsystem.

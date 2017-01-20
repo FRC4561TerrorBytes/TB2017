@@ -8,6 +8,7 @@ import org.usfirst.frc.team4561.robot.commands.ManipulatorIn;
 import org.usfirst.frc.team4561.robot.commands.ManipulatorOut;
 import org.usfirst.frc.team4561.robot.commands.RopeClimbDown;
 import org.usfirst.frc.team4561.robot.commands.RopeClimbUp;
+import org.usfirst.frc.team4561.robot.commands.RunAgitator;
 import org.usfirst.frc.team4561.robot.commands.Shoot;
 
 /**
@@ -31,6 +32,8 @@ public class OI {
 	
 	private JoystickButton intakeButton = new JoystickButton(RightStick, RobotMap.INTAKE_BUTTON_PORT); // declares a button for ball intake
 	
+	private JoystickButton agitatorButton = new JoystickButton(RightStick, RobotMap.AGITATOR_BUTTON_PORT); // declares a button for ball intake
+	
 	public OI() {
 		//Initializing buttons
 		shootButton.whileHeld(new Shoot());
@@ -42,6 +45,8 @@ public class OI {
 		gearoutbutton.whenPressed(new ManipulatorOut());
 		
 		intakeButton.whileHeld(new IntakeBall()); // while intake button held, run intake motors
+		
+		agitatorButton.whileHeld(new RunAgitator());
 	}
 	
 	//JOYSTICK INPUTS
