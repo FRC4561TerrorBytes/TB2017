@@ -47,7 +47,10 @@ public class RobotMap {
 	
 	// Agitator
 	public static final int AGITATOR_MOTOR_PORT = 0; // TODO: Find port
-	public static final int AGITATOR_BUTTON_PORT = 0;
+	public static final int FWD_HALF_POWER_AGITATOR_BUTTON_PORT = 0; // TODO: Find port
+	public static final int REV_HALF_POWER_AGITATOR_BUTTON_PORT = 0; // TODO: Find port
+	public static final int FWD_FULL_POWER_AGITATOR_BUTTON_PORT = 0; // TODO: Find port
+	public static final int REV_FULL_POWER_AGITATOR_BUTTON_PORT = 0; // TODO: Find port
 	
 	
 	// For example to map the left and right motors, you could define the

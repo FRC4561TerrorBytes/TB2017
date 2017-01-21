@@ -36,7 +36,10 @@ public class OI {
 	
 	private JoystickButton intakeButton = new JoystickButton(RightStick, RobotMap.INTAKE_BUTTON_PORT); // declares a button for ball intake
 	
-	private JoystickButton agitatorButton = new JoystickButton(RightStick, RobotMap.AGITATOR_BUTTON_PORT); // declares a button for agitator
+	private JoystickButton forwardHalfPowerAgitatorButton = new JoystickButton(RightStick, RobotMap.FWD_HALF_POWER_AGITATOR_BUTTON_PORT); // declares a button for agitator
+	private JoystickButton reverseHalfPowerAgitatorButton = new JoystickButton(RightStick, RobotMap.REV_HALF_POWER_AGITATOR_BUTTON_PORT); // declares a button for agitator
+	private JoystickButton forwardFullPowerAgitatorButton = new JoystickButton(RightStick, RobotMap.FWD_FULL_POWER_AGITATOR_BUTTON_PORT); // declares a button for agitator
+	private JoystickButton reverseFullPowerAgitatorButton = new JoystickButton(RightStick, RobotMap.REV_FULL_POWER_AGITATOR_BUTTON_PORT); // declares a button for agitator
 	
 	public OI() {
 		//Initializing buttons
@@ -52,7 +55,10 @@ public class OI {
 		
 		intakeButton.whileHeld(new IntakeBall()); // while intake button held, run intake motors
 		
-		agitatorButton.whileHeld(new SetAgitatorPower(0.5)); // TODO Add variable speed
+		forwardHalfPowerAgitatorButton.whileHeld(new SetAgitatorPower(0.5)); // TODO Add variable speed
+		reverseHalfPowerAgitatorButton.whileHeld(new SetAgitatorPower(-0.5)); // TODO Add variable speed
+		forwardFullPowerAgitatorButton.whileHeld(new SetAgitatorPower(1)); // TODO Add variable speed
+		reverseFullPowerAgitatorButton.whileHeld(new SetAgitatorPower(-1)); // TODO Add variable speed
 	}
 	
 	//JOYSTICK INPUTS
