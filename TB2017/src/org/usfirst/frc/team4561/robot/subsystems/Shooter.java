@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *@author alekj
  */
+//TODO Remove extra import from Robot.java
 public class Shooter extends Subsystem {
 	
 	public CANTalon ShootMotor = new CANTalon(RobotMap.SHOOTER_MOTOR_PORT);
