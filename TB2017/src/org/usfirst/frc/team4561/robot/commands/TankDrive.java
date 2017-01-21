@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * TODO: Document
- * @author TODO
+ * @author Jonah W
  */
 public class TankDrive extends Command {
 

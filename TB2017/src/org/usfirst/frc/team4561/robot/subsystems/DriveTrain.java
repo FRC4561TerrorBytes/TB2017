@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.RobotDrive;
 public class DriveTrain extends Subsystem {
 	
 	private CANTalon frontRight = new CANTalon(RobotMap.FRONT_RIGHT_MOTOR_PORT);		// Sets front motor ports
-	private CANTalon frontLeft = new CANTalon(RobotMap.FRONT_LEFT_MOTOR_PORT);
+	private CANTalon frontLeft = new CANTalon(RobotMap.FRONT_LEFT_MOTOR_PORT);			//front motors are masters
 	
 	private CANTalon midRight = new CANTalon(RobotMap.MID_RIGHT_MOTOR_PORT);
 	private CANTalon midLeft = new CANTalon(RobotMap.MID_LEFT_MOTOR_PORT);
@@ -27,9 +27,9 @@ public class DriveTrain extends Subsystem {
 	
 	public DriveTrain() {
 		midRight.changeControlMode(CANTalon.TalonControlMode.Follower);					// Sets other motors as slaves to masters FrontLeft/Right
-		midRight.set(RobotMap.FRONT_RIGHT_MOTOR_PORT);
+		midRight.set(RobotMap.FRONT_RIGHT_MOTOR_PORT);									//set doesn't set power, it sets a slave
 		
-		rearRight.changeControlMode(CANTalon.TalonControlMode.Follower);
+		rearRight.changeControlMode(CANTalon.TalonControlMode.Follower);				//TODO: move all of the followers to robot init in robot
 		rearRight.set(RobotMap.FRONT_RIGHT_MOTOR_PORT);
 		
 		midLeft.changeControlMode(CANTalon.TalonControlMode.Follower);
@@ -39,6 +39,30 @@ public class DriveTrain extends Subsystem {
 		rearLeft.set(RobotMap.FRONT_LEFT_MOTOR_PORT);
 	}
     
+	public void setMotorPower(double powerLeft, double powerRight) {
+		if (powerLeft <= 1 && powerLeft >= -1) {
+			frontLeft.set(powerLeft);
+		}
+		
+		if (powerRight <= 1 && powerRight >= -1) {
+			frontRight.set(powerRight);
+		}
+	}
+	
+	//TODO: JONAH W - method for debug, meant to compliment setter method 
+	/*public void getMotorPower(boolean motorLeft){
+		
+		double powerLeft, powerRight;
+		if (motorLeft){
+			frontLeft.get(powerLeft);
+			return(powerLeft);
+		}
+		else	{
+			frontRight.get(powerRight);
+			return(powerRight);
+		}
+	}*/
+	
 	public void initDefaultCommand() {
 		setDefaultCommand(new TankDrive());
     }
@@ -47,9 +71,7 @@ public class DriveTrain extends Subsystem {
 		robotDrive.arcadeDrive(drive, rot);
 	}
 	
-	public void tankDrive(double x, double y) { // TODO: These parameter names are inaccurate
-		robotDrive.tankDrive(x, y);
+	public void tankDrive(double leftpower, double rightpower) {
+		robotDrive.tankDrive(leftpower, rightpower);
 	}
-	
-	// TODO: Create setter methods for motor power
-}         
+}
