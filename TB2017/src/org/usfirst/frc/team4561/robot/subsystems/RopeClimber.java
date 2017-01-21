@@ -28,10 +28,17 @@ public class RopeClimber extends Subsystem {
 		//TODO: Create command commandsetDefaultCommand(new );
 	}
 	
+
 	public void setClimber(double power) {
+		if (power > 1) {
+			System.out.println("Rope climber power set too high." + power + "was changed to 1.");
+			power = 1;
+		} else if (power < -1) {
+			System.out.println("Rope climber power set too low." + power + "was changed to -1.");
+			power = -1;
+		}
 		climberMotor.set(power);
 	}
-	
 	public void stop() {
 		climberMotor.set(0);
 	}
