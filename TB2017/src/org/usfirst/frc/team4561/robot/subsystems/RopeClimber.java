@@ -15,8 +15,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class RopeClimber extends Subsystem {
 	
 	private CANTalon climberMotor = new CANTalon(RobotMap.CLIMBER_MOTOR);
-	private DigitalInput loadFinishedSwitch = new DigitalInput(RobotMap.CLIMBER_LIMIT_SWITCH);
-	
+
 /**	public Rollers() {
 *		if(Robot.isVerbose()) {
 *			System.out.println("Initializing Rollers Subsystem");

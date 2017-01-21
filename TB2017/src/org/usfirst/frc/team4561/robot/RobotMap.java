@@ -32,7 +32,6 @@ public class RobotMap {
 	// Rope Buttons
 	public static final int ROPE_UP_BUTTON = 0; //TODO: The port numbers
 	public static final int ROPE_DOWN_BUTTON = 0; //TODO: fix them
-	public static final int CLIMBER_LIMIT_SWITCH = 0;
 	
 	// Gear buttons TODO: Port numbers
 	public static final int GEAR_IN_BUTTON = 0;
