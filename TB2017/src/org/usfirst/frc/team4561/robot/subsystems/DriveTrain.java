@@ -43,9 +43,15 @@ public class DriveTrain extends Subsystem {
 		if (powerLeft <= 1 && powerLeft >= -1) {
 			frontLeft.set(powerLeft);
 		}
+		else {
+			System.out.println("WARNING: Power to left side of drivetrain was set to: " + powerLeft);
+		}
 		
 		if (powerRight <= 1 && powerRight >= -1) {
 			frontRight.set(powerRight);
+		}
+		else {
+			System.out.println("WARNING: Power to right side of drivetrain was set to: " + powerLeft);
 		}
 	}
 	
