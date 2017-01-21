@@ -13,9 +13,12 @@ public class RobotMap {
 	public static final int FRONT_LEFT_MOTOR_PORT = 1;
 	public static final int REAR_RIGHT_MOTOR_PORT = 2;
 	public static final int REAR_LEFT_MOTOR_PORT = 3;
+	public static final int MID_RIGHT_MOTOR_PORT = 0;
+	public static final int MID_LEFT_MOTOR_PORT = 0;
 	public static final int CLIMBER_MOTOR = 4;
 	public static final int LEFT_INTAKE_MOTOR_PORT = 5;
 	public static final int RIGHT_INTAKE_MOTOR_PORT = 6;
+	public static final int SHOOTER_MOTOR_PORT = 0; //TODO: Find port
 	
 	//JOYSTICK CONFIGURATION
 	public static final int RIGHT_JOYSTICK = 0;									//sets joystick ports
@@ -30,9 +33,6 @@ public class RobotMap {
 	public static final int ROPE_UP_BUTTON = 0; //TODO: The port numbers
 	public static final int ROPE_DOWN_BUTTON = 0; //TODO: fix them
 	public static final int CLIMBER_LIMIT_SWITCH = 0;
-	public static final int SHOOT_BUTTON = 9;
-	public static final int MID_RIGHT_MOTOR_PORT = 0;
-	public static final int MID_LEFT_MOTOR_PORT = 0;
 	
 	// Gear buttons TODO: Port numbers
 	public static final int GEAR_IN_BUTTON = 0;
@@ -40,12 +40,11 @@ public class RobotMap {
 	public static final int GEAR_COVER_CLOSE_BUTTON = 0;//TODO: Port number
 	public static final int GEAR_COVER_OPEN_BUTTON = 0; //TODO: Port number
 
-	
 	// Intake Button
 	public static final int INTAKE_BUTTON_PORT = 0; // TODO: Find port
 	
 	// Shooter Button
-	public static final int SHOOTER_MOTOR_PORT = 0; //TODO: Find port
+	public static final int SHOOT_BUTTON = 9;
 	
 	// Agitator
 	public static final int AGITATOR_MOTOR_PORT = 0; // TODO: Find port
