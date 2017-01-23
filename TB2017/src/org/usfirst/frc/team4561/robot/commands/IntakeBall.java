@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * TODO: Document
- * @author TODO
+ * @author Ben G
  */
 public class IntakeBall extends Command {
 
