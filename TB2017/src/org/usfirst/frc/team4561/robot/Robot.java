@@ -13,7 +13,7 @@ import org.usfirst.frc.team4561.robot.subsystems.GearManipulator;
 import org.usfirst.frc.team4561.robot.subsystems.Intake;
 import org.usfirst.frc.team4561.robot.subsystems.RopeClimber;
 import org.usfirst.frc.team4561.robot.subsystems.Shooter;
-import org.usfirst.frc.team4561.robot.subsystems.Shooter;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -47,6 +47,9 @@ public class Robot extends IterativeRobot {
 		driveTrain = new DriveTrain();
 		gearManipulator = new GearManipulator();	
 		intake = new Intake(); // Makes a new ball intake object
+		shooter = new Shooter();
+		agitator = new Agitator();
+		ropeClimber = new RopeClimber();
 		//TODO: Add other subsystems here
 	}
 

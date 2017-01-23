@@ -2,7 +2,6 @@ package org.usfirst.frc.team4561.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team4561.robot.RobotMap;
-import org.usfirst.frc.team4561.robot.commands.ArcadeDrive;
 import org.usfirst.frc.team4561.robot.commands.TankDrive;
 
 import com.ctre.CANTalon;
@@ -39,12 +38,12 @@ public class DriveTrain extends Subsystem {
 		rearLeft.set(RobotMap.FRONT_LEFT_MOTOR_PORT);
 	}
     
-	public void setMotorPower(double powerLeft, double powerRight) {
+	public void setMotorPower(double powerLeft, double powerRight) {			//debug to make sure power isn't too high or low
 		if (powerLeft <= 1 && powerLeft >= -1) {
 			frontLeft.set(powerLeft);
 		}
 		else {
-			System.out.println("WARNING: Power to left side of drivetrain was set to: " + powerLeft);
+			System.out.println("WARNING: Power to left side of drivetrain was set to: " + powerLeft);	//gives a warning and changes power to safe level
 		}
 		
 		if (powerRight <= 1 && powerRight >= -1) {
