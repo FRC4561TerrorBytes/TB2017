@@ -5,13 +5,16 @@ import org.usfirst.frc.team4561.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ *@author: Lucas T
+ *Call this to close anti-fuel cover for
+ *gear manipulator
  */
 public class GearCoverClose extends Command {
 
     public GearCoverClose() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.gearManipulator);
     }
 
     // Called just before this Command runs the first time

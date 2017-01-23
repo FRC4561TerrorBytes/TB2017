@@ -1,12 +1,13 @@
 package org.usfirst.frc.team4561.robot.commands;
 
 import org.usfirst.frc.team4561.robot.Robot;
-import org.usfirst.frc.team4561.robot.subsystems.GearManipulator;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * TODO: Document
- * @author TODO
+ * @author: Lucas T
+ * Call this to open main mechanism for
+ * gear manipulator
  */
 public class ManipulatorOut extends Command {
 
