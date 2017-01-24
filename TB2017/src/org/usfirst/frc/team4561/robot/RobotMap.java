@@ -51,6 +51,10 @@ public class RobotMap {
 	public static final int REV_HALF_POWER_AGITATOR_BUTTON_PORT = 0; // TODO: Find port
 	public static final int FWD_FULL_POWER_AGITATOR_BUTTON_PORT = 0; // TODO: Find port
 	public static final int REV_FULL_POWER_AGITATOR_BUTTON_PORT = 0; // TODO: Find port
+
+	// Transmission
+	public static final int TRANSMISSION_TORQUE_BUTTON_PORT = 0; // TODO: Find port
+	public static final int TRANSMISSION_SPEED_BUTTON_PORT = 0; // TODO: Find port
 	
 	
 	// For example to map the left and right motors, you could define the

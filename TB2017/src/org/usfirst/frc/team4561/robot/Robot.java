@@ -1,4 +1,3 @@
-
 package org.usfirst.frc.team4561.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -13,6 +12,7 @@ import org.usfirst.frc.team4561.robot.subsystems.GearManipulator;
 import org.usfirst.frc.team4561.robot.subsystems.Intake;
 import org.usfirst.frc.team4561.robot.subsystems.RopeClimber;
 import org.usfirst.frc.team4561.robot.subsystems.Shooter;
+import org.usfirst.frc.team4561.robot.subsystems.Transmission;
 
 
 /**
@@ -27,11 +27,11 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static DriveTrain driveTrain;
 	public static Shooter shooter;
-	//public static Shooter shooter;
 	public static Intake intake;
 	public static RopeClimber ropeClimber;
 	public static GearManipulator gearManipulator;
 	public static Agitator agitator;
+    public static Transmission transmission;
 	//private static NetworkTable debugTable;
 	
 	
@@ -50,6 +50,7 @@ public class Robot extends IterativeRobot {
 		shooter = new Shooter();
 		agitator = new Agitator();
 		ropeClimber = new RopeClimber();
+        transmission = new Transmission();
 		//TODO: Add other subsystems here
 	}
 

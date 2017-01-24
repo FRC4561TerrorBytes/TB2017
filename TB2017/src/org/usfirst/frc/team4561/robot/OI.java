@@ -12,6 +12,8 @@ import org.usfirst.frc.team4561.robot.commands.RopeClimbDown;
 import org.usfirst.frc.team4561.robot.commands.RopeClimbUp;
 import org.usfirst.frc.team4561.robot.commands.SetAgitatorPower;
 import org.usfirst.frc.team4561.robot.commands.Shoot;
+import org.usfirst.frc.team4561.robot.commands.SpeedGear;
+import org.usfirst.frc.team4561.robot.commands.TorqueGear;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -41,6 +43,9 @@ public class OI {
 	private JoystickButton forwardFullPowerAgitatorButton = new JoystickButton(RightStick, RobotMap.FWD_FULL_POWER_AGITATOR_BUTTON_PORT); // declares a button for agitator
 	private JoystickButton reverseFullPowerAgitatorButton = new JoystickButton(RightStick, RobotMap.REV_FULL_POWER_AGITATOR_BUTTON_PORT); // declares a button for agitator
 	
+	private JoystickButton transmissionTorqueButton = new JoystickButton(RightStick, RobotMap.TRANSMISSION_TORQUE_BUTTON_PORT);
+	private JoystickButton transmissionSpeedButton = new JoystickButton(RightStick, RobotMap.TRANSMISSION_SPEED_BUTTON_PORT);
+	
 	public OI() {
 		//Initializing buttons
 		shootButton.whileHeld(new Shoot());
@@ -59,6 +64,9 @@ public class OI {
 		reverseHalfPowerAgitatorButton.whileHeld(new SetAgitatorPower(-0.5)); // TODO Add variable speed
 		forwardFullPowerAgitatorButton.whileHeld(new SetAgitatorPower(1)); // TODO Add variable speed
 		reverseFullPowerAgitatorButton.whileHeld(new SetAgitatorPower(-1)); // TODO Add variable speed
+		
+		transmissionTorqueButton.whenPressed(new TorqueGear());
+		transmissionSpeedButton.whenPressed(new SpeedGear());
 	}
 	
 	//JOYSTICK INPUTS
