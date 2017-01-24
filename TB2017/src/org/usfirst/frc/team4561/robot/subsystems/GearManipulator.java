@@ -14,8 +14,8 @@ public class GearManipulator extends Subsystem {
     // here. Call these from Commands.
 	
 	//Solenoid declarations
-	private Solenoid solenoidMain = new Solenoid(1, 0);
-	private Solenoid solenoidTop = new Solenoid(2, 0);
+	private Solenoid solenoidMain = new Solenoid(0, 0);
+	private Solenoid solenoidTop = new Solenoid(0, 1);
     
 	public void initDefaultCommand() {
     	setDefaultCommand(new ManipulatorIn());
