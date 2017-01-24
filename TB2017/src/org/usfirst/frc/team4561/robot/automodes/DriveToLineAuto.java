@@ -1,10 +1,13 @@
 package org.usfirst.frc.team4561.robot.automodes;
 
+import org.usfirst.frc.team4561.robot.commands.SpeedGear;
+import org.usfirst.frc.team4561.robot.commands.TankDriveForward;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  * TODO: Document
- * @author TODO
+ * @author Ben G
  */
 public class DriveToLineAuto extends CommandGroup {
 
@@ -25,5 +28,10 @@ public class DriveToLineAuto extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    	
+    	// set gear to high speed, but low torque
+    	addSequential(new SpeedGear());
+    	// then drive forward at full speed
+    	addSequential(new TankDriveForward());
     }
 }
