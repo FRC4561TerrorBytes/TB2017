@@ -18,7 +18,8 @@ public class RobotMap {
 	public static final int CLIMBER_MOTOR = 4;
 	public static final int LEFT_INTAKE_MOTOR_PORT = 5;
 	public static final int RIGHT_INTAKE_MOTOR_PORT = 6;
-	public static final int SHOOTER_MOTOR_PORT = 0; //TODO: Find port
+	public static final int SHOOTER_LEFT_MOTOR_PORT = 0; //TODO: Find port
+	public static final int SHOOTER_RIGHT_MOTOR_PORT = 0; //TODO: Find Port
 	
 	//JOYSTICK CONFIGURATION
 	public static final int RIGHT_JOYSTICK = 0;									//sets joystick ports

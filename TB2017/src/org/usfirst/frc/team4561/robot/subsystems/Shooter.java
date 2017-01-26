@@ -10,13 +10,15 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *@author alekj
  */
-//TODO Remove extra import from Robot.java
 public class Shooter extends Subsystem {
 	
-	public CANTalon ShootMotor = new CANTalon(RobotMap.SHOOTER_MOTOR_PORT);
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
-
+	//Shooter Motors
+	public CANTalon ShootMotorLeft = new CANTalon(RobotMap.SHOOTER_LEFT_MOTOR_PORT);
+	public CANTalon ShootMotorRight = new CANTalon(RobotMap.SHOOTER_RIGHT_MOTOR_PORT);
+	
+	//Debug flag
+	private boolean debug = false/*RobotMap.isDebug*/; //TODO: Centralize Debug Flag
+	
     public void initDefaultCommand() {
     	
         setDefaultCommand(new Shoot());
@@ -25,7 +27,17 @@ public class Shooter extends Subsystem {
     public void shootAtSpeed(double speed){
     	
     	//If a valid value, run the shooter motor at the given speed
-    	if (speed < 1.0 && speed > -1.0)    	ShootMotor.set(speed);
+    	if (speed < 1.0 && speed > -1.0){
+    		ShootMotorLeft.set(speed);
+    		ShootMotorRight.set(speed);
+    		if (debug){
+    			System.out.print("[SUBSYSTEM] Running Shooter Motors at speed ");
+    			System.out.println(speed);
+    		}
+    	}
+    	else if (debug){
+    		System.out.println("[SUBSYSTEM] Did not run Shooter Motors, given speed was invalid");
+    	}
     }
     
 }
