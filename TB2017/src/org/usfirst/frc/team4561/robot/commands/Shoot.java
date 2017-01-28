@@ -2,6 +2,7 @@ package org.usfirst.frc.team4561.robot.commands;
 
 
 import org.usfirst.frc.team4561.robot.Robot;
+import org.usfirst.frc.team4561.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -11,17 +12,20 @@ public class Shoot extends Command
 	private final double speed = 1;
 	
 	//Debug flag
-	private  boolean debug = false/*RobotMap.isDebug*/; //TODO: Centralize debug flag
+	private  boolean verbose = RobotMap.SHOOTER_VERBOSE;
 	
 	public Shoot()
 	{
 		requires(Robot.shooter); //Don't run this command if the shooter doesn't exist
+		if (verbose){
+			System.out.println("[COMMAND] Created Shoot Command");
+		}
 	}
 	
 	protected void execute()
 	{
 		Robot.shooter.shootAtSpeed(speed); //Run the shooter at the default speed
-		if (debug){
+		if (verbose){
 			System.out.print("[COMMAND] Running shooter at speed ");
 			System.out.println(speed);
 		}
@@ -30,7 +34,7 @@ public class Shoot extends Command
 	protected void stop()
 	{
 		Robot.shooter.shootAtSpeed(0); //Stop the shooter
-		if (debug){
+		if (verbose){
 			System.out.println("[COMMAND] Stopping Shooter");
 		}
 	}

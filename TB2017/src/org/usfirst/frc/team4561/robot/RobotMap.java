@@ -60,7 +60,17 @@ public class RobotMap {
 	//ROPE DOWN CONTROL VARIABLE
 	public static final boolean ROPE_CLIMB_DOWN_ENABLED = false;	//NEVER ENABLE THIS... EVER
 	
-	
+	//Verbose Flags
+	public static boolean MASTER_VERBOSE = false;
+	public static boolean AGITATOR_VERBOSE = false || MASTER_VERBOSE;
+	public static boolean DRIVETRAIN_VERBOSE = false || MASTER_VERBOSE;
+	public static boolean GEARMANIPULATOR_VERBOSE = false || MASTER_VERBOSE;
+	public static boolean INTAKE_VERBOSE = false || MASTER_VERBOSE;
+	public static boolean ROPECLIMBER_VERBOSE = false || MASTER_VERBOSE;
+	public static boolean SHOOTER_VERBOSE = false || MASTER_VERBOSE;
+	public static boolean TRANSMISSION_VERBOSE = false || MASTER_VERBOSE;
+		
+		
 	// For example to map the left and right motors, you could define the
 	// following variables to use with your drivetrain subsystem.
 	// public static int leftMotor = 1;

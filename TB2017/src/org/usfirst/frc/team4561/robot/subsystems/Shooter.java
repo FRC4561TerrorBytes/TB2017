@@ -17,11 +17,14 @@ public class Shooter extends Subsystem {
 	public CANTalon ShootMotorRight = new CANTalon(RobotMap.SHOOTER_RIGHT_MOTOR_PORT);
 	
 	//Debug flag
-	private boolean debug = false/*RobotMap.isDebug*/; //TODO: Centralize Debug Flag
+	private boolean verbose = RobotMap.SHOOTER_VERBOSE;
 	
     public void initDefaultCommand() {
     	
         setDefaultCommand(new Shoot());
+        if (verbose){
+        	System.out.println("[SUBSYSTEM] Shooter Object Created");
+        }
     }
     
     public void shootAtSpeed(double speed){
@@ -29,13 +32,13 @@ public class Shooter extends Subsystem {
     	//If a valid value, run the shooter motor at the given speed
     	if (speed < 1.0 && speed > -1.0){
     		ShootMotorLeft.set(speed);
-    		ShootMotorRight.set(speed);
-    		if (debug){
+    		ShootMotorRight.set(-speed);
+    		if (verbose){
     			System.out.print("[SUBSYSTEM] Running Shooter Motors at speed ");
     			System.out.println(speed);
     		}
     	}
-    	else if (debug){
+    	else if (verbose){
     		System.out.println("[SUBSYSTEM] Did not run Shooter Motors, given speed was invalid");
     	}
     }
