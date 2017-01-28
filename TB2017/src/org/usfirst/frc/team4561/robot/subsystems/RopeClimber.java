@@ -1,11 +1,9 @@
 package org.usfirst.frc.team4561.robot.subsystems;
 
-import org.usfirst.frc.team4561.robot.Robot;
 import org.usfirst.frc.team4561.robot.RobotMap;
 
 import com.ctre.CANTalon;
 
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -16,6 +14,9 @@ public class RopeClimber extends Subsystem {
 	
 	private CANTalon climberMotor = new CANTalon(RobotMap.CLIMBER_MOTOR);
 
+	//verbose flag
+	private boolean verbose = RobotMap.ROPECLIMBER_VERBOSE;
+	
 /**	public Rollers() {
 *		if(Robot.isVerbose()) {
 *			System.out.println("Initializing Rollers Subsystem");
@@ -31,10 +32,14 @@ public class RopeClimber extends Subsystem {
 
 	public void setClimber(double power) {
 		if (power > 1) {
-			System.out.println("Rope climber power set too high." + power + "was changed to 1.");
+			if (verbose) {
+				System.out.println("ROPECLIMBER: SPEED WAS SET TOO POSITIVE... CHANGING TO AN ACCEPTABLE VALUE");
+			}
 			power = 1;
 		} else if (power < -1) {
-			System.out.println("Rope climber power set too low." + power + "was changed to -1.");
+			if (verbose) {
+				System.out.println("ROPECLIMBER: SPEED WAS SET TOO NEGATIVE... CHANGING TO AN ACCEPTABLE VALUE");
+			}
 			power = -1;
 		}
 		climberMotor.set(power);

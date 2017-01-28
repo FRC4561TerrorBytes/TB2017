@@ -26,15 +26,15 @@ public class OI {
 	private static Joystick LeftStick = new Joystick(RobotMap.LEFT_JOYSTICK);			//declares a left stick
 	
 	//Button Declaration
-	private JoystickButton shootButton = new JoystickButton(RightStick, RobotMap.SHOOT_BUTTON);
+	private JoystickButton shootButton = new JoystickButton(RightStick, RobotMap.SHOOT_BUTTON);		//declares a shooter button
 	
-	private JoystickButton ropeupbutton = new JoystickButton(RightStick, RobotMap.ROPE_UP_BUTTON);
-	private JoystickButton ropedownbutton = new JoystickButton(LeftStick, RobotMap.ROPE_DOWN_BUTTON);
+	private JoystickButton ropeupbutton = new JoystickButton(RightStick, RobotMap.ROPE_UP_BUTTON);	//declares a rope climbing button
+	private JoystickButton ropedownbutton = new JoystickButton(LeftStick, RobotMap.ROPE_DOWN_BUTTON);	//declares a rope climbing button that shouldnt be used unless KAIZ-GOD says so
 	
-	private JoystickButton gearinbutton = new JoystickButton(RightStick, RobotMap.GEAR_IN_BUTTON);
-	private JoystickButton gearoutbutton = new JoystickButton(RightStick, RobotMap.GEAR_OUT_BUTTON);
-	private JoystickButton gearCoverCloseButton = new JoystickButton(RightStick, RobotMap.GEAR_COVER_CLOSE_BUTTON);
-	private JoystickButton gearCoverOpenButton = new JoystickButton(RightStick, RobotMap.GEAR_COVER_OPEN_BUTTON);
+	private JoystickButton gearinbutton = new JoystickButton(RightStick, RobotMap.GEAR_IN_BUTTON);		//declares a gear intake button
+	private JoystickButton gearoutbutton = new JoystickButton(RightStick, RobotMap.GEAR_OUT_BUTTON);	//declares a gear out button
+	private JoystickButton gearCoverCloseButton = new JoystickButton(RightStick, RobotMap.GEAR_COVER_CLOSE_BUTTON);	//declares a gear cover button for close
+	private JoystickButton gearCoverOpenButton = new JoystickButton(RightStick, RobotMap.GEAR_COVER_OPEN_BUTTON);	//declares a gear cover button for open
 	
 	private JoystickButton intakeButton = new JoystickButton(RightStick, RobotMap.INTAKE_BUTTON_PORT); // declares a button for ball intake
 	
@@ -43,8 +43,8 @@ public class OI {
 	private JoystickButton forwardFullPowerAgitatorButton = new JoystickButton(RightStick, RobotMap.FWD_FULL_POWER_AGITATOR_BUTTON_PORT); // declares a button for agitator
 	private JoystickButton reverseFullPowerAgitatorButton = new JoystickButton(RightStick, RobotMap.REV_FULL_POWER_AGITATOR_BUTTON_PORT); // declares a button for agitator
 	
-	private JoystickButton transmissionTorqueButton = new JoystickButton(RightStick, RobotMap.TRANSMISSION_TORQUE_BUTTON_PORT);
-	private JoystickButton transmissionSpeedButton = new JoystickButton(RightStick, RobotMap.TRANSMISSION_SPEED_BUTTON_PORT);
+	private JoystickButton transmissionTorqueButton = new JoystickButton(RightStick, RobotMap.TRANSMISSION_TORQUE_BUTTON_PORT);	//declares a button for transmission
+	private JoystickButton transmissionSpeedButton = new JoystickButton(RightStick, RobotMap.TRANSMISSION_SPEED_BUTTON_PORT);	//declares a button for transmission
 	
 	public OI() {
 		//Initializing buttons

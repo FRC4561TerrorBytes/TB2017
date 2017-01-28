@@ -22,6 +22,10 @@ public class Shoot extends Command
 		}
 	}
 	
+	// Called just before this Command runs the first time
+    protected void initialize() {    
+    
+    }
 	protected void execute()
 	{
 		Robot.shooter.shootAtSpeed(speed); //Run the shooter at the default speed
@@ -31,7 +35,7 @@ public class Shoot extends Command
 		}
 	}
 	
-	protected void stop()
+	protected void end()
 	{
 		Robot.shooter.shootAtSpeed(0); //Stop the shooter
 		if (verbose){
@@ -43,5 +47,9 @@ public class Shoot extends Command
 	{
 		return false; //The shooter is never finished! (Only stop this command when interrupted, which happens when the button is released)
 	}
+	
+    protected void interrupted() {
+    	end();
+    }
 
 }

@@ -13,6 +13,9 @@ import edu.wpi.first.wpilibj.RobotDrive;
  */
 public class DriveTrain extends Subsystem {
 	
+	//verbose flag
+	private boolean verbose = RobotMap.DRIVETRAIN_VERBOSE;
+	
 	private CANTalon frontRight;		// Sets front motor ports
 	private CANTalon frontLeft;			//front motors are masters
 	
@@ -52,31 +55,17 @@ public class DriveTrain extends Subsystem {
 		if (powerLeft <= 1 && powerLeft >= -1) {
 			frontLeft.set(powerLeft);
 		}
-		else {
-			System.out.println("WARNING: Power to left side of drivetrain was set to: " + powerLeft);	//gives a warning and changes power to safe level
+		else if (verbose) {
+			System.out.println("[SUBSYSTEM] Power to left side of drivetrain was set to: " + powerLeft);	//gives a warning and changes power to safe level
 		}
 		
 		if (powerRight <= 1 && powerRight >= -1) {
 			frontRight.set(powerRight);
 		}
-		else {
-			System.out.println("WARNING: Power to right side of drivetrain was set to: " + powerLeft);
+		else if (verbose) {
+			System.out.println("[SUBSYSTEM] Power to right side of drivetrain was set to: " + powerLeft);
 		}
 	}
-	
-	//TODO: JONAH W - method for debug, meant to compliment setter method 
-	/*public void getMotorPower(boolean motorLeft){
-		
-		double powerLeft, powerRight;
-		if (motorLeft){
-			frontLeft.get(powerLeft);
-			return(powerLeft);
-		}
-		else	{
-			frontRight.get(powerRight);
-			return(powerRight);
-		}
-	}*/
 	
 	public void initDefaultCommand() {
 		setDefaultCommand(new TankDrive());

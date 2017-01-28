@@ -8,18 +8,19 @@ package org.usfirst.frc.team4561.robot;
  */
 public class RobotMap {
 	
-	//MOTOR CONFIGURATION
-	public static final int FRONT_RIGHT_MOTOR_PORT = 0;							//sets motor ports
-	public static final int FRONT_LEFT_MOTOR_PORT = 1;
-	public static final int REAR_RIGHT_MOTOR_PORT = 2;
-	public static final int REAR_LEFT_MOTOR_PORT = 3;
-	public static final int MID_RIGHT_MOTOR_PORT = 4;
-	public static final int MID_LEFT_MOTOR_PORT = 5;
-	public static final int CLIMBER_MOTOR = 6;
-	public static final int LEFT_INTAKE_MOTOR_PORT = 7;
-	public static final int RIGHT_INTAKE_MOTOR_PORT = 8;
-	public static final int SHOOTER_LEFT_MOTOR_PORT = 9; //TODO: Find port
-	public static final int SHOOTER_RIGHT_MOTOR_PORT = 10; //TODO: Find Port
+	//MOTOR CONFIGURATION - sets motor ports
+	public static final int FRONT_RIGHT_MOTOR_PORT = 0;//TODO: Find Port
+	public static final int FRONT_LEFT_MOTOR_PORT = 9; //TODO: Find Port
+	public static final int REAR_RIGHT_MOTOR_PORT = 10; //TODO: Find Port
+	public static final int REAR_LEFT_MOTOR_PORT = 3; //TODO: Find Port
+	public static final int MID_RIGHT_MOTOR_PORT = 4; //TODO: Find Port
+	public static final int MID_LEFT_MOTOR_PORT = 5; //TODO: Find Port
+	public static final int CLIMBER_MOTOR = 6; //TODO: Find Port
+	public static final int LEFT_INTAKE_MOTOR_PORT = 7; //TODO: Find Port
+	public static final int RIGHT_INTAKE_MOTOR_PORT = 8; //TODO: Find Port
+	public static final int SHOOTER_LEFT_MOTOR_PORT = 1; //TODO: Find port
+	public static final int SHOOTER_RIGHT_MOTOR_PORT = 2; //TODO: Find Port
+	public static final int AGITATOR_MOTOR_PORT = 11; //TODO: Find Port
 	
 	//JOYSTICK CONFIGURATION
 	public static final int RIGHT_JOYSTICK = 0;									//sets joystick ports
@@ -31,44 +32,43 @@ public class RobotMap {
 	public static final double LEFT_JOYSTICK_REDUCTION = 0.25;
 	
 	// Rope Buttons
-	public static final int ROPE_UP_BUTTON = 1; //TODO: The port numbers
-	public static final int ROPE_DOWN_BUTTON = 1; //TODO: fix them
+	public static final int ROPE_UP_BUTTON = 1; //TODO: Port numbers
+	public static final int ROPE_DOWN_BUTTON = 1; //TODO: Port numbers
 	
-	// Gear buttons TODO: Port numbers
-	public static final int GEAR_IN_BUTTON = 0;
-	public static final int GEAR_OUT_BUTTON = 0;
-	public static final int GEAR_COVER_CLOSE_BUTTON = 0;//TODO: Port number
-	public static final int GEAR_COVER_OPEN_BUTTON = 0; //TODO: Port number
+	// Gear buttons
+	public static final int GEAR_IN_BUTTON = 1; //TODO: Port number
+	public static final int GEAR_OUT_BUTTON = 1; //TODO: Port number
+	public static final int GEAR_COVER_CLOSE_BUTTON = 1;//TODO: Port number
+	public static final int GEAR_COVER_OPEN_BUTTON = 1; //TODO: Port number
 
 	// Intake Button
-	public static final int INTAKE_BUTTON_PORT = 0; // TODO: Find port
+	public static final int INTAKE_BUTTON_PORT = 1; // TODO: Find port
 	
 	// Shooter Button
-	public static final int SHOOT_BUTTON = 9;
+	public static final int SHOOT_BUTTON = 2; //TODO: Find port
 	
 	// Agitator
-	public static final int AGITATOR_MOTOR_PORT = 0; // TODO: Find port
-	public static final int FWD_HALF_POWER_AGITATOR_BUTTON_PORT = 0; // TODO: Find port
-	public static final int REV_HALF_POWER_AGITATOR_BUTTON_PORT = 0; // TODO: Find port
-	public static final int FWD_FULL_POWER_AGITATOR_BUTTON_PORT = 0; // TODO: Find port
-	public static final int REV_FULL_POWER_AGITATOR_BUTTON_PORT = 0; // TODO: Find port
+	public static final int FWD_HALF_POWER_AGITATOR_BUTTON_PORT = 1; // TODO: Find port
+	public static final int REV_HALF_POWER_AGITATOR_BUTTON_PORT = 1; // TODO: Find port
+	public static final int FWD_FULL_POWER_AGITATOR_BUTTON_PORT = 1; // TODO: Find port
+	public static final int REV_FULL_POWER_AGITATOR_BUTTON_PORT = 1; // TODO: Find port
 
 	// Transmission
-	public static final int TRANSMISSION_TORQUE_BUTTON_PORT = 0; // TODO: Find port
-	public static final int TRANSMISSION_SPEED_BUTTON_PORT = 0; // TODO: Find port
+	public static final int TRANSMISSION_TORQUE_BUTTON_PORT = 1; // TODO: Find port
+	public static final int TRANSMISSION_SPEED_BUTTON_PORT = 1; // TODO: Find port
 	
 	//ROPE DOWN CONTROL VARIABLE
-	public static final boolean ROPE_CLIMB_DOWN_ENABLED = false;	//NEVER ENABLE THIS... EVER
+	public static final boolean ROPE_CLIMB_DOWN_ENABLED = false;	//NEVER ENABLE THIS... EVER (unless KAIZ-GOD says so)
 	
 	//Verbose Flags
 	public static boolean MASTER_VERBOSE = false;
 	public static boolean AGITATOR_VERBOSE = false || MASTER_VERBOSE;
 	public static boolean DRIVETRAIN_VERBOSE = false || MASTER_VERBOSE;
-	public static boolean GEARMANIPULATOR_VERBOSE = false || MASTER_VERBOSE;
+	public static boolean GEARMANIPULATOR_VERBOSE = false || MASTER_VERBOSE;	//TODO: should there be a verbose for this?
 	public static boolean INTAKE_VERBOSE = false || MASTER_VERBOSE;
 	public static boolean ROPECLIMBER_VERBOSE = false || MASTER_VERBOSE;
 	public static boolean SHOOTER_VERBOSE = false || MASTER_VERBOSE;
-	public static boolean TRANSMISSION_VERBOSE = false || MASTER_VERBOSE;
+	public static boolean TRANSMISSION_VERBOSE = false || MASTER_VERBOSE;		//TODO: should there be a verbose for this?
 		
 		
 	// For example to map the left and right motors, you could define the

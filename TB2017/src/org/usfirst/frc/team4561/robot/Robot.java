@@ -24,7 +24,6 @@ import org.usfirst.frc.team4561.robot.subsystems.Transmission;
  */
 public class Robot extends IterativeRobot {
 
-	public static OI oi;
 	public static DriveTrain driveTrain;
 	public static Shooter shooter;
 	public static Intake intake;
@@ -32,7 +31,7 @@ public class Robot extends IterativeRobot {
 	public static GearManipulator gearManipulator;
 	public static Agitator agitator;
     public static Transmission transmission;
-	//private static NetworkTable debugTable;
+    public static OI oi;
 	
 	
 	Command autonomousCommand;
@@ -46,12 +45,12 @@ public class Robot extends IterativeRobot {
 		shooter = new Shooter();
 		driveTrain = new DriveTrain();
 		gearManipulator = new GearManipulator();	
-		intake = new Intake(); // Makes a new ball intake object
+		intake = new Intake();
 		agitator = new Agitator();
 		ropeClimber = new RopeClimber();
         transmission = new Transmission();
 		oi = new OI();
-		//TODO: Add other subsystems here
+		System.out.println("ROBOT INIT SUBSYSTEM CONSTRUCTORS CREATED");
 	}
 
 	/**

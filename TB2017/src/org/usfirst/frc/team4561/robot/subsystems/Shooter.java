@@ -1,7 +1,6 @@
 package org.usfirst.frc.team4561.robot.subsystems;
 
 import org.usfirst.frc.team4561.robot.RobotMap;
-import org.usfirst.frc.team4561.robot.commands.Shoot;
 
 import com.ctre.CANTalon;
 
@@ -16,21 +15,16 @@ public class Shooter extends Subsystem {
 	public CANTalon ShootMotorLeft = new CANTalon(RobotMap.SHOOTER_LEFT_MOTOR_PORT);
 	public CANTalon ShootMotorRight = new CANTalon(RobotMap.SHOOTER_RIGHT_MOTOR_PORT);
 	
-	//Debug flag
+	//verbose flag
 	private boolean verbose = RobotMap.SHOOTER_VERBOSE;
 	
     public void initDefaultCommand() {
-    	
-        setDefaultCommand(new Shoot());
-        if (verbose){
-        	System.out.println("[SUBSYSTEM] Shooter Object Created");
-        }
     }
     
     public void shootAtSpeed(double speed){
     	
     	//If a valid value, run the shooter motor at the given speed
-    	if (speed < 1.0 && speed > -1.0){
+    	if (speed <= 1.0 && speed >= -1.0){
     		ShootMotorLeft.set(speed);
     		ShootMotorRight.set(-speed);
     		if (verbose){
@@ -44,4 +38,3 @@ public class Shooter extends Subsystem {
     }
     
 }
-

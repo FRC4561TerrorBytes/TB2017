@@ -29,4 +29,3 @@ public class Transmission extends Subsystem {
       	solenoidTrans.set(false);
     }
 }
-

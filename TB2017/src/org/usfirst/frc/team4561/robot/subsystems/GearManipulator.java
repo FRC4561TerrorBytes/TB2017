@@ -1,7 +1,7 @@
 package org.usfirst.frc.team4561.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import org.usfirst.frc.team4561.robot.commands.ManipulatorIn;
+
 import edu.wpi.first.wpilibj.Solenoid;
 
 /**
@@ -18,7 +18,7 @@ public class GearManipulator extends Subsystem {
 	private Solenoid solenoidTop = new Solenoid(0, 1);
     
 	public void initDefaultCommand() {
-    	setDefaultCommand(new ManipulatorIn());
+ 
     }
     
 	//For when gear is captured
@@ -41,4 +41,3 @@ public class GearManipulator extends Subsystem {
     	solenoidTop.set(false);
     }
 }
-
