@@ -13,9 +13,15 @@ public class RopeClimbUp extends Command {
     public RopeClimbUp() {
     	requires(Robot.ropeClimber);
     }
-      
+    
+    // Called just before this Command runs the first time
+    protected void initialize() {
+    	System.out.println("ROPE CLIMBER UP COMMAND INITIALIZED");
+    }
+    
   	protected void execute() {
   		Robot.ropeClimber.setClimber(.5); //TODO: Change this from half power @Joseph
+  		System.out.println("ROPE CLIMBER UP COMMAND INITIALIZED");
   	}
   	
     protected boolean isFinished() {

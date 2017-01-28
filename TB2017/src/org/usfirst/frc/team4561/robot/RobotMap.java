@@ -13,13 +13,13 @@ public class RobotMap {
 	public static final int FRONT_LEFT_MOTOR_PORT = 1;
 	public static final int REAR_RIGHT_MOTOR_PORT = 2;
 	public static final int REAR_LEFT_MOTOR_PORT = 3;
-	public static final int MID_RIGHT_MOTOR_PORT = 0;
-	public static final int MID_LEFT_MOTOR_PORT = 0;
-	public static final int CLIMBER_MOTOR = 4;
-	public static final int LEFT_INTAKE_MOTOR_PORT = 5;
-	public static final int RIGHT_INTAKE_MOTOR_PORT = 6;
-	public static final int SHOOTER_LEFT_MOTOR_PORT = 0; //TODO: Find port
-	public static final int SHOOTER_RIGHT_MOTOR_PORT = 0; //TODO: Find Port
+	public static final int MID_RIGHT_MOTOR_PORT = 4;
+	public static final int MID_LEFT_MOTOR_PORT = 5;
+	public static final int CLIMBER_MOTOR = 6;
+	public static final int LEFT_INTAKE_MOTOR_PORT = 7;
+	public static final int RIGHT_INTAKE_MOTOR_PORT = 8;
+	public static final int SHOOTER_LEFT_MOTOR_PORT = 9; //TODO: Find port
+	public static final int SHOOTER_RIGHT_MOTOR_PORT = 10; //TODO: Find Port
 	
 	//JOYSTICK CONFIGURATION
 	public static final int RIGHT_JOYSTICK = 0;									//sets joystick ports
@@ -31,8 +31,8 @@ public class RobotMap {
 	public static final double LEFT_JOYSTICK_REDUCTION = 0.25;
 	
 	// Rope Buttons
-	public static final int ROPE_UP_BUTTON = 0; //TODO: The port numbers
-	public static final int ROPE_DOWN_BUTTON = 0; //TODO: fix them
+	public static final int ROPE_UP_BUTTON = 1; //TODO: The port numbers
+	public static final int ROPE_DOWN_BUTTON = 1; //TODO: fix them
 	
 	// Gear buttons TODO: Port numbers
 	public static final int GEAR_IN_BUTTON = 0;
@@ -56,6 +56,9 @@ public class RobotMap {
 	// Transmission
 	public static final int TRANSMISSION_TORQUE_BUTTON_PORT = 0; // TODO: Find port
 	public static final int TRANSMISSION_SPEED_BUTTON_PORT = 0; // TODO: Find port
+	
+	//ROPE DOWN CONTROL VARIABLE
+	public static final boolean ROPE_CLIMB_DOWN_ENABLED = false;	//NEVER ENABLE THIS... EVER
 	
 	
 	// For example to map the left and right motors, you could define the

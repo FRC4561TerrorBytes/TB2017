@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4561.robot.commands;
 
 import org.usfirst.frc.team4561.robot.Robot;
+import org.usfirst.frc.team4561.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -14,8 +15,19 @@ public class RopeClimbDown extends Command {
         requires(Robot.ropeClimber);
     }
     
+    // Called just before this Command runs the first time
+    protected void initialize() {
+    	System.out.println("ROPE CLIMBER DOWN COMMAND INITIALIZED");
+    }
+    
 	protected void execute() {
-		Robot.ropeClimber.setClimber(-.5); //TODO: Change this from half power @Joseph	
+		if (RobotMap.ROPE_CLIMB_DOWN_ENABLED) {
+			Robot.ropeClimber.setClimber(-.5); //TODO: Change this from half power @Joseph
+			System.out.println("ROPE CLIMBER DOWN COMMAND INITIALIZED");
+		}
+		else {
+			System.out.println("ROPE CLIMB DOWN IS DISABLED");
+		}
 	}
 	
 	@Override

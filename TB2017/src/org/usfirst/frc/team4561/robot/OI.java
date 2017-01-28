@@ -29,7 +29,7 @@ public class OI {
 	private JoystickButton shootButton = new JoystickButton(RightStick, RobotMap.SHOOT_BUTTON);
 	
 	private JoystickButton ropeupbutton = new JoystickButton(RightStick, RobotMap.ROPE_UP_BUTTON);
-	private JoystickButton ropedownbutton = new JoystickButton(RightStick, RobotMap.ROPE_DOWN_BUTTON);
+	private JoystickButton ropedownbutton = new JoystickButton(LeftStick, RobotMap.ROPE_DOWN_BUTTON);
 	
 	private JoystickButton gearinbutton = new JoystickButton(RightStick, RobotMap.GEAR_IN_BUTTON);
 	private JoystickButton gearoutbutton = new JoystickButton(RightStick, RobotMap.GEAR_OUT_BUTTON);

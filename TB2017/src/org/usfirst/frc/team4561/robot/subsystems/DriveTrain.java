@@ -33,7 +33,7 @@ public class DriveTrain extends Subsystem {
 		midRight.set(RobotMap.FRONT_RIGHT_MOTOR_PORT);									//set doesn't set power, it sets a slave
 		
 		rearRight = new CANTalon(RobotMap.REAR_RIGHT_MOTOR_PORT);
-		rearRight.changeControlMode(CANTalon.TalonControlMode.Follower);				//TODO: move all of the followers to robot init in robot
+		rearRight.changeControlMode(CANTalon.TalonControlMode.Follower);
 		rearRight.set(RobotMap.FRONT_RIGHT_MOTOR_PORT);
 		
 		midLeft = new CANTalon(RobotMap.MID_LEFT_MOTOR_PORT);

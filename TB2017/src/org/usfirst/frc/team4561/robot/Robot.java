@@ -43,14 +43,14 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
-		oi = new OI();
+		shooter = new Shooter();
 		driveTrain = new DriveTrain();
 		gearManipulator = new GearManipulator();	
 		intake = new Intake(); // Makes a new ball intake object
-		shooter = new Shooter();
 		agitator = new Agitator();
 		ropeClimber = new RopeClimber();
         transmission = new Transmission();
+		oi = new OI();
 		//TODO: Add other subsystems here
 	}
 
