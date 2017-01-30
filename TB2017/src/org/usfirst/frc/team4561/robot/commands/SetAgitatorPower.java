@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4561.robot.commands;
 
 import org.usfirst.frc.team4561.robot.Robot;
+import org.usfirst.frc.team4561.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -9,24 +10,26 @@ import edu.wpi.first.wpilibj.command.Command;
  * @author Ben G
  */
 public class SetAgitatorPower extends Command {
+	
 	double power = 0;
-    public SetAgitatorPower(double agitatorPower) {
+	
+    public SetAgitatorPower(double power) {
     	requires(Robot.agitator);
-    	power = agitatorPower;
-    	System.out.println("SET AGITATOR POWER IS " + agitatorPower);
+    	this.power = power;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	System.out.println("SET AGITATOR POWER IS INITIALIZED");
+    	if (RobotMap.GEAR_MANIPULATOR_VERBOSE) {
+    		System.out.println("[Command] Intializing SetAgitatorPower for power " + Double.toString(power));
+    	}
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
     	// Intake at variable speed
-    	Robot.agitator.startAgitator(power);
-    	System.out.println("SET AGITATOR POWER IS EXICUTE");
+    	Robot.agitator.setPowert(power);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -37,7 +40,9 @@ public class SetAgitatorPower extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	Robot.agitator.stop();
-    	System.out.println("STOPPING AGITATOR...");
+    	if (RobotMap.GEAR_MANIPULATOR_VERBOSE) {
+    		System.out.println("[Command] Ending SetAgitatorPower");
+    	}
     }
 
     // Called when another command which requires one or more of the same

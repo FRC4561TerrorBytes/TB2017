@@ -2,7 +2,7 @@ package org.usfirst.frc.team4561.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team4561.robot.RobotMap;
-import org.usfirst.frc.team4561.robot.commands.TankDrive;
+import org.usfirst.frc.team4561.robot.commands.DriveTank;
 
 import com.ctre.CANTalon;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -13,27 +13,31 @@ import edu.wpi.first.wpilibj.RobotDrive;
  */
 public class DriveTrain extends Subsystem {
 	
-	//verbose flag
-	private boolean verbose = RobotMap.DRIVETRAIN_VERBOSE;
-	
-	private CANTalon frontRight;		// Sets front motor ports
-	private CANTalon frontLeft;			//front motors are masters
+	// Front motors are masters
+	private CANTalon frontRight;
+	private CANTalon frontLeft;
 	
 	private CANTalon midRight;
 	private CANTalon midLeft;
 	
-	private CANTalon rearRight;			// Sets rear motor ports
+	private CANTalon rearRight;
 	private CANTalon rearLeft;
 		
 	private RobotDrive robotDrive;
+	
+	public void initDefaultCommand() {
+		setDefaultCommand(new DriveTank());
+    }
 	
 	public DriveTrain() {
 		frontRight = new CANTalon(RobotMap.FRONT_RIGHT_MOTOR_PORT);
 		frontLeft = new CANTalon(RobotMap.FRONT_LEFT_MOTOR_PORT);
 		
 		midRight = new CANTalon(RobotMap.MID_RIGHT_MOTOR_PORT);
-		midRight.changeControlMode(CANTalon.TalonControlMode.Follower);					// Sets other motors as slaves to masters FrontLeft/Right
-		midRight.set(RobotMap.FRONT_RIGHT_MOTOR_PORT);									//set doesn't set power, it sets a slave
+		
+		// Sets other motors as slaves to masters FrontLeft/Right, set doesn't set power, it sets a slave
+		midRight.changeControlMode(CANTalon.TalonControlMode.Follower);
+		midRight.set(RobotMap.FRONT_RIGHT_MOTOR_PORT);
 		
 		rearRight = new CANTalon(RobotMap.REAR_RIGHT_MOTOR_PORT);
 		rearRight.changeControlMode(CANTalon.TalonControlMode.Follower);
@@ -47,34 +51,57 @@ public class DriveTrain extends Subsystem {
 		rearLeft.changeControlMode(CANTalon.TalonControlMode.Follower);
 		rearLeft.set(RobotMap.FRONT_LEFT_MOTOR_PORT);
 		
-		robotDrive = new RobotDrive(frontLeft, frontRight);				// Puts motors into RobotDrive class
+		// Puts motors into RobotDrive class
+		robotDrive = new RobotDrive(frontLeft, frontRight);
 
 	}
     
-	public void setMotorPower(double powerLeft, double powerRight) {			//debug to make sure power isn't too high or low
-		if (powerLeft <= 1 && powerLeft >= -1) {
-			frontLeft.set(powerLeft);
+	/**
+	 * TODO: Document
+	 * @param powerLeft
+	 * @param powerRight
+	 */
+	public void setMotorPower(double powerLeft, double powerRight) {
+		if (powerLeft > 1) {
+			if (RobotMap.DRIVETRAIN_VERBOSE) {
+				System.out.println("[Subsystem] Power to left side of drivetrain was set too high: " + powerLeft + ", changing to full forward.");
+			}
+			powerLeft = 1;
+		} else if (powerLeft < -1) {
+			if (RobotMap.DRIVETRAIN_VERBOSE) {
+				System.out.println("[Subsystem] Power to left side of drivetrain was set too low: " + powerLeft + ", changing to full reverse.");
+			}
+			powerLeft = -1;
 		}
-		else if (verbose) {
-			System.out.println("[SUBSYSTEM] Power to left side of drivetrain was set to: " + powerLeft);	//gives a warning and changes power to safe level
+		if (powerRight > 1) {
+			if (RobotMap.DRIVETRAIN_VERBOSE) {
+				System.out.println("[Subsystem] Power to right side of drivetrain was set too high: " + powerRight + ", changing to full forward.");
+			}
+			powerRight = 1;
+		} else if (powerRight < -1) {
+			if (RobotMap.DRIVETRAIN_VERBOSE) {
+				System.out.println("[Subsystem] Power to right side of drivetrain was set too low: " + powerRight + ", changing to full reverse.");
+			}
+			powerLeft = -1;
 		}
-		
-		if (powerRight <= 1 && powerRight >= -1) {
-			frontRight.set(powerRight);
-		}
-		else if (verbose) {
-			System.out.println("[SUBSYSTEM] Power to right side of drivetrain was set to: " + powerLeft);
-		}
+		frontRight.set(powerRight);
+		frontLeft.set(powerLeft);
 	}
 	
-	public void initDefaultCommand() {
-		setDefaultCommand(new TankDrive());
-    }
-	
+	/**
+	 * TODO: Document
+	 * @param drive
+	 * @param rot
+	 */
 	public void arcadeDrive(double drive, double rot) {
 		robotDrive.arcadeDrive(drive, rot);
 	}
 	
+	/**
+	 * TODO: Document
+	 * @param leftpower
+	 * @param rightpower
+	 */
 	public void tankDrive(double leftpower, double rightpower) {
 		robotDrive.tankDrive(leftpower, rightpower);
 	}

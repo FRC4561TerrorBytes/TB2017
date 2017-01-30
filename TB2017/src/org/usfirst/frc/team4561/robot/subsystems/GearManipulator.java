@@ -14,30 +14,37 @@ public class GearManipulator extends Subsystem {
     // here. Call these from Commands.
 	
 	//Solenoid declarations
-	private Solenoid solenoidMain = new Solenoid(0, 0);
-	private Solenoid solenoidTop = new Solenoid(0, 1);
+	private Solenoid holderSolenoid = new Solenoid(0, 0);
+	private Solenoid coverSolenoid = new Solenoid(0, 1);
     
 	public void initDefaultCommand() {
- 
     }
     
-	//For when gear is captured
-	public void manipulatorIn() {
-    	solenoidMain.set(true);
+	/**
+	 * TODO: Document
+	 */
+	public void closeHolder() {
+    	holderSolenoid.set(true);
     }
     
-	//when you want to intake/release gear
-	public void manipulatorOut() {
-    	solenoidMain.set(false);
+	/**
+	 * TODO: Document
+	 */
+	public void openHolder() {
+    	holderSolenoid.set(false);
     }
 	
-	//The following 2 methods control the gear cover, so there is no...
-	//FUEL IN THE MANIPULATOR
-	public void gearCoverClose() {
-    	solenoidTop.set(true);
+	/**
+	 * TODO: Document
+	 */
+	public void closeCover() {
+    	coverSolenoid.set(true);
     }
 	
-	public void gearCoverOpen() {
-    	solenoidTop.set(false);
+	/**
+	 * TODO: Document
+	 */
+	public void openCover() {
+    	coverSolenoid.set(false);
     }
 }

@@ -33,7 +33,6 @@ public class Robot extends IterativeRobot {
     public static Transmission transmission;
     public static OI oi;
 	
-	
 	Command autonomousCommand;
 
 	/**
@@ -50,7 +49,9 @@ public class Robot extends IterativeRobot {
 		ropeClimber = new RopeClimber();
         transmission = new Transmission();
 		oi = new OI();
-		System.out.println("ROBOT INIT SUBSYSTEM CONSTRUCTORS CREATED");
+		if(RobotMap.MASTER_VERBOSE) {
+			System.out.println("[Robot] Subsystems constructed");
+		}
 	}
 
 	/**
@@ -60,7 +61,9 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void disabledInit() {
-
+		if (RobotMap.MASTER_VERBOSE) {
+			System.out.println("[Robot] Disabled");
+		}
 	}
 
 	@Override
@@ -89,9 +92,13 @@ public class Robot extends IterativeRobot {
 		 * autonomousCommand = new ExampleCommand(); break; }
 		 */
 
-		// schedule the autonomous command (example)
-		if (autonomousCommand != null)
+		// Schedule the autonomous command (example)
+		if (autonomousCommand != null) {
 			autonomousCommand.start();
+		}
+		if (RobotMap.MASTER_VERBOSE) {
+			System.out.println("[Robot] Started autonomous");
+		}
 	}
 
 	/**
@@ -110,6 +117,9 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
+		if (RobotMap.MASTER_VERBOSE) {
+			System.out.println("[Robot] Started teleop");
+		}
 	}
 
 	/**

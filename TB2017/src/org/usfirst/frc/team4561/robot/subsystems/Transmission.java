@@ -20,12 +20,12 @@ public class Transmission extends Subsystem {
     
     //TODO: These two are temporary and can be switched around.
   	public void torqueGear() {
-  		System.out.println("Transmission: Switching to high torque gear...");
+  		System.out.println("[Subsystem] Switching to high torque gear...");
       	solenoidTrans.set(true);
     }
     
   	public void speedGear() {
-  		System.out.println("Transmission: Switching to high speed gear...");
+  		System.out.println("[Subsystem] Switching to high speed gear...");
       	solenoidTrans.set(false);
     }
 }

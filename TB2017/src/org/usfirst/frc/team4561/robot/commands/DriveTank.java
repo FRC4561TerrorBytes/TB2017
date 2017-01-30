@@ -6,25 +6,25 @@ import org.usfirst.frc.team4561.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * TODO: Document and change names
- * @author Zane T, Ben G
+ * TODO: Document
+ * @author Jonah W
  */
-public class SpeedGear extends Command {
+public class DriveTank extends Command {
 
-    public SpeedGear() {
-        requires(Robot.transmission);
+    public DriveTank() {
+    	requires(Robot.driveTrain);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	if (RobotMap.TRANSMISSION_VERBOSE) {
-    		System.out.println("[Command] Intializing SpeedGear");
+    	if (RobotMap.DRIVETRAIN_VERBOSE) {
+    		System.out.println("[Command] Intializing DriveTank");
     	}
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.transmission.speedGear();
+    	Robot.driveTrain.tankDrive(Robot.oi.getLeftStickY(), Robot.oi.getRightStickY());
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -34,8 +34,8 @@ public class SpeedGear extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	if (RobotMap.TRANSMISSION_VERBOSE) {
-    		System.out.println("[Command] Ending SpeedGear");
+    	if (RobotMap.DRIVETRAIN_VERBOSE) {
+    		System.out.println("[Command] Ending DriveTank");
     	}
     }
 
