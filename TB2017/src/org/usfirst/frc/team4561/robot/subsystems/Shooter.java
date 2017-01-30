@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Shooter extends Subsystem {
 	
 	//Shooter Motors
-	public CANTalon ShootMotorLeft = new CANTalon(RobotMap.SHOOTER_LEFT_MOTOR_PORT);
+	public CANTalon shootMotorLeft = new CANTalon(RobotMap.SHOOTER_LEFT_MOTOR_PORT);
 	public CANTalon ShootMotorRight = new CANTalon(RobotMap.SHOOTER_RIGHT_MOTOR_PORT);
 	
 	//verbose flag
@@ -24,17 +24,20 @@ public class Shooter extends Subsystem {
     public void shootAtSpeed(double speed){
     	
     	//If a valid value, run the shooter motor at the given speed
-    	if (speed <= 1.0 && speed >= -1.0){
-    		ShootMotorLeft.set(speed);
+    	if (speed <= 1.0 && speed >= -1.0) {
+    		shootMotorLeft.set(speed);
     		ShootMotorRight.set(-speed);
-    		if (verbose){
-    			System.out.print("[SUBSYSTEM] Running Shooter Motors at speed ");
-    			System.out.println(speed);
+    		if (verbose) {
+    			System.out.print("[Subsystem] Running Shooter Motors at speed " + speed);
     		}
     	}
-    	else if (verbose){
-    		System.out.println("[SUBSYSTEM] Did not run Shooter Motors, given speed was invalid");
+    	else if (verbose) {
+    		System.out.println("[Subsystem] Did not run Shooter Motors, given speed was invalid");
     	}
     }
     
+    public void stop() {
+    	shootMotorLeft.set(0);
+    	ShootMotorRight.set(0);
+    }	
 }

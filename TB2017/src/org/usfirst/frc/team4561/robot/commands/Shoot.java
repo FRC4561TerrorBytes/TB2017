@@ -6,46 +6,34 @@ import org.usfirst.frc.team4561.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class Shoot extends Command 
-{
+public class Shoot extends Command {
+	
 	//Speed variable
-	private final double speed = 1;
+	private final double power = 1;
 	
-	//Debug flag
-	private  boolean verbose = RobotMap.SHOOTER_VERBOSE;
-	
-	public Shoot()
-	{
-		requires(Robot.shooter); //Don't run this command if the shooter doesn't exist
-		if (verbose){
-			System.out.println("[COMMAND] Created Shoot Command");
-		}
+	public Shoot() {
+		requires(Robot.shooter);
 	}
 	
 	// Called just before this Command runs the first time
     protected void initialize() {    
-    
+		if (RobotMap.SHOOTER_VERBOSE) {
+			System.out.println("[Command] Initialized Shoot for power " + Double.toString(power));
+		}
     }
-	protected void execute()
-	{
-		Robot.shooter.shootAtSpeed(speed); //Run the shooter at the default speed
-		if (verbose){
-			System.out.print("[COMMAND] Running shooter at speed ");
-			System.out.println(speed);
-		}
+	protected void execute() {
+		Robot.shooter.shootAtSpeed(power); // Run the shooter at the default speed
 	}
 	
-	protected void end()
-	{
-		Robot.shooter.shootAtSpeed(0); //Stop the shooter
-		if (verbose){
-			System.out.println("[COMMAND] Stopping Shooter");
-		}
+	protected boolean isFinished() {
+		return false; // Only stop this command when interrupted, which happens when the button is released
 	}
 	
-	protected boolean isFinished()
-	{
-		return false; //The shooter is never finished! (Only stop this command when interrupted, which happens when the button is released)
+	protected void end() {
+		Robot.shooter.stop();
+		if (RobotMap.SHOOTER_VERBOSE) {
+			System.out.println("[Command] Ending Shoot");
+		}
 	}
 	
     protected void interrupted() {

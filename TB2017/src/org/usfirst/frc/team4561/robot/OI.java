@@ -1,15 +1,14 @@
 package org.usfirst.frc.team4561.robot;
 
-import edu.wpi.first.wpilibj.Joystick;													//imports libraries
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import org.usfirst.frc.team4561.robot.commands.GearCoverClose;
 import org.usfirst.frc.team4561.robot.commands.GearCoverOpen;
 import org.usfirst.frc.team4561.robot.commands.IntakeBall;
-import org.usfirst.frc.team4561.robot.commands.ManipulatorIn;
-import org.usfirst.frc.team4561.robot.commands.ManipulatorOut;
-import org.usfirst.frc.team4561.robot.commands.RopeClimbDown;
-import org.usfirst.frc.team4561.robot.commands.RopeClimbUp;
+import org.usfirst.frc.team4561.robot.commands.GearHolderClose;
+import org.usfirst.frc.team4561.robot.commands.GearHolderOpen;
+import org.usfirst.frc.team4561.robot.commands.Climb;
 import org.usfirst.frc.team4561.robot.commands.SetAgitatorPower;
 import org.usfirst.frc.team4561.robot.commands.Shoot;
 import org.usfirst.frc.team4561.robot.commands.SpeedGear;
@@ -21,178 +20,157 @@ import org.usfirst.frc.team4561.robot.commands.TorqueGear;
  */
 public class OI {
 
-	//JOYSTICK DECLARATION
-	private static Joystick RightStick = new Joystick(RobotMap.RIGHT_JOYSTICK);			//declares a right stick
-	private static Joystick LeftStick = new Joystick(RobotMap.LEFT_JOYSTICK);			//declares a left stick
+	// Joystick declaration
+	private static Joystick rightStick = new Joystick(RobotMap.RIGHT_JOYSTICK_PORT);
+	private static Joystick leftStick = new Joystick(RobotMap.LEFT_JOYSTICK_PORT);
 	
-	//Button Declaration
-	private JoystickButton shootButton = new JoystickButton(RightStick, RobotMap.SHOOT_BUTTON);		//declares a shooter button
+	// Button declaration
+	private JoystickButton shootButton = new JoystickButton(rightStick, RobotMap.SHOOT_BUTTON);
 	
-	private JoystickButton ropeupbutton = new JoystickButton(RightStick, RobotMap.ROPE_UP_BUTTON);	//declares a rope climbing button
-	private JoystickButton ropedownbutton = new JoystickButton(LeftStick, RobotMap.ROPE_DOWN_BUTTON);	//declares a rope climbing button that shouldnt be used unless KAIZ-GOD says so
+	private JoystickButton climbButton = new JoystickButton(rightStick, RobotMap.CLIMB_BUTTON);
 	
-	private JoystickButton gearinbutton = new JoystickButton(RightStick, RobotMap.GEAR_IN_BUTTON);		//declares a gear intake button
-	private JoystickButton gearoutbutton = new JoystickButton(RightStick, RobotMap.GEAR_OUT_BUTTON);	//declares a gear out button
-	private JoystickButton gearCoverCloseButton = new JoystickButton(RightStick, RobotMap.GEAR_COVER_CLOSE_BUTTON);	//declares a gear cover button for close
-	private JoystickButton gearCoverOpenButton = new JoystickButton(RightStick, RobotMap.GEAR_COVER_OPEN_BUTTON);	//declares a gear cover button for open
+	private JoystickButton gearInButton = new JoystickButton(rightStick, RobotMap.GEAR_IN_BUTTON);
+	private JoystickButton gearOutButton = new JoystickButton(rightStick, RobotMap.GEAR_OUT_BUTTON);
+	private JoystickButton gearCoverCloseButton = new JoystickButton(rightStick, RobotMap.GEAR_COVER_CLOSE_BUTTON);
+	private JoystickButton gearCoverOpenButton = new JoystickButton(rightStick, RobotMap.GEAR_COVER_OPEN_BUTTON);
 	
-	private JoystickButton intakeButton = new JoystickButton(RightStick, RobotMap.INTAKE_BUTTON_PORT); // declares a button for ball intake
+	private JoystickButton intakeButton = new JoystickButton(rightStick, RobotMap.INTAKE_BUTTON);
 	
-	private JoystickButton forwardHalfPowerAgitatorButton = new JoystickButton(RightStick, RobotMap.FWD_HALF_POWER_AGITATOR_BUTTON_PORT); // declares a button for agitator
-	private JoystickButton reverseHalfPowerAgitatorButton = new JoystickButton(RightStick, RobotMap.REV_HALF_POWER_AGITATOR_BUTTON_PORT); // declares a button for agitator
-	private JoystickButton forwardFullPowerAgitatorButton = new JoystickButton(RightStick, RobotMap.FWD_FULL_POWER_AGITATOR_BUTTON_PORT); // declares a button for agitator
-	private JoystickButton reverseFullPowerAgitatorButton = new JoystickButton(RightStick, RobotMap.REV_FULL_POWER_AGITATOR_BUTTON_PORT); // declares a button for agitator
+	private JoystickButton agitatorForwardButton = new JoystickButton(rightStick, RobotMap.AGITATOR_FWD_BUTTON);
+	private JoystickButton agitatorReverseButton = new JoystickButton(rightStick, RobotMap.AGITATOR_REV_BUTTON);
 	
-	private JoystickButton transmissionTorqueButton = new JoystickButton(RightStick, RobotMap.TRANSMISSION_TORQUE_BUTTON_PORT);	//declares a button for transmission
-	private JoystickButton transmissionSpeedButton = new JoystickButton(RightStick, RobotMap.TRANSMISSION_SPEED_BUTTON_PORT);	//declares a button for transmission
+	private JoystickButton transmissionTorqueButton = new JoystickButton(rightStick, RobotMap.TRANSMISSION_TORQUE_BUTTON);
+	private JoystickButton transmissionSpeedButton = new JoystickButton(rightStick, RobotMap.TRANSMISSION_SPEED_BUTTON);
 	
 	public OI() {
+		
 		//Initializing buttons
 		shootButton.whileHeld(new Shoot());
 		
-		ropeupbutton.whileHeld(new RopeClimbUp());
-		ropedownbutton.whileHeld(new RopeClimbDown());
+		climbButton.whileHeld(new Climb());
 		
-		gearinbutton.whenPressed(new ManipulatorIn());
-		gearoutbutton.whenPressed(new ManipulatorOut());
+		gearInButton.whenPressed(new GearHolderClose());
+		gearOutButton.whenPressed(new GearHolderOpen());
 		gearCoverCloseButton.whenPressed(new GearCoverClose());
 		gearCoverOpenButton.whenPressed(new GearCoverOpen());
 		
-		intakeButton.whileHeld(new IntakeBall()); // while intake button held, run intake motors
+		intakeButton.whileHeld(new IntakeBall());
 		
-		forwardHalfPowerAgitatorButton.whileHeld(new SetAgitatorPower(0.5)); // TODO Add variable speed
-		reverseHalfPowerAgitatorButton.whileHeld(new SetAgitatorPower(-0.5)); // TODO Add variable speed
-		forwardFullPowerAgitatorButton.whileHeld(new SetAgitatorPower(1)); // TODO Add variable speed
-		reverseFullPowerAgitatorButton.whileHeld(new SetAgitatorPower(-1)); // TODO Add variable speed
+		agitatorForwardButton.whileHeld(new SetAgitatorPower(1)); // TODO Add variable speed
+		agitatorReverseButton.whileHeld(new SetAgitatorPower(-1)); // TODO Add variable speed
 		
 		transmissionTorqueButton.whenPressed(new TorqueGear());
 		transmissionSpeedButton.whenPressed(new SpeedGear());
 	}
 	
-	//JOYSTICK INPUTS
-	public double getRightStickY() 														//gets input from right stick y axis
-	{
-		double RightStickY = RightStick.getY();
+	// Joystick inputs
+	/**
+	 * Get the value given by the right stick's Y-axis. Applies dead zone and reduction.
+     * @return double Right joystick's Y-axis, -1...1
+	 */
+	public double getRightStickY() {
+		double rightStickY = rightStick.getY();
+		
 		// Dead zone management
-		if(Math.abs(RightStick.getMagnitude()) < RobotMap.RIGHT_JOYSTICK_DEAD_ZONE)		//checks right stick y to deadzone
-		{
-			RightStickY = 0;															
+		if (Math.abs(rightStick.getMagnitude()) < RobotMap.RIGHT_JOYSTICK_DEAD_ZONE) {
+			rightStickY = 0;
 		}
 		
 		// Reductions - joystick reduction reduces velocity from given joystick direction
-		if(RightStickY > 0) 															
-		{
-			RightStickY = (RightStickY - RobotMap.RIGHT_JOYSTICK_REDUCTION) * (4.0/3.0);//slows robot down if going in positive direction
-			if(RightStickY < 0) 														
+		if (rightStickY > 0) {
+			rightStickY = (rightStickY - RobotMap.RIGHT_JOYSTICK_REDUCTION) * (1/(1-RobotMap.LEFT_JOYSTICK_REDUCTION));
+			if (rightStickY < 0) {
+				rightStickY = 0;
+			}
+		} else if (rightStickY < 0) {
+			rightStickY = (rightStickY + RobotMap.RIGHT_JOYSTICK_REDUCTION) * (1/(1-RobotMap.LEFT_JOYSTICK_REDUCTION));
+			if (rightStickY > 0) 
 			{
-				RightStickY = 0;
+				rightStickY = 0;
 			}
 		}
-		else if(RightStickY < 0) 														//slows robot down if going in negative direction										
-		{
-			RightStickY = (RightStickY + RobotMap.RIGHT_JOYSTICK_REDUCTION) * (4.0/3.0);
-			if(RightStickY > 0) 
-			{
-				RightStickY = 0;
-			}
-		}
-		return RightStickY;
+		return rightStickY;
 	}
 
 	/**
 	 * Get the value given by the right stick's X-axis. Applies dead zone and reduction.
-     * @return Right Joystick's X-axis
+     * @return double Right joystick's X-axis, -1...1
 	 */
-	public double getRightStickX() 														//SAME AS Y VALUES, EXCEPT ON X AXIS
-	{
-		double RightStickX = RightStick.getX();
+	public double getRightStickX() {
+		double rightStickX = rightStick.getX();
+		
 		// Dead zone management
-		if(Math.abs(RightStick.getMagnitude()) < RobotMap.RIGHT_JOYSTICK_DEAD_ZONE) 
-		{
-			RightStickX = 0;
+		if (Math.abs(rightStick.getMagnitude()) < RobotMap.RIGHT_JOYSTICK_DEAD_ZONE) {
+			rightStickX = 0;
 		}
+		
 		// Reductions
-		if(RightStickX > 0) 
-		{
-			RightStickX = (RightStickX - RobotMap.RIGHT_JOYSTICK_REDUCTION) * (4.0/3.0);
-			if(RightStickX < 0) 
-			{
-				RightStickX = 0;
+		if (rightStickX > 0) {
+			rightStickX = (rightStickX - RobotMap.RIGHT_JOYSTICK_REDUCTION) * (1/(1-RobotMap.LEFT_JOYSTICK_REDUCTION));
+			if (rightStickX < 0) {
+				rightStickX = 0;
+			}
+		} else if (rightStickX < 0) {
+			rightStickX = (rightStickX + RobotMap.RIGHT_JOYSTICK_REDUCTION) * (1/(1-RobotMap.LEFT_JOYSTICK_REDUCTION));
+			if (rightStickX > 0) {
+				rightStickX = 0;
 			}
 		}
-		else if(RightStickX < 0) 
-		{
-			RightStickX = (RightStickX + RobotMap.RIGHT_JOYSTICK_REDUCTION) * (4.0/3.0);
-			if(RightStickX > 0) 
-			{
-				RightStickX = 0;
-			}
-		}
-		return RightStickX;
+		return rightStickX;
 	}
 	
 	/**
 	 * Get the value given by the left stick's Y-axis. Applies dead zone and reduction.
-     * @return Left Joystick's Y-axis
+     * @return double Left joystick's Y-axis , -1...1
 	 */
-	public double getLeftStickY() 														// SAME AS RIGHT STICK Y, BUT WITH LEFT STICK
-	{
-		double LeftStickY = LeftStick.getY();
+	public double getLeftStickY() {
+		double leftStickY = leftStick.getY();
+		
 		// Dead zone management
-		if(Math.abs(LeftStick.getMagnitude()) < RobotMap.LEFT_JOYSTICK_DEAD_ZONE) 
-		{
-			LeftStickY = 0;
+		if (Math.abs(leftStick.getMagnitude()) < RobotMap.LEFT_JOYSTICK_DEAD_ZONE) {
+			leftStickY = 0;
 		}
+		
 		// Reductions
-		if(LeftStickY > 0) 
-		{
-			LeftStickY = (LeftStickY - RobotMap.LEFT_JOYSTICK_REDUCTION) * (4.0/3.0);
-			if(LeftStickY < 0) 
-			{
-				LeftStickY = 0;
+		if (leftStickY > 0) {
+			leftStickY = (leftStickY - RobotMap.LEFT_JOYSTICK_REDUCTION) * (1/(1-RobotMap.LEFT_JOYSTICK_REDUCTION));
+			if(leftStickY < 0) {
+				leftStickY = 0;
+			}
+		} else if (leftStickY < 0) {
+			leftStickY = (leftStickY + RobotMap.LEFT_JOYSTICK_REDUCTION) * (1/(1-RobotMap.LEFT_JOYSTICK_REDUCTION));
+			if (leftStickY > 0) {
+				leftStickY = 0;
 			}
 		}
-		else if(LeftStickY < 0) 
-		{
-			LeftStickY = (LeftStickY + RobotMap.LEFT_JOYSTICK_REDUCTION) * (4.0/3.0);
-			if(LeftStickY > 0) 
-			{
-				LeftStickY = 0;
-			}
-		}
-		return LeftStickY;
+		return leftStickY;
 	}
 	
 	/**
 	 * Get the value given by the left stick's X-axis. Applies dead zone and reduction.
-     * @return Left Joystick's X-axis
+     * @return double Left joystick's X-axis, -1...1
 	 */
-	public double getLeftStickX() 														//SAME AS LEFT STICK Y, EXCEPT ON X AXIS
-	{
-		double LeftStickX = LeftStick.getX();
+	public double getLeftStickX() {
+		double leftStickX = leftStick.getX();
+		
 		// Dead zone management
-		if(Math.abs(LeftStick.getMagnitude()) < RobotMap.LEFT_JOYSTICK_DEAD_ZONE) 
-		{
-			LeftStickX = 0;
+		if (Math.abs(leftStick.getMagnitude()) < RobotMap.LEFT_JOYSTICK_DEAD_ZONE) {
+			leftStickX = 0;
 		}
+		
 		// Reductions
-		if(LeftStickX > 0) 
-		{
-			LeftStickX = (LeftStickX - RobotMap.LEFT_JOYSTICK_REDUCTION) * (4.0/3.0);
-			if(LeftStickX < 0)
-			{
-				LeftStickX = 0;
+		if (leftStickX > 0) {
+			leftStickX = (leftStickX - RobotMap.LEFT_JOYSTICK_REDUCTION) * (1/(1-RobotMap.LEFT_JOYSTICK_REDUCTION));
+			if(leftStickX < 0){
+				leftStickX = 0;
+			}
+		} else if (leftStickX < 0) {
+			leftStickX = (leftStickX + RobotMap.LEFT_JOYSTICK_REDUCTION) * (1/(1-RobotMap.LEFT_JOYSTICK_REDUCTION));
+			if(leftStickX > 0) {
+				leftStickX = 0;
 			}
 		}
-		else if(LeftStickX < 0) 
-		{
-			LeftStickX = (LeftStickX + RobotMap.LEFT_JOYSTICK_REDUCTION) * (4.0/3.0);
-			if(LeftStickX > 0) 
-			{
-				LeftStickX = 0;
-			}
-		}
-		return LeftStickX;
+		return leftStickX;
 	}
 	
 	//// CREATING BUTTONS

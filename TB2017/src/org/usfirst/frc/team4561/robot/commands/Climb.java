@@ -1,41 +1,49 @@
 package org.usfirst.frc.team4561.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team4561.robot.Robot;
+import org.usfirst.frc.team4561.robot.RobotMap;
+
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * TODO: Document
- * @author: Lucas T
- * Call this to close main mechanism for
- * gear manipulator
+ * @author TODO
  */
-public class ManipulatorIn extends Command {
+public class Climb extends Command {
 
-    public ManipulatorIn() {
-    	requires(Robot.gearManipulator);
+    public Climb() {
+    	requires(Robot.ropeClimber);
     }
-
+    
     // Called just before this Command runs the first time
     protected void initialize() {
+    	if (RobotMap.ROPE_CLIMBER_VERBOSE) {
+    		System.out.println("[Command] Intializing Climb");
+    	}
     }
-
+    
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	Robot.gearManipulator.manipulatorIn();
-    }
-
+  	protected void execute() {
+  		Robot.ropeClimber.setClimber(1.0);
+  	}
+  	
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return false;  
     }
 
     // Called once after isFinished returns true
     protected void end() {
+        Robot.ropeClimber.stop();
+        if (RobotMap.ROPE_CLIMBER_VERBOSE) {
+    		System.out.println("[Command] Ending Climb");
+    	}
     }
-
+    
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
+        end();
     }
-}
+ }
+    

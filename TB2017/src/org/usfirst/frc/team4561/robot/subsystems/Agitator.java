@@ -15,36 +15,32 @@ public class Agitator extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
-	// Declaring a new object of type CANTalon called agitatorMotor
 	private CANTalon agitatorMotor = new CANTalon(RobotMap.AGITATOR_MOTOR_PORT);
-	
-	//verbose flag
-	private boolean verbose = RobotMap.AGITATOR_VERBOSE;
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
-    // function to run agitator at speed power
+    
     /**
      * Function to run agitator at a certain power
      * @param power
      */
-    public void startAgitator(double power) {
+    public void setPower(double power) {
     	if (power > 1) {
-    		if (verbose) {
-    			System.out.println("[SUBSYSTEM] SPEED TOO POSITIVE: " + power + "... CHANGING TO ACCEPTABLE VALUE.");
+    		if (RobotMap.AGITATOR_VERBOSE) {
+    			System.out.println("[Subsystem] Power set too high: " + power + ", changed to full forward");
     		}
     		power = 1;
-    	}
-    	if (power < -1) {
-    		if (verbose) {
-    			System.out.println("[SUBSYSTEM] SPEED TOO NEGATIVE" + power + "... CHANGING TO ACCEPTABLE VALUE.");
+    	} else if (power < -1) {
+    		if (RobotMap.AGITATOR_VERBOSE) {
+    			System.out.println("[Subsystem] Power set too low: " + power + ", changed to full reverse");
     		}
     		power = -1;
     	}
 		agitatorMotor.set(power);
 	}
+    
     /**
      * Function to stop agitator motor
      */

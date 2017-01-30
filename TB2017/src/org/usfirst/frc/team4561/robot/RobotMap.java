@@ -8,7 +8,7 @@ package org.usfirst.frc.team4561.robot;
  */
 public class RobotMap {
 	
-	//MOTOR CONFIGURATION - sets motor ports
+	// Motor ports
 	public static final int FRONT_RIGHT_MOTOR_PORT = 0;//TODO: Find Port
 	public static final int FRONT_LEFT_MOTOR_PORT = 9; //TODO: Find Port
 	public static final int REAR_RIGHT_MOTOR_PORT = 10; //TODO: Find Port
@@ -22,18 +22,24 @@ public class RobotMap {
 	public static final int SHOOTER_RIGHT_MOTOR_PORT = 2; //TODO: Find Port
 	public static final int AGITATOR_MOTOR_PORT = 11; //TODO: Find Port
 	
-	//JOYSTICK CONFIGURATION
-	public static final int RIGHT_JOYSTICK = 0;									//sets joystick ports
-	public static final int LEFT_JOYSTICK = 1;
+	//Solenoids and PCM
+	public static final int PCM = 3;
+	public static final int HOLDER_SOLENOID_PORT = 0;
+	public static final int COVER_SOLENOID_PORT = 1;
+	public static final int TRANSMISSION_SOLENOID_PORT = 2;
 	
-	public static final double RIGHT_JOYSTICK_DEAD_ZONE = 0.25;					//sets joystick deadzone values
+	// Joystick ports
+	public static final int RIGHT_JOYSTICK_PORT = 0;
+	public static final int LEFT_JOYSTICK_PORT = 1;
+	
+	// Joystick configuration
+	public static final double RIGHT_JOYSTICK_DEAD_ZONE = 0.25;	
 	public static final double LEFT_JOYSTICK_DEAD_ZONE = 0.25;
-	public static final double RIGHT_JOYSTICK_REDUCTION = 0.25;					//sets joystick reduction values
+	public static final double RIGHT_JOYSTICK_REDUCTION = 0.25;
 	public static final double LEFT_JOYSTICK_REDUCTION = 0.25;
 	
-	// Rope Buttons
-	public static final int ROPE_UP_BUTTON = 1; //TODO: Port numbers
-	public static final int ROPE_DOWN_BUTTON = 1; //TODO: Port numbers
+	// Rope buttons
+	public static final int CLIMB_BUTTON = 1; //TODO: Port number
 	
 	// Gear buttons
 	public static final int GEAR_IN_BUTTON = 1; //TODO: Port number
@@ -41,35 +47,29 @@ public class RobotMap {
 	public static final int GEAR_COVER_CLOSE_BUTTON = 1;//TODO: Port number
 	public static final int GEAR_COVER_OPEN_BUTTON = 1; //TODO: Port number
 
-	// Intake Button
-	public static final int INTAKE_BUTTON_PORT = 1; // TODO: Find port
+	// Intake buttons
+	public static final int INTAKE_BUTTON = 1; // TODO: Find port
 	
-	// Shooter Button
-	public static final int SHOOT_BUTTON = 2; //TODO: Find port
+	// Shooter buttons
+	public static final int SHOOT_BUTTON = 1; //TODO: Find port
 	
-	// Agitator
-	public static final int FWD_HALF_POWER_AGITATOR_BUTTON_PORT = 1; // TODO: Find port
-	public static final int REV_HALF_POWER_AGITATOR_BUTTON_PORT = 1; // TODO: Find port
-	public static final int FWD_FULL_POWER_AGITATOR_BUTTON_PORT = 1; // TODO: Find port
-	public static final int REV_FULL_POWER_AGITATOR_BUTTON_PORT = 1; // TODO: Find port
+	// Agitator buttons
+	public static final int AGITATOR_FWD_BUTTON = 1; // TODO: Find port
+	public static final int AGITATOR_REV_BUTTON = 1; // TODO: Find port
 
-	// Transmission
-	public static final int TRANSMISSION_TORQUE_BUTTON_PORT = 1; // TODO: Find port
-	public static final int TRANSMISSION_SPEED_BUTTON_PORT = 1; // TODO: Find port
+	// Transmission buttons
+	public static final int TRANSMISSION_TORQUE_BUTTON = 1; // TODO: Find port
+	public static final int TRANSMISSION_SPEED_BUTTON = 1; // TODO: Find port
 	
-	//ROPE DOWN CONTROL VARIABLE
-	public static final boolean ROPE_CLIMB_DOWN_ENABLED = false;	//NEVER ENABLE THIS... EVER (unless KAIZ-GOD says so)
-	
-	//Verbose Flags
-	public static boolean MASTER_VERBOSE = false;
-	public static boolean AGITATOR_VERBOSE = false || MASTER_VERBOSE;
-	public static boolean DRIVETRAIN_VERBOSE = false || MASTER_VERBOSE;
-	public static boolean GEARMANIPULATOR_VERBOSE = false || MASTER_VERBOSE;	//TODO: should there be a verbose for this?
-	public static boolean INTAKE_VERBOSE = false || MASTER_VERBOSE;
-	public static boolean ROPECLIMBER_VERBOSE = false || MASTER_VERBOSE;
-	public static boolean SHOOTER_VERBOSE = false || MASTER_VERBOSE;
-	public static boolean TRANSMISSION_VERBOSE = false || MASTER_VERBOSE;		//TODO: should there be a verbose for this?
-		
+	// Verbose Flags
+	public static final boolean MASTER_VERBOSE = false;
+	public static final boolean AGITATOR_VERBOSE = false || MASTER_VERBOSE;
+	public static final boolean DRIVETRAIN_VERBOSE = false || MASTER_VERBOSE;
+	public static final boolean GEAR_MANIPULATOR_VERBOSE = false || MASTER_VERBOSE;	//TODO: should there be a verbose for this?
+	public static final boolean INTAKE_VERBOSE = false || MASTER_VERBOSE;
+	public static final boolean ROPE_CLIMBER_VERBOSE = false || MASTER_VERBOSE;
+	public static final boolean SHOOTER_VERBOSE = false || MASTER_VERBOSE;
+	public static final boolean TRANSMISSION_VERBOSE = false || MASTER_VERBOSE;		//TODO: should there be a verbose for this?
 		
 	// For example to map the left and right motors, you could define the
 	// following variables to use with your drivetrain subsystem.
