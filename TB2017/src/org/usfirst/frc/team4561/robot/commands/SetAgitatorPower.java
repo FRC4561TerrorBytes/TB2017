@@ -29,7 +29,7 @@ public class SetAgitatorPower extends Command {
     protected void execute() {
     	
     	// Intake at variable speed
-    	Robot.agitator.setPowert(power);
+    	Robot.agitator.setPower(power);
     }
 
     // Make this return true when this Command no longer needs to run execute()
