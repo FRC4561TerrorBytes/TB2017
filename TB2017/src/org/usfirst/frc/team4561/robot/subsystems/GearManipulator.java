@@ -2,6 +2,8 @@ package org.usfirst.frc.team4561.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
+import org.usfirst.frc.team4561.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.Solenoid;
 
 /**
@@ -14,8 +16,8 @@ public class GearManipulator extends Subsystem {
     // here. Call these from Commands.
 	
 	//Solenoid declarations
-	private Solenoid holderSolenoid = new Solenoid(0, 0);
-	private Solenoid coverSolenoid = new Solenoid(0, 1);
+	private Solenoid holderSolenoid = new Solenoid(RobotMap.PCM, RobotMap.HOLDER_SOLENOID_PORT);
+	private Solenoid coverSolenoid = new Solenoid(RobotMap.PCM, RobotMap.COVER_SOLENOID_PORT);
     
 	public void initDefaultCommand() {
     }

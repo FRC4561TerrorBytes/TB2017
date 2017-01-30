@@ -22,6 +22,11 @@ public class RobotMap {
 	public static final int SHOOTER_RIGHT_MOTOR_PORT = 2; //TODO: Find Port
 	public static final int AGITATOR_MOTOR_PORT = 11; //TODO: Find Port
 	
+	//Solenoids and PCM
+	public static final int PCM = 3;
+	public static final int HOLDER_SOLENOID_PORT = 0;
+	public static final int COVER_SOLENOID_PORT = 1;
+	
 	// Joystick ports
 	public static final int RIGHT_JOYSTICK_PORT = 0;
 	public static final int LEFT_JOYSTICK_PORT = 1;
@@ -36,16 +41,16 @@ public class RobotMap {
 	public static final int CLIMB_BUTTON = 1; //TODO: Port number
 	
 	// Gear buttons
-	public static final int GEAR_IN_BUTTON = 1; //TODO: Port number
-	public static final int GEAR_OUT_BUTTON = 1; //TODO: Port number
-	public static final int GEAR_COVER_CLOSE_BUTTON = 1;//TODO: Port number
-	public static final int GEAR_COVER_OPEN_BUTTON = 1; //TODO: Port number
+	public static final int GEAR_IN_BUTTON = 2; //TODO: Port number
+	public static final int GEAR_OUT_BUTTON = 3; //TODO: Port number
+	public static final int GEAR_COVER_CLOSE_BUTTON = 4;//TODO: Port number
+	public static final int GEAR_COVER_OPEN_BUTTON = 5; //TODO: Port number
 
 	// Intake buttons
 	public static final int INTAKE_BUTTON = 1; // TODO: Find port
 	
 	// Shooter buttons
-	public static final int SHOOT_BUTTON = 2; //TODO: Find port
+	public static final int SHOOT_BUTTON = 1; //TODO: Find port
 	
 	// Agitator buttons
 	public static final int AGITATOR_FWD_BUTTON = 1; // TODO: Find port
