@@ -41,10 +41,10 @@ public class RobotMap {
 	public static final int CLIMB_BUTTON = 1; //TODO: Port number
 	
 	// Gear buttons
-	public static final int GEAR_IN_BUTTON = 2; //TODO: Port number
-	public static final int GEAR_OUT_BUTTON = 3; //TODO: Port number
-	public static final int GEAR_COVER_CLOSE_BUTTON = 4;//TODO: Port number
-	public static final int GEAR_COVER_OPEN_BUTTON = 5; //TODO: Port number
+	public static final int GEAR_IN_BUTTON = 1; //TODO: Port number
+	public static final int GEAR_OUT_BUTTON = 1; //TODO: Port number
+	public static final int GEAR_COVER_CLOSE_BUTTON = 1;//TODO: Port number
+	public static final int GEAR_COVER_OPEN_BUTTON = 1; //TODO: Port number
 
 	// Intake buttons
 	public static final int INTAKE_BUTTON = 1; // TODO: Find port
