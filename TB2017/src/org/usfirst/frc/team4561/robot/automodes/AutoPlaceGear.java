@@ -1,7 +1,6 @@
 package org.usfirst.frc.team4561.robot.automodes;
 
 import org.usfirst.frc.team4561.robot.commands.GearCoverOpen;
-import org.usfirst.frc.team4561.robot.commands.ManipulatorOut;
 import org.usfirst.frc.team4561.robot.commands.SpeedGear;
 import org.usfirst.frc.team4561.robot.commands.TankDriveForward;
 
@@ -33,6 +32,6 @@ public class AutoPlaceGear extends CommandGroup {
     	addSequential(new TankDriveForward()); // Move close to peg
     	addSequential(new GearCoverOpen()); // open the cover on the gear manipulator
     	addSequential(new TankDriveForward()); // Say hi to the peg (a.k.a drive to the peg)
-    	addSequential(new ManipulatorOut()); // release the gear
+    	//addSequential(new ManipulatorOut()); // TODO: Change to GearHolderOpen / GearHolderClose
     }
 }
