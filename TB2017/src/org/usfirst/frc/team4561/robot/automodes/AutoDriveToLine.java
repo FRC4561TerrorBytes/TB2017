@@ -9,9 +9,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  * TODO: Document
  * @author Ben G
  */
-public class DriveToLineAuto extends CommandGroup {
+public class AutoDriveToLine extends CommandGroup {
 
-    public DriveToLineAuto() {
+    public AutoDriveToLine() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
