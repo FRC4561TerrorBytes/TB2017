@@ -6,13 +6,12 @@ import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- * TODO: Document
+ * This subsystem contains the methods to switch the gear types.
  * @author Zane T, Ben G
  */
 public class Transmission extends Subsystem {
 
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
+    //Creates a new Solenoid using the info from RobotMap
 	private Solenoid solenoidTrans = new Solenoid(RobotMap.PCM, RobotMap.TRANSMISSION_SOLENOID_PORT);
 
     public void initDefaultCommand() {
@@ -20,14 +19,14 @@ public class Transmission extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
-    //TODO: These two are temporary and can be switched around.
+    //TODO: These two methods are temporary and can be switched around.
   	public void torqueGear() {
-  		System.out.println("[Subsystem] Switching to high torque gear...");
+  		System.out.println("[Transmission] Switching to high torque gear...");
       	solenoidTrans.set(true);
     }
     
   	public void speedGear() {
-  		System.out.println("[Subsystem] Switching to high speed gear...");
+  		System.out.println("[Transmission] Switching to high speed gear...");
       	solenoidTrans.set(false);
     }
 }
