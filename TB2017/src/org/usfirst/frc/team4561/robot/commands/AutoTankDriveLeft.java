@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.command.Command;
  * TODO: Document
  * @author Zane T
  */
-public class TankDriveLeft extends Command {
+public class AutoTankDriveLeft extends Command {
 
-    public TankDriveLeft() {
+    public AutoTankDriveLeft() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }

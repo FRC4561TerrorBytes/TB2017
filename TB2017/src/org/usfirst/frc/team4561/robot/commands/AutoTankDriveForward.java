@@ -9,9 +9,9 @@ import edu.wpi.first.wpilibj.command.Command;
  * TODO: Document
  * @author Ben G
  */
-public class TankDriveForward extends Command {
+public class AutoTankDriveForward extends Command {
 
-    public TankDriveForward() {
+    public AutoTankDriveForward() {
     	requires(Robot.driveTrain);
     }
 

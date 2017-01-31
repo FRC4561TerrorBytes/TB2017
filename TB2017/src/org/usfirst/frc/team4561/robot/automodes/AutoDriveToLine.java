@@ -1,7 +1,7 @@
 package org.usfirst.frc.team4561.robot.automodes;
 
 import org.usfirst.frc.team4561.robot.commands.SpeedGear;
-import org.usfirst.frc.team4561.robot.commands.TankDriveForward;
+import org.usfirst.frc.team4561.robot.commands.AutoTankDriveForward;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -32,6 +32,6 @@ public class DriveToLineAuto extends CommandGroup {
     	// set gear to high speed, but low torque
     	addSequential(new SpeedGear());
     	// then drive forward at full speed
-    	addSequential(new TankDriveForward());
+    	addSequential(new AutoTankDriveForward());
     }
 }

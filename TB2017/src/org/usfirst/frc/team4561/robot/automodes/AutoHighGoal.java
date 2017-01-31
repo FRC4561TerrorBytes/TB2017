@@ -2,8 +2,8 @@ package org.usfirst.frc.team4561.robot.automodes;
 
 import org.usfirst.frc.team4561.robot.commands.AutoShootFullPower;
 import org.usfirst.frc.team4561.robot.commands.SpeedGear;
-import org.usfirst.frc.team4561.robot.commands.TankDriveForward;
-import org.usfirst.frc.team4561.robot.commands.TankDriveLeft;
+import org.usfirst.frc.team4561.robot.commands.AutoTankDriveForward;
+import org.usfirst.frc.team4561.robot.commands.AutoTankDriveLeft;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -31,9 +31,9 @@ public class AutoHighGoal extends CommandGroup {
         // arm.
     	
     	addSequential(new SpeedGear()); //Nobody is defending us, switch to the speed gear
-    	addSequential(new TankDriveForward()); //Move forward to align with the boiler
-    	addSequential(new TankDriveLeft()); //Shoot at the boiler, not the airship! Ugh, let's try something else.
-    	addSequential(new TankDriveForward()); //Move closer to the boiler
+    	addSequential(new AutoTankDriveForward()); //Move forward to align with the boiler
+    	addSequential(new AutoTankDriveLeft()); //Shoot at the boiler, not the airship! Ugh, let's try something else.
+    	addSequential(new AutoTankDriveForward()); //Move closer to the boiler
     	addSequential(new AutoShootFullPower()); //FIRE AT WILL
     }
 }
