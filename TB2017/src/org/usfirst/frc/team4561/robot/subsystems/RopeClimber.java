@@ -33,11 +33,11 @@ public class RopeClimber extends Subsystem {
 				System.out.println("[Subsystem] Rope climber power set too high: " + power + ", changing to full forward.");
 			}
 			power = 1;
-		} else if (power < -1) {
+		} else if (power < 0) {
 			if (RobotMap.ROPE_CLIMBER_VERBOSE) {
 				System.out.println("[Subsystem] Rope climber power set too high: " + power + ", changing to full reverse.");
 			}
-			power = -1;
+			power = 0;
 		}
 		climberMotor.set(power);
 	}
