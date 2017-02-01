@@ -68,6 +68,10 @@ public class OI {
 	/**
 	 * Get the value given by the right stick's Y-axis. Applies dead zone and reduction.
      * @return double Right joystick's Y-axis, -1...1
+     * @see {@link #getRightStickX() getRightStickX}
+     * @see {@link #getLeftStickY() getLeftStickY}
+     * @see {@link #getLeftStickX() getLeftStickX}
+     * @author Kaiz
 	 */
 	public double getRightStickY() {
 		double rightStickY = rightStick.getY();
@@ -96,6 +100,10 @@ public class OI {
 	/**
 	 * Get the value given by the right stick's X-axis. Applies dead zone and reduction.
      * @return double Right joystick's X-axis, -1...1
+     * @see {@link #getRightStickY() getRightStickY}
+     * @see {@link #getLeftStickY() getLeftStickY}
+     * @see {@link #getLeftStickX() getLeftStickX}
+     * @author Kaiz
 	 */
 	public double getRightStickX() {
 		double rightStickX = rightStick.getX();
@@ -123,6 +131,10 @@ public class OI {
 	/**
 	 * Get the value given by the left stick's Y-axis. Applies dead zone and reduction.
      * @return double Left joystick's Y-axis , -1...1
+     * @see {@link #getRightStickY() getRightStickY}
+     * @see {@link #getRightStickX() getRightStickX}
+     * @see {@link #getLeftStickX() getLeftStickX}
+     * @author Kaiz
 	 */
 	public double getLeftStickY() {
 		double leftStickY = leftStick.getY();
@@ -150,6 +162,10 @@ public class OI {
 	/**
 	 * Get the value given by the left stick's X-axis. Applies dead zone and reduction.
      * @return double Left joystick's X-axis, -1...1
+     * @see {@link #getRightStickY() getRightStickY}
+     * @see {@link #getRightStickX() getRightStickX}
+     * @see {@link #getLeftStickY() getLeftStickY}
+     * @author Kaiz
 	 */
 	public double getLeftStickX() {
 		double leftStickX = leftStick.getX();
@@ -172,6 +188,26 @@ public class OI {
 			}
 		}
 		return leftStickX;
+	}
+	
+	/**
+	 * Gets the position of the throttle on the left joystick.
+	 * @return Throttle on the left stick -1...1
+	 * @see {@link #getRightStickThrottle() getRightStickThrottle}
+	 * @author Kaiz
+	 */
+	public double getLeftStickThrottle() {
+		return leftStick.getThrottle();
+	}
+	
+	/**
+	 * Gets the position of the throttle on the right joystick.
+	 * @return Throttle on the right stick -1...1
+	 * @see {@link #getLeftStickThrottle() getLeftStickThrottle}
+	 * @author Kaiz
+	 */
+	public double getRightStickThrottle() {
+		return rightStick.getThrottle();
 	}
 	
 	/**
