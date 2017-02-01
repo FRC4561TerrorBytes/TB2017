@@ -6,12 +6,14 @@ import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * Sets the power to a motor (or a group of them) for testing. 
- * Throttle on the left joystick controls speed of the motor and last slider on the Dashboard controls motor speed.
- * 1 - Drivetrain left
- * 2 - Drivetrain right
- * 3 - Shooter
- * 4 - Agitator
- * 5 - Rope climber
+ * Throttle on the left joystick controls speed of the motor.
+ * The motor driven by pressing the left joystick triggered is determined by the value on the last slider of the Dashboard.<br>
+ * 0 - Drivetrain left<br>
+ * 1 - Drivetrain right<br>
+ * 2 - Shooter<br>
+ * 3 - Agitator<br>
+ * 4 - Rope climber
+ * @author Kaiz
  */
 public class TestMode extends Command {
 	
