@@ -5,39 +5,37 @@ import org.usfirst.frc.team4561.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Sets the power to a motor (or a group of them) for testing. 
+ * Throttle on the left joystick controls speed of the motor and last slider on the Dashboard controls motor speed.
+ * 1 - Drivetrain left
+ * 2 - Drivetrain right
+ * 3 - Shooter
+ * 4 - Agitator
+ * 5 - Rope climber
  */
-public class DebugMode extends Command {
-
+public class TestMode extends Command {
+	
 	int motor;
 	
-	/**
-	 * @param int motor: Determines which motor(s) this Command drives
-	 * 1 - Drivetrain left
-	 * 2 - Drivetrain right
-	 * 3 - Shooter
-	 * 4 - Agitator
-	 * 5 - Rope climber
-	 */
-    public DebugMode(int motor) {
+    public TestMode() {
+    	motor = (int)Robot.oi.getDashboardSlider3();
     	
     	// Requires whichever subsystem the method being invoked is in
     	switch (motor) {
+    		case 0:
     		case 1:
-    		case 2:
     			requires(Robot.driveTrain);
     			break;
-    		case 3:
+    		case 2:
     			requires(Robot.shooter);
     			break;
-    		case 4:
+    		case 3:
     			requires(Robot.agitator);
     			break;
-    		case 5:
+    		case 4:
     			requires(Robot.ropeClimber);
     			break;
     	}
-    	this.motor = motor;
     }
 
     // Called just before this Command runs the first time
@@ -48,11 +46,16 @@ public class DebugMode extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	switch (motor) {
+			case 0:
+				Robot.driveTrain.setLeftMotorPower(Robot.oi.getLeftStickThrottle());
 			case 1:
+				Robot.driveTrain.setRightMotorPower(Robot.oi.getLeftStickThrottle());
 			case 2:
+				Robot.shooter.shootAtSpeed(Robot.oi.getLeftStickThrottle());
 			case 3:
+				Robot.agitator.setPower(Robot.oi.getLeftStickThrottle());
 			case 4:
-			case 5:
+				Robot.ropeClimber.setClimber(Robot.oi.getLeftStickThrottle());
     	}
     }
 
@@ -63,6 +66,18 @@ public class DebugMode extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	switch (motor) {
+			case 0:
+				Robot.driveTrain.stopLeft();
+			case 1:
+				Robot.driveTrain.stopRight();
+			case 2:
+				Robot.shooter.stop();
+			case 3:
+				Robot.agitator.stop();
+			case 4:
+				Robot.ropeClimber.stop();
+    	}
     }
 
     // Called when another command which requires one or more of the same

@@ -10,6 +10,7 @@ import org.usfirst.frc.team4561.robot.commands.IntakeBall;
 import org.usfirst.frc.team4561.robot.commands.GearHolderClose;
 import org.usfirst.frc.team4561.robot.commands.GearHolderOpen;
 import org.usfirst.frc.team4561.robot.commands.Climb;
+import org.usfirst.frc.team4561.robot.commands.TestMode;
 import org.usfirst.frc.team4561.robot.commands.SetAgitatorPower;
 import org.usfirst.frc.team4561.robot.commands.Shoot;
 import org.usfirst.frc.team4561.robot.commands.SpeedGear;
@@ -30,8 +31,8 @@ public class OI {
 	
 	private JoystickButton climbButton = new JoystickButton(rightStick, RobotMap.CLIMB_BUTTON);
 	
-	private JoystickButton gearInButton = new JoystickButton(rightStick, RobotMap.GEAR_IN_BUTTON);
-	private JoystickButton gearOutButton = new JoystickButton(rightStick, RobotMap.GEAR_OUT_BUTTON);
+	private JoystickButton gearHolderCloseButton = new JoystickButton(rightStick, RobotMap.GEAR_IN_BUTTON);
+	private JoystickButton gearHolderOpenButton = new JoystickButton(rightStick, RobotMap.GEAR_OUT_BUTTON);
 	private JoystickButton gearCoverCloseButton = new JoystickButton(rightStick, RobotMap.GEAR_COVER_CLOSE_BUTTON);
 	private JoystickButton gearCoverOpenButton = new JoystickButton(rightStick, RobotMap.GEAR_COVER_OPEN_BUTTON);
 	
@@ -44,14 +45,21 @@ public class OI {
 	private JoystickButton transmissionSpeedButton = new JoystickButton(rightStick, RobotMap.TRANSMISSION_SPEED_BUTTON);
 	
 	public OI() {
-		
-		//Initializing buttons
+		matchMode();
+	}
+	
+	/**
+	 * Assigns buttons to match configuration.
+	 * @see {@link #testMode() testMode}
+	 * @author Kaiz
+	 */
+	public void matchMode() {
 		shootButton.whileHeld(new Shoot());
 		
 		climbButton.whileHeld(new Climb());
 		
-		gearInButton.whenPressed(new GearHolderClose());
-		gearOutButton.whenPressed(new GearHolderOpen());
+		gearHolderCloseButton.whenPressed(new GearHolderClose());
+		gearHolderOpenButton.whenPressed(new GearHolderOpen());
 		gearCoverCloseButton.whenPressed(new GearCoverClose());
 		gearCoverOpenButton.whenPressed(new GearCoverOpen());
 		
@@ -62,6 +70,15 @@ public class OI {
 		
 		transmissionTorqueButton.whenPressed(new TorqueGear());
 		transmissionSpeedButton.whenPressed(new SpeedGear());
+	}
+	
+	/**
+	 * Assigns buttons to test configuration.
+	 * @see {@link #matchMode() matchMode}
+	 * @author Kaiz
+	 */
+	public void testMode() {
+		gearHolderOpenButton.whileHeld(new TestMode());
 	}
 	
 	// Joystick inputs

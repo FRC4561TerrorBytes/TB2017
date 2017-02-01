@@ -117,6 +117,11 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
+		if (this.isTest()) {
+			oi.testMode();
+		} else {
+			oi.matchMode();
+		}
 		if (RobotMap.MASTER_VERBOSE) {
 			System.out.println("[Robot] Started teleop");
 		}
