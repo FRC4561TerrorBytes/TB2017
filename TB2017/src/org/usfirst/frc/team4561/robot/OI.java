@@ -2,6 +2,7 @@ package org.usfirst.frc.team4561.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4561.robot.commands.GearCoverClose;
 import org.usfirst.frc.team4561.robot.commands.GearCoverOpen;
@@ -171,6 +172,78 @@ public class OI {
 			}
 		}
 		return leftStickX;
+	}
+	
+	/**
+	 * Gets the state of the top button on the "Basic" tab of the Dashboard.
+	 * @return boolean State of the button
+	 * @author Kaiz
+	 */
+	public boolean getDashboardButton0() {
+		return SmartDashboard.getBoolean("DB/Button 0", false);
+	}
+	
+	/**
+	 * Gets the state of the second button on the "Basic" tab of the Dashboard.
+	 * @return boolean State of the button
+	 * @author Kaiz
+	 */
+	public boolean getDashboardButton1() {
+		return SmartDashboard.getBoolean("DB/Button 1", false);
+	}
+	
+	/**
+	 * Gets the state of the third button on the "Basic" tab of the Dashboard.
+	 * @return boolean State of the button
+	 * @author Kaiz
+	 */
+	public boolean getDashboardButton2() {
+		return SmartDashboard.getBoolean("DB/Button 2", false);
+	}
+	
+	/**
+	 * Gets the state of the last button on the "Basic" tab of the Dashboard.
+	 * @return boolean State of the button
+	 * @author Kaiz
+	 */
+	public boolean getDashboardButton3() {
+		return SmartDashboard.getBoolean("DB/Button 3", false);
+	}
+	
+	/**
+	 * Gets the number on the first slider on the "Basic" tab of the Dashboard.
+	 * @return double Number on the slider
+	 * @author Kaiz
+	 */
+	public double getDashboardSlider0() {
+		return SmartDashboard.getNumber("DB/Slider 0", 0);
+	}
+	
+	/**
+	 * Gets the number on the second slider on the "Basic" tab of the Dashboard.
+	 * @return double Number on the slider
+	 * @author Kaiz
+	 */
+	public double getDashboardSlider1() {
+		return SmartDashboard.getNumber("DB/Slider 1", 0);
+	}
+	
+	/**
+	 * Gets the number on the third slider on the "Basic" tab of the Dashboard.
+	 * @return double Number on the slider
+	 * @author Kaiz
+	 */
+	public double getDashboardSlider2() {
+		return SmartDashboard.getNumber("DB/Slider 2", 0);
+	}
+	
+	/**
+	 * Gets the number on the last slider on the "Basic" tab of the Dashboard.
+	 * @return double Number on the slider
+	 * @author Kaiz
+	 */
+	public double getDashboardSlider3() {
+		return SmartDashboard.getNumber("DB/Slider 3", 0);
 	}
 	
 	//// CREATING BUTTONS
