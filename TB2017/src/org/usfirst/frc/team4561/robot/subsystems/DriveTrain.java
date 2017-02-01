@@ -60,32 +60,51 @@ public class DriveTrain extends Subsystem {
 	 * TODO: Document
 	 * @param powerLeft
 	 * @param powerRight
+	 * @see {@link #setLeftMotorPower(double) setLeftMotorPower}, {@link #setRightMotorPower(double) setRightMotorPower}
 	 */
 	public void setMotorPower(double powerLeft, double powerRight) {
-		if (powerLeft > 1) {
+		setLeftMotorPower(powerLeft);
+		setRightMotorPower(powerRight);
+	}
+	
+	/**
+	 * Sets power to the left side of the Drive Train.
+	 * @param power to set the motors to.
+	 * @see {@link #setRightMotorPower(double) setRightMotorPower}, {@link #setMotorPower(double, double) setMotorPower}
+	 */
+	public void setLeftMotorPower(double power) {
+		if (power > 1) {
 			if (RobotMap.DRIVETRAIN_VERBOSE) {
-				System.out.println("[Subsystem] Power to left side of drivetrain was set too high: " + powerLeft + ", changing to full forward.");
+				System.out.println("[Subsystem] Power to left side of drivetrain was set too high: " + power + ", changing to full forward.");
 			}
-			powerLeft = 1;
-		} else if (powerLeft < -1) {
+			power = 1;
+		} else if (power < -1) {
 			if (RobotMap.DRIVETRAIN_VERBOSE) {
-				System.out.println("[Subsystem] Power to left side of drivetrain was set too low: " + powerLeft + ", changing to full reverse.");
+				System.out.println("[Subsystem] Power to left side of drivetrain was set too low: " + power + ", changing to full reverse.");
 			}
-			powerLeft = -1;
+			power = -1;
 		}
-		if (powerRight > 1) {
+		frontLeft.set(power);
+	}
+	
+	/**
+	 * Sets power to the right side of the Drive Train.
+	 * @param power to set the motors to.
+	 * @see {@link #setLeftMotorPower(double) setLeftMotorPower}, {@link #setMotorPower(double, double) setMotorPower}
+	 */
+	public void setRightMotorPower(double power) {
+		if (power > 1) {
 			if (RobotMap.DRIVETRAIN_VERBOSE) {
-				System.out.println("[Subsystem] Power to right side of drivetrain was set too high: " + powerRight + ", changing to full forward.");
+				System.out.println("[Subsystem] Power to right side of drivetrain was set too high: " + power + ", changing to full forward.");
 			}
-			powerRight = 1;
-		} else if (powerRight < -1) {
+			power = 1;
+		} else if (power < -1) {
 			if (RobotMap.DRIVETRAIN_VERBOSE) {
-				System.out.println("[Subsystem] Power to right side of drivetrain was set too low: " + powerRight + ", changing to full reverse.");
+				System.out.println("[Subsystem] Power to right side of drivetrain was set too low: " + power + ", changing to full reverse.");
 			}
-			powerLeft = -1;
+			power = -1;
 		}
-		frontRight.set(powerRight);
-		frontLeft.set(powerLeft);
+		frontRight.set(power);
 	}
 	
 	/**
