@@ -71,9 +71,6 @@ public class RobotMap {
 	public static final boolean SHOOTER_VERBOSE = false || MASTER_VERBOSE;
 	public static final boolean TRANSMISSION_VERBOSE = false || MASTER_VERBOSE;		//TODO: should there be a verbose for this?
 	
-	// Left stick
-	public static final int DEBUG_MODE_BUTTON = 1; // This is the actual port, not a placeholder
-	
 	// For example to map the left and right motors, you could define the
 	// following variables to use with your drivetrain subsystem.
 	// public static int leftMotor = 1;

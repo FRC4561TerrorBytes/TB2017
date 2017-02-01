@@ -78,6 +78,8 @@ public class OI {
 	 * @author Kaiz
 	 */
 	public void testMode() {
+		
+		// Reassign left trigger on left joystick to run motor while in test mode
 		gearHolderOpenButton.whileHeld(new TestMode());
 	}
 	
