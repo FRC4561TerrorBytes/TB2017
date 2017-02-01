@@ -124,4 +124,32 @@ public class DriveTrain extends Subsystem {
 	public void tankDrive(double leftpower, double rightpower) {
 		robotDrive.tankDrive(leftpower, rightpower);
 	}
+	
+	/**
+	 * Stops the drivetrain.
+	 * @see {@link #stopLeft() stopLeft}, {@link #stopRight() stopRight}
+	 * @author Kaiz
+	 */
+	public void stop() {
+		stopLeft();
+		stopRight();
+	}
+	
+	/**
+	 * Stops the left side of the drivetrain.
+	 * @see {@link #stop() stop}, {@link #stopRight() stopRight}
+	 * @author Kaiz
+	 */
+	public void stopLeft() {
+		frontLeft.set(0);
+	}
+	
+	/**
+	 * Stops the right side of the drivetrain.
+	 * @see {@link #stop() stop}, {@link #stopLeft() stopLeft}
+	 * @author Kaiz
+	 */
+	public void stopRight() {
+		frontRight.set(0);
+	}
 }
