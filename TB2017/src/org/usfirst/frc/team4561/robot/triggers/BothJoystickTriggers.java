@@ -1,4 +1,4 @@
-package triggers;
+package org.usfirst.frc.team4561.robot.triggers;
 
 import edu.wpi.first.wpilibj.buttons.Trigger;
 
