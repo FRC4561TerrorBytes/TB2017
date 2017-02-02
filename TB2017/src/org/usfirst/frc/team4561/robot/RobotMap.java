@@ -28,38 +28,60 @@ public class RobotMap {
 	public static final int COVER_SOLENOID_PORT = 1;
 	public static final int TRANSMISSION_SOLENOID_PORT = 2;
 	
-	// Joystick ports
-	public static final int RIGHT_JOYSTICK_PORT = 0;
-	public static final int LEFT_JOYSTICK_PORT = 1;
-	
 	// Joystick configuration
-	public static final double RIGHT_JOYSTICK_DEAD_ZONE = 0.25;	
+	public static final double RIGHT_JOYSTICK_DEAD_ZONE = 0.25;
 	public static final double LEFT_JOYSTICK_DEAD_ZONE = 0.25;
 	public static final double RIGHT_JOYSTICK_REDUCTION = 0.25;
 	public static final double LEFT_JOYSTICK_REDUCTION = 0.25;
-	
-	// Rope buttons
-	public static final int CLIMB_BUTTON = 1; //TODO: Port number
-	
-	// Gear buttons
-	public static final int GEAR_IN_BUTTON = 1; //TODO: Port number
-	public static final int GEAR_OUT_BUTTON = 1; //TODO: Port number
-	public static final int GEAR_COVER_CLOSE_BUTTON = 1;//TODO: Port number
-	public static final int GEAR_COVER_OPEN_BUTTON = 1; //TODO: Port number
 
-	// Intake buttons
-	public static final int INTAKE_BUTTON = 1; // TODO: Find port
+	// MAIN DRIVER BUTTONS
+	
+	// Joystick ports
+	public static final int RIGHT_JOYSTICK_PORT = 1;
+	public static final int LEFT_JOYSTICK_PORT = 0;
+	
+	// Transmission buttons (left stick)
+	public static final int TRANSMISSION_TORQUE_BUTTON = 4;
+	public static final int TRANSMISSION_SPEED_BUTTON = 6;
+	
+	// Drivetrain buttons (left stick)
+	public static final int FRONT_HEADING_BUTTON = 5;
+	public static final int BACKWARD_HEADING_BUTTON = 3;
+	
+	// Gear manipulator buttons (both sticks)
+	public static final int MAIN_GEAR_RELEASE_BUTTON_ONE = 1; // Left stick
+	public static final int MAIN_GEAR_RELEASE_BUTTON_TWO = 1; // Right stick
+	
+	// Camera buttons (right stick)
+	public static final int TOGGLE_CAMERA_BUTTON = 2;
+	
+	// SECONDARY OPERATOR BUTTONS
+	
+	// Controller port
+	public static final int CONTROLLER_PORT = 3;
+	
+	// Gear manipulator buttons
+	public static final int GEAR_COVER_OPEN_BUTTON = 1; //TODO: Button number
+	public static final int GEAR_COVER_CLOSE_BUTTON = 2;//TODO: Button number
+	public static final int GEAR_HOLDER_OPEN_BUTTON = 3; //TODO: Button number
+	public static final int GEAR_HOLDER_CLOSE_BUTTON = 4; //TODO: Button number
+	public static final int SERVO_OPEN_BUTTON = 5; // TODO: Button number
+	public static final int SERVO_CLOSE_BUTTON = 6; // TODO: Button number
 	
 	// Shooter buttons
-	public static final int SHOOT_BUTTON = 1; //TODO: Find port
+	public static final int SHOOTER_ON_BUTTON = 7;
+	public static final int SHOOTER_OFF_BUTTON = 8;
 	
 	// Agitator buttons
-	public static final int AGITATOR_FWD_BUTTON = 1; // TODO: Find port
-	public static final int AGITATOR_REV_BUTTON = 1; // TODO: Find port
-
-	// Transmission buttons
-	public static final int TRANSMISSION_TORQUE_BUTTON = 1; // TODO: Find port
-	public static final int TRANSMISSION_SPEED_BUTTON = 1; // TODO: Find port
+	public static final int AGITATOR_FORWARD_BUTTON = 9;
+	public static final int AGITATOR_OFF_BUTTON = 10;
+	public static final int AGITATOR_BACKWARD_BUTTON = 11;
+	
+	// Climber buttons
+	public static final int CLIMBER_ON_BUTTON = 12;
+	
+	// Test mode button (left stick)
+	public static final int TEST_MODE_BUTTON = 1;
 	
 	// Verbose Flags
 	public static final boolean MASTER_VERBOSE = false;

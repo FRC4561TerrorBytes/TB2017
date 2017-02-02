@@ -26,7 +26,7 @@ public class Shoot extends Command {
 	}
 	
 	protected boolean isFinished() {
-		return false; // Only stop this command when interrupted, which happens when the button is released
+		return false; // Only stop this command when interrupted, which happens when the shooter off button is pressed
 	}
 	
 	protected void end() {
