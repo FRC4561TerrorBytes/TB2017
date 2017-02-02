@@ -58,7 +58,7 @@ public class RobotMap {
 	// SECONDARY OPERATOR BUTTONS
 	
 	// Controller port
-	public static final int CONTROLLER_PORT = 3;
+	public static final int CONTROLLER_PORT = 2;
 	
 	// Gear manipulator buttons
 	public static final int GEAR_COVER_OPEN_BUTTON = 1; //TODO: Button number
