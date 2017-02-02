@@ -6,7 +6,9 @@ import org.usfirst.frc.team4561.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * TODO: Document and change names
+ * Changes the gear to the torque gear.
+ * Requires the Transmission solenoid.
+ * TODO: Change names
  * @author Zane T, Ben G
  */
 public class TorqueGear extends Command {
@@ -18,12 +20,13 @@ public class TorqueGear extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	if (RobotMap.TRANSMISSION_VERBOSE) {
-    		System.out.println("[Command] Intializing TorqueGear");
+    		System.out.println("[C:TorqueGear] Intializing...");
     	}
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	//Actually change the gear
     	Robot.transmission.torqueGear();
     }
 
@@ -35,7 +38,7 @@ public class TorqueGear extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	if (RobotMap.TRANSMISSION_VERBOSE) {
-    		System.out.println("[Command] Ending TorqueGear");
+    		System.out.println("[C:TorqueGear] Command finished.");
     	}
     }
 

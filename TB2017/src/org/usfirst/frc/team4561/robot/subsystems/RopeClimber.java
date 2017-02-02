@@ -7,26 +7,17 @@ import com.ctre.CANTalon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- * TODO: Document
- * @author Ose, Morgan
+ * This is the core subsystem file for the RopeClimber.
+ * @author Ose, Morgan, Joseph
  */
 public class RopeClimber extends Subsystem {
 	
 	private CANTalon climberMotor = new CANTalon(RobotMap.CLIMBER_MOTOR);
 	
-/**	public Rollers() {
-*		if(Robot.isVerbose()) {
-*			System.out.println("Initializing Rollers Subsystem");
-*		}
-*		rollerMotor.enableBrakeMode(true);
-*		rollerMotor.setInverted(true);
-*	}
-*/
 	public void initDefaultCommand() {
 		//TODO: Create command commandsetDefaultCommand(new );
 	}
-	
-
+	//sets power to 1 when power is not 1, same with -1
 	public void setClimber(double power) {
 		if (power > 1) {
 			if (RobotMap.ROPE_CLIMBER_VERBOSE) {
@@ -41,6 +32,7 @@ public class RopeClimber extends Subsystem {
 		}
 		climberMotor.set(power);
 	}
+	//stops climber motor
 	public void stop() {
 		climberMotor.set(0);
 	}

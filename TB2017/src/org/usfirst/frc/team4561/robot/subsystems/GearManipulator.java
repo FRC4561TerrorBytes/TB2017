@@ -7,7 +7,7 @@ import org.usfirst.frc.team4561.robot.RobotMap;
 import edu.wpi.first.wpilibj.Solenoid;
 
 /**
- * TODO: Document
+ * This is the core subsystem file for the gear manipulator
  * @author Lucas T
  */
 public class GearManipulator extends Subsystem {
@@ -23,28 +23,28 @@ public class GearManipulator extends Subsystem {
     }
     
 	/**
-	 * TODO: Document
+	 * Method to close gear manipulator
 	 */
 	public void closeHolder() {
     	holderSolenoid.set(true);
     }
     
 	/**
-	 * TODO: Document
+	 * Method to open gear manipulator
 	 */
 	public void openHolder() {
     	holderSolenoid.set(false);
     }
 	
 	/**
-	 * TODO: Document
+	 * Method to close anti-fuel gear manipulator cover
 	 */
 	public void closeCover() {
     	coverSolenoid.set(true);
     }
 	
 	/**
-	 * TODO: Document
+	 * Method to open anti-fuel gear manipulator cover
 	 */
 	public void openCover() {
     	coverSolenoid.set(false);

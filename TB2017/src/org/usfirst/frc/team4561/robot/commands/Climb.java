@@ -6,8 +6,8 @@ import org.usfirst.frc.team4561.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * TODO: Document
- * @author TODO
+ * This command initiates, sets power to 1, and stops the rope climber.
+ * @author Ose, Morgan, Joseph
  */
 public class Climb extends Command {
 
