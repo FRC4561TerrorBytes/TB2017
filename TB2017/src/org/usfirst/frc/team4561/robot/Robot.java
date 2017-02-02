@@ -1,15 +1,19 @@
-
 package org.usfirst.frc.team4561.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+//import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
-import org.usfirst.frc.team4561.robot.commands.ExampleCommand;
-import org.usfirst.frc.team4561.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team4561.robot.subsystems.Agitator;
+import org.usfirst.frc.team4561.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team4561.robot.subsystems.GearManipulator;
+import org.usfirst.frc.team4561.robot.subsystems.Intake;
+import org.usfirst.frc.team4561.robot.subsystems.RopeClimber;
+import org.usfirst.frc.team4561.robot.subsystems.Shooter;
+import org.usfirst.frc.team4561.robot.subsystems.Transmission;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -20,11 +24,16 @@ import org.usfirst.frc.team4561.robot.subsystems.ExampleSubsystem;
  */
 public class Robot extends IterativeRobot {
 
-	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
-	public static OI oi;
-
+	public static DriveTrain driveTrain;
+	public static Shooter shooter;
+	public static Intake intake;
+	public static RopeClimber ropeClimber;
+	public static GearManipulator gearManipulator;
+	public static Agitator agitator;
+    public static Transmission transmission;
+    public static OI oi;
+	
 	Command autonomousCommand;
-	SendableChooser<Command> chooser = new SendableChooser<>();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -32,10 +41,17 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
+		shooter = new Shooter();
+		driveTrain = new DriveTrain();
+		gearManipulator = new GearManipulator();	
+		intake = new Intake();
+		agitator = new Agitator();
+		ropeClimber = new RopeClimber();
+        transmission = new Transmission();
 		oi = new OI();
-		chooser.addDefault("Default Auto", new ExampleCommand());
-		// chooser.addObject("My Auto", new MyAutoCommand());
-		SmartDashboard.putData("Auto mode", chooser);
+		if(RobotMap.MASTER_VERBOSE) {
+			System.out.println("[Robot] Subsystems constructed");
+		}
 	}
 
 	/**
@@ -45,7 +61,9 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void disabledInit() {
-
+		if (RobotMap.MASTER_VERBOSE) {
+			System.out.println("[Robot] Disabled");
+		}
 	}
 
 	@Override
@@ -66,7 +84,6 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = chooser.getSelected();
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -75,9 +92,13 @@ public class Robot extends IterativeRobot {
 		 * autonomousCommand = new ExampleCommand(); break; }
 		 */
 
-		// schedule the autonomous command (example)
-		if (autonomousCommand != null)
+		// Schedule the autonomous command (example)
+		if (autonomousCommand != null) {
 			autonomousCommand.start();
+		}
+		if (RobotMap.MASTER_VERBOSE) {
+			System.out.println("[Robot] Started autonomous");
+		}
 	}
 
 	/**
@@ -96,6 +117,14 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
+		if (this.isTest()) {
+			oi.testMode();
+		} else {
+			oi.matchMode();
+		}
+		if (RobotMap.MASTER_VERBOSE) {
+			System.out.println("[Robot] Started teleop");
+		}
 	}
 
 	/**
