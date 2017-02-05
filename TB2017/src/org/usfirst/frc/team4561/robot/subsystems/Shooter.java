@@ -10,7 +10,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *@author alekj
  */
 public class Shooter extends Subsystem {
-	
 	//Shooter Motors
 	public CANTalon shootMotorLeft = new CANTalon(RobotMap.SHOOTER_LEFT_MOTOR_PORT);
 	public CANTalon ShootMotorRight = new CANTalon(RobotMap.SHOOTER_RIGHT_MOTOR_PORT);
@@ -22,9 +21,10 @@ public class Shooter extends Subsystem {
     }
     
     public void shootAtSpeed(double speed){
-    	
+    	System.out.println("Debug: Reached shootAtSpeed");
     	//If a valid value, run the shooter motor at the given speed
     	if (speed <= 1.0 && speed >= -1.0) {
+    		System.out.println("Debug: Reached the motor speed set");
     		shootMotorLeft.set(speed);
     		ShootMotorRight.set(-speed);
     		if (verbose) {

@@ -55,8 +55,8 @@ public class OI {
 	private JoystickButton openServoButton = new JoystickButton(controller, RobotMap.SERVO_OPEN_BUTTON);
 	private JoystickButton closeServoButton = new JoystickButton(controller, RobotMap.SERVO_CLOSE_BUTTON);
 	
-	private JoystickButton shooterOnButton = new JoystickButton(controller, RobotMap.SHOOTER_ON_BUTTON);
-	private JoystickButton shooterOffButton = new JoystickButton(controller, RobotMap.SHOOTER_OFF_BUTTON);
+	private JoystickButton shooterOnButton = new JoystickButton(rightStick, RobotMap.SHOOTER_ON_BUTTON);
+	private JoystickButton shooterOffButton = new JoystickButton(rightStick, RobotMap.SHOOTER_OFF_BUTTON);
 	
 	private JoystickButton agitatorForwardButton = new JoystickButton(controller, RobotMap.AGITATOR_FORWARD_BUTTON);
 	private JoystickButton agitatorOffButton = new JoystickButton(controller, RobotMap.AGITATOR_OFF_BUTTON);

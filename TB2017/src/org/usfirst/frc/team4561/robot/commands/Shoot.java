@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class Shoot extends Command {
 	
 	//Speed variable
-	private final double power = 1;
+	private final double power = .25;
 	
 	public Shoot() {
 		requires(Robot.shooter);
