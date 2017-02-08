@@ -10,16 +10,16 @@ public class RobotMap {
 	
 	// Motor ports
 	public static final int FRONT_RIGHT_MOTOR_PORT = 11;//TODO: Find Port
-	public static final int FRONT_LEFT_MOTOR_PORT = 1; //TODO: Find Port
+	public static final int FRONT_LEFT_MOTOR_PORT = 3; //TODO: Find Port
 	public static final int REAR_RIGHT_MOTOR_PORT = 10; //TODO: Find Port
 	public static final int REAR_LEFT_MOTOR_PORT = 9; //TODO: Find Port
 	public static final int MID_RIGHT_MOTOR_PORT = 7; //TODO: Find Port
-	public static final int MID_LEFT_MOTOR_PORT = 2; //TODO: Find Port
+	public static final int MID_LEFT_MOTOR_PORT = 8; //TODO: Find Port
 	public static final int CLIMBER_MOTOR = 6; //TODO: Find Port
 	public static final int LEFT_INTAKE_MOTOR_PORT = 5; //TODO: Find Port
 	public static final int RIGHT_INTAKE_MOTOR_PORT = 4; //TODO: Find Port
-	public static final int SHOOTER_LEFT_MOTOR_PORT = 3; //TODO: Find port
-	public static final int SHOOTER_RIGHT_MOTOR_PORT = 8; //TODO: Find Port
+	public static final int SHOOTER_LEFT_MOTOR_PORT = 2; //TODO: Find port
+	public static final int SHOOTER_RIGHT_MOTOR_PORT = 1; //TODO: Find Port
 	public static final int AGITATOR_MOTOR_PORT = 12; //TODO: Find Port
 	
 	//Solenoids and PCM

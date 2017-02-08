@@ -6,6 +6,7 @@ import org.usfirst.frc.team4561.robot.commands.DriveTank;
 
 import com.ctre.CANTalon;
 import com.ctre.CANTalon.FeedbackDevice;
+import com.ctre.CANTalon.TalonControlMode;
 
 import edu.wpi.first.wpilibj.RobotDrive;
 
@@ -15,7 +16,7 @@ import edu.wpi.first.wpilibj.RobotDrive;
  */
 public class DriveTrainPID extends Subsystem {
 	
-	// Front motors are masters
+	//Front motors are masters
 	private CANTalon frontRight;
 	private CANTalon frontLeft;
 	
@@ -32,54 +33,86 @@ public class DriveTrainPID extends Subsystem {
     }
 	
 	public DriveTrainPID() {
-		frontRight = new CANTalon(RobotMap.FRONT_RIGHT_MOTOR_PORT);
+
+		double targetPositionRotations = 1000;							//sets a target position for a pos pid test
 		
-		frontRight.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+		frontRight = new CANTalon(RobotMap.FRONT_RIGHT_MOTOR_PORT);		//new right cantalon
+		
+		frontRight.setFeedbackDevice(FeedbackDevice.QuadEncoder);		//right cantalon uses a quadencoder
 		frontRight.reverseSensor(false);
 		frontRight.setProfile(0);
-		frontRight.setF(0);
-		frontRight.setP(0);
-		frontRight.setI(0);
-		frontRight.setD(0);
-		frontRight.configNominalOutputVoltage(+0.0f, -0.0f);
+
+		frontRight.configNominalOutputVoltage(+0.0f, -0.0f);			//sets min and max voltages
 		frontRight.configPeakOutputVoltage(+12.0f, -12.0f);
 	
 		
-		frontLeft = new CANTalon(RobotMap.FRONT_LEFT_MOTOR_PORT);
+		frontLeft = new CANTalon(RobotMap.FRONT_LEFT_MOTOR_PORT);		//new left cantalon
 		
-		frontLeft.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+		frontLeft.setFeedbackDevice(FeedbackDevice.QuadEncoder);		//left cantalon uses a quadencoder
 		frontLeft.reverseSensor(false);
 		frontLeft.setProfile(0);
-		frontLeft.setF(0);
-		frontLeft.setP(0);
-		frontLeft.setI(0);
-		frontLeft.setD(0);
-		frontLeft.configNominalOutputVoltage(+0.0f, -0.0f);
+		
+		frontLeft.configNominalOutputVoltage(+0.0f, -0.0f);				//sets min and max voltages
 		frontLeft.configPeakOutputVoltage(+12.0f, -12.0f);
 		
-		midRight = new CANTalon(RobotMap.MID_RIGHT_MOTOR_PORT);
+		frontRight.changeControlMode(TalonControlMode.Position);	//changes talons to positional pid mode
+		frontLeft.changeControlMode(TalonControlMode.Position);
+		
+		midRight = new CANTalon(RobotMap.MID_RIGHT_MOTOR_PORT);			//new right cantalon
 		
 		// Sets other motors as slaves to masters FrontLeft/Right, set doesn't set power, it sets a slave
 		midRight.changeControlMode(CANTalon.TalonControlMode.Follower);
 		midRight.set(RobotMap.FRONT_RIGHT_MOTOR_PORT);
 		
-		rearRight = new CANTalon(RobotMap.REAR_RIGHT_MOTOR_PORT);
+		rearRight = new CANTalon(RobotMap.REAR_RIGHT_MOTOR_PORT);		//new right cantalon
 		rearRight.changeControlMode(CANTalon.TalonControlMode.Follower);
 		rearRight.set(RobotMap.FRONT_RIGHT_MOTOR_PORT);
 		
-		midLeft = new CANTalon(RobotMap.MID_LEFT_MOTOR_PORT);
+		midLeft = new CANTalon(RobotMap.MID_LEFT_MOTOR_PORT);			//new left cantalon
 		midLeft.changeControlMode(CANTalon.TalonControlMode.Follower);
 		midLeft.set(RobotMap.FRONT_LEFT_MOTOR_PORT);
 		
-		rearLeft = new CANTalon(RobotMap.REAR_LEFT_MOTOR_PORT);
+		rearLeft = new CANTalon(RobotMap.REAR_LEFT_MOTOR_PORT);			//new left cantalon
 		rearLeft.changeControlMode(CANTalon.TalonControlMode.Follower);
 		rearLeft.set(RobotMap.FRONT_LEFT_MOTOR_PORT);
 		
+		frontRight.set(targetPositionRotations);				//set to pos pid testing target position
+		frontLeft.set(targetPositionRotations);
+		
 		// Puts motors into RobotDrive class
-		robotDrive = new RobotDrive(frontLeft, frontRight);
+		robotDrive = new RobotDrive(frontLeft, frontRight);	
 
 	}
-    
+	
+	public void SwitchToVelocity(){
+		frontRight.changeControlMode(TalonControlMode.PercentVbus);	//changes talons to velocity pid mode
+		frontLeft.changeControlMode(TalonControlMode.PercentVbus);
+		
+		frontRight.setF(0);
+		frontRight.setP(0);
+		frontRight.setI(0);
+		frontRight.setD(0);
+		
+		frontLeft.setF(0);
+		frontLeft.setP(0);
+		frontLeft.setI(0);
+		frontLeft.setD(0);
+	}
+	
+	public void SwitchToPositional(){
+		frontRight.changeControlMode(TalonControlMode.Position);	//changes talons to positional pid mode
+		frontLeft.changeControlMode(TalonControlMode.Position);
+		
+		frontRight.setF(0);
+		frontRight.setP(0);
+		frontRight.setI(0);
+		frontRight.setD(0);
+		
+		frontLeft.setF(0);
+		frontLeft.setP(0);
+		frontLeft.setI(0);
+		frontLeft.setD(0);
+	}
 	/**
 	 * TODO: Document
 	 * @param powerLeft

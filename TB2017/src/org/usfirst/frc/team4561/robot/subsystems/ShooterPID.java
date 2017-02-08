@@ -53,7 +53,6 @@ public class ShooterPID extends Subsystem {
     }
     
     public void stop() {
-    	shootMotorLeft.set(0);
     	ShootMotorRight.set(0);
     }	
 }

@@ -47,8 +47,8 @@ public class ShootPID extends Command {
 		end();
 	}
 	public void end(){
-		/*Robot.shooter.*/speedGoal = 0; //TODO: Delete this line when PID setup migrated to shooter subsystem
-		/*Robot.shooter.*/setShooterSpeedPID(0);
+		///*Robot.shooter.*/speedGoal = 0; //TODO: Delete this line when PID setup migrated to shooter subsystem
+		Robot.shooter.ShootMotorRight.set(0);
 	}
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
