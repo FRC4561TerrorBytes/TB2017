@@ -10,6 +10,7 @@ import org.usfirst.frc.team4561.robot.subsystems.Agitator;
 import org.usfirst.frc.team4561.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4561.robot.subsystems.GearManipulator;
 import org.usfirst.frc.team4561.robot.subsystems.Intake;
+import org.usfirst.frc.team4561.robot.subsystems.RioPIDShooter;
 import org.usfirst.frc.team4561.robot.subsystems.RopeClimber;
 import org.usfirst.frc.team4561.robot.subsystems.Shooter;
 import org.usfirst.frc.team4561.robot.subsystems.Transmission;
@@ -26,6 +27,7 @@ public class Robot extends IterativeRobot {
 
 	public static DriveTrain driveTrain;
 	public static Shooter shooter;
+	public static RioPIDShooter rioPIDShooter;
 	public static Intake intake;
 	public static RopeClimber ropeClimber;
 	public static GearManipulator gearManipulator;
@@ -41,6 +43,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
+		rioPIDShooter = new RioPIDShooter();
 		shooter = new Shooter();
 		driveTrain = new DriveTrain();
 		gearManipulator = new GearManipulator();	
