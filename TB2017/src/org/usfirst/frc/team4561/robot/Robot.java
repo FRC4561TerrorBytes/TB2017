@@ -32,7 +32,7 @@ public class Robot extends IterativeRobot {
 
 	public static DriveTrainPID driveTrain;
 	public static ShooterPID shooter;
-	public static Intake intake;
+	//public static Intake intake;
 	public static RopeClimber ropeClimber;
 	public static GearManipulator gearManipulator;
 	public static Agitator agitator;
@@ -53,7 +53,7 @@ public class Robot extends IterativeRobot {
 		shooter = new ShooterPID();
 		driveTrain = new DriveTrainPID();
 		gearManipulator = new GearManipulator();	
-		intake = new Intake();
+		//intake = new Intake();
 		agitator = new Agitator();
 		ropeClimber = new RopeClimber();
         transmission = new Transmission();
