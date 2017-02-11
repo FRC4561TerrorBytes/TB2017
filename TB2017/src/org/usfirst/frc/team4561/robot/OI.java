@@ -21,6 +21,8 @@ import org.usfirst.frc.team4561.robot.commands.ToggleCamera;
 import org.usfirst.frc.team4561.robot.commands.SetAgitatorPower;
 import org.usfirst.frc.team4561.robot.commands.Shoot;
 import org.usfirst.frc.team4561.robot.commands.SpeedGear;
+import org.usfirst.frc.team4561.robot.commands.SwitchDriveTrainPIDPos;
+import org.usfirst.frc.team4561.robot.commands.SwitchDriveTrainPIDV;
 import org.usfirst.frc.team4561.robot.commands.TorqueGear;
 import org.usfirst.frc.team4561.robot.triggers.BothJoystickTriggers;
 
@@ -42,11 +44,15 @@ public class OI {
 	private JoystickButton driveHeadingForward = new JoystickButton(rightStick, RobotMap.FRONT_HEADING_BUTTON);
 	private JoystickButton driveHeadingBackward = new JoystickButton(rightStick, RobotMap.BACKWARD_HEADING_BUTTON);
 	
+	
+	
 	private BothJoystickTriggers mainGearReleaseButton = new BothJoystickTriggers();
 	
 	private JoystickButton cameraToggleButton = new JoystickButton(rightStick, RobotMap.TOGGLE_CAMERA_BUTTON);
 	
 	// SECONDARY OPERATOR BUTTONS
+	private JoystickButton changeDriveModeP = new JoystickButton(leftStick, RobotMap.PID_VELOCITY_CHANGE_BUTTON); //change leftstick to controller
+	private JoystickButton changeDriveModeV = new JoystickButton(leftStick, RobotMap.PID_POSITION_CHANGE_BUTTON);
 	private JoystickButton gearCoverOpenButton = new JoystickButton(controller, RobotMap.GEAR_COVER_OPEN_BUTTON);
 	private JoystickButton gearCoverCloseButton = new JoystickButton(controller, RobotMap.GEAR_COVER_CLOSE_BUTTON);
 	private JoystickButton gearHolderOpenButton = new JoystickButton(controller, RobotMap.GEAR_HOLDER_CLOSE_BUTTON);
@@ -103,6 +109,9 @@ public class OI {
 		agitatorForwardButton.whenPressed(new SetAgitatorPower(1));
 		agitatorOffButton.whenPressed(new SetAgitatorPower(0));
 		agitatorBackwardButton.whileHeld(new SetAgitatorPower(-1));
+		
+		changeDriveModeP.whenPressed(new SwitchDriveTrainPIDPos());
+		changeDriveModeV.whenPressed(new SwitchDriveTrainPIDV());
 	}
 	
 	/**

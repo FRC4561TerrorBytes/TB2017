@@ -1,6 +1,8 @@
 package org.usfirst.frc.team4561.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+
+import org.usfirst.frc.team4561.robot.Robot;
 import org.usfirst.frc.team4561.robot.RobotMap;
 import org.usfirst.frc.team4561.robot.commands.DriveTank;
 
@@ -11,8 +13,9 @@ import com.ctre.CANTalon.TalonControlMode;
 import edu.wpi.first.wpilibj.RobotDrive;
 
 /**
- * TODO: Document
- * @author Jonah W
+ * This is a drivetrain variant with both positional pid, for automode,
+ * and velocity pid, for tele-op.
+ * @author Jonah W and Alek L
  */
 public class DriveTrainPID extends Subsystem {
 	
@@ -33,8 +36,6 @@ public class DriveTrainPID extends Subsystem {
     }
 	
 	public DriveTrainPID() {
-
-		double targetPositionRotations = 1000;							//sets a target position for a pos pid test
 		
 		frontRight = new CANTalon(RobotMap.FRONT_RIGHT_MOTOR_PORT);		//new right cantalon
 		
@@ -76,8 +77,6 @@ public class DriveTrainPID extends Subsystem {
 		rearLeft.changeControlMode(CANTalon.TalonControlMode.Follower);
 		rearLeft.set(RobotMap.FRONT_LEFT_MOTOR_PORT);
 		
-		frontRight.set(targetPositionRotations);				//set to pos pid testing target position
-		frontLeft.set(targetPositionRotations);
 		
 		// Puts motors into RobotDrive class
 		robotDrive = new RobotDrive(frontLeft, frontRight);	
@@ -85,11 +84,10 @@ public class DriveTrainPID extends Subsystem {
 	}
 	
 	public void SwitchToVelocity(){
-		frontRight.changeControlMode(TalonControlMode.PercentVbus);	//changes talons to velocity pid mode
-		frontLeft.changeControlMode(TalonControlMode.PercentVbus);
-		
+		frontRight.changeControlMode(TalonControlMode.Speed);	//changes talons to velocity pid mode
+		frontLeft.changeControlMode(TalonControlMode.Speed);
 		frontRight.setF(0);
-		frontRight.setP(0);
+		frontRight.setP(.25);
 		frontRight.setI(0);
 		frontRight.setD(0);
 		
@@ -102,9 +100,11 @@ public class DriveTrainPID extends Subsystem {
 	public void SwitchToPositional(){
 		frontRight.changeControlMode(TalonControlMode.Position);	//changes talons to positional pid mode
 		frontLeft.changeControlMode(TalonControlMode.Position);
+		frontRight.set(1000);				//set to pos pid testing target position
+		frontLeft.set(1000);
 		
 		frontRight.setF(0);
-		frontRight.setP(0);
+		frontRight.setP(.25);
 		frontRight.setI(0);
 		frontRight.setD(0);
 		
