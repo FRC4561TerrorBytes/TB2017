@@ -50,6 +50,11 @@ public class Agitator extends Subsystem {
 		agitatorMotor.set(power);
 	}
     
+    //sends agitator velocity to robot.java for debug
+    public double agitatorState() {
+		return agitatorMotor.getEncVelocity();
+    }
+    
     /**
      * Function to stop agitator motor
      */

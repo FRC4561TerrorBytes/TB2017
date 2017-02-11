@@ -3,6 +3,7 @@ package org.usfirst.frc.team4561.robot.commands;
 import org.usfirst.frc.team4561.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * Sets the power to a motor (or a group of them) for testing. 
@@ -38,6 +39,7 @@ public class TestMode extends Command {
     			requires(Robot.ropeClimber);
     			break;
     	}
+    	
     }
 
     // Called just before this Command runs the first time
@@ -59,6 +61,7 @@ public class TestMode extends Command {
 			case 4:
 				Robot.ropeClimber.setClimber(Robot.oi.getLeftStickThrottle());
     	}
+
     }
 
     // Make this return true when this Command no longer needs to run execute()

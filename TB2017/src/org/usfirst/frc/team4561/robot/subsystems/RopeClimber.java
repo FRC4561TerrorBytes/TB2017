@@ -32,6 +32,12 @@ public class RopeClimber extends Subsystem {
 		}
 		climberMotor.set(power);
 	}
+	
+	//send climber motor velocity to robot.java for debug
+	public double climbEncoderVel() {
+		return climberMotor.getEncVelocity();
+	}
+	
 	//stops climber motor
 	public void stop() {
 		climberMotor.set(0);

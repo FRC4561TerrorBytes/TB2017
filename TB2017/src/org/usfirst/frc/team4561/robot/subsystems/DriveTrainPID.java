@@ -28,7 +28,7 @@ public class DriveTrainPID extends Subsystem {
 	private CANTalon rearRight;
 	private CANTalon rearLeft;
 		
-	private RobotDrive robotDrive;
+	public RobotDrive robotDrive;
 	
 	public void initDefaultCommand() {
 		setDefaultCommand(new DriveTank());
@@ -183,12 +183,29 @@ public class DriveTrainPID extends Subsystem {
 		robotDrive.tankDrive(leftpower, rightpower);
 	}
 
+	//The Following methods send values to Robot.java for Debug Mode
+	public double leftMotorVel() {
+		return frontLeft.getEncVelocity();
+	}
+	
+	public double leftMotorPos() {
+		return frontLeft.getEncPosition();
+	}
+	
+	public double rightMotorVel() {
+		return frontRight.getEncVelocity();
+	}
+	
+	public double rightMotorPos() {
+		return frontRight.getEncPosition();
+	}
+	
 /**
  * Stops the drivetrain.
  * @see {@link #stopLeft() stopLeft}, {@link #stopRight() stopRight}
  * @author Kaiz
  */
-
+	
 	public void stop() {
 		stopLeft();
 		stopRight();

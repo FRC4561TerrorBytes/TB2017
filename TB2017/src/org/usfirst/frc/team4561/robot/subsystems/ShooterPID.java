@@ -13,10 +13,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class ShooterPID extends Subsystem {
 	
-	public CANTalon shootMotorLeft = new CANTalon(RobotMap.SHOOTER_LEFT_MOTOR_PORT);
-	public CANTalon shootMotorRight = new CANTalon(RobotMap.SHOOTER_RIGHT_MOTOR_PORT);
-	
-
+	private CANTalon shootMotorLeft = new CANTalon(RobotMap.SHOOTER_LEFT_MOTOR_PORT);
+	private CANTalon shootMotorRight = new CANTalon(RobotMap.SHOOTER_RIGHT_MOTOR_PORT);
 	
 	public ShooterPID(){
 		super();
@@ -35,7 +33,11 @@ public class ShooterPID extends Subsystem {
 		shootMotorRight.configPeakOutputVoltage(+12.0f, +0.0f); //The shooter will always either be stopped or going forwards
 	}
 	
-
+	//sends motor velocity to robot.java for debug
+	public double rightEncoderVel() {
+		return shootMotorRight.getEncVelocity();
+	}
+	
 	//verbose flag
 	private boolean verbose = RobotMap.SHOOTER_VERBOSE;
 	

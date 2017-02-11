@@ -49,4 +49,13 @@ public class GearManipulator extends Subsystem {
 	public void openCover() {
     	coverSolenoid.set(false);
     }
+	
+	//send solenoid's states to robot.java for debug mode
+	public boolean holderState() {
+		return holderSolenoid.get();
+	}
+	
+	public boolean coverState() {
+		return coverSolenoid.get();
+	}
 }

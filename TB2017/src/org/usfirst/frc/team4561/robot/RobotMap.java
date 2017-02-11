@@ -86,6 +86,9 @@ public class RobotMap {
 	// Test mode button (left stick)
 	public static final int TEST_MODE_BUTTON = 1;
 	
+	//Debug mode button (right stick)
+	public static int DEBUG_MODE_BUTTON = 12;
+	
 	// Verbose Flags
 	public static final boolean MASTER_VERBOSE = false;
 	public static final boolean AGITATOR_VERBOSE = false || MASTER_VERBOSE;

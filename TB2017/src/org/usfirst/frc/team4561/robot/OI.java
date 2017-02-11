@@ -13,6 +13,7 @@ import org.usfirst.frc.team4561.robot.commands.ServoOpen;
 import org.usfirst.frc.team4561.robot.commands.GearHolderClose;
 import org.usfirst.frc.team4561.robot.commands.GearHolderOpen;
 import org.usfirst.frc.team4561.robot.commands.Climb;
+import org.usfirst.frc.team4561.robot.commands.DebugButton;
 import org.usfirst.frc.team4561.robot.commands.DoNothing;
 import org.usfirst.frc.team4561.robot.commands.DriveHeadingForward;
 import org.usfirst.frc.team4561.robot.commands.DriveHeadingBackward;
@@ -65,6 +66,9 @@ public class OI {
 	// Test mode button
 	private JoystickButton testModeButton = new JoystickButton(controller, RobotMap.TEST_MODE_BUTTON);
 	
+	//Debug mode button
+	private JoystickButton debugModeButton = new JoystickButton(rightStick, RobotMap.DEBUG_MODE_BUTTON);
+	
 	public OI() {
 		matchMode();
 	}
@@ -76,6 +80,7 @@ public class OI {
 	 */
 	public void matchMode() {
 		testModeButton.whenPressed(new DoNothing());
+		debugModeButton.whenPressed(new DebugButton());
 		
 		shiftSpeedButton.whenPressed(new SpeedGear());
 		shiftTorqueButton.whenPressed(new TorqueGear());
@@ -111,7 +116,6 @@ public class OI {
 	 * @author Kaiz
 	 */
 	public void testMode() {
-		
 		// Reassign left trigger on left joystick to run motor while in test mode
 		testModeButton.whileHeld(new TestMode());
 	}
