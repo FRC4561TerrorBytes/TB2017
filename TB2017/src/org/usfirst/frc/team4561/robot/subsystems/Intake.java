@@ -13,8 +13,8 @@ import com.ctre.CANTalon;
 public class Intake extends Subsystem {
 	
 	// Declaring two objects of type CANTalon called leftIntakeMotor and rightIntakeMotor
-	private CANTalon leftIntakeMotor = new CANTalon(RobotMap.LEFT_INTAKE_MOTOR_PORT);
-	private CANTalon rightIntakeMotor = new CANTalon(RobotMap.RIGHT_INTAKE_MOTOR_PORT);
+	private CANTalon leftIntakeMotor = new CANTalon(0);//RobotMap.LEFT_INTAKE_MOTOR_PORT);
+	private CANTalon rightIntakeMotor = new CANTalon(1);//RobotMap.RIGHT_INTAKE_MOTOR_PORT);
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.

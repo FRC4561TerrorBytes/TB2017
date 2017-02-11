@@ -13,26 +13,26 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class ShooterPID extends Subsystem {
 	
-	public CANTalon shootMotorLeft = new CANTalon(RobotMap.SHOOTER_LEFT_MOTOR_PORT);
 	public CANTalon shootMotorRight = new CANTalon(RobotMap.SHOOTER_RIGHT_MOTOR_PORT);
+	public CANTalon shootMotorLeft = new CANTalon(RobotMap.SHOOTER_LEFT_MOTOR_PORT);
 	
 
 	
 	public ShooterPID(){
 		super();
-		shootMotorLeft.changeControlMode(CANTalon.TalonControlMode.Follower);
-		shootMotorLeft.set(RobotMap.SHOOTER_RIGHT_MOTOR_PORT);
-		shootMotorLeft.reverseOutput(true);
-		shootMotorRight.changeControlMode(TalonControlMode.Speed);
-		shootMotorRight.setFeedbackDevice(FeedbackDevice.QuadEncoder);
-		shootMotorRight.reverseSensor(false);
-		shootMotorRight.setProfile(0);
-		shootMotorRight.setF(0);
-		shootMotorRight.setP(0);
-		shootMotorRight.setI(0);
-		shootMotorRight.setD(0);
-		shootMotorRight.configNominalOutputVoltage(+0.0f, -0.0f);
-		shootMotorRight.configPeakOutputVoltage(+12.0f, +0.0f); //The shooter will always either be stopped or going forwards
+		shootMotorRight.changeControlMode(CANTalon.TalonControlMode.Follower);
+		shootMotorRight.set(RobotMap.SHOOTER_LEFT_MOTOR_PORT);
+		shootMotorRight.reverseOutput(true);
+		shootMotorLeft.changeControlMode(TalonControlMode.Speed);
+		shootMotorLeft.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+		shootMotorLeft.reverseSensor(false);
+		shootMotorLeft.setProfile(0);
+		shootMotorLeft.setF(0);
+		shootMotorLeft.setP(0);
+		shootMotorLeft.setI(0);
+		shootMotorLeft.setD(0);
+		shootMotorLeft.configNominalOutputVoltage(+0.0f, -0.0f);
+		shootMotorLeft.configPeakOutputVoltage(+12.0f, +0.0f); //The shooter will always either be stopped or going forwards
 	}
 	
 
@@ -46,7 +46,7 @@ public class ShooterPID extends Subsystem {
     	
     	//If a valid value, run the shooter motor at the given speed
     	if (speed <= 1.0 && speed >= -1.0) {
-    		shootMotorRight.set(-speed);
+    		shootMotorLeft.set(-speed);
     		if (verbose) {
     			System.out.print("[Subsystem] Running Shooter Motors at speed " + speed);
     		}
@@ -57,6 +57,6 @@ public class ShooterPID extends Subsystem {
     }
     
     public void stop() {
-    	shootMotorRight.set(0);
+    	shootMotorLeft.set(0);
     }	
 }
