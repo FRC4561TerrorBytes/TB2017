@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4561.robot.subsystems;
 
 import org.usfirst.frc.team4561.robot.RobotMap;
+import org.usfirst.frc.team4561.robot.commands.DriveArcadeTwoStick;
 import org.usfirst.frc.team4561.robot.commands.DriveTank;
 
 import com.ctre.CANTalon;
@@ -30,8 +31,11 @@ public class DriveTrainPID extends Subsystem {
 		
 	private RobotDrive robotDrive;
 	
+	//TODO: Get max wanted RPM
+	int rpm = 1500; //RPM at full speed
+	
 	public void initDefaultCommand() {
-		setDefaultCommand(new DriveTank());
+		setDefaultCommand(new DriveArcadeTwoStick());
     }
 	
 	public DriveTrainPID() {
@@ -171,7 +175,27 @@ public class DriveTrainPID extends Subsystem {
  */
 	
 	public void arcadeDrive(double drive, double rot) {
-		robotDrive.arcadeDrive(drive, rot);
+		double leftMotorSpeed = 0.0;
+		double rightMotorSpeed = 0.0;
+		if (drive > 0.0) {
+		      if (rot > 0.0) {
+		        leftMotorSpeed = drive - rot;
+		        rightMotorSpeed = Math.max(drive, rot);
+		      } else {
+		        leftMotorSpeed = Math.max(drive, -rot);
+		        rightMotorSpeed = drive + rot;
+		      }
+		    } else {
+		      if (rot > 0.0) {
+		        leftMotorSpeed = -Math.max(-drive, rot);
+		        rightMotorSpeed = drive + rot;
+		      } else {
+		        leftMotorSpeed = drive - rot;
+		        rightMotorSpeed = -Math.max(-drive, -rot);
+		      }
+		    }
+		frontRight.set((int)rpm*rightMotorSpeed);
+		frontLeft.set((int)rpm*leftMotorSpeed);
 	}
 
 /**
