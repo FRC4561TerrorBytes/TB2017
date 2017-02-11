@@ -37,7 +37,7 @@ public class OI {
 	
 	// MAIN DRIVER BUTTONS
 	private JoystickButton shiftSpeedButton = new JoystickButton(leftStick, RobotMap.TRANSMISSION_SPEED_BUTTON);
-	private JoystickButton shiftTorqueButton = new JoystickButton(leftStick, RobotMap.TRANSMISSION_SPEED_BUTTON);
+	private JoystickButton shiftTorqueButton = new JoystickButton(leftStick, RobotMap.TRANSMISSION_TORQUE_BUTTON);
 	
 	private JoystickButton driveHeadingForward = new JoystickButton(rightStick, RobotMap.FRONT_HEADING_BUTTON);
 	private JoystickButton driveHeadingBackward = new JoystickButton(rightStick, RobotMap.BACKWARD_HEADING_BUTTON);
