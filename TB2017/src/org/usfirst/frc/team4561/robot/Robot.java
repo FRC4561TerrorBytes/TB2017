@@ -88,6 +88,7 @@ public class Robot extends IterativeRobot {
 			getDebugTable().putNumber("Rope Climber Velocity", Robot.ropeClimber.climbEncoderVel());
 			getDebugTable().putBoolean("Gear Manipulator Cover", Robot.gearManipulator.coverState());
 			getDebugTable().putBoolean("Gear Manipulator Holder", Robot.gearManipulator.holderState());
+			getDebugTable().putBoolean("Gear Manipulator Infrared", Robot.gearManipulator.detectorState());
 			getDebugTable().putNumber("Drive Train Front Left Pos", Robot.driveTrain.leftMotorPos());
 			getDebugTable().putNumber("Drive Train Front Right Pos", Robot.driveTrain.rightMotorPos());
 			getDebugTable().putNumber("Drive Train Front Left Vel", Robot.driveTrain.leftMotorVel());
@@ -131,6 +132,7 @@ public class Robot extends IterativeRobot {
 			getDebugTable().putNumber("Rope Climber Velocity", Robot.ropeClimber.climbEncoderVel());
 			getDebugTable().putBoolean("Gear Manipulator Cover", Robot.gearManipulator.coverState());
 			getDebugTable().putBoolean("Gear Manipulator Holder", Robot.gearManipulator.holderState());
+			getDebugTable().putBoolean("Gear Manipulator Infrared", Robot.gearManipulator.detectorState());
 			getDebugTable().putNumber("Drive Train Front Left Pos", Robot.driveTrain.leftMotorPos());
 			getDebugTable().putNumber("Drive Train Front Right Pos", Robot.driveTrain.rightMotorPos());
 			getDebugTable().putNumber("Drive Train Front Left Vel", Robot.driveTrain.leftMotorVel());
@@ -168,6 +170,7 @@ public class Robot extends IterativeRobot {
 			getDebugTable().putNumber("Rope Climber Velocity", Robot.ropeClimber.climbEncoderVel());
 			getDebugTable().putBoolean("Gear Manipulator Cover", Robot.gearManipulator.coverState());
 			getDebugTable().putBoolean("Gear Manipulator Holder", Robot.gearManipulator.holderState());
+			getDebugTable().putBoolean("Gear Manipulator Infrared", Robot.gearManipulator.detectorState());
 			getDebugTable().putNumber("Drive Train Front Left Pos", Robot.driveTrain.leftMotorPos());
 			getDebugTable().putNumber("Drive Train Front Right Pos", Robot.driveTrain.rightMotorPos());
 			getDebugTable().putNumber("Drive Train Front Left Vel", Robot.driveTrain.leftMotorVel());
@@ -188,6 +191,7 @@ public class Robot extends IterativeRobot {
 			getDebugTable().putNumber("Rope Climber Velocity", Robot.ropeClimber.climbEncoderVel());
 			getDebugTable().putBoolean("Gear Manipulator Cover", Robot.gearManipulator.coverState());
 			getDebugTable().putBoolean("Gear Manipulator Holder", Robot.gearManipulator.holderState());
+			getDebugTable().putBoolean("Gear Manipulator Infrared", Robot.gearManipulator.detectorState());
 			getDebugTable().putNumber("Drive Train Front Left Pos", Robot.driveTrain.leftMotorPos());
 			getDebugTable().putNumber("Drive Train Front Right Pos", Robot.driveTrain.rightMotorPos());
 			getDebugTable().putNumber("Drive Train Front Left Vel", Robot.driveTrain.leftMotorVel());

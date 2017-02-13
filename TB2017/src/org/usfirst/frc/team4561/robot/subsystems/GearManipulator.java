@@ -20,6 +20,7 @@ public class GearManipulator extends Subsystem {
 	private Solenoid holderSolenoid = new Solenoid(RobotMap.PCM, RobotMap.HOLDER_SOLENOID_PORT);
 	private Solenoid coverSolenoid = new Solenoid(RobotMap.PCM, RobotMap.COVER_SOLENOID_PORT);
 	
+	//Infrared Sensor Declaration
 	public DigitalInput gearDetector = new DigitalInput(0);
     
 	public void initDefaultCommand() {
@@ -58,6 +59,10 @@ public class GearManipulator extends Subsystem {
 	 */
 	public boolean holderState() {
 		return holderSolenoid.get();
+	}
+	
+	public boolean detectorState() {
+		return gearDetector.get();
 	}
 	
 	/**

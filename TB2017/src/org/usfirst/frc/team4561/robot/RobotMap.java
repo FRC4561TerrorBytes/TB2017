@@ -66,6 +66,9 @@ public class RobotMap {
 	// Controller port
 	public static final int CONTROLLER_PORT = 2;
 	
+	// Gear Manipulator Infrared Sensor
+	public static final int GEAR_DETECTOR_DIO = 0;
+	
 	// Gear manipulator buttons
 	public static final int GEAR_COVER_OPEN_BUTTON = 1; //TODO: Button number
 	public static final int GEAR_COVER_CLOSE_BUTTON = 2;//TODO: Button number
