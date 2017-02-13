@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4561.robot.commands.GearCoverClose;
 import org.usfirst.frc.team4561.robot.commands.GearCoverOpen;
 import org.usfirst.frc.team4561.robot.commands.IntakeBall;
+import org.usfirst.frc.team4561.robot.commands.PrintInfrared;
 import org.usfirst.frc.team4561.robot.commands.ServoClose;
 import org.usfirst.frc.team4561.robot.commands.ServoOpen;
 import org.usfirst.frc.team4561.robot.commands.GearHolderClose;
@@ -24,6 +25,7 @@ import org.usfirst.frc.team4561.robot.commands.Shoot;
 import org.usfirst.frc.team4561.robot.commands.SpeedGear;
 import org.usfirst.frc.team4561.robot.commands.TorqueGear;
 import org.usfirst.frc.team4561.robot.triggers.BothJoystickTriggers;
+import org.usfirst.frc.team4561.robot.triggers.GearDetectorTrigger;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -69,6 +71,8 @@ public class OI {
 	//Debug mode button
 	private JoystickButton debugModeButton = new JoystickButton(rightStick, RobotMap.DEBUG_MODE_BUTTON);
 	
+	private GearDetectorTrigger gearDetectorTrigger = new GearDetectorTrigger();
+	
 	public OI() {
 		matchMode();
 	}
@@ -108,6 +112,8 @@ public class OI {
 		agitatorForwardButton.whenPressed(new SetAgitatorPower(1));
 		agitatorOffButton.whenPressed(new SetAgitatorPower(0));
 		agitatorBackwardButton.whileHeld(new SetAgitatorPower(-1));
+		
+		gearDetectorTrigger.whenActive(new PrintInfrared());
 	}
 	
 	/**
