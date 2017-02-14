@@ -1,4 +1,4 @@
-package org.usfirst.frc.team4561.robot.commands;
+	package org.usfirst.frc.team4561.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team4561.robot.Robot;
@@ -24,7 +24,6 @@ public class DriveArcadeTwoStick extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.driveTrain.arcadeDrive(Robot.oi.getLeftStickX(), Robot.oi.getRightStickY());
-    
     }
 
     // Make this return true when this Command no longer needs to run execute()

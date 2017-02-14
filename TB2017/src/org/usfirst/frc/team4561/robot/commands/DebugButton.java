@@ -4,6 +4,7 @@ import org.usfirst.frc.team4561.robot.Robot;
 import org.usfirst.frc.team4561.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
 /**
  *
@@ -16,6 +17,7 @@ public class DebugButton extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+		Robot.debugTable = NetworkTable.getTable("Debugging");
     	Robot.debug = !Robot.debug;
     }
 

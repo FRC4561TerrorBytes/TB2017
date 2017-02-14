@@ -2,6 +2,8 @@ package org.usfirst.frc.team4561.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team4561.robot.RobotMap;
+import org.usfirst.frc.team4561.robot.commands.DriveArcade;
+import org.usfirst.frc.team4561.robot.commands.DriveArcadeTwoStick;
 import org.usfirst.frc.team4561.robot.commands.DriveTank;
 
 import com.ctre.CANTalon;
@@ -26,7 +28,7 @@ public class DriveTrain extends Subsystem {
 	private RobotDrive robotDrive;
 	
 	public void initDefaultCommand() {
-		setDefaultCommand(new DriveTank());
+		setDefaultCommand(new DriveArcadeTwoStick());
     }
 	
 	public DriveTrain() {
