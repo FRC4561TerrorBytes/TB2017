@@ -1,7 +1,8 @@
 package org.usfirst.frc.team4561.robot.automodes;
 
 import org.usfirst.frc.team4561.robot.commands.SpeedGear;
-import org.usfirst.frc.team4561.robot.commands.AutoTankDriveForward;
+import org.usfirst.frc.team4561.robot.commands.TorqueGear;
+import org.usfirst.frc.team4561.robot.commands.DriveTankTimed;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -30,8 +31,8 @@ public class AutoDriveToLine extends CommandGroup {
         // arm.
     	
     	// set gear to high speed, but low torque
-    	addSequential(new SpeedGear());
+    	addSequential(new TorqueGear());
     	// then drive forward at full speed
-    	addSequential(new AutoTankDriveForward());
+    	addSequential(new DriveTankTimed(1, 1, 10)); //TODO: Find exact amount of seconds (third value)
     }
 }
