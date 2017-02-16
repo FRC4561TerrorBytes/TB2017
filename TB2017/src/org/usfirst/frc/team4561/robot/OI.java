@@ -50,10 +50,17 @@ public class OI {
 	private JoystickButton cameraToggleButton = new JoystickButton(rightStick, RobotMap.TOGGLE_CAMERA_BUTTON);
 	
 	// SECONDARY OPERATOR BUTTONS
-	private JoystickButton gearCoverOpenButton = new JoystickButton(controller, RobotMap.GEAR_COVER_OPEN_BUTTON);
-	private JoystickButton gearCoverCloseButton = new JoystickButton(controller, RobotMap.GEAR_COVER_CLOSE_BUTTON);
-	private JoystickButton gearHolderOpenButton = new JoystickButton(controller, RobotMap.GEAR_HOLDER_CLOSE_BUTTON);
-	private JoystickButton gearHolderCloseButton = new JoystickButton(controller, RobotMap.GEAR_HOLDER_OPEN_BUTTON);
+//	private JoystickButton gearCoverOpenButton = new JoystickButton(controller, RobotMap.GEAR_COVER_OPEN_BUTTON);
+//	private JoystickButton gearCoverCloseButton = new JoystickButton(controller, RobotMap.GEAR_COVER_CLOSE_BUTTON);
+//	private JoystickButton gearHolderOpenButton = new JoystickButton(controller, RobotMap.GEAR_HOLDER_CLOSE_BUTTON);
+//	private JoystickButton gearHolderCloseButton = new JoystickButton(controller, RobotMap.GEAR_HOLDER_OPEN_BUTTON);
+	
+	private JoystickButton gearCoverOpenButton = new JoystickButton(leftStick, 7); // TODO: temporary for testing
+	private JoystickButton gearCoverCloseButton = new JoystickButton(leftStick, 8); // TODO: temporary for testing
+	private JoystickButton gearHolderOpenButton = new JoystickButton(leftStick, 9); // TODO: temporary for testing
+	private JoystickButton gearHolderCloseButton = new JoystickButton(leftStick, 10); // TODO: temporary for testing
+	
+	private JoystickButton climbButton = new JoystickButton(leftStick, 11); // TODO: temporary for testing
 	
 	private JoystickButton openServoButton = new JoystickButton(controller, RobotMap.SERVO_OPEN_BUTTON);
 	private JoystickButton closeServoButton = new JoystickButton(controller, RobotMap.SERVO_CLOSE_BUTTON);
@@ -108,6 +115,8 @@ public class OI {
 		
 		shooterOnButton.whenPressed(shootCommand);
 		shooterOffButton.cancelWhenPressed(shootCommand);
+		
+		climbButton.whileHeld(new Climb());
 		
 		agitatorForwardButton.whenPressed(new SetAgitatorPower(1));
 		agitatorOffButton.whenPressed(new SetAgitatorPower(0));

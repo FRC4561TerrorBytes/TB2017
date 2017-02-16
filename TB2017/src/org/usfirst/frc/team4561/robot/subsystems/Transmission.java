@@ -19,16 +19,13 @@ public class Transmission extends Subsystem {
 	 * public static final String TRANSMISSION_SOLENOID_TYPE = "single";
 	 */
 	
-	public String currentState = "SPEED GEAR";
-	private Solenoid solenoidTrans;
+	public String currentState = "Unknown";
+	public String lastChange = "None";
+	
 	private DoubleSolenoid doubleSolenoidTrans;
+	
 	public Transmission() {
-		if (RobotMap.TRANSMISSION_SOLENOID_TYPE == "single") {
-			solenoidTrans = new Solenoid(RobotMap.PCM, RobotMap.TRANSMISSION_SOLENOID_PORT);
-		}
-		else {
 			doubleSolenoidTrans = new DoubleSolenoid(RobotMap.PCM, RobotMap.TRANSMISSION_SOLENOID_PORT, RobotMap.TRANSMISSION_SOLENOID_TWO_PORT);
-		}
 	}
 	
     public void initDefaultCommand() {
@@ -38,29 +35,24 @@ public class Transmission extends Subsystem {
     
     //TODO: These two methods are temporary and can be switched around.
   	public void torqueGear() {
-  		if (RobotMap.TRANSMISSION_SOLENOID_TYPE == "single") {
+  		if (RobotMap.TRANSMISSION_VERBOSE) {
   			System.out.println("[Transmission] Switching to high torque gear...");
-  			solenoidTrans.set(true);
-  			currentState = "TORQUE GEAR";
   		}
-  		else {
-  			System.out.println("[Transmission] Switching to high torque gear...");
-  			doubleSolenoidTrans.set(DoubleSolenoid.Value.kForward);
-  			currentState = "TORQUE GEAR";
-  		}
+		doubleSolenoidTrans.set(DoubleSolenoid.Value.kForward);
+		lastChange = currentState = "Torque";
     }
     
   	public void speedGear() {
-      	if (RobotMap.TRANSMISSION_SOLENOID_TYPE == "single") {
+  		if (RobotMap.TRANSMISSION_VERBOSE) {
   			System.out.println("[Transmission] Switching to high speed gear...");
-  			solenoidTrans.set(false);
-  			currentState = "SPEED GEAR";
   		}
-  		else {
-  			System.out.println("[Transmission] Switching to high speed gear...");
-  			doubleSolenoidTrans.set(DoubleSolenoid.Value.kReverse);
-  			currentState = "SPEED GEAR";
-  		}
+		doubleSolenoidTrans.set(DoubleSolenoid.Value.kReverse);
+		lastChange = currentState = "Speed";
     }
+  	
+  	public void stop() {
+  		doubleSolenoidTrans.set(DoubleSolenoid.Value.kOff);
+  		currentState = "Off";
+  	}
   	
 }
