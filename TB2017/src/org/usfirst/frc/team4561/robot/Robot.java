@@ -43,6 +43,7 @@ public class Robot extends IterativeRobot {
 	Command autonomousCommand;
 	
 	public static boolean debug = false;
+	public static Object camera;
 
 	/**
 	 * This function is run when the robot is first started up and should be
