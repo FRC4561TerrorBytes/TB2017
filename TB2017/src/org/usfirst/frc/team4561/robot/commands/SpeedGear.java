@@ -19,6 +19,7 @@ public class SpeedGear extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	setTimeout(1);
     	if (RobotMap.TRANSMISSION_VERBOSE) {
     		System.out.println("[C:SpeedGear] Intializing...");
     	}
@@ -32,11 +33,12 @@ public class SpeedGear extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return isTimedOut();
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.transmission.stop();
     	if (RobotMap.TRANSMISSION_VERBOSE) {
     		System.out.println("[C:SpeedGear] Command finished.");
     	}
