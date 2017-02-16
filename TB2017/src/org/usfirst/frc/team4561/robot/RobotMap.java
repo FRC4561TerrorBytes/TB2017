@@ -27,8 +27,8 @@ public class RobotMap {
 	
 	//Solenoids and PCM
 	public static final int PCM = 12;
-	public static final int HOLDER_SOLENOID_PORT = 3;
-	public static final int COVER_SOLENOID_PORT = 4;
+	public static final int HOLDER_SOLENOID_PORT = 2;
+	public static final int COVER_SOLENOID_PORT = 3;
 	public static final int TRANSMISSION_SOLENOID_PORT = 0;
 	public static final int TRANSMISSION_SOLENOID_TWO_PORT = 1;
 	public static final String TRANSMISSION_SOLENOID_TYPE = "double"; // If this is "single", then transmission will use single solenoid.
@@ -103,7 +103,7 @@ public class RobotMap {
 	public static final boolean INTAKE_VERBOSE = false || MASTER_VERBOSE;
 	public static final boolean ROPE_CLIMBER_VERBOSE = false || MASTER_VERBOSE;
 	public static final boolean SHOOTER_VERBOSE = false || MASTER_VERBOSE;
-	public static final boolean TRANSMISSION_VERBOSE = false || MASTER_VERBOSE;		//TODO: should there be a verbose for this?
+	public static final boolean TRANSMISSION_VERBOSE = true || MASTER_VERBOSE;		//TODO: should there be a verbose for this?
 	
 	// For example to map the left and right motors, you could define the
 	// following variables to use with your drivetrain subsystem.
