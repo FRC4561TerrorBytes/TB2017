@@ -19,7 +19,6 @@ import org.usfirst.frc.team4561.robot.commands.DoNothing;
 import org.usfirst.frc.team4561.robot.commands.DriveHeadingForward;
 import org.usfirst.frc.team4561.robot.commands.DriveHeadingBackward;
 import org.usfirst.frc.team4561.robot.commands.TestMode;
-import org.usfirst.frc.team4561.robot.commands.ToggleCamera;
 import org.usfirst.frc.team4561.robot.commands.SetAgitatorPower;
 import org.usfirst.frc.team4561.robot.commands.Shoot;
 import org.usfirst.frc.team4561.robot.commands.SpeedGear;
@@ -93,9 +92,7 @@ public class OI {
 		driveHeadingBackward.whenPressed(new DriveHeadingBackward());
 		
 		mainGearReleaseButton.whenActive(new GearHolderClose());
-		
-		cameraToggleButton.whenPressed(new ToggleCamera());
-		
+				
 		gearCoverOpenButton.whenPressed(new GearCoverOpen());
 		gearCoverCloseButton.whenPressed(new GearCoverClose());
 		gearHolderOpenButton.whenPressed(new GearHolderOpen());
