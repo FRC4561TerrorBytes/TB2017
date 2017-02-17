@@ -16,6 +16,9 @@ public class DriveTankTimed extends Command {
 	
     public DriveTankTimed(double left, double right, double seconds) {
         requires(Robot.driveTrain);
+        this.leftpower = left;
+        this.rightpower = right;
+        this.seconds = seconds;
         setTimeout(seconds);
     }
     
