@@ -23,7 +23,7 @@ public class DriveArcadeTwoStick extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.arcadeDrive(Robot.oi.getRightStickY(), Robot.oi.getLeftStickX());
+    	Robot.driveTrain.arcadeDrive(Robot.oi.getRightStickX(), Robot.oi.getLeftStickY());
     }
 
     // Make this return true when this Command no longer needs to run execute()

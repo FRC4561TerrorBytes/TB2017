@@ -37,8 +37,6 @@ public class DriveTrain extends Subsystem {
 		
 		midRight = new CANTalon(RobotMap.MID_RIGHT_MOTOR_PORT);
 		
-		
-		
 		// Sets other motors as slaves to masters FrontLeft/Right, set doesn't set power, it sets a slave
 		midRight.changeControlMode(CANTalon.TalonControlMode.Follower);
 		midRight.set(RobotMap.FRONT_RIGHT_MOTOR_PORT);
@@ -55,9 +53,9 @@ public class DriveTrain extends Subsystem {
 		rearLeft.changeControlMode(CANTalon.TalonControlMode.Follower);
 		rearLeft.set(RobotMap.FRONT_LEFT_MOTOR_PORT);
 		
-		frontRight.setInverted(true);
-		midRight.setInverted(true);
-		rearRight.setInverted(true);
+		frontLeft.setInverted(true);
+		midLeft.setInverted(true);
+		rearLeft.setInverted(true);
 		
 		// Puts motors into RobotDrive class
 		robotDrive = new RobotDrive(frontLeft, frontRight);

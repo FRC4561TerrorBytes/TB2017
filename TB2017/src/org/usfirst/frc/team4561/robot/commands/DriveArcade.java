@@ -23,7 +23,7 @@ public class DriveArcade extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.arcadeDrive(Robot.oi.getRightStickY(), Robot.oi.getRightStickX());
+    	Robot.driveTrain.arcadeDrive(Robot.oi.getLeftStickY(), Robot.oi.getLeftStickX());
     }
 
     // Make this return true when this Command no longer needs to run execute()
