@@ -35,7 +35,7 @@ import com.ctre.CANTalon.TalonControlMode;
 public class Robot extends IterativeRobot {
 
 	public static DriveTrain driveTrain;
-	public static Shooter shooter;
+	public static ShooterPID shooter;
 	//public static Intake intake;
 	public static RopeClimber ropeClimber;
 	public static GearManipulator gearManipulator;
@@ -55,7 +55,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
-		shooter = new Shooter();
+		shooter = new ShooterPID();
 		driveTrain = new DriveTrain();
 		gearManipulator = new GearManipulator();	
 		//intake = new Intake();
@@ -178,14 +178,15 @@ public class Robot extends IterativeRobot {
 		
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
-		if (this.isTest()) {
-			oi.testMode();
-		} else {
-			oi.matchMode();
-		}
+		oi.matchMode();
 		if (RobotMap.MASTER_VERBOSE) {
 			System.out.println("[Robot] Started teleop");
 		}
+	}
+	
+	@Override
+	public void testInit(){
+		oi.testMode();
 	}
 
 	/**

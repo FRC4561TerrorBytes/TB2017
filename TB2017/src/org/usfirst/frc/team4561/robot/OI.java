@@ -75,12 +75,6 @@ public class OI {
 	private GearDetectorTrigger gearDetectorTrigger = new GearDetectorTrigger();
 	
 	public OI() {
-		if (DriverStation.getInstance().isTest()){
-			testMode();
-		}
-		else{
-			matchMode();
-		}
 	}
 	
 	/**
