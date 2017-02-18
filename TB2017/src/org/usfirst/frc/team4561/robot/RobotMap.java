@@ -9,28 +9,24 @@ package org.usfirst.frc.team4561.robot;
 public class RobotMap {
 	
 	// Motor ports
-	public static final int FRONT_RIGHT_MOTOR_PORT = 2;
-	public static final int FRONT_LEFT_MOTOR_PORT = 3;
-	
+	public static final int FRONT_LEFT_MOTOR_PORT = 1;
+	public static final int MID_LEFT_MOTOR_PORT = 2;
+	public static final int REAR_LEFT_MOTOR_PORT = 3;
+	public static final int FRONT_RIGHT_MOTOR_PORT = 4;
 	public static final int MID_RIGHT_MOTOR_PORT = 5;
-	public static final int MID_LEFT_MOTOR_PORT = 1;
-	
 	public static final int REAR_RIGHT_MOTOR_PORT = 6;
-	public static final int REAR_LEFT_MOTOR_PORT = 4;
+	public static final int SHOOTER_LEFT_MOTOR_PORT = 7;
+	public static final int SHOOTER_RIGHT_MOTOR_PORT = 8;
+	public static final int AGITATOR_MOTOR_PORT = 9;
+	public static final int CLIMBER_MOTOR = 10;
 	
-	public static final int CLIMBER_MOTOR = 7;
-	
-	public static final int SHOOTER_LEFT_MOTOR_PORT = 8;
-	public static final int SHOOTER_RIGHT_MOTOR_PORT = 9;
-	
-	public static final int AGITATOR_MOTOR_PORT = 10;
 	
 	//Solenoids and PCM
 	public static final int PCM = 12;
+	public static final int TRANSMISSION_SOLENOID_PORT = 1;
+	public static final int TRANSMISSION_SOLENOID_TWO_PORT = 0;
 	public static final int HOLDER_SOLENOID_PORT = 2;
 	public static final int COVER_SOLENOID_PORT = 3;
-	public static final int TRANSMISSION_SOLENOID_PORT = 0;
-	public static final int TRANSMISSION_SOLENOID_TWO_PORT = 1;
 	public static final String TRANSMISSION_SOLENOID_TYPE = "double"; // If this is "single", then transmission will use single solenoid.
 	// Else, the transmission will use a double solenoid.
 	
@@ -96,7 +92,7 @@ public class RobotMap {
 	public static final int DEBUG_MODE_BUTTON = 12;
 	
 	// Verbose Flags
-	public static final boolean MASTER_VERBOSE = false;
+	public static final boolean MASTER_VERBOSE = true;
 	public static final boolean AGITATOR_VERBOSE = false || MASTER_VERBOSE;
 	public static final boolean DRIVETRAIN_VERBOSE = false || MASTER_VERBOSE;
 	public static final boolean GEAR_MANIPULATOR_VERBOSE = false || MASTER_VERBOSE;	//TODO: should there be a verbose for this?
