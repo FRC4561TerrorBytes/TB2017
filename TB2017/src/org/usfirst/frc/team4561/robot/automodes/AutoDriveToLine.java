@@ -30,7 +30,7 @@ public class AutoDriveToLine extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	System.out.println("Driving to line");
-    	// bring gear cover down (starts this way because of frame perimeter)
+    	// make sure gear cover is down
     	addSequential(new GearCoverClose());
     	// set gear to high speed, but low torque
     	addSequential(new TorqueGear());
