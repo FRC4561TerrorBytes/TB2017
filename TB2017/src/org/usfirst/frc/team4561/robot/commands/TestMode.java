@@ -19,10 +19,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class TestMode extends Command {
 	
 	int motor;
+	int motorOld;
 	
     public TestMode() {
     	motor = (int)Robot.oi.getDashboardSlider3();
-    	
+    	System.out.println("Starting Test Mode");
     	// Requires whichever subsystem the method being invoked is in
     	switch (motor) {
     		case 0:
@@ -39,6 +40,7 @@ public class TestMode extends Command {
     			requires(Robot.ropeClimber);
     			break;
     	}
+    	motorOld = motor;
     	
     }
 
@@ -49,18 +51,24 @@ public class TestMode extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	motor = (int)Robot.oi.getDashboardSlider3();
     	switch (motor) {
 			case 0:
 				Robot.driveTrain.setLeftMotorPower(Robot.oi.getLeftStickThrottle());
 			case 1:
 				Robot.driveTrain.setRightMotorPower(Robot.oi.getLeftStickThrottle());
 			case 2:
+				Robot.shooter.switchToManual();
 				Robot.shooter.shootAtSpeed(Robot.oi.getLeftStickThrottle());
 			case 3:
 				Robot.agitator.setPower(Robot.oi.getLeftStickThrottle());
 			case 4:
 				Robot.ropeClimber.setClimber(Robot.oi.getLeftStickThrottle());
     	}
+    	if (motor != motorOld){
+    		System.out.println(motor);
+    	}
+    	motorOld = motor;
 
     }
 
