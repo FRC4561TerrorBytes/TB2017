@@ -54,22 +54,22 @@ public class OI {
 //	private JoystickButton gearHolderOpenButton = new JoystickButton(controller, RobotMap.GEAR_HOLDER_CLOSE_BUTTON);
 //	private JoystickButton gearHolderCloseButton = new JoystickButton(controller, RobotMap.GEAR_HOLDER_OPEN_BUTTON);
 	
-	private JoystickButton gearCoverOpenButton = new JoystickButton(leftStick, 7); // TODO: temporary for testing
-	private JoystickButton gearCoverCloseButton = new JoystickButton(leftStick, 8); // TODO: temporary for testing
-	private JoystickButton gearHolderOpenButton = new JoystickButton(leftStick, 9); // TODO: temporary for testing
-	private JoystickButton gearHolderCloseButton = new JoystickButton(leftStick, 10); // TODO: temporary for testing
+	private JoystickButton gearCoverOpenButton = new JoystickButton(controller, 7); // TODO: temporary for testing
+	private JoystickButton gearCoverCloseButton = new JoystickButton(controller, 5); // TODO: temporary for testing
+	private JoystickButton gearHolderOpenButton = new JoystickButton(controller, 8); // TODO: temporary for testing
+	private JoystickButton gearHolderCloseButton = new JoystickButton(controller, 6); // TODO: temporary for testing
 	
-	private JoystickButton climbButton = new JoystickButton(leftStick, 11); // TODO: temporary for testing
+	private JoystickButton climbButton = new JoystickButton(controller, 9); // TODO: temporary for testing
 	
-	private JoystickButton openServoButton = new JoystickButton(controller, RobotMap.SERVO_OPEN_BUTTON);
-	private JoystickButton closeServoButton = new JoystickButton(controller, RobotMap.SERVO_CLOSE_BUTTON);
+//	private JoystickButton openServoButton = new JoystickButton(controller, RobotMap.SERVO_OPEN_BUTTON);
+//	private JoystickButton closeServoButton = new JoystickButton(controller, RobotMap.SERVO_CLOSE_BUTTON);
 	
-	private JoystickButton shooterOnButton = new JoystickButton(controller, RobotMap.SHOOTER_ON_BUTTON);
-	private JoystickButton shooterOffButton = new JoystickButton(controller, RobotMap.SHOOTER_OFF_BUTTON);
+	private JoystickButton shooterOnButton = new JoystickButton(controller, 1); // TODO: temporary for testing
+	private JoystickButton shooterOffButton = new JoystickButton(controller, 2); // TODO: temporary for testing
 	
-	private JoystickButton agitatorForwardButton = new JoystickButton(controller, RobotMap.AGITATOR_FORWARD_BUTTON);
-	private JoystickButton agitatorOffButton = new JoystickButton(controller, RobotMap.AGITATOR_OFF_BUTTON);
-	private JoystickButton agitatorBackwardButton = new JoystickButton(controller, RobotMap.AGITATOR_BACKWARD_BUTTON);
+	private JoystickButton agitatorForwardButton = new JoystickButton(controller, 4);
+//	private JoystickButton agitatorOffButton = new JoystickButton(controller, RobotMap.AGITATOR_OFF_BUTTON);
+	private JoystickButton agitatorBackwardButton = new JoystickButton(controller, 3);
 	
 	// Test mode button
 	private JoystickButton testModeButton = new JoystickButton(controller, RobotMap.TEST_MODE_BUTTON);
@@ -99,14 +99,14 @@ public class OI {
 		driveHeadingBackward.whenPressed(new DriveHeadingBackward());
 		
 		mainGearReleaseButton.whenActive(new GearHolderClose());
-				
+		
 		gearCoverOpenButton.whenPressed(new GearCoverOpen());
 		gearCoverCloseButton.whenPressed(new GearCoverClose());
 		gearHolderOpenButton.whenPressed(new GearHolderOpen());
 		gearHolderCloseButton.whenPressed(new GearHolderClose());
 		
-		openServoButton.whenPressed(new ServoOpen());
-		closeServoButton.whenPressed(new ServoClose());
+//		openServoButton.whenPressed(new ServoOpen());
+//		closeServoButton.whenPressed(new ServoClose());
 		
 		Shoot shootCommand = new Shoot();
 		
@@ -115,9 +115,9 @@ public class OI {
 		
 		climbButton.whileHeld(new Climb());
 		
-		agitatorForwardButton.whenPressed(new SetAgitatorPower(1));
-		agitatorOffButton.whenPressed(new SetAgitatorPower(0));
-		agitatorBackwardButton.whileHeld(new SetAgitatorPower(-1));
+		agitatorForwardButton.whileHeld(new SetAgitatorPower(0.2));
+//		agitatorOffButton.whenPressed(new SetAgitatorPower(0));
+		agitatorBackwardButton.whileHeld(new SetAgitatorPower(-0.2));
 		
 		gearDetectorTrigger.whenActive(new PrintInfrared());
 	}
@@ -129,7 +129,7 @@ public class OI {
 	 */
 	public void testMode() {
 		// Reassign left trigger on left joystick to run motor while in test mode
-		testModeButton.whileHeld(new TestMode());
+		//testModeButton.whileHeld(new TestMode());
 	}
 	
 	// Joystick inputs
