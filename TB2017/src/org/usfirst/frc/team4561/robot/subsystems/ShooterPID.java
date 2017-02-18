@@ -20,7 +20,6 @@ public class ShooterPID extends Subsystem {
 		super();
 		shootMotorRight.changeControlMode(CANTalon.TalonControlMode.Follower);
 		shootMotorRight.set(RobotMap.SHOOTER_LEFT_MOTOR_PORT);
-		shootMotorRight.reverseOutput(true);
 		shootMotorLeft.changeControlMode(TalonControlMode.Speed);
 		shootMotorLeft.setFeedbackDevice(FeedbackDevice.QuadEncoder);
 		shootMotorLeft.reverseSensor(false);
@@ -48,7 +47,7 @@ public class ShooterPID extends Subsystem {
     	
     	//If a valid value, run the shooter motor at the given speed
     	if (speed <= 1.0 && speed >= -1.0) {
-    		shootMotorLeft.set(-speed);
+    		shootMotorLeft.set(speed);
     		if (verbose) {
     			System.out.print("[Subsystem] Running Shooter Motors at speed " + speed);
     		}
