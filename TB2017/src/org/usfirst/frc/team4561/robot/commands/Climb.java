@@ -13,6 +13,7 @@ public class Climb extends Command {
 
     public Climb() {
     	requires(Robot.ropeClimber);
+    	setInterruptible(false);
     }
     
     // Called just before this Command runs the first time
