@@ -9,10 +9,22 @@ import edu.wpi.first.wpilibj.buttons.Trigger;
  */
 public class GearDetectorTrigger extends Trigger {
 
+	private boolean lastSeenAsActive = false;
+	
 	public boolean get() {
+		boolean fire = false;
 		if (Robot.oi != null) {
-			return Robot.gearManipulator.gearDetector.get();
+			boolean nowActive = !Robot.gearManipulator.gearDetector.get();
+			if (lastSeenAsActive) {
+				if (!nowActive)
+					lastSeenAsActive = false;
+			} else {
+				if (nowActive) {
+					fire = true;
+					lastSeenAsActive = true;
+				}
+			}
 		}
-		return false;
+		return fire;
     }
 }
