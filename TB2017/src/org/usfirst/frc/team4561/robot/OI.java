@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4561.robot;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.Trigger;
@@ -19,6 +20,7 @@ import org.usfirst.frc.team4561.robot.commands.DoNothing;
 import org.usfirst.frc.team4561.robot.commands.DriveHeadingForward;
 import org.usfirst.frc.team4561.robot.commands.DriveHeadingBackward;
 import org.usfirst.frc.team4561.robot.commands.TestMode;
+import org.usfirst.frc.team4561.robot.commands.ToggleCamera;
 import org.usfirst.frc.team4561.robot.commands.SetAgitatorPower;
 import org.usfirst.frc.team4561.robot.commands.Shoot;
 import org.usfirst.frc.team4561.robot.commands.SpeedGear;
@@ -49,27 +51,20 @@ public class OI {
 	private JoystickButton cameraToggleButton = new JoystickButton(rightStick, RobotMap.TOGGLE_CAMERA_BUTTON);
 	
 	// SECONDARY OPERATOR BUTTONS
-//	private JoystickButton gearCoverOpenButton = new JoystickButton(controller, RobotMap.GEAR_COVER_OPEN_BUTTON);
-//	private JoystickButton gearCoverCloseButton = new JoystickButton(controller, RobotMap.GEAR_COVER_CLOSE_BUTTON);
-//	private JoystickButton gearHolderOpenButton = new JoystickButton(controller, RobotMap.GEAR_HOLDER_CLOSE_BUTTON);
-//	private JoystickButton gearHolderCloseButton = new JoystickButton(controller, RobotMap.GEAR_HOLDER_OPEN_BUTTON);
+	private JoystickButton gearCoverOpenButton = new JoystickButton(controller, RobotMap.GEAR_COVER_OPEN_BUTTON);
+	private JoystickButton gearCoverCloseButton = new JoystickButton(controller, RobotMap.GEAR_COVER_CLOSE_BUTTON);
+	private JoystickButton gearHolderOpenButton = new JoystickButton(controller, RobotMap.GEAR_HOLDER_CLOSE_BUTTON);
+	private JoystickButton gearHolderCloseButton = new JoystickButton(controller, RobotMap.GEAR_HOLDER_OPEN_BUTTON);
 	
-	private JoystickButton gearCoverOpenButton = new JoystickButton(controller, 7); // TODO: temporary for testing
-	private JoystickButton gearCoverCloseButton = new JoystickButton(controller, 5); // TODO: temporary for testing
-	private JoystickButton gearHolderOpenButton = new JoystickButton(controller, 8); // TODO: temporary for testing
-	private JoystickButton gearHolderCloseButton = new JoystickButton(controller, 6); // TODO: temporary for testing
+	private JoystickButton openServoButton = new JoystickButton(controller, RobotMap.SERVO_OPEN_BUTTON);
+	private JoystickButton closeServoButton = new JoystickButton(controller, RobotMap.SERVO_CLOSE_BUTTON);
 	
-	private JoystickButton climbButton = new JoystickButton(controller, 9); // TODO: temporary for testing
+	private JoystickButton shooterOnButton = new JoystickButton(controller, RobotMap.SHOOTER_ON_BUTTON);
+	private JoystickButton shooterOffButton = new JoystickButton(controller, RobotMap.SHOOTER_OFF_BUTTON);
 	
-//	private JoystickButton openServoButton = new JoystickButton(controller, RobotMap.SERVO_OPEN_BUTTON);
-//	private JoystickButton closeServoButton = new JoystickButton(controller, RobotMap.SERVO_CLOSE_BUTTON);
-	
-	private JoystickButton shooterOnButton = new JoystickButton(controller, 1); // TODO: temporary for testing
-	private JoystickButton shooterOffButton = new JoystickButton(controller, 2); // TODO: temporary for testing
-	
-	private JoystickButton agitatorForwardButton = new JoystickButton(controller, 4);
-//	private JoystickButton agitatorOffButton = new JoystickButton(controller, RobotMap.AGITATOR_OFF_BUTTON);
-	private JoystickButton agitatorBackwardButton = new JoystickButton(controller, 3);
+	private JoystickButton agitatorForwardButton = new JoystickButton(controller, RobotMap.AGITATOR_FORWARD_BUTTON);
+	private JoystickButton agitatorOffButton = new JoystickButton(controller, RobotMap.AGITATOR_OFF_BUTTON);
+	private JoystickButton agitatorBackwardButton = new JoystickButton(controller, RobotMap.AGITATOR_BACKWARD_BUTTON);
 	
 	// Test mode button
 	private JoystickButton testModeButton = new JoystickButton(controller, RobotMap.TEST_MODE_BUTTON);
@@ -80,7 +75,12 @@ public class OI {
 	private GearDetectorTrigger gearDetectorTrigger = new GearDetectorTrigger();
 	
 	public OI() {
-		matchMode();
+		if (DriverStation.getInstance().isTest()){
+			testMode();
+		}
+		else{
+			matchMode();
+		}
 	}
 	
 	/**
@@ -100,24 +100,24 @@ public class OI {
 		
 		mainGearReleaseButton.whenActive(new GearHolderClose());
 		
+		cameraToggleButton.whenPressed(new ToggleCamera());
+		
 		gearCoverOpenButton.whenPressed(new GearCoverOpen());
 		gearCoverCloseButton.whenPressed(new GearCoverClose());
 		gearHolderOpenButton.whenPressed(new GearHolderOpen());
 		gearHolderCloseButton.whenPressed(new GearHolderClose());
 		
-//		openServoButton.whenPressed(new ServoOpen());
-//		closeServoButton.whenPressed(new ServoClose());
+		openServoButton.whenPressed(new ServoOpen());
+		closeServoButton.whenPressed(new ServoClose());
 		
 		Shoot shootCommand = new Shoot();
 		
 		shooterOnButton.whenPressed(shootCommand);
 		shooterOffButton.cancelWhenPressed(shootCommand);
 		
-		climbButton.whileHeld(new Climb());
-		
-		agitatorForwardButton.whileHeld(new SetAgitatorPower(0.2));
-//		agitatorOffButton.whenPressed(new SetAgitatorPower(0));
-		agitatorBackwardButton.whileHeld(new SetAgitatorPower(-0.2));
+		agitatorForwardButton.whenPressed(new SetAgitatorPower(1));
+		agitatorOffButton.whenPressed(new SetAgitatorPower(0));
+		agitatorBackwardButton.whileHeld(new SetAgitatorPower(-1));
 		
 		gearDetectorTrigger.whenActive(new PrintInfrared());
 	}
@@ -129,7 +129,8 @@ public class OI {
 	 */
 	public void testMode() {
 		// Reassign left trigger on left joystick to run motor while in test mode
-		//testModeButton.whileHeld(new TestMode());
+		testModeButton.whenPressed(new TestMode());
+		System.out.println("Not insane");
 	}
 	
 	// Joystick inputs
