@@ -66,27 +66,27 @@ public class RobotMap {
 	public static final int GEAR_DETECTOR_DIO = 0;
 	
 	// Gear manipulator buttons
-	public static final int GEAR_COVER_OPEN_BUTTON = 1; //TODO: Button number
-	public static final int GEAR_COVER_CLOSE_BUTTON = 2;//TODO: Button number
-	public static final int GEAR_HOLDER_OPEN_BUTTON = 3; //TODO: Button number
-	public static final int GEAR_HOLDER_CLOSE_BUTTON = 4; //TODO: Button number
+	public static final int GEAR_COVER_OPEN_BUTTON = 7; //TODO: Button number
+	public static final int GEAR_COVER_CLOSE_BUTTON = 5;//TODO: Button number
+	public static final int GEAR_HOLDER_OPEN_BUTTON = 8; //TODO: Button number
+	public static final int GEAR_HOLDER_CLOSE_BUTTON = 6; //TODO: Button number
 	public static final int SERVO_OPEN_BUTTON = 5; // TODO: Button number
 	public static final int SERVO_CLOSE_BUTTON = 6; // TODO: Button number
 	
 	// Shooter buttons
-	public static final int SHOOTER_ON_BUTTON = 7;
-	public static final int SHOOTER_OFF_BUTTON = 8;
+	public static final int SHOOTER_ON_BUTTON = 1;
+	public static final int SHOOTER_OFF_BUTTON = 2;
 	
 	// Agitator buttons
-	public static final int AGITATOR_FORWARD_BUTTON = 9;
+	public static final int AGITATOR_FORWARD_BUTTON = 4;
 	public static final int AGITATOR_OFF_BUTTON = 10;
-	public static final int AGITATOR_BACKWARD_BUTTON = 11;
+	public static final int AGITATOR_BACKWARD_BUTTON = 3;
 	
 	// Climber buttons
-	public static final int CLIMBER_ON_BUTTON = 12;
+	public static final int CLIMBER_ON_BUTTON = 9;
 	
 	// Test mode button (left stick)
-	public static final int TEST_MODE_BUTTON = 1;
+	public static final int TEST_MODE_BUTTON = 11;
 	
 	//Debug mode button (right stick)
 	public static final int DEBUG_MODE_BUTTON = 12;

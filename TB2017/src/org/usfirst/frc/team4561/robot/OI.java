@@ -66,6 +66,8 @@ public class OI {
 	private JoystickButton agitatorOffButton = new JoystickButton(controller, RobotMap.AGITATOR_OFF_BUTTON);
 	private JoystickButton agitatorBackwardButton = new JoystickButton(controller, RobotMap.AGITATOR_BACKWARD_BUTTON);
 	
+	private JoystickButton climbButton = new JoystickButton(controller, 9);
+	
 	// Test mode button
 	private JoystickButton testModeButton = new JoystickButton(rightStick, RobotMap.TEST_MODE_BUTTON);
 	
@@ -112,6 +114,8 @@ public class OI {
 		agitatorForwardButton.whenPressed(new SetAgitatorPower(1));
 		agitatorOffButton.whenPressed(new SetAgitatorPower(0));
 		agitatorBackwardButton.whileHeld(new SetAgitatorPower(-1));
+		
+		climbButton.whileHeld(new Climb());
 		
 		gearDetectorTrigger.whenActive(new PrintInfrared());
 	}
