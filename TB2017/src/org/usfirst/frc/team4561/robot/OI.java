@@ -67,7 +67,7 @@ public class OI {
 	private JoystickButton agitatorBackwardButton = new JoystickButton(controller, RobotMap.AGITATOR_BACKWARD_BUTTON);
 	
 	// Test mode button
-	private JoystickButton testModeButton = new JoystickButton(controller, RobotMap.TEST_MODE_BUTTON);
+	private JoystickButton testModeButton = new JoystickButton(rightStick, RobotMap.TEST_MODE_BUTTON);
 	
 	//Debug mode button
 	private JoystickButton debugModeButton = new JoystickButton(rightStick, RobotMap.DEBUG_MODE_BUTTON);

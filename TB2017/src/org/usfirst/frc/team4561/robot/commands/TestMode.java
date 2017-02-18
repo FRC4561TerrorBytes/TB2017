@@ -22,7 +22,7 @@ public class TestMode extends Command {
 	int motorOld;
 	
     public TestMode() {
-    	motor = (int)Robot.oi.getDashboardSlider3();
+    	motor = (int)Robot.oi.getDashboardSlider1();
     	System.out.println("Starting Test Mode");
     	// Requires whichever subsystem the method being invoked is in
     	switch (motor) {

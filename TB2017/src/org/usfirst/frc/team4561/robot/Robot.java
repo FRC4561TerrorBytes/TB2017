@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4561.robot;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -31,7 +32,7 @@ import com.ctre.CANTalon.TalonControlMode;
 public class Robot extends IterativeRobot {
 
 	public static DriveTrain driveTrain;
-	public static Shooter shooter;
+	public static ShooterPID shooter;
 	//public static Intake intake;
 	public static RopeClimber ropeClimber;
 	public static GearManipulator gearManipulator;
@@ -51,7 +52,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
-		shooter = new Shooter();
+		shooter = new ShooterPID();
 		driveTrain = new DriveTrain();
 		gearManipulator = new GearManipulator();	
 		//intake = new Intake();
@@ -59,7 +60,7 @@ public class Robot extends IterativeRobot {
 		ropeClimber = new RopeClimber();
         transmission = new Transmission();
 		oi = new OI();
-		
+		CameraServer.getInstance().startAutomaticCapture();
 		if(RobotMap.MASTER_VERBOSE) {
 			System.out.println("[Robot] Subsystems constructed");
 		}
@@ -85,7 +86,7 @@ public class Robot extends IterativeRobot {
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 		if(Robot.isInDebugMode()) {
-			//getDebugTable().putNumber("Shooter Velocity", Robot.shooter.rightEncoderVel());
+			getDebugTable().putNumber("Shooter Velocity", Robot.shooter.getLeftEncoderVelocity());
 			getDebugTable().putNumber("Rope Climber Velocity", Robot.ropeClimber.climbEncoderVel());
 			getDebugTable().putBoolean("Gear Manipulator Cover", Robot.gearManipulator.coverState());
 			getDebugTable().putBoolean("Gear Manipulator Holder", Robot.gearManipulator.holderState());
@@ -129,7 +130,7 @@ public class Robot extends IterativeRobot {
 	public void autonomousPeriodic() {
         Scheduler.getInstance().run();
         if(Robot.isInDebugMode()) {
-			//getDebugTable().putNumber("Shooter Velocity", Robot.shooter.rightEncoderVel());
+			getDebugTable().putNumber("Shooter Velocity", Robot.shooter.getLeftEncoderVelocity());
 			getDebugTable().putNumber("Rope Climber Velocity", Robot.ropeClimber.climbEncoderVel());
 			getDebugTable().putBoolean("Gear Manipulator Cover", Robot.gearManipulator.coverState());
 			getDebugTable().putBoolean("Gear Manipulator Holder", Robot.gearManipulator.holderState());
@@ -167,7 +168,7 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
         Scheduler.getInstance().run();
         if(Robot.isInDebugMode()) {
-			//getDebugTable().putNumber("Shooter Velocity", Robot.shooter.rightEncoderVel());
+			getDebugTable().putNumber("Shooter Velocity", Robot.shooter.getLeftEncoderVelocity());
 			getDebugTable().putNumber("Rope Climber Velocity", Robot.ropeClimber.climbEncoderVel());
 			getDebugTable().putBoolean("Gear Manipulator Cover", Robot.gearManipulator.coverState());
 			getDebugTable().putBoolean("Gear Manipulator Holder", Robot.gearManipulator.holderState());
@@ -188,7 +189,7 @@ public class Robot extends IterativeRobot {
 	public void testPeriodic() {
 		LiveWindow.run();
         if(Robot.isInDebugMode()) {
-			//getDebugTable().putNumber("Shooter Velocity", Robot.shooter.rightEncoderVel());
+			getDebugTable().putNumber("Shooter Velocity", Robot.shooter.getLeftEncoderVelocity());
 			getDebugTable().putNumber("Rope Climber Velocity", Robot.ropeClimber.climbEncoderVel());
 			getDebugTable().putBoolean("Gear Manipulator Cover", Robot.gearManipulator.coverState());
 			getDebugTable().putBoolean("Gear Manipulator Holder", Robot.gearManipulator.holderState());
