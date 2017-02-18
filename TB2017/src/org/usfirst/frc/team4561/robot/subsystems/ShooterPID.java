@@ -16,11 +16,10 @@ public class ShooterPID extends Subsystem {
 	private CANTalon shootMotorLeft = new CANTalon(RobotMap.SHOOTER_LEFT_MOTOR_PORT);
 	private CANTalon shootMotorRight = new CANTalon(RobotMap.SHOOTER_RIGHT_MOTOR_PORT);
 
-	public ShooterPID(){
+	public ShooterPID() {
 		super();
 		shootMotorRight.changeControlMode(CANTalon.TalonControlMode.Follower);
 		shootMotorRight.set(RobotMap.SHOOTER_LEFT_MOTOR_PORT);
-		shootMotorRight.reverseOutput(true);
 		shootMotorLeft.changeControlMode(TalonControlMode.Speed);
 		shootMotorLeft.setFeedbackDevice(FeedbackDevice.QuadEncoder);
 		shootMotorLeft.reverseSensor(false);
@@ -44,18 +43,19 @@ public class ShooterPID extends Subsystem {
     public void initDefaultCommand() {
     }
     
-    public void shootAtSpeed(double speed){
+    public void shootAtSpeed(double speed) {
     	
     	//If a valid value, run the shooter motor at the given speed
-    	if (speed <= 1.0 && speed >= -1.0) {
-    		shootMotorLeft.set(-speed);
-    		if (verbose) {
-    			System.out.print("[Subsystem] Running Shooter Motors at speed " + speed);
-    		}
-    	}
-    	else if (verbose) {
-    		System.out.println("[Subsystem] Did not run Shooter Motors, given speed was invalid");
-    	}
+//    	if (speed <= 1.0 && speed >= -1.0) {
+//    		shootMotorLeft.set(speed);
+//    		if (verbose) {
+//    			System.out.print("[Subsystem] Running Shooter Motors at speed " + speed);
+//    		}
+//    	}
+//    	else if (verbose) {
+//    		System.out.println("[Subsystem] Did not run Shooter Motors, given speed was invalid");
+//    	}
+    	shootMotorLeft.set(speed);
     }
     
     public void stop() {
