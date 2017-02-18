@@ -14,12 +14,17 @@ public class RopeClimber extends Subsystem {
 	
 	private CANTalon climberMotor = new CANTalon(RobotMap.CLIMBER_MOTOR);
 	
+	public RopeClimber() {
+		climberMotor.enableBrakeMode(true);
+		climberMotor.setInverted(true);
+	}
+	
 	public void initDefaultCommand() {
 		//TODO: Create command commandsetDefaultCommand(new );
 	}
 	//sets power to 1 when power is not 1, same with -1
 	public void setClimber(double power) {
-		if (power > 1) {
+		if (power > 1.0) {
 			if (RobotMap.ROPE_CLIMBER_VERBOSE) {
 				System.out.println("[Subsystem] Rope climber power set too high: " + power + ", changing to full forward.");
 			}
