@@ -6,9 +6,13 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-//import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team4561.robot.automodes.AutoDriveToLine;
+import org.usfirst.frc.team4561.robot.automodes.AutoHighGoal;
+import org.usfirst.frc.team4561.robot.automodes.AutoPlaceGear;
+import org.usfirst.frc.team4561.robot.commands.DoNothing;
 import org.usfirst.frc.team4561.robot.subsystems.Agitator;
 import org.usfirst.frc.team4561.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4561.robot.subsystems.DriveTrainPID;
@@ -113,7 +117,31 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-
+		//The following code is how we select an automode with a slider on the smartdashboard
+		try {
+			int slider1 = (int)SmartDashboard.getNumber("DB/Slider 0");
+			switch (slider1) {
+			case 0:
+				autonomousCommand = new DoNothing();
+				break;
+			case 1:
+				autonomousCommand = new AutoDriveToLine();
+				break;
+			case 2:
+				autonomousCommand = new AutoPlaceGear();
+				break;
+			case 3:
+				autonomousCommand = new AutoHighGoal();
+				break;
+			case 4:
+				//autonomousCommand = new AutoHopperHighGoal; //TODO: Implement after Shirvakas pushes his code
+				break;
+			}
+		}
+		catch(Throwable t) {
+			System.out.println("Autonomous Picking Failed.");
+		}
+		
 		// Schedule the autonomous command (example)
 		if (autonomousCommand != null) {
 			autonomousCommand.start();
@@ -151,14 +179,15 @@ public class Robot extends IterativeRobot {
 		
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
-		if (this.isTest()) {
-			oi.testMode();
-		} else {
-			oi.matchMode();
-		}
+		oi.matchMode();
 		if (RobotMap.MASTER_VERBOSE) {
 			System.out.println("[Robot] Started teleop");
 		}
+	}
+	
+	@Override
+	public void testInit(){
+		oi.testMode();
 	}
 
 	/**

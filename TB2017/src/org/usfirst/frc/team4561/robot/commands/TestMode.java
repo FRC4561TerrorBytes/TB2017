@@ -3,7 +3,6 @@ package org.usfirst.frc.team4561.robot.commands;
 import org.usfirst.frc.team4561.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * Sets the power to a motor (or a group of them) for testing. 
@@ -51,7 +50,7 @@ public class TestMode extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	motor = (int)Robot.oi.getDashboardSlider3();
+    	motor = (int)Robot.oi.getDashboardSlider1();
     	switch (motor) {
 			case 0:
 				Robot.driveTrain.setLeftMotorPower(Robot.oi.getLeftStickThrottle());
