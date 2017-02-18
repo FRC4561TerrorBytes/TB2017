@@ -16,25 +16,24 @@ public class ShooterPID extends Subsystem {
 	private CANTalon shootMotorLeft = new CANTalon(RobotMap.SHOOTER_LEFT_MOTOR_PORT);
 	private CANTalon shootMotorRight = new CANTalon(RobotMap.SHOOTER_RIGHT_MOTOR_PORT);
 
-	public ShooterPID(){
-		super();
+	public ShooterPID() {
 		shootMotorRight.changeControlMode(CANTalon.TalonControlMode.Follower);
 		shootMotorRight.set(RobotMap.SHOOTER_LEFT_MOTOR_PORT);
-		shootMotorLeft.changeControlMode(TalonControlMode.Speed);
+//		shootMotorLeft.changeControlMode(TalonControlMode.Speed);
 		shootMotorLeft.setFeedbackDevice(FeedbackDevice.QuadEncoder);
-		shootMotorLeft.reverseSensor(false);
-		shootMotorLeft.setProfile(0);
-		shootMotorLeft.setF(0);
-		shootMotorLeft.setP(0);
-		shootMotorLeft.setI(0);
-		shootMotorLeft.setD(0);
+//		shootMotorLeft.reverseSensor(false);
+//		shootMotorLeft.setProfile(0);
+//		shootMotorLeft.setF(0);
+//		shootMotorLeft.setP(0);
+//		shootMotorLeft.setI(0);
+//		shootMotorLeft.setD(0);
 		shootMotorLeft.configNominalOutputVoltage(+0.0f, -0.0f);
 		shootMotorLeft.configPeakOutputVoltage(+12.0f, +0.0f); //The shooter will always either be stopped or going forwards
 	}
 	
 	//sends motor velocity to robot.java for debug
-	public double rightEncoderVel() {
-		return shootMotorRight.getEncVelocity();
+	public double getLeftEncoderVelocity() {
+		return shootMotorLeft.getEncVelocity();
 	}
 	
 	//verbose flag
@@ -59,5 +58,5 @@ public class ShooterPID extends Subsystem {
     
     public void stop() {
     	shootMotorLeft.set(0);
-    }	
+    }
 }
