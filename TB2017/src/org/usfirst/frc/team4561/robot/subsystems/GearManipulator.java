@@ -3,6 +3,7 @@ package org.usfirst.frc.team4561.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 import org.usfirst.frc.team4561.robot.RobotMap;
+import org.usfirst.frc.team4561.robot.commands.GearHolderClose;
 
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -28,6 +29,7 @@ public class GearManipulator extends Subsystem {
 	public DigitalInput gearDetector = new DigitalInput(0);
     
 	public void initDefaultCommand() {
+		setDefaultCommand(new GearHolderClose());
     }
     
 	/**

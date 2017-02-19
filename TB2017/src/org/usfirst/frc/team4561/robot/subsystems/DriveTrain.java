@@ -118,7 +118,29 @@ public class DriveTrain extends Subsystem {
 	 * @param rot
 	 */
 	public void arcadeDrive(double drive, double rot) {
-		robotDrive.arcadeDrive(drive, rot);
+		double leftMotorSpeed = 0.0;
+		double rightMotorSpeed = 0.0;
+		if (drive > 0.0) {
+			if (rot > 0.0) {
+				leftMotorSpeed = drive - rot;
+				rightMotorSpeed = Math.max(drive, rot);
+		    } else {
+		    	leftMotorSpeed = Math.max(drive, -rot);
+		    	rightMotorSpeed = drive + rot;
+		      }
+		    } else {
+		      if (rot > 0.0) {
+		        leftMotorSpeed = -Math.max(-drive, rot);
+		        rightMotorSpeed = drive + rot;
+		      } else {
+		        leftMotorSpeed = drive - rot;
+		        rightMotorSpeed = -Math.max(-drive, -rot);
+		      }
+		    }
+//		frontRight.set(rightMotorSpeed);
+//		frontLeft.set(leftMotorSpeed);
+		leftMotorSpeed *= 0.925;
+		robotDrive.setLeftRightMotorOutputs(leftMotorSpeed, rightMotorSpeed);
 	}
 	
 	/**

@@ -1,7 +1,7 @@
 package org.usfirst.frc.team4561.robot.automodes;
  
-import org.usfirst.frc.team4561.robot.commands.GearCoverOpen;
-import org.usfirst.frc.team4561.robot.commands.GearHolderOpen;
+import org.usfirst.frc.team4561.robot.commands.GearOverride;
+import org.usfirst.frc.team4561.robot.commands.GearOverride;
 import org.usfirst.frc.team4561.robot.commands.TorqueGear;
 import org.usfirst.frc.team4561.robot.commands.DriveTankTimed;
 import org.usfirst.frc.team4561.robot.commands.GearCoverClose;
@@ -34,6 +34,6 @@ public class AutoPlaceGear extends CommandGroup {
         addSequential(new TorqueGear()); // Go into high torque but low speed gear
         addSequential(new DriveTankTimed(1, 1, 10)); // Move close to peg (TODO: change number of seconds)
         addSequential(new DriveTankTimed(1, 1, 10)); // Move closer to peg (TODO: change number of seconds)
-        addSequential(new GearHolderOpen()); // Open the gear holder
+        addSequential(new GearOverride()); // Open the gear holder
     }
 }

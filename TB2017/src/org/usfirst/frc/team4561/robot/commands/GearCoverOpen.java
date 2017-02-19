@@ -6,13 +6,13 @@ import org.usfirst.frc.team4561.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * Opens gear manipulator cover.
+ * Opens gear manipulator cover. NOT USED.
  * @author: Lucas T
  */
 public class GearCoverOpen extends Command {
 
     public GearCoverOpen() {
-    	requires(Robot.gearManipulator);
+    	//requires(Robot.gearManipulator);
     }
 
     // Called just before this Command runs the first time
@@ -29,11 +29,12 @@ public class GearCoverOpen extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.gearManipulator.closeCover();
     	if (RobotMap.GEAR_MANIPULATOR_VERBOSE) {
     		System.out.println("[Command] Ending GearCoverOpen");
     	}

@@ -29,8 +29,8 @@ public class ShooterPID extends Subsystem {
 //		shootMotorLeft.setP(0);
 //		shootMotorLeft.setI(0);
 //		shootMotorLeft.setD(0);
-		shootMotorLeft.configNominalOutputVoltage(+0.0f, -0.0f);
-		shootMotorLeft.configPeakOutputVoltage(+12.0f, +0.0f); //The shooter will always either be stopped or going forwards
+//		shootMotorLeft.configNominalOutputVoltage(+0.0f, -0.0f);
+//		shootMotorLeft.configPeakOutputVoltage(+12.0f, +0.0f); //The shooter will always either be stopped or going forwards
 	}
 	
 	public void switchToManual(){
@@ -39,7 +39,9 @@ public class ShooterPID extends Subsystem {
 	
 	//sends motor velocity to robot.java for debug
 	public double getLeftEncoderVelocity() {
-		return shootMotorLeft.getEncVelocity();
+		int i = shootMotorLeft.getEncVelocity();
+		System.out.println(i);
+		return i;
 	}
 	
 	//verbose flag
@@ -52,7 +54,7 @@ public class ShooterPID extends Subsystem {
     	
     	//If a valid value, run the shooter motor at the given speed
     	if (speed <= 1.0 && speed >= -1.0) {
-    		shootMotorLeft.set(-speed);
+    		shootMotorLeft.set(speed);
     		if (verbose) {
     			System.out.print("[Subsystem] Running Shooter Motors at speed " + speed);
     		}

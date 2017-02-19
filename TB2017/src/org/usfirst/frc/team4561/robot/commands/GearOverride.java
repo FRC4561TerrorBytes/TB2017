@@ -6,13 +6,14 @@ import org.usfirst.frc.team4561.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * Opens main mechanism for gear manipulator.
- * @author: Lucas T
+ * Overrides the gear manipulator default command to give the main driver release control.
+ * @author Kaiz
  */
-public class GearHolderOpen extends Command {
+public class GearOverride extends Command {
 
-    public GearHolderOpen() {
+    public GearOverride() {
     	requires(Robot.gearManipulator);
+    	setInterruptible(false);
     }
 
     // Called just before this Command runs the first time
@@ -25,11 +26,16 @@ public class GearHolderOpen extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.gearManipulator.openHolder();
+    	if (Robot.oi.getGearCoverButton()) {
+    		Robot.gearManipulator.openCover();
+    	} else {
+    		Robot.gearManipulator.closeCover();
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true
