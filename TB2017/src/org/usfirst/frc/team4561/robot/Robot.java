@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4561.robot.automodes.AutoDoNothing;
 import org.usfirst.frc.team4561.robot.automodes.AutoDriveToLine;
 import org.usfirst.frc.team4561.robot.automodes.AutoHighGoal;
+import org.usfirst.frc.team4561.robot.automodes.AutoHopperHighGoal;
 import org.usfirst.frc.team4561.robot.automodes.AutoPlaceGear;
 import org.usfirst.frc.team4561.robot.commands.DoNothing;
 import org.usfirst.frc.team4561.robot.subsystems.Agitator;
@@ -135,7 +136,7 @@ public class Robot extends IterativeRobot {
 //				autonomousCommand = new AutoHighGoal();
 				break;
 			case 4:
-				//autonomousCommand = new AutoHopperHighGoal; //TODO: Implement after Shirvakas pushes his code
+				autonomousCommand = new AutoHopperHighGoal();
 				break;
 			}
 		}
