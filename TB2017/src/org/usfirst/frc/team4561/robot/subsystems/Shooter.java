@@ -3,6 +3,7 @@ package org.usfirst.frc.team4561.robot.subsystems;
 import org.usfirst.frc.team4561.robot.RobotMap;
 
 import com.ctre.CANTalon;
+import com.ctre.CANTalon.TalonControlMode;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -23,6 +24,10 @@ public class Shooter extends Subsystem {
 		shootMotorRight.set(RobotMap.SHOOTER_LEFT_MOTOR_PORT);
 		shootMotorRight.setInverted(true);
 		shootMotorLeft.setInverted(true);
+	}
+	
+	public void switchToManual(){
+		shootMotorLeft.changeControlMode(TalonControlMode.PercentVbus);
 	}
 	
     public void initDefaultCommand() {

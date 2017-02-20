@@ -65,7 +65,7 @@ public class TestMode extends Command {
 				Robot.ropeClimber.setClimber(Robot.oi.getLeftStickThrottle());
     	}
     	if (motor != motorOld){
-    		System.out.println(motor);
+    		System.out.println(motor); 
     	}
     	motorOld = motor;
 
