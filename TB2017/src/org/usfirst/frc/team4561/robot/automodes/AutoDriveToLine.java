@@ -5,6 +5,7 @@ import org.usfirst.frc.team4561.robot.commands.TorqueGear;
 import org.usfirst.frc.team4561.robot.commands.DriveTankTimed;
 import org.usfirst.frc.team4561.robot.commands.GearCoverClose;
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.command.WaitCommand;
 
 /**
  * TODO: Document
@@ -29,12 +30,10 @@ public class AutoDriveToLine extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	System.out.println("Driving to line");
-    	// make sure gear cover is down
-    	addSequential(new GearCoverClose());
-    	// set gear to high speed, but low torque
+    	
     	addSequential(new TorqueGear());
-    	// then drive forward at full speed
-    	addSequential(new DriveTankTimed(1, 1, 10)); //TODO: Find exact amount of seconds (third value)
+    	// Drive forward at full speed
+    	addSequential(new DriveTankTimed(1, 1, 10));
+    	addSequential(new WaitCommand(5));
     }
 }

@@ -21,7 +21,7 @@ public class ShooterPID extends Subsystem {
 		shootMotorRight.set(RobotMap.SHOOTER_LEFT_MOTOR_PORT);
 		shootMotorRight.setInverted(true);
 		shootMotorLeft.setInverted(true);
-//		shootMotorLeft.changeControlMode(TalonControlMode.Speed);
+		shootMotorLeft.changeControlMode(TalonControlMode.Speed);
 		shootMotorLeft.setFeedbackDevice(FeedbackDevice.QuadEncoder);
 //		shootMotorLeft.reverseSensor(false);
 //		shootMotorLeft.setProfile(0);
@@ -39,9 +39,7 @@ public class ShooterPID extends Subsystem {
 	
 	//sends motor velocity to robot.java for debug
 	public double getLeftEncoderVelocity() {
-		int i = shootMotorLeft.getEncVelocity();
-		System.out.println(i);
-		return i;
+		return shootMotorLeft.getEncVelocity();
 	}
 	
 	//verbose flag
@@ -62,6 +60,10 @@ public class ShooterPID extends Subsystem {
     	else if (verbose) {
     		System.out.println("[Subsystem] Did not run Shooter Motors, given speed was invalid");
     	}
+    }
+    
+    public void shootAtRPM(int rpm) {
+    	shootMotorLeft.setSetpoint(rpm);
     }
     
     public void stop() {

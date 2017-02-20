@@ -21,10 +21,16 @@ public class Shooter extends Subsystem {
 	public Shooter(){
 		shootMotorRight.changeControlMode(CANTalon.TalonControlMode.Follower);
 		shootMotorRight.set(RobotMap.SHOOTER_LEFT_MOTOR_PORT);
+		shootMotorRight.setInverted(true);
+		shootMotorLeft.setInverted(true);
 	}
 	
     public void initDefaultCommand() {
     }
+    
+    public double getLeftEncoderVelocity() {
+		return shootMotorLeft.getEncVelocity();
+	}
     
     public void shootAtSpeed(double speed){
     	

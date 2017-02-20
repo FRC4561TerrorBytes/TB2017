@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team4561.robot.automodes.AutoDoNothing;
 import org.usfirst.frc.team4561.robot.automodes.AutoDriveToLine;
 import org.usfirst.frc.team4561.robot.automodes.AutoHighGoal;
 import org.usfirst.frc.team4561.robot.automodes.AutoPlaceGear;
@@ -36,7 +37,7 @@ import com.ctre.CANTalon.TalonControlMode;
 public class Robot extends IterativeRobot {
 
 	public static DriveTrain driveTrain;
-	public static ShooterPID shooter;
+	public static Shooter shooter;
 	//public static Intake intake;
 	public static RopeClimber ropeClimber;
 	public static GearManipulator gearManipulator;
@@ -56,7 +57,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
-		shooter = new ShooterPID();
+		shooter = new Shooter();
 		driveTrain = new DriveTrain();
 		gearManipulator = new GearManipulator();	
 		//intake = new Intake();
@@ -119,19 +120,19 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 		//The following code is how we select an automode with a slider on the smartdashboard
 		try {
-			int slider1 = (int)SmartDashboard.getNumber("DB/Slider 0");
+			int slider1 = (int)Robot.oi.getDashboardSlider0();
 			switch (slider1) {
 			case 0:
-				autonomousCommand = new DoNothing();
+				autonomousCommand = new AutoDoNothing();
 				break;
 			case 1:
 				autonomousCommand = new AutoDriveToLine();
 				break;
 			case 2:
-				autonomousCommand = new AutoPlaceGear();
+//				autonomousCommand = new AutoPlaceGear();
 				break;
 			case 3:
-				autonomousCommand = new AutoHighGoal();
+//				autonomousCommand = new AutoHighGoal();
 				break;
 			case 4:
 				//autonomousCommand = new AutoHopperHighGoal; //TODO: Implement after Shirvakas pushes his code
