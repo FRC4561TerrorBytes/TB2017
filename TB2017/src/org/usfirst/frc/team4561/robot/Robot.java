@@ -11,9 +11,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4561.robot.automodes.AutoDoNothing;
 import org.usfirst.frc.team4561.robot.automodes.AutoDriveToLine;
+import org.usfirst.frc.team4561.robot.automodes.AutoGearStation1CP;
 import org.usfirst.frc.team4561.robot.automodes.AutoHighGoal;
 import org.usfirst.frc.team4561.robot.automodes.AutoHopperHighGoal;
-import org.usfirst.frc.team4561.robot.automodes.AutoPlaceGear;
+import org.usfirst.frc.team4561.robot.automodes.AutoGearStation2;
+import org.usfirst.frc.team4561.robot.automodes.AutoGearStation3CP;
 import org.usfirst.frc.team4561.robot.commands.DoNothing;
 import org.usfirst.frc.team4561.robot.subsystems.Agitator;
 import org.usfirst.frc.team4561.robot.subsystems.DriveTrain;
@@ -120,8 +122,13 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		//The following code is how we select an automode with a slider on the smartdashboard
+		//DO NOT INTIALIZE AT THE SAME TIME AS TESTMODE OR ANY OTHER MODE INVOLVING SLIDERS
+		
 		try {
 			int slider1 = (int)Robot.oi.getDashboardSlider0();
+			int slider2 = (int)Robot.oi.getDashboardSlider1();
+			int slider3 = (int)Robot.oi.getDashboardSlider2();
+			
 			switch (slider1) {
 			case 0:
 				autonomousCommand = new AutoDoNothing();
@@ -130,10 +137,35 @@ public class Robot extends IterativeRobot {
 				autonomousCommand = new AutoDriveToLine();
 				break;
 			case 2:
-//				autonomousCommand = new AutoPlaceGear();
+				if(slider2==0){
+					if(slider3>0){
+						//autonomousCommand = new AutoGearStation1LP();
+					}
+					else{
+						autonomousCommand = new AutoGearStation1CP();
+					}
+				}
+				
+				else if(slider2==1){
+					autonomousCommand = new AutoGearStation2();
+				}
+				
+				else if(slider2==2){
+					if(slider3>0){
+						//autonomousCommand = new AutoGearStation3RP();
+					}
+					else{
+						autonomousCommand = new AutoGearStation3CP();
+					}
+				}
+				
+				else{
+					System.out.println("[WARNING] invalid alliace station number\nAlliance station selection starts at 0, which is station 1 and so on");
+					autonomousCommand = null;
+				}
 				break;
 			case 3:
-//				autonomousCommand = new AutoHighGoal();
+				autonomousCommand = new AutoHighGoal();
 				break;
 			case 4:
 				autonomousCommand = new AutoHopperHighGoal();
