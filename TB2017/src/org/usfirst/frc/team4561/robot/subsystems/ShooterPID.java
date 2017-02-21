@@ -19,6 +19,9 @@ public class ShooterPID extends Subsystem {
 	public ShooterPID() {
 		shootMotorRight.changeControlMode(CANTalon.TalonControlMode.Follower);
 		shootMotorRight.set(RobotMap.SHOOTER_LEFT_MOTOR_PORT);
+		
+		// setInverted inverts motor output but doesn't invert what is sent to followers,
+		// so we need calls to both motors.
 		shootMotorRight.setInverted(true);
 		shootMotorLeft.setInverted(true);
 		shootMotorLeft.changeControlMode(TalonControlMode.Speed);
