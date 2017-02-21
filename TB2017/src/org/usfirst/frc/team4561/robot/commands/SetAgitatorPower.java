@@ -41,7 +41,11 @@ public class SetAgitatorPower extends Command {
     protected void execute() {
     	
     	// Run agitator at variable speed
-    	Robot.agitator.setPower(power);
+    	if (power != 0) {
+    		Robot.agitator.setPower(Robot.oi.getRightStickThrottle());
+    	} else {
+    		Robot.agitator.stop();
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -52,7 +56,7 @@ public class SetAgitatorPower extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	// stop agitator
-    	Robot.agitator.stop();
+    	//TODO: ADD BACK
     	// if we should print debug statements, then we do
     	if (RobotMap.AGITATOR_VERBOSE) {
     		System.out.println("[Command] Ending SetAgitatorPower");

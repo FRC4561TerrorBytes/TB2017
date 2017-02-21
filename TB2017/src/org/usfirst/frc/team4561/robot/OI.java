@@ -60,9 +60,8 @@ public class OI {
 	
 	private JoystickButton shooterButton = new JoystickButton(controller, RobotMap.SHOOTER_BUTTON);
 	
-	private JoystickButton agitatorForwardButton = new JoystickButton(controller, RobotMap.AGITATOR_FORWARD_BUTTON);
-	private JoystickButton agitatorOffButton = new JoystickButton(controller, RobotMap.AGITATOR_OFF_BUTTON);
-	private JoystickButton agitatorBackwardButton = new JoystickButton(controller, RobotMap.AGITATOR_BACKWARD_BUTTON);
+	private JoystickButton agitatorForwardButton = new JoystickButton(leftStick, 7); // TODO: temporary until secondary controller is fixed
+	private JoystickButton agitatorBackwardButton = new JoystickButton(leftStick, 9); // TODO: temporary until secondary controller is fixed
 	
 	private JoystickButton climbButton = new JoystickButton(controller, RobotMap.CLIMBER_ON_BUTTON);
 	
@@ -96,15 +95,10 @@ public class OI {
 		
 		cameraToggleButton.whenPressed(new ToggleCamera());
 		
-//		gearCoverButton.whileHeld(new GearCoverOpen());
-		
-//		gearHolderButton.whileHeld(new GearHolderClose());
-		
 		shooterButton.whileHeld(new Shoot());
 		
-//		agitatorForwardButton.whenPressed(new SetAgitatorPower(1));
-//		agitatorOffButton.whenPressed(new SetAgitatorPower(0));
-//		agitatorBackwardButton.whileHeld(new SetAgitatorPower(-1));
+		agitatorForwardButton.whileHeld(new SetAgitatorPower(1));
+		agitatorBackwardButton.whileHeld(new SetAgitatorPower(0));
 		
 		climbButton.whileHeld(new Climb());
 		
@@ -119,7 +113,6 @@ public class OI {
 	public void testMode() {
 		// Reassign left trigger on left joystick to run motor while in test mode
 		testModeButton.whenPressed(new TestMode());
-		System.out.println("Not insane");
 	}
 	
 	// Joystick inputs

@@ -38,7 +38,7 @@ import com.ctre.CANTalon.TalonControlMode;
 public class Robot extends IterativeRobot {
 
 	public static DriveTrain driveTrain;
-	public static Shooter shooter;
+	public static ShooterPID shooter;
 	//public static Intake intake;
 	public static RopeClimber ropeClimber;
 	public static GearManipulator gearManipulator;
@@ -58,7 +58,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
-		shooter = new Shooter();
+		shooter = new ShooterPID();
 		driveTrain = new DriveTrain();
 		gearManipulator = new GearManipulator();	
 		//intake = new Intake();
@@ -66,7 +66,8 @@ public class Robot extends IterativeRobot {
 		ropeClimber = new RopeClimber();
         transmission = new Transmission();
 		oi = new OI();
-		CameraServer.getInstance().startAutomaticCapture();
+		CameraServer.getInstance().startAutomaticCapture(0);
+		CameraServer.getInstance().startAutomaticCapture(1);
 		if(RobotMap.MASTER_VERBOSE) {
 			System.out.println("[Robot] Subsystems constructed");
 		}
@@ -93,6 +94,7 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 		if(Robot.isInDebugMode()) {
 			getDebugTable().putNumber("Shooter Velocity", Robot.shooter.getLeftEncoderVelocity());
+			getDebugTable().putNumber("Shooter Current", Robot.shooter.getLeftMotorCurrent());
 			getDebugTable().putNumber("Rope Climber Velocity", Robot.ropeClimber.climbEncoderVel());
 			getDebugTable().putBoolean("Gear Manipulator Cover", Robot.gearManipulator.coverState());
 			getDebugTable().putBoolean("Gear Manipulator Holder", Robot.gearManipulator.holderState());
@@ -161,6 +163,7 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
         if(Robot.isInDebugMode()) {
 			getDebugTable().putNumber("Shooter Velocity", Robot.shooter.getLeftEncoderVelocity());
+			getDebugTable().putNumber("Shooter Current", Robot.shooter.getLeftMotorCurrent());
 			getDebugTable().putNumber("Rope Climber Velocity", Robot.ropeClimber.climbEncoderVel());
 			getDebugTable().putBoolean("Gear Manipulator Cover", Robot.gearManipulator.coverState());
 			getDebugTable().putBoolean("Gear Manipulator Holder", Robot.gearManipulator.holderState());
@@ -200,6 +203,7 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
         if(Robot.isInDebugMode()) {
 			getDebugTable().putNumber("Shooter Velocity", Robot.shooter.getLeftEncoderVelocity());
+			getDebugTable().putNumber("Shooter Current", Robot.shooter.getLeftMotorCurrent());
 			getDebugTable().putNumber("Rope Climber Velocity", Robot.ropeClimber.climbEncoderVel());
 			getDebugTable().putBoolean("Gear Manipulator Cover", Robot.gearManipulator.coverState());
 			getDebugTable().putBoolean("Gear Manipulator Holder", Robot.gearManipulator.holderState());
@@ -221,6 +225,7 @@ public class Robot extends IterativeRobot {
 		LiveWindow.run();
         if(Robot.isInDebugMode()) {
 			getDebugTable().putNumber("Shooter Velocity", Robot.shooter.getLeftEncoderVelocity());
+			getDebugTable().putNumber("Shooter Current", Robot.shooter.getLeftMotorCurrent());
 			getDebugTable().putNumber("Rope Climber Velocity", Robot.ropeClimber.climbEncoderVel());
 			getDebugTable().putBoolean("Gear Manipulator Cover", Robot.gearManipulator.coverState());
 			getDebugTable().putBoolean("Gear Manipulator Holder", Robot.gearManipulator.holderState());

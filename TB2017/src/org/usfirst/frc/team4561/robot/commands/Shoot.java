@@ -24,7 +24,7 @@ public class Shoot extends Command {
     }
 	protected void execute() {
 		power = Robot.oi.getLeftStickThrottle();
-		Robot.shooter.shootAtSpeed(power); // Run the shooter at the default speed
+		Robot.shooter.shootAtPercent(power); // Run the shooter at the default speed
 	}
 	
 	protected boolean isFinished() {
