@@ -135,32 +135,28 @@ public class Robot extends IterativeRobot {
 				autonomousCommand = new AutoGearStation1LP();
 				break;
 				
-			case 3:		
-			autonomousCommand = new AutoGearStation1LP();
+			case 3:
+				autonomousCommand = new AutoGearStation1CP();
 				break;
-				
+			
 			case 4:
-			autonomousCommand = new AutoGearStation1CP();
+				autonomousCommand = new AutoGearStation2();
 				break;
 			
 			case 5:
-			autonomousCommand = new AutoGearStation2();
+				autonomousCommand = new AutoGearStation3RP();
 				break;
 			
 			case 6:
-			autonomousCommand = new AutoGearStation3RP();
+				autonomousCommand = new AutoGearStation3CP();
 				break;
 			
 			case 7:
-			autonomousCommand = new AutoGearStation3CP();
+				autonomousCommand = new AutoHighGoal();
 				break;
 			
 			case 8:
-			autonomousCommand = new AutoHighGoal();
-				break;
-			
-			case 9:
-			autonomousCommand = new AutoHopperHighGoal();
+				autonomousCommand = new AutoHopperHighGoal();
 				break;
 			}
 		}
