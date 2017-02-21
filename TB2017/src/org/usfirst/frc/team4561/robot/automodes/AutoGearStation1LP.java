@@ -33,11 +33,11 @@ public class AutoGearStation1LP extends CommandGroup {
     	addSequential(new DriveTankTimed(1, 0, .125)); //Turn Right ~45 degrees
     	addSequential(new DriveTankTimed(1, 1, 5)); // Move forward
     	addSequential(new GearHolderOpen()); // Open the gear holder
+    	addSequential(new DriveTankTimed(-1, -1, 3)); // Move back to leave gear on peg
         addSequential(new GearHolderClose()); // raise trapdoors for another attempt at the peg or for another gear in teleop
         
         /*SECOND ATTEMPT, IF NECESSARY*/
         if(Robot.gearManipulator.detectorState() == true){
-        	addSequential(new DriveTankTimed(-1, -1, 3)); // Move back for second attempt (TODO: change number of seconds)
         	addSequential(new DriveTankTimed(1, 1, 3)); // Move back to peg (TODO: change number of seconds)
         	addSequential(new GearHolderOpen()); // Open the gear holder
         }
