@@ -26,7 +26,7 @@ public class Shooter extends Subsystem {
 		
 		// setInverted inverts motor output but doesn't invert what is sent to followers,
 		// so we need calls to both motors.
-		shootMotorRight.setInverted(true);
+//		shootMotorRight.setInverted(true);
 		shootMotorLeft.setInverted(true);
 		shootMotorLeft.setFeedbackDevice(FeedbackDevice.QuadEncoder);
 		shootMotorLeft.configEncoderCodesPerRev(12);

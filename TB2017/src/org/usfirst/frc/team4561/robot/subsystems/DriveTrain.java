@@ -53,11 +53,7 @@ public class DriveTrain extends Subsystem {
 		rearLeft.changeControlMode(CANTalon.TalonControlMode.Follower);
 		rearLeft.set(RobotMap.FRONT_LEFT_MOTOR_PORT);
 		
-		// setInverted inverts motor output but doesn't invert what is sent to followers,
-		// so we need calls to all three motors.
 		frontLeft.setInverted(true);
-		midLeft.setInverted(true);
-		rearLeft.setInverted(true);
 		
 		// Puts motors into RobotDrive class
 		robotDrive = new RobotDrive(frontLeft, frontRight);
@@ -151,7 +147,7 @@ public class DriveTrain extends Subsystem {
 	 * @param rightpower
 	 */
 	public void tankDrive(double leftpower, double rightpower) {
-		robotDrive.tankDrive(leftpower, rightpower);
+		robotDrive.tankDrive(leftpower, -rightpower);
 	}
 	
 	/**

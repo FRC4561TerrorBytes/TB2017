@@ -97,20 +97,10 @@ public class Robot extends IterativeRobot {
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 		if(Robot.isInDebugMode()) {
-			getDebugTable().putNumber("Shooter Velocity", Robot.shooter.getLeftEncoderVelocity());
-			getDebugTable().putNumber("Shooter Current", Robot.shooter.getLeftMotorCurrent());
-			getDebugTable().putNumber("Rope Climber Velocity", Robot.ropeClimber.climbEncoderVel());
-			getDebugTable().putBoolean("Gear Manipulator Cover", Robot.gearManipulator.coverState());
-			getDebugTable().putBoolean("Gear Manipulator Holder", Robot.gearManipulator.holderState());
-			getDebugTable().putBoolean("Gear Manipulator Infrared", Robot.gearManipulator.detectorState());
-			/*getDebugTable().putNumber("Drive Train Front Left Pos", Robot.driveTrain.leftMotorPos());
-			getDebugTable().putNumber("Drive Train Front Right Pos", Robot.driveTrain.rightMotorPos());
-			getDebugTable().putNumber("Drive Train Front Left Vel", Robot.driveTrain.leftMotorVel());
-			getDebugTable().putNumber("Drive Train Front Right Vel", Robot.driveTrain.rightMotorVel());*/
-			getDebugTable().putNumber("Agitator", Robot.agitator.agitatorState());
-			getDebugTable().putString("Transmission State", Robot.transmission.currentState);		
+			broadcastDebugData();	
 		}
 	}
+	
 
 	/**
 	 * This autonomous (along with the chooser code above) shows how to select
@@ -194,18 +184,7 @@ public class Robot extends IterativeRobot {
 	public void autonomousPeriodic() {
         Scheduler.getInstance().run();
         if(Robot.isInDebugMode()) {
-			getDebugTable().putNumber("Shooter Velocity", Robot.shooter.getLeftEncoderVelocity());
-			getDebugTable().putNumber("Shooter Current", Robot.shooter.getLeftMotorCurrent());
-			getDebugTable().putNumber("Rope Climber Velocity", Robot.ropeClimber.climbEncoderVel());
-			getDebugTable().putBoolean("Gear Manipulator Cover", Robot.gearManipulator.coverState());
-			getDebugTable().putBoolean("Gear Manipulator Holder", Robot.gearManipulator.holderState());
-			getDebugTable().putBoolean("Gear Manipulator Infrared", Robot.gearManipulator.detectorState());
-			/*getDebugTable().putNumber("Drive Train Front Left Pos", Robot.driveTrain.leftMotorPos());
-			getDebugTable().putNumber("Drive Train Front Right Pos", Robot.driveTrain.rightMotorPos());
-			getDebugTable().putNumber("Drive Train Front Left Vel", Robot.driveTrain.leftMotorVel());
-			getDebugTable().putNumber("Drive Train Front Right Vel", Robot.driveTrain.rightMotorVel());
-			getDebugTable().putNumber("Agitator", Robot.agitator.agitatorState());*/
-			getDebugTable().putString("Transmission State", Robot.transmission.currentState);	   
+        	broadcastDebugData();
 		}
 	}
 
@@ -234,18 +213,7 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
         Scheduler.getInstance().run();
         if(Robot.isInDebugMode()) {
-			getDebugTable().putNumber("Shooter Velocity", Robot.shooter.getLeftEncoderVelocity());
-			getDebugTable().putNumber("Shooter Current", Robot.shooter.getLeftMotorCurrent());
-			getDebugTable().putNumber("Rope Climber Velocity", Robot.ropeClimber.climbEncoderVel());
-			getDebugTable().putBoolean("Gear Manipulator Cover", Robot.gearManipulator.coverState());
-			getDebugTable().putBoolean("Gear Manipulator Holder", Robot.gearManipulator.holderState());
-			getDebugTable().putBoolean("Gear Manipulator Infrared", Robot.gearManipulator.detectorState());
-			/*getDebugTable().putNumber("Drive Train Front Left Pos", Robot.driveTrain.leftMotorPos());
-			getDebugTable().putNumber("Drive Train Front Right Pos", Robot.driveTrain.rightMotorPos());
-			getDebugTable().putNumber("Drive Train Front Left Vel", Robot.driveTrain.leftMotorVel());
-			getDebugTable().putNumber("Drive Train Front Right Vel", Robot.driveTrain.rightMotorVel());*/
-			getDebugTable().putNumber("Agitator", Robot.agitator.agitatorState());
-			getDebugTable().putString("Transmission State", Robot.transmission.currentState);	
+        	broadcastDebugData();	
         }
 	}
 
@@ -256,18 +224,7 @@ public class Robot extends IterativeRobot {
 	public void testPeriodic() {
 		LiveWindow.run();
         if(Robot.isInDebugMode()) {
-			getDebugTable().putNumber("Shooter Velocity", Robot.shooter.getLeftEncoderVelocity());
-			getDebugTable().putNumber("Shooter Current", Robot.shooter.getLeftMotorCurrent());
-			getDebugTable().putNumber("Rope Climber Velocity", Robot.ropeClimber.climbEncoderVel());
-			getDebugTable().putBoolean("Gear Manipulator Cover", Robot.gearManipulator.coverState());
-			getDebugTable().putBoolean("Gear Manipulator Holder", Robot.gearManipulator.holderState());
-			getDebugTable().putBoolean("Gear Manipulator Infrared", Robot.gearManipulator.detectorState());
-			/*getDebugTable().putNumber("Drive Train Front Left Pos", Robot.driveTrain.leftMotorPos());
-			getDebugTable().putNumber("Drive Train Front Right Pos", Robot.driveTrain.rightMotorPos());
-			getDebugTable().putNumber("Drive Train Front Left Vel", Robot.driveTrain.leftMotorVel());
-			getDebugTable().putNumber("Drive Train Front Right Vel", Robot.driveTrain.rightMotorVel());*/
-			getDebugTable().putNumber("Agitator", Robot.agitator.agitatorState());
-			getDebugTable().putString("Transmission State", Robot.transmission.currentState);	
+			broadcastDebugData();
 		}
 	}
 	
@@ -277,6 +234,22 @@ public class Robot extends IterativeRobot {
 	
 	public static NetworkTable getDebugTable() {
 		return debugTable;
+	}
+	
+	public static void broadcastDebugData() {
+		getDebugTable().putNumber("Shooter Velocity", Robot.shooter.getLeftEncoderVelocity());
+		getDebugTable().putNumber("Shooter Setpoint", Robot.shooter.getSetpoint());
+		getDebugTable().putNumber("Shooter Current", Robot.shooter.getLeftMotorCurrent());
+		getDebugTable().putNumber("Rope Climber Velocity", Robot.ropeClimber.climbEncoderVel());
+		getDebugTable().putBoolean("Gear Manipulator Cover", Robot.gearManipulator.coverState());
+		getDebugTable().putBoolean("Gear Manipulator Holder", Robot.gearManipulator.holderState());
+		getDebugTable().putBoolean("Gear Manipulator Infrared", Robot.gearManipulator.detectorState());
+		/*getDebugTable().putNumber("Drive Train Front Left Pos", Robot.driveTrain.leftMotorPos());
+		getDebugTable().putNumber("Drive Train Front Right Pos", Robot.driveTrain.rightMotorPos());
+		getDebugTable().putNumber("Drive Train Front Left Vel", Robot.driveTrain.leftMotorVel());
+		getDebugTable().putNumber("Drive Train Front Right Vel", Robot.driveTrain.rightMotorVel());*/
+		getDebugTable().putNumber("Agitator", Robot.agitator.agitatorState());
+		getDebugTable().putString("Transmission State", Robot.transmission.currentState);	
 	}
 	
 }
