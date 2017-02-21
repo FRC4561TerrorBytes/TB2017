@@ -7,7 +7,8 @@ import org.usfirst.frc.team4561.robot.commands.SetAgitatorPower;
 import org.usfirst.frc.team4561.robot.commands.SpeedGear;
 //import org.usfirst.frc.team4561.robot.commands.AutoTankDriveForward;
 //import org.usfirst.frc.team4561.robot.commands.AutoTankDriveLeft;
- 
+import org.usfirst.frc.team4561.robot.commands.TorqueGear;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
  
 /**
@@ -35,11 +36,11 @@ public class AutoHighGoal extends CommandGroup {
        
         //TODO: Change placeholders from 10 to something not trash
     	addSequential(new GearCoverClose()); // make sure gear cover is down
-        addSequential(new SpeedGear()); //Nobody is defending us, switch to the speed gear
+        addSequential(new TorqueGear()); // Go into high torque but low speed gear
         addSequential(new DriveTankTimed(1, 1, 10)); // Forward
         addSequential(new DriveTankTimed(1, 0, 10)); // Left 90
         addSequential(new DriveTankTimed(1, 1, 10)); // Forward
-        addParallel(new SetAgitatorPower(1)); // Set to full power
-        addSequential(new AutoShootFullPower()); //FIRE AT WILL
+        addSequential(new AutoShootFullPower()); //spin up flywheel
+        addSequential(new SetAgitatorPower(1)); // Set Agitator to full power and FIRE AT WILL
     }
 }

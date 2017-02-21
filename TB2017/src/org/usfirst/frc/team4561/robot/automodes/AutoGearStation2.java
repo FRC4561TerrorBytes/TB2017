@@ -3,17 +3,20 @@ package org.usfirst.frc.team4561.robot.automodes;
 import org.usfirst.frc.team4561.robot.commands.GearOverride;
 import org.usfirst.frc.team4561.robot.commands.GearOverride;
 import org.usfirst.frc.team4561.robot.commands.TorqueGear;
+import org.usfirst.frc.team4561.robot.Robot;
 import org.usfirst.frc.team4561.robot.commands.DriveTankTimed;
 import org.usfirst.frc.team4561.robot.commands.GearCoverClose;
+import org.usfirst.frc.team4561.robot.commands.GearHolderClose;
+import org.usfirst.frc.team4561.robot.commands.GearHolderOpen;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
  
 /**
  *
  */
-public class AutoPlaceGear extends CommandGroup {
+public class AutoGearStation2 extends CommandGroup {
  
-    public AutoPlaceGear() {
+    public AutoGearStation2() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -32,8 +35,15 @@ public class AutoPlaceGear extends CommandGroup {
         // arm.
     	addSequential(new GearCoverClose()); // make sure gear cover is down
         addSequential(new TorqueGear()); // Go into high torque but low speed gear
-        addSequential(new DriveTankTimed(1, 1, 10)); // Move close to peg (TODO: change number of seconds)
-        addSequential(new DriveTankTimed(1, 1, 10)); // Move closer to peg (TODO: change number of seconds)
-        addSequential(new GearOverride()); // Open the gear holder
+        addSequential(new DriveTankTimed(1, 1, 5)); // Move close to peg (TODO: change number of seconds)
+        addSequential(new DriveTankTimed(1, 1, 1)); // Move closer to peg (TODO: change number of seconds)
+        addSequential(new GearHolderOpen()); // Open the gear holder
+        addSequential(new GearHolderClose()); // raise trapdoors for another attempt at the peg or for another gear in teleop
+        /*SECOND ATTEMPT, IF NECESSARY*/
+        if(Robot.gearManipulator.detectorState() == true){
+        	addSequential(new DriveTankTimed(-1, -1, 3)); // Move back for second attempt (TODO: change number of seconds)
+        	addSequential(new DriveTankTimed(1, 1, 3)); // Move back to peg (TODO: change number of seconds)
+        	addSequential(new GearHolderOpen()); // Open the gear holder
+        }
     }
 }

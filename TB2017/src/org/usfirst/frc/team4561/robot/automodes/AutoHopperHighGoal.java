@@ -3,6 +3,7 @@ package org.usfirst.frc.team4561.robot.automodes;
 import org.usfirst.frc.team4561.robot.commands.AutoShootFullPower;
 import org.usfirst.frc.team4561.robot.commands.DriveTankTimed;
 import org.usfirst.frc.team4561.robot.commands.GearCoverClose;
+import org.usfirst.frc.team4561.robot.commands.SetAgitatorPower;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -31,15 +32,15 @@ public class AutoHopperHighGoal extends CommandGroup {
 
     //TODO: Must Tune all values and add any necessary steps
     addSequential(new GearCoverClose());
-    addSequential(new DriveTankTimed(-1, -1, 10)); // drive backwards for 10 seconds
-    addSequential(new DriveTankTimed(-1, 0, 1)); // turn right for 1 second
-    addSequential(new DriveTankTimed(-1, -1, 10)); // go backward for 10 seconds
+    addSequential(new DriveTankTimed(1, 1, 5)); // drive backwards for 10 seconds
+    addSequential(new DriveTankTimed(0, 1, 1)); // turn right for 1 second
+    addSequential(new DriveTankTimed(1, 1, 2)); // go forward
     addSequential(new DriveTankTimed(0, 0, 2));//waiting for balls to fill hopper 
-    addSequential(new DriveTankTimed(1, 1, 0.25)); // go forward for 0.25 seconds
-    addSequential(new DriveTankTimed(1, 0, 1)); // turn right for 1 second
-    addSequential(new DriveTankTimed(1, 1, 10)); // go forward for 10 seconds
-    addSequential(new DriveTankTimed(.5, 0, 1)); // turn right at half power for 1 second
-    addSequential(new AutoShootFullPower()); //FIRE AT WILL
-
+    addSequential(new DriveTankTimed(-1, -1, 0.25)); // go forward for 0.25 seconds
+    addSequential(new DriveTankTimed(0, 1, 1)); // turn right for 1 second
+    addSequential(new DriveTankTimed(1, 1, 3)); // go forward for 10 seconds
+    addSequential(new DriveTankTimed(1, 0, 1)); // turn right at half power for 1 second
+    addSequential(new AutoShootFullPower()); //Spin up FlyWheel
+    addSequential(new SetAgitatorPower(1)); // Set Agitator to full power and FIRE AT WILL
 	}
 }

@@ -11,9 +11,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4561.robot.automodes.AutoDoNothing;
 import org.usfirst.frc.team4561.robot.automodes.AutoDriveToLine;
+import org.usfirst.frc.team4561.robot.automodes.AutoGearStation1CP;
+import org.usfirst.frc.team4561.robot.automodes.AutoGearStation1LP;
 import org.usfirst.frc.team4561.robot.automodes.AutoHighGoal;
 import org.usfirst.frc.team4561.robot.automodes.AutoHopperHighGoal;
-import org.usfirst.frc.team4561.robot.automodes.AutoPlaceGear;
+import org.usfirst.frc.team4561.robot.automodes.AutoGearStation2;
+import org.usfirst.frc.team4561.robot.automodes.AutoGearStation3CP;
+import org.usfirst.frc.team4561.robot.automodes.AutoGearStation3RP;
 import org.usfirst.frc.team4561.robot.commands.DoNothing;
 import org.usfirst.frc.team4561.robot.subsystems.Agitator;
 import org.usfirst.frc.team4561.robot.subsystems.DriveTrain;
@@ -122,23 +126,51 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		//The following code is how we select an automode with a slider on the smartdashboard
+		//DO NOT INTIALIZE AT THE SAME TIME AS TESTMODE OR ANY OTHER MODE INVOLVING SLIDERS
+		
 		try {
 			int slider1 = (int)Robot.oi.getDashboardSlider0();
+			
 			switch (slider1) {
+			
 			case 0:
 				autonomousCommand = new AutoDoNothing();
 				break;
+				
 			case 1:
 				autonomousCommand = new AutoDriveToLine();
 				break;
+				
 			case 2:
-//				autonomousCommand = new AutoPlaceGear();
+				autonomousCommand = new AutoGearStation1LP();
 				break;
-			case 3:
-//				autonomousCommand = new AutoHighGoal();
+				
+			case 3:		
+			autonomousCommand = new AutoGearStation1LP();
 				break;
+				
 			case 4:
-				autonomousCommand = new AutoHopperHighGoal();
+			autonomousCommand = new AutoGearStation1CP();
+				break;
+			
+			case 5:
+			autonomousCommand = new AutoGearStation2();
+				break;
+			
+			case 6:
+			autonomousCommand = new AutoGearStation3RP();
+				break;
+			
+			case 7:
+			autonomousCommand = new AutoGearStation3CP();
+				break;
+			
+			case 8:
+			autonomousCommand = new AutoHighGoal();
+				break;
+			
+			case 9:
+			autonomousCommand = new AutoHopperHighGoal();
 				break;
 			}
 		}
