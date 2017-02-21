@@ -19,18 +19,18 @@ public class ShooterPID extends Subsystem {
 	public ShooterPID() {
 		shootMotorRight.changeControlMode(CANTalon.TalonControlMode.Follower);
 		shootMotorRight.set(RobotMap.SHOOTER_LEFT_MOTOR_PORT);
+		
+		// setInverted inverts motor output but doesn't invert what is sent to followers,
+		// so we need calls to both motors.
 		shootMotorRight.setInverted(true);
 		shootMotorLeft.setInverted(true);
 		shootMotorLeft.changeControlMode(TalonControlMode.Speed);
 		shootMotorLeft.setFeedbackDevice(FeedbackDevice.QuadEncoder);
-//		shootMotorLeft.reverseSensor(false);
-//		shootMotorLeft.setProfile(0);
-//		shootMotorLeft.setF(0);
-//		shootMotorLeft.setP(0);
-//		shootMotorLeft.setI(0);
-//		shootMotorLeft.setD(0);
-//		shootMotorLeft.configNominalOutputVoltage(+0.0f, -0.0f);
-//		shootMotorLeft.configPeakOutputVoltage(+12.0f, +0.0f); //The shooter will always either be stopped or going forwards
+		shootMotorLeft.reverseSensor(true);
+		shootMotorLeft.setF(2.9);
+		shootMotorLeft.setP(5);
+		shootMotorLeft.setI(0);
+		shootMotorLeft.setD(0);
 	}
 	
 	public void switchToManual(){
@@ -40,6 +40,10 @@ public class ShooterPID extends Subsystem {
 	//sends motor velocity to robot.java for debug
 	public double getLeftEncoderVelocity() {
 		return shootMotorLeft.getEncVelocity();
+	}
+	
+	public double getLeftMotorCurrent() {
+		return shootMotorLeft.getOutputVoltage();
 	}
 	
 	//verbose flag
@@ -62,8 +66,9 @@ public class ShooterPID extends Subsystem {
     	}
     }
     
-    public void shootAtRPM(int rpm) {
-    	shootMotorLeft.setSetpoint(rpm);
+    public void shootAtPercent(double percent) {
+    	percent *= 200;
+    	shootMotorLeft.setSetpoint(percent);
     }
     
     public void stop() {
