@@ -21,10 +21,6 @@ public class GearManipulator extends Subsystem {
 	private Solenoid holderSolenoid = new Solenoid(RobotMap.PCM, RobotMap.HOLDER_SOLENOID_PORT);
 	private Solenoid coverSolenoid = new Solenoid(RobotMap.PCM, RobotMap.COVER_SOLENOID_PORT);
 	
-	// TODO: This and all calls to it can be removed once controls gets a part
-	// for pneumatics (expected Friday 2/17)
-	private Solenoid fillerSolenoid = new Solenoid(RobotMap.PCM, 7);
-	
 	//Infrared Sensor Declaration
 	public DigitalInput gearDetector = new DigitalInput(0);
     
@@ -37,7 +33,6 @@ public class GearManipulator extends Subsystem {
 	 */
 	public void closeHolder() {
     	holderSolenoid.set(true);
-    	fillerSolenoid.set(true);
     }
     
 	/**
@@ -45,7 +40,6 @@ public class GearManipulator extends Subsystem {
 	 */
 	public void openHolder() {
     	holderSolenoid.set(false);
-    	fillerSolenoid.set(false);
     }
 	
 	/**
