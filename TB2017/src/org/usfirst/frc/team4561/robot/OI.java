@@ -22,6 +22,7 @@ import org.usfirst.frc.team4561.robot.commands.DriveHeadingForward;
 import org.usfirst.frc.team4561.robot.commands.DriveHeadingBackward;
 import org.usfirst.frc.team4561.robot.commands.TestMode;
 import org.usfirst.frc.team4561.robot.commands.ToggleCamera;
+import org.usfirst.frc.team4561.robot.commands.ToggleShooterPID;
 import org.usfirst.frc.team4561.robot.commands.SetAgitatorPower;
 import org.usfirst.frc.team4561.robot.commands.Shoot;
 import org.usfirst.frc.team4561.robot.commands.SpeedGear;
@@ -65,6 +66,12 @@ public class OI {
 	
 	private JoystickButton climbButton = new JoystickButton(controller, RobotMap.CLIMBER_ON_BUTTON);
 	
+	private JoystickButton shooterPIDOn = new JoystickButton(controller, RobotMap.SHOOTER_PID_ON_PORT);
+	private JoystickButton shooterPIDToggle = new JoystickButton(controller, RobotMap.SHOOTER_PID_OFF_PORT);
+	
+	//private JoystickButton drivetrainPIDOn = new JoystickButton(controller, RobotMap.DRIVETRAIN_PID_ON_PORT);
+	//private JoystickButton drivetrainPIDOff = new JoystickButton(controller, RobotMap.DRIVETRAIN_PID_OFF_PORT);
+	
 	// Test mode button
 	private JoystickButton testModeButton = new JoystickButton(rightStick, RobotMap.TEST_MODE_BUTTON);
 	
@@ -103,6 +110,9 @@ public class OI {
 		climbButton.whileHeld(new Climb());
 		
 		gearDetectorTrigger.whenActive(new PrintInfrared());
+		
+		shooterPIDToggle.whileHeld(new ToggleShooterPID());
+		
 	}
 	
 	/**
