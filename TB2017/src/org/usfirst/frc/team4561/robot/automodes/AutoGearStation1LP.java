@@ -2,6 +2,7 @@ package org.usfirst.frc.team4561.robot.automodes;
 
 import org.usfirst.frc.team4561.robot.Robot;
 import org.usfirst.frc.team4561.robot.commands.DriveTankTimed;
+import org.usfirst.frc.team4561.robot.commands.GearDefaultCommand;
 import org.usfirst.frc.team4561.robot.commands.GearHolderClose;
 import org.usfirst.frc.team4561.robot.commands.GearHolderOpen;
 

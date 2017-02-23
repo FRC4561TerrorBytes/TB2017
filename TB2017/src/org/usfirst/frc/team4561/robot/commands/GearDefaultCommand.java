@@ -9,16 +9,16 @@ import org.usfirst.frc.team4561.robot.RobotMap;
  * Is interrupted by GearOverride when both triggers are pressed.
  * @author: Lucas T, Kaiz
  */
-public class GearHolderClose extends Command {
+public class GearDefaultCommand extends Command {
 
-    public GearHolderClose() {
+    public GearDefaultCommand() {
     	requires(Robot.gearManipulator);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	if (RobotMap.GEAR_MANIPULATOR_VERBOSE) {
-    		System.out.println("[Command] Intializing GearHolderClose");
+    		System.out.println("[Command] Intializing GearDefaultCommand");
     	}
     }
 
@@ -44,7 +44,7 @@ public class GearHolderClose extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	if (RobotMap.GEAR_MANIPULATOR_VERBOSE) {
-    		System.out.println("[Command] Ending GearHolderClose");
+    		System.out.println("[Command] Ending GearDefaultCommand");
     	}
     }
 

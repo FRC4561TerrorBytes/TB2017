@@ -13,7 +13,7 @@ import org.usfirst.frc.team4561.robot.commands.IntakeBall;
 import org.usfirst.frc.team4561.robot.commands.PrintInfrared;
 import org.usfirst.frc.team4561.robot.commands.ServoClose;
 import org.usfirst.frc.team4561.robot.commands.ServoOpen;
-import org.usfirst.frc.team4561.robot.commands.GearHolderClose;
+import org.usfirst.frc.team4561.robot.commands.GearDefaultCommand;
 import org.usfirst.frc.team4561.robot.commands.GearOverride;
 import org.usfirst.frc.team4561.robot.commands.Climb;
 import org.usfirst.frc.team4561.robot.commands.DebugButton;
@@ -60,8 +60,8 @@ public class OI {
 	
 	private JoystickButton shooterButton = new JoystickButton(controller, RobotMap.SHOOTER_BUTTON);
 	
-	private JoystickButton agitatorForwardButton = new JoystickButton(leftStick, 7); // TODO: temporary until secondary controller is fixed
-	private JoystickButton agitatorBackwardButton = new JoystickButton(leftStick, 9); // TODO: temporary until secondary controller is fixed
+	private JoystickButton agitatorForwardButton = new JoystickButton(controller, RobotMap.AGITATOR_FORWARD_BUTTON);
+	private JoystickButton agitatorBackwardButton = new JoystickButton(controller, RobotMap.AGITATOR_BACKWARD_BUTTON);
 	
 	private JoystickButton climbButton = new JoystickButton(controller, RobotMap.CLIMBER_ON_BUTTON);
 	
@@ -97,7 +97,7 @@ public class OI {
 		
 		shooterButton.whileHeld(new Shoot());
 		
-		agitatorForwardButton.whileHeld(new SetAgitatorPower(1));
+		agitatorForwardButton.whileHeld(new SetAgitatorPower(getRightStickThrottle()));
 		agitatorBackwardButton.whileHeld(new SetAgitatorPower(-1));
 		
 		climbButton.whileHeld(new Climb());
