@@ -87,6 +87,12 @@ public class RobotMap {
 	//Debug mode button (right stick)
 	public static final int DEBUG_MODE_BUTTON = 12;
 	
+	//PID Switches
+	public static final int SHOOTER_PID_ON_PORT = 13;
+	public static final int SHOOTER_PID_OFF_PORT = 14;
+	public static final int DRIVETRAIN_PID_ON_PORT = 15;
+	public static final int DRIVETRAIN_PID_OFF_PORT = 16;
+	
 	// Verbose Flags
 	public static final boolean MASTER_VERBOSE = true;
 	public static final boolean AGITATOR_VERBOSE = false || MASTER_VERBOSE;

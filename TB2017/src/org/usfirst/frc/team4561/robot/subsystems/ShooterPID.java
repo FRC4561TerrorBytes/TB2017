@@ -73,4 +73,9 @@ public class ShooterPID extends Subsystem {
     public void stop() {
     	shootAtPercent(0);
     }
+
+	public void switchToPID() {
+		shootMotorLeft.changeControlMode(TalonControlMode.Speed);
+		
+	}
 }
