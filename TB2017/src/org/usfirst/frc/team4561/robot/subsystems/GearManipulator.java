@@ -3,8 +3,10 @@ package org.usfirst.frc.team4561.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 import org.usfirst.frc.team4561.robot.RobotMap;
+import org.usfirst.frc.team4561.robot.commands.GearDefaultCommand;
 
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.DigitalInput;
 
 /**
  * This is the core subsystem file for the gear manipulator
@@ -18,8 +20,12 @@ public class GearManipulator extends Subsystem {
 	//Solenoid declarations
 	private Solenoid holderSolenoid = new Solenoid(RobotMap.PCM, RobotMap.HOLDER_SOLENOID_PORT);
 	private Solenoid coverSolenoid = new Solenoid(RobotMap.PCM, RobotMap.COVER_SOLENOID_PORT);
+	
+	//Infrared Sensor Declaration
+	public DigitalInput gearDetector = new DigitalInput(0);
     
 	public void initDefaultCommand() {
+		setDefaultCommand(new GearDefaultCommand());
     }
     
 	/**
@@ -49,4 +55,22 @@ public class GearManipulator extends Subsystem {
 	public void openCover() {
     	coverSolenoid.set(false);
     }
+	
+	/**
+	 * sends holder's states to the core robot file for debug mode
+	 */
+	public boolean holderState() {
+		return holderSolenoid.get();
+	}
+	
+	public boolean detectorState() {
+		return gearDetector.get();
+	}
+	
+	/**
+	 * sends cover's states to the core robot file for debug mode
+	 */
+	public boolean coverState() {
+		return coverSolenoid.get();
+	}
 }

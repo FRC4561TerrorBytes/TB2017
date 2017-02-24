@@ -6,43 +6,51 @@ import org.usfirst.frc.team4561.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * TODO: Document
- * @author Ben G
+ *
  */
-public class AutoTankDriveForward extends Command {
+public class DriveTankTimed extends Command {
 
-    public AutoTankDriveForward() {
-    	requires(Robot.driveTrain);
+	double leftpower;
+	double rightpower;
+	double seconds;
+	
+    public DriveTankTimed(double left, double right, double seconds) {
+        requires(Robot.driveTrain);
+        this.leftpower = left;
+        this.rightpower = right;
+        this.seconds = seconds;
+        setTimeout(seconds);
     }
+    
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	if (RobotMap.DRIVETRAIN_VERBOSE) {
-    		System.out.println("[Command] Intializing TankDriveForward");
+    		System.out.println("[Command] Intializing DriveTankTimed for " + seconds + " seconds");
     	}
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	// Drive forward at full speed
-    	Robot.driveTrain.tankDrive(1, 1);
+		Robot.driveTrain.tankDrive(leftpower, rightpower);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return isTimedOut();
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	if (RobotMap.DRIVETRAIN_VERBOSE) {
-    		System.out.println("[Command] Ending TankDriveForward");
+    	if(RobotMap.DRIVETRAIN_VERBOSE) {
+    		System.out.println("Stopping DriveTankTimed");
     	}
+    	Robot.driveTrain.stop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
     }
 }

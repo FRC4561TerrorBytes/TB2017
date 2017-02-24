@@ -1,9 +1,11 @@
 package org.usfirst.frc.team4561.robot.automodes;
 
 import org.usfirst.frc.team4561.robot.commands.SpeedGear;
-import org.usfirst.frc.team4561.robot.commands.AutoTankDriveForward;
-
+import org.usfirst.frc.team4561.robot.commands.TorqueGear;
+import org.usfirst.frc.team4561.robot.commands.DriveTankTimed;
+import org.usfirst.frc.team4561.robot.commands.GearCoverClose;
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.command.WaitCommand;
 
 /**
  * TODO: Document
@@ -29,9 +31,9 @@ public class AutoDriveToLine extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	// set gear to high speed, but low torque
-    	addSequential(new SpeedGear());
-    	// then drive forward at full speed
-    	addSequential(new AutoTankDriveForward());
+    	addSequential(new TorqueGear());
+    	// Drive forward at full speed
+    	addSequential(new DriveTankTimed(1, 1, 10));
+    	addSequential(new WaitCommand(5));
     }
 }

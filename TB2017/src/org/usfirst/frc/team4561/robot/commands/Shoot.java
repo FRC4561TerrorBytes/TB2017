@@ -9,20 +9,21 @@ import edu.wpi.first.wpilibj.command.Command;
 public class Shoot extends Command {
 	
 	//Speed variable
-	private final double power = 1;
+	private double power = 0.15;
 	
 	public Shoot() {
 		requires(Robot.shooter);
+		setInterruptible(false);
 	}
 	
 	// Called just before this Command runs the first time
-    protected void initialize() {    
+    protected void initialize() {
 		if (RobotMap.SHOOTER_VERBOSE) {
 			System.out.println("[Command] Initialized Shoot for power " + Double.toString(power));
 		}
     }
 	protected void execute() {
-		Robot.shooter.shootAtSpeed(power); // Run the shooter at the default speed
+		Robot.shooter.shootAtPercent(0.71); // Run the shooter at the default speed
 	}
 	
 	protected boolean isFinished() {

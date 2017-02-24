@@ -6,13 +6,13 @@ import org.usfirst.frc.team4561.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * Closes gear manipulator cover.
+ * Closes gear manipulator cover. NOT USED.
  * @author: Lucas T
  */
 public class GearCoverClose extends Command {
 
     public GearCoverClose() {
-    	requires(Robot.gearManipulator);
+    	//requires(Robot.gearManipulator);
     }
 
     // Called just before this Command runs the first time
@@ -42,6 +42,5 @@ public class GearCoverClose extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
     }
 }
