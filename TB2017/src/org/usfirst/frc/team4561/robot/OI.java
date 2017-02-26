@@ -104,7 +104,7 @@ public class OI {
 		
 		shooterButton.whileHeld(new Shoot());
 		
-		agitatorForwardButton.whileHeld(new SetAgitatorPower(getRightStickThrottle()));
+		agitatorForwardButton.whileHeld(new SetAgitatorPower(1));
 		agitatorBackwardButton.whileHeld(new SetAgitatorPower(-1));
 		
 		climbButton.whileHeld(new Climb());

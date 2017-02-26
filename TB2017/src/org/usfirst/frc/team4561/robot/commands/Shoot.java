@@ -23,7 +23,8 @@ public class Shoot extends Command {
 		}
     }
 	protected void execute() {
-		Robot.shooter.shootAtPercent(0.71); // Run the shooter at the default speed
+		Robot.shooter.shootAtPercent(0.503); // Run the shooter at the default speed
+//		Robot.shooter.shootAtPercent(0.2); // Run the shooter at the default speed
 	}
 	
 	protected boolean isFinished() {

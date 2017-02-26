@@ -16,7 +16,6 @@ public class RopeClimber extends Subsystem {
 	
 	public RopeClimber() {
 		climberMotor.enableBrakeMode(true);
-		climberMotor.setInverted(true);
 	}
 	
 	public void initDefaultCommand() {
