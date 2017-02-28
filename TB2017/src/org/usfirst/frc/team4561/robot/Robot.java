@@ -3,11 +3,13 @@ package org.usfirst.frc.team4561.robot;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.MotorSafety;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.MotorSafetyHelper;
 
 import org.usfirst.frc.team4561.robot.automodes.AutoDoNothing;
 import org.usfirst.frc.team4561.robot.automodes.AutoDriveToLine;
@@ -50,6 +52,7 @@ public class Robot extends IterativeRobot {
     public static Transmission transmission;
     public static NetworkTable debugTable;
     public static OI oi;
+    public static MotorSafetyHelper motorSafetySabotager;
 	
 	Command autonomousCommand;
 	
@@ -70,8 +73,14 @@ public class Robot extends IterativeRobot {
 		ropeClimber = new RopeClimber();
         transmission = new Transmission();
 		oi = new OI();
+		motorSafetySabotager = new MotorSafetyHelper(null);
+		
+		motorSafetySabotager.setExpiration(.2);
+		System.out.println("Motor expiration time is now: " + motorSafetySabotager.getExpiration() + " seconds");
+		
 		CameraServer.getInstance().startAutomaticCapture(0);
 		CameraServer.getInstance().startAutomaticCapture(1);
+		
 		if(RobotMap.MASTER_VERBOSE) {
 			System.out.println("[Robot] Subsystems constructed");
 		}
