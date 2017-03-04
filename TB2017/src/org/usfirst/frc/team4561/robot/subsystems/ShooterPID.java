@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4561.robot.subsystems;
 
+import org.usfirst.frc.team4561.robot.Robot;
 import org.usfirst.frc.team4561.robot.RobotMap;
 
 import com.ctre.CANTalon;
@@ -17,6 +18,7 @@ public class ShooterPID extends Subsystem {
 	private CANTalon shootMotorRight = new CANTalon(RobotMap.SHOOTER_RIGHT_MOTOR_PORT);
 
 	public ShooterPID() {
+		Robot.profilerTest("ShooterPID Start");
 		shootMotorRight.changeControlMode(CANTalon.TalonControlMode.Follower);
 		shootMotorRight.set(RobotMap.SHOOTER_LEFT_MOTOR_PORT);
 		shootMotorLeft.changeControlMode(TalonControlMode.Speed);
@@ -26,6 +28,7 @@ public class ShooterPID extends Subsystem {
 		shootMotorLeft.setP(5);
 		shootMotorLeft.setI(0);
 		shootMotorLeft.setD(0);
+		Robot.profilerTest("ShooterPID End");
 	}
 	
 	public void switchToManual(){
@@ -48,7 +51,7 @@ public class ShooterPID extends Subsystem {
     }
     
     public void shootAtSpeed(double speed){
-    	
+		Robot.profilerTest("ShooterSetPower Start");    	
     	//If a valid value, run the shooter motor at the given speed
     	if (speed <= 1.0 && speed >= -1.0) {
     		shootMotorLeft.set(speed);
@@ -59,6 +62,7 @@ public class ShooterPID extends Subsystem {
     	else if (verbose) {
     		System.out.println("[Subsystem] Did not run Shooter Motors, given speed was invalid");
     	}
+		Robot.profilerTest("ShooterSetPower End");
     }
     
     public void shootAtPercent(double percent) {

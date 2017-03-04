@@ -24,6 +24,7 @@ public class GearDefaultCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+		Robot.profilerTest("GearDefault Start");
     	if (Robot.oi.getGearHolderButton()) {
     		Robot.gearManipulator.closeHolder();
     	} else {
@@ -34,6 +35,7 @@ public class GearDefaultCommand extends Command {
     	} else {
     		Robot.gearManipulator.closeCover();
     	}
+		Robot.profilerTest("GearDefault End");
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -24,7 +24,9 @@ public class GearCoverOpen extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+		Robot.profilerTest("GearCoverOpen Start");
     	Robot.gearManipulator.openCover();
+		Robot.profilerTest("GearCoverOpen End");
     }
 
     // Make this return true when this Command no longer needs to run execute()

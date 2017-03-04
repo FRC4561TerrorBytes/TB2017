@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4561.robot.subsystems;
 
+import org.usfirst.frc.team4561.robot.Robot;
 import org.usfirst.frc.team4561.robot.RobotMap;
 
 import com.ctre.CANTalon;
@@ -15,7 +16,9 @@ public class RopeClimber extends Subsystem {
 	private CANTalon climberMotor = new CANTalon(RobotMap.CLIMBER_MOTOR);
 	
 	public RopeClimber() {
+		Robot.profilerTest("RopeClimber Start");
 		climberMotor.enableBrakeMode(true);
+		Robot.profilerTest("RopeClimber End");
 	}
 	
 	public void initDefaultCommand() {
@@ -23,6 +26,7 @@ public class RopeClimber extends Subsystem {
 	}
 	//sets power to 1 when power is not 1, same with -1
 	public void setClimber(double power) {
+		Robot.profilerTest("RopeClimberSetPower Start");
 		if (power > 1.0) {
 			if (RobotMap.ROPE_CLIMBER_VERBOSE) {
 				System.out.println("[Subsystem] Rope climber power set too high: " + power + ", changing to full forward.");
@@ -35,6 +39,7 @@ public class RopeClimber extends Subsystem {
 			power = 0;
 		}
 		climberMotor.set(power);
+		Robot.profilerTest("RopeClimberSetPower End");
 	}
 	
 	//send climber motor velocity to robot.java for debug

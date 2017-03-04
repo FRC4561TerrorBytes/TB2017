@@ -23,7 +23,9 @@ public class DriveArcade extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+		Robot.profilerTest("DriveArcade Start");
     	Robot.driveTrain.arcadeDrive(Robot.oi.getLeftStickY(), Robot.oi.getLeftStickX());
+		Robot.profilerTest("DriveArcade End");
     }
 
     // Make this return true when this Command no longer needs to run execute()

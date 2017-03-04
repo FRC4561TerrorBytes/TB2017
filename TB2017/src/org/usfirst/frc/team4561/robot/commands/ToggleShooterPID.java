@@ -14,7 +14,9 @@ public class ToggleShooterPID extends Command {
 	}
 
 	protected void execute(){
+		Robot.profilerTest("ToggleShooterPID Start");
 		Robot.shooter.switchToManual();
+		Robot.profilerTest("ToggleShooterPID End");
 	}
 	
 	protected void interrupted(){

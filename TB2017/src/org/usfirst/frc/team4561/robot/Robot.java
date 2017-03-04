@@ -9,6 +9,12 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import org.usfirst.frc.team4561.robot.automodes.AutoDoNothing;
 import org.usfirst.frc.team4561.robot.automodes.AutoDriveToLine;
 import org.usfirst.frc.team4561.robot.automodes.AutoGearStation1CP;
@@ -54,7 +60,7 @@ public class Robot extends IterativeRobot {
 	Command autonomousCommand;
 	
 	public static boolean debug = false;
-	public static Object camera;
+	//public static Object camera;
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -70,8 +76,8 @@ public class Robot extends IterativeRobot {
 		ropeClimber = new RopeClimber();
         transmission = new Transmission();
 		oi = new OI();
-		CameraServer.getInstance().startAutomaticCapture(0);
-		CameraServer.getInstance().startAutomaticCapture(1);
+		//CameraServer.getInstance().startAutomaticCapture(0);
+		//CameraServer.getInstance().startAutomaticCapture(1);
 		if(RobotMap.MASTER_VERBOSE) {
 			System.out.println("[Robot] Subsystems constructed");
 		}
@@ -232,6 +238,22 @@ public class Robot extends IterativeRobot {
 	
 	public static NetworkTable getDebugTable() {
 		return debugTable;
+	}
+
+	public static void profilerTest(String Location) {
+	    try {
+		    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("/home/lvuser/BadGarbage.txt", true)));	//create a garbage file and stuff
+		    out.print(System.currentTimeMillis());		//add a super accurate time thingy
+			out.println("\t");							//throw a tab in there cuz excel n stuff
+			out.println(Location);						//prints the location
+		    out.close();								//close that garbage
+		} catch (IOException e) {
+			//Do nothing
+		}
+
+		//append string to super accurate time
+		//tab at end of string
+		//write to txt
 	}
 	
 	public static void broadcastDebugData() {

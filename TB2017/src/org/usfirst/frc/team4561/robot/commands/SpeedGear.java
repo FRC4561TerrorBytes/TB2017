@@ -19,16 +19,20 @@ public class SpeedGear extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.profilerTest("SpeedGear Constructor Start");
     	setTimeout(1);
     	if (RobotMap.TRANSMISSION_VERBOSE) {
     		System.out.println("[C:SpeedGear] Intializing...");
     	}
+    	Robot.profilerTest("SpeedGear Constructor End");
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+		Robot.profilerTest("SpeedGear Start");
     	//Actually change the gear
     	Robot.transmission.speedGear();
+		Robot.profilerTest("SpeedGear End");
     }
 
     // Make this return true when this Command no longer needs to run execute()

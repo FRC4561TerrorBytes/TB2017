@@ -1,4 +1,5 @@
 package org.usfirst.frc.team4561.robot.subsystems;
+import org.usfirst.frc.team4561.robot.Robot;
 // import RobotMap.java
 import org.usfirst.frc.team4561.robot.RobotMap;
 // import motor controller library
@@ -19,7 +20,9 @@ public class Agitator extends Subsystem {
 	private CANTalon agitatorMotor = new CANTalon(RobotMap.AGITATOR_MOTOR_PORT);
 	
 	public Agitator() {
+		Robot.profilerTest("Agitator Start");
 		agitatorMotor.setInverted(true);
+		Robot.profilerTest("Agitator End");
 	}
 	
     public void initDefaultCommand() {
@@ -32,6 +35,7 @@ public class Agitator extends Subsystem {
      * @param power
      */
     public void setPower(double power) {
+		Robot.profilerTest("AgitatorSetPower Start");
     	// if value is too high
     	if (power > 1) {
     		if (RobotMap.AGITATOR_VERBOSE) {
@@ -52,6 +56,7 @@ public class Agitator extends Subsystem {
     	}
     	// Run agitator motor at set power
 		agitatorMotor.set(power);
+		Robot.profilerTest("AgitatorSetPower End");
 	}
     
     //sends agitator velocity to robot.java for debug

@@ -2,6 +2,7 @@ package org.usfirst.frc.team4561.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
+import org.usfirst.frc.team4561.robot.Robot;
 import org.usfirst.frc.team4561.robot.RobotMap;
 import org.usfirst.frc.team4561.robot.commands.GearDefaultCommand;
 
@@ -32,28 +33,36 @@ public class GearManipulator extends Subsystem {
 	 * Method to close gear manipulator
 	 */
 	public void closeHolder() {
+		Robot.profilerTest("CloseHolder Start");
     	holderSolenoid.set(true);
+		Robot.profilerTest("CloseHolder End");
     }
     
 	/**
 	 * Method to open gear manipulator
 	 */
 	public void openHolder() {
+		Robot.profilerTest("OpenHolder Start");
     	holderSolenoid.set(false);
+		Robot.profilerTest("OpenHolder End");
     }
 	
 	/**
 	 * Method to close anti-fuel gear manipulator cover
 	 */
 	public void closeCover() {
+		Robot.profilerTest("CloseCover Start");
     	coverSolenoid.set(true);
+		Robot.profilerTest("CloseCover End");
     }
 	
 	/**
 	 * Method to open anti-fuel gear manipulator cover
 	 */
 	public void openCover() {
+		Robot.profilerTest("OpenCover Start");
     	coverSolenoid.set(false);
+		Robot.profilerTest("OpenCover End");
     }
 	
 	/**

@@ -50,6 +50,7 @@ public class TestMode extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+		Robot.profilerTest("TestMode Start");
     	motor = (int)Robot.oi.getDashboardSlider1();
     	switch (motor) {
 			case 0:
@@ -68,7 +69,7 @@ public class TestMode extends Command {
     		System.out.println(motor); 
     	}
     	motorOld = motor;
-
+		Robot.profilerTest("TestMode End");
     }
 
     // Make this return true when this Command no longer needs to run execute()

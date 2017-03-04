@@ -15,11 +15,13 @@ public class DriveTankTimed extends Command {
 	double seconds;
 	
     public DriveTankTimed(double left, double right, double seconds) {
+		Robot.profilerTest("DriveTankTimed Start");
         requires(Robot.driveTrain);
         this.leftpower = left;
         this.rightpower = right;
         this.seconds = seconds;
         setTimeout(seconds);
+		Robot.profilerTest("DriveTankTimed End");
     }
     
 

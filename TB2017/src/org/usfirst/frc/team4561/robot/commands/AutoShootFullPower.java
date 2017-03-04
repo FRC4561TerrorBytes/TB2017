@@ -21,7 +21,9 @@ public class AutoShootFullPower extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+		Robot.profilerTest("AutoShootFull Start");
     	Robot.shooter.shootAtPercent(0.5025);
+		Robot.profilerTest("AutoShootFull End");
     }
 
     // Make this return true when this Command no longer needs to run execute()

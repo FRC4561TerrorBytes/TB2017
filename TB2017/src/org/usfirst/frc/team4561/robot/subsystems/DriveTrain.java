@@ -1,6 +1,9 @@
 package org.usfirst.frc.team4561.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+
+import org.usfirst.frc.team4561.robot.Robot;
+
 import org.usfirst.frc.team4561.robot.RobotMap;
 import org.usfirst.frc.team4561.robot.commands.DriveArcade;
 import org.usfirst.frc.team4561.robot.commands.DriveArcadeTwoStick;
@@ -32,6 +35,7 @@ public class DriveTrain extends Subsystem {
     }
 	
 	public DriveTrain() {
+		Robot.profilerTest("DriveTrain Start");							//TODO: Remove Profiler Method and Call
 		frontRight = new CANTalon(RobotMap.FRONT_RIGHT_MOTOR_PORT);
 		frontLeft = new CANTalon(RobotMap.FRONT_LEFT_MOTOR_PORT);
 		
@@ -55,8 +59,12 @@ public class DriveTrain extends Subsystem {
 		
 		frontLeft.setInverted(true);
 		
+	//	frontRight.enableBrakeMode(true);
+	//	frontLeft.enableBrakeMode(true);
+		
 		// Puts motors into RobotDrive class
 		robotDrive = new RobotDrive(frontLeft, frontRight);
+		Robot.profilerTest("DriveTrain End");
 	}
     
 	/**
@@ -66,8 +74,10 @@ public class DriveTrain extends Subsystem {
 	 * @see {@link #setLeftMotorPower(double) setLeftMotorPower}, {@link #setRightMotorPower(double) setRightMotorPower}
 	 */
 	public void setMotorPower(double powerLeft, double powerRight) {
+		Robot.profilerTest("DriveTrainSetMotorPower Start");
 		setLeftMotorPower(powerLeft);
 		setRightMotorPower(powerRight);
+		Robot.profilerTest("DriveTrainSetMotorPower End");
 	}
 	
 	/**
@@ -116,6 +126,7 @@ public class DriveTrain extends Subsystem {
 	 * @param rot
 	 */
 	public void arcadeDrive(double drive, double rot) {
+		Robot.profilerTest("DriveTrainArcadeDrive Start");
 		double leftMotorSpeed = 0.0;
 		double rightMotorSpeed = 0.0;
 		if (drive > 0.0) {
@@ -139,6 +150,7 @@ public class DriveTrain extends Subsystem {
 //		frontLeft.set(leftMotorSpeed);
 		leftMotorSpeed *= 0.925;
 		robotDrive.setLeftRightMotorOutputs(leftMotorSpeed, rightMotorSpeed);
+		Robot.profilerTest("DriveTrainArcadeDrive End");
 	}
 	
 	/**

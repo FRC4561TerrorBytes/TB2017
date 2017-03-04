@@ -25,7 +25,9 @@ public class Climb extends Command {
     
     // Called repeatedly when this Command is scheduled to run
   	protected void execute() {
+		Robot.profilerTest("Climb Start");
   		Robot.ropeClimber.setClimber(1.0);
+		Robot.profilerTest("Climb End");
   	}
   	
     // Make this return true when this Command no longer needs to run execute()

@@ -40,9 +40,10 @@ public class SetAgitatorPower extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
+		Robot.profilerTest("SetAgitatorPower Start");
     	// Run agitator at variable speed
     	Robot.agitator.setPower(power);
+		Robot.profilerTest("SetAgitatorPower End");
     }
 
     // Make this return true when this Command no longer needs to run execute()

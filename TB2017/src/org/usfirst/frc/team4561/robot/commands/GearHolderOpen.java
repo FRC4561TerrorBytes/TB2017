@@ -23,7 +23,9 @@ public class GearHolderOpen extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+		Robot.profilerTest("GearHolderOpen Start");
     	Robot.gearManipulator.openHolder();
+		Robot.profilerTest("GearHolderOpen End");
     }
 
     // Make this return true when this Command no longer needs to run execute()
