@@ -12,9 +12,9 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
 /**
  *
  */
-public class AutoGearStation1LP extends CommandGroup {
+public class AutoGearStation1RP extends CommandGroup {
 
-    public AutoGearStation1LP() {
+    public AutoGearStation1RP() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -34,7 +34,7 @@ public class AutoGearStation1LP extends CommandGroup {
     	addSequential(new GearHolderClose());
     	addSequential(new WaitCommand(1));
     	addSequential(new DriveTankTimed(1, 1, 1.22));
-    	addSequential(new DriveTankTimed(0.7, -0.7, .125)); //Turn Right ~45 degrees
+    	addSequential(new DriveTankTimed(-0.7, 0.7, .125)); //Turn Right ~45 degrees
     	addSequential(new DriveTankTimed(0.5, 0.5, 5)); // Move forward
     	addSequential(new WaitCommand(2));
     	addSequential(new GearHolderOpen());

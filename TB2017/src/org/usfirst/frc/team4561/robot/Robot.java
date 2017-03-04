@@ -13,7 +13,9 @@ import org.usfirst.frc.team4561.robot.automodes.AutoDoNothing;
 import org.usfirst.frc.team4561.robot.automodes.AutoDriveToLine;
 import org.usfirst.frc.team4561.robot.automodes.AutoGearStation1CP;
 import org.usfirst.frc.team4561.robot.automodes.AutoGearStation1LP;
+import org.usfirst.frc.team4561.robot.automodes.AutoGearStation1RP;
 import org.usfirst.frc.team4561.robot.automodes.AutoHighGoalBlue;
+import org.usfirst.frc.team4561.robot.automodes.AutoHighGoalRed;
 import org.usfirst.frc.team4561.robot.automodes.AutoHopperHighGoal;
 import org.usfirst.frc.team4561.robot.automodes.AutoGearStation2;
 import org.usfirst.frc.team4561.robot.automodes.AutoGearStation3CP;
@@ -141,24 +143,20 @@ public class Robot extends IterativeRobot {
 			case 3:
 				autonomousCommand = new AutoGearStation1CP();
 				break;
-			
+				
 			case 4:
-				autonomousCommand = new AutoGearStation2();
+				autonomousCommand = new AutoGearStation1RP();
 				break;
 			
 			case 5:
-				autonomousCommand = new AutoGearStation3RP();
+				autonomousCommand = new AutoHighGoalBlue();
 				break;
-			
+				
 			case 6:
-				autonomousCommand = new AutoGearStation3CP();
+				autonomousCommand = new AutoHighGoalRed();
 				break;
 			
 			case 7:
-				autonomousCommand = new AutoHighGoalBlue();
-				break;
-			
-			case 8:
 				autonomousCommand = new AutoHopperHighGoal();
 				break;
 			}
