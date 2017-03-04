@@ -46,6 +46,8 @@ public class AutoHighGoalBlue extends CommandGroup {
 //        addSequential(new SetAgitatorPower(1)); // Set Agitator to full power and FIRE AT WILL
     	
     	addSequential(new TorqueGear());
+    	addSequential(new DriveTankTimed(1, 1, 4));
+    	addSequential(new DriveTankTimed(-1, -1, 3.35));
     	addSequential(new DriveTankTimed(1, 1, 0.65));
     	addSequential(new DriveTankTimed(-0.7, 0.7, 1.3));
     	addSequential(new DriveTankTimed(1, 1, 0.7));
