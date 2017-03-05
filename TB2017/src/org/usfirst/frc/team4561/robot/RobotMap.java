@@ -80,6 +80,7 @@ public class RobotMap {
 	
 	// Climber buttons
 	public static final int CLIMBER_ON_BUTTON = 2;
+	public static final int CLIMBER_SLOW_BUTTON = 6;
 	
 	// Test mode button (left stick)
 	public static final int TEST_MODE_BUTTON = 11;
