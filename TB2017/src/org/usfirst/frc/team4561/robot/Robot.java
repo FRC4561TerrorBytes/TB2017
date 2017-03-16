@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4561.robot;
 
+import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -41,7 +42,7 @@ import com.ctre.CANTalon.TalonControlMode;
  */
 public class Robot extends IterativeRobot {
 
-	public static DriveTrain driveTrain;
+	public static DriveTrainPID driveTrain;
 	public static ShooterPID shooter;
 	//public static Intake intake;
 	public static RopeClimber ropeClimber;
@@ -63,15 +64,21 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		shooter = new ShooterPID();
-		driveTrain = new DriveTrain();
+		driveTrain = new DriveTrainPID();
 		gearManipulator = new GearManipulator();	
 		//intake = new Intake();
 		agitator = new Agitator();
 		ropeClimber = new RopeClimber();
         transmission = new Transmission();
 		oi = new OI();
-		CameraServer.getInstance().startAutomaticCapture(0);
-		CameraServer.getInstance().startAutomaticCapture(1);
+		/*
+		UsbCamera cam1 = CameraServer.getInstance().startAutomaticCapture(0);
+		UsbCamera cam2 = CameraServer.getInstance().startAutomaticCapture(1);
+		cam1.setResolution(480, 640);
+		cam2.setResolution(480, 640);
+		cam1.setFPS(15);
+		cam2.setFPS(15);
+		*/
 		if(RobotMap.MASTER_VERBOSE) {
 			System.out.println("[Robot] Subsystems constructed");
 		}
@@ -233,19 +240,19 @@ public class Robot extends IterativeRobot {
 	}
 	
 	public static void broadcastDebugData() {
-		getDebugTable().putNumber("Shooter Velocity", Robot.shooter.getLeftEncoderVelocity());
+		/*getDebugTable().putNumber("Shooter Velocity", Robot.shooter.getLeftEncoderVelocity());
 		getDebugTable().putNumber("Shooter Setpoint", Robot.shooter.getSetpoint());
 		getDebugTable().putNumber("Shooter Current", Robot.shooter.getLeftMotorCurrent());
 		getDebugTable().putNumber("Rope Climber Velocity", Robot.ropeClimber.climbEncoderVel());
 		getDebugTable().putBoolean("Gear Manipulator Cover", Robot.gearManipulator.coverState());
 		getDebugTable().putBoolean("Gear Manipulator Holder", Robot.gearManipulator.holderState());
-		getDebugTable().putBoolean("Gear Manipulator Infrared", Robot.gearManipulator.detectorState());
-		/*getDebugTable().putNumber("Drive Train Front Left Pos", Robot.driveTrain.leftMotorPos());
+		getDebugTable().putBoolean("Gear Manipulator Infrared", Robot.gearManipulator.detectorState());*/
+		getDebugTable().putNumber("Drive Train Front Left Pos", Robot.driveTrain.leftMotorPos());
 		getDebugTable().putNumber("Drive Train Front Right Pos", Robot.driveTrain.rightMotorPos());
 		getDebugTable().putNumber("Drive Train Front Left Vel", Robot.driveTrain.leftMotorVel());
-		getDebugTable().putNumber("Drive Train Front Right Vel", Robot.driveTrain.rightMotorVel());*/
+		getDebugTable().putNumber("Drive Train Front Right Vel", Robot.driveTrain.rightMotorVel());/*
 		getDebugTable().putNumber("Agitator", Robot.agitator.agitatorState());
-		getDebugTable().putString("Transmission State", Robot.transmission.currentState);	
+		getDebugTable().putString("Transmission State", Robot.transmission.currentState);	*/
 	}
 	
 }

@@ -32,7 +32,7 @@ public class DriveTrainPID extends Subsystem {
 	public RobotDrive robotDrive;
 	
 	//TODO: Get max wanted RPM
-	int rpm = 1500; //RPM at full speed
+	int ticksPer100MS = 95000; //RPM at full speed
 	
 	public void initDefaultCommand() {
 		setDefaultCommand(new DriveArcadeTwoStick());
@@ -45,13 +45,15 @@ public class DriveTrainPID extends Subsystem {
 		frontRight.setFeedbackDevice(FeedbackDevice.QuadEncoder);		//right cantalon uses a quadencoder
 		frontRight.reverseSensor(false);
 		frontRight.setProfile(0);
+		
 
 		frontRight.configNominalOutputVoltage(+0.0f, -0.0f);			//sets min and max voltages
 		frontRight.configPeakOutputVoltage(+12.0f, -12.0f);
 	
 		
 		frontLeft = new CANTalon(RobotMap.FRONT_LEFT_MOTOR_PORT);		//new left cantalon
-		
+		frontLeft.setCurrentLimit(10);
+		frontLeft.EnableCurrentLimit(true);
 		frontLeft.setFeedbackDevice(FeedbackDevice.QuadEncoder);		//left cantalon uses a quadencoder
 		frontLeft.reverseSensor(false);
 		frontLeft.setProfile(0);
@@ -83,18 +85,20 @@ public class DriveTrainPID extends Subsystem {
 		
 		// Puts motors into RobotDrive class
 		robotDrive = new RobotDrive(frontLeft, frontRight);	
+		
+		SwitchToVelocity();
 	}
 	
 	public void SwitchToVelocity(){
 		frontRight.changeControlMode(TalonControlMode.Speed);	//changes talons to velocity pid mode
 		frontLeft.changeControlMode(TalonControlMode.Speed);
-		frontRight.setF(0);
+		frontRight.setF(1023/ticksPer100MS);
 		frontRight.setP(.25);
 		frontRight.setI(0);
 		frontRight.setD(0);
 	
-		frontLeft.setF(0);
-		frontLeft.setP(0);
+		frontLeft.setF(1023/ticksPer100MS);
+		frontLeft.setP(0.25);
 		frontLeft.setI(0);
 		frontLeft.setD(0);
 	}
@@ -194,8 +198,8 @@ public class DriveTrainPID extends Subsystem {
 		        rightMotorSpeed = -Math.max(-drive, -rot);
 		      }
 		    }
-		frontRight.set((int)rpm*rightMotorSpeed);
-		frontLeft.set((int)rpm*leftMotorSpeed);
+		frontRight.set((int)ticksPer100MS*rightMotorSpeed);
+		frontLeft.set((int)ticksPer100MS*leftMotorSpeed);
 	}
 
 /**
@@ -254,4 +258,12 @@ public class DriveTrainPID extends Subsystem {
 	public void stopRight() {
 		frontRight.set(0);
 	}
+
+public void switchToManual() {
+	stopLeft();
+	stopRight();
+	frontLeft.changeControlMode(TalonControlMode.PercentVbus);
+	frontRight.changeControlMode(TalonControlMode.PercentVbus);
+	
+}
 }

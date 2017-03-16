@@ -22,6 +22,8 @@ import org.usfirst.frc.team4561.robot.commands.DriveHeadingForward;
 import org.usfirst.frc.team4561.robot.commands.DriveHeadingBackward;
 import org.usfirst.frc.team4561.robot.commands.TestMode;
 import org.usfirst.frc.team4561.robot.commands.ToggleCamera;
+import org.usfirst.frc.team4561.robot.commands.ToggleDriveTrainPIDOff;
+import org.usfirst.frc.team4561.robot.commands.ToggleDriveTrainPIDOn;
 import org.usfirst.frc.team4561.robot.commands.ToggleShooterPID;
 import org.usfirst.frc.team4561.robot.commands.SetAgitatorPower;
 import org.usfirst.frc.team4561.robot.commands.Shoot;
@@ -52,8 +54,8 @@ public class OI {
 	
 	private JoystickButton cameraToggleButton = new JoystickButton(rightStick, RobotMap.TOGGLE_CAMERA_BUTTON);
 	
-	private JoystickButton leftTrigger = new JoystickButton(leftStick, RobotMap.GEAR_OVERRIDE_BUTTON_ONE);
-	private JoystickButton rightTrigger = new JoystickButton(rightStick, RobotMap.GEAR_OVERRIDE_BUTTON_TWO);
+	//private JoystickButton leftTrigger = new JoystickButton(leftStick, RobotMap.GEAR_OVERRIDE_BUTTON_ONE);
+	//private JoystickButton rightTrigger = new JoystickButton(rightStick, RobotMap.GEAR_OVERRIDE_BUTTON_TWO);
 	
 	// SECONDARY OPERATOR BUTTONS
 	private JoystickButton gearCoverButton = new JoystickButton(controller, RobotMap.GEAR_COVER_BUTTON);
@@ -69,8 +71,8 @@ public class OI {
 	private JoystickButton shooterPIDOn = new JoystickButton(controller, RobotMap.SHOOTER_PID_ON_PORT);
 	private JoystickButton shooterPIDToggle = new JoystickButton(controller, RobotMap.SHOOTER_PID_OFF_PORT);
 	
-	//private JoystickButton drivetrainPIDOn = new JoystickButton(controller, RobotMap.DRIVETRAIN_PID_ON_PORT);
-	//private JoystickButton drivetrainPIDOff = new JoystickButton(controller, RobotMap.DRIVETRAIN_PID_OFF_PORT);
+	private JoystickButton drivetrainPIDOn = new JoystickButton(rightStick, 1); //TODO: remove magic number
+	private JoystickButton drivetrainPIDOff = new JoystickButton(leftStick, 1);
 	
 	// Test mode button
 	private JoystickButton testModeButton = new JoystickButton(rightStick, RobotMap.TEST_MODE_BUTTON);
@@ -112,6 +114,9 @@ public class OI {
 		gearDetectorTrigger.whenActive(new PrintInfrared());
 		
 		shooterPIDToggle.whileHeld(new ToggleShooterPID());
+		
+		drivetrainPIDOn.whenPressed(new ToggleDriveTrainPIDOn());
+		drivetrainPIDOff.whenPressed(new ToggleDriveTrainPIDOff());
 		
 	}
 	
@@ -252,11 +257,11 @@ public class OI {
 	}
 	
 	public boolean getLeftTrigger() {
-		return leftTrigger.get();
+		return false;//leftTrigger.get();
 	}
 	
 	public boolean getRightTrigger() {
-		return rightTrigger.get();
+		return true;//rightTrigger.get();
 	}
 	
 	public boolean getReleaseOverride() {
