@@ -32,7 +32,7 @@ public class DriveTrainPID extends Subsystem {
 	public RobotDrive robotDrive;
 	
 	//TODO: Get max wanted RPM
-	int ticksPer100MS = 95000; //RPM at full speed
+	double ticksPer100MS = 95000; //RPM at full speed
 	
 	public void initDefaultCommand() {
 		setDefaultCommand(new DriveArcadeTwoStick());
@@ -86,18 +86,18 @@ public class DriveTrainPID extends Subsystem {
 		// Puts motors into RobotDrive class
 		robotDrive = new RobotDrive(frontLeft, frontRight);	
 		
-		SwitchToVelocity();
+		switchToManual();
 	}
 	
 	public void SwitchToVelocity(){
 		frontRight.changeControlMode(TalonControlMode.Speed);	//changes talons to velocity pid mode
 		frontLeft.changeControlMode(TalonControlMode.Speed);
-		frontRight.setF(1023/ticksPer100MS);
+		frontRight.setF(1023.0/ticksPer100MS);
 		frontRight.setP(.25);
 		frontRight.setI(0);
 		frontRight.setD(0);
 	
-		frontLeft.setF(1023/ticksPer100MS);
+		frontLeft.setF(1023.0/ticksPer100MS);
 		frontLeft.setP(0.25);
 		frontLeft.setI(0);
 		frontLeft.setD(0);
