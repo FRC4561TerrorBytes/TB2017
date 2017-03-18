@@ -75,12 +75,12 @@ public class RobotMap {
 	public static final int SHOOTER_BUTTON = 1;
 	
 	// Agitator buttons
-	public static final int AGITATOR_FORWARD_BUTTON = 4;
-	public static final int AGITATOR_OFF_BUTTON = 10;
-	public static final int AGITATOR_BACKWARD_BUTTON = 3;
+	public static final int AGITATOR_FORWARD_BUTTON = 5;
+	public static final int AGITATOR_BACKWARD_BUTTON = 7;
 	
 	// Climber buttons
 	public static final int CLIMBER_ON_BUTTON = 2;
+	public static final int CLIMBER_SLOW_BUTTON = 6;
 	
 	// Test mode button (left stick)
 	public static final int TEST_MODE_BUTTON = 11;

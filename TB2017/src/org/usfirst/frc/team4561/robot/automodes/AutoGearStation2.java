@@ -6,6 +6,7 @@ import org.usfirst.frc.team4561.robot.commands.TorqueGear;
 import org.usfirst.frc.team4561.robot.Robot;
 import org.usfirst.frc.team4561.robot.commands.DriveTankTimed;
 import org.usfirst.frc.team4561.robot.commands.GearCoverClose;
+import org.usfirst.frc.team4561.robot.commands.GearDefaultCommand;
 import org.usfirst.frc.team4561.robot.commands.GearHolderClose;
 import org.usfirst.frc.team4561.robot.commands.GearHolderOpen;
 

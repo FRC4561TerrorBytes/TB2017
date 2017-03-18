@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4561.robot.subsystems;
 
 import org.usfirst.frc.team4561.robot.RobotMap;
+import org.usfirst.frc.team4561.robot.commands.Climb;
 
 import com.ctre.CANTalon;
 
@@ -16,11 +17,10 @@ public class RopeClimber extends Subsystem {
 	
 	public RopeClimber() {
 		climberMotor.enableBrakeMode(true);
-		climberMotor.setInverted(true);
 	}
 	
 	public void initDefaultCommand() {
-		//TODO: Create command commandsetDefaultCommand(new );
+		setDefaultCommand(new Climb());
 	}
 	//sets power to 1 when power is not 1, same with -1
 	public void setClimber(double power) {

@@ -25,7 +25,13 @@ public class Climb extends Command {
     
     // Called repeatedly when this Command is scheduled to run
   	protected void execute() {
-  		Robot.ropeClimber.setClimber(1.0);
+  		if (Robot.oi.getClimbButton()) {
+  			Robot.ropeClimber.setClimber(1.0);
+  		} else if (Robot.oi.getClimbSlowButton()) {
+  			Robot.ropeClimber.setClimber(0.7);
+  		} else {
+  			Robot.ropeClimber.stop();
+  		}
   	}
   	
     // Make this return true when this Command no longer needs to run execute()

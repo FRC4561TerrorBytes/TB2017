@@ -7,6 +7,8 @@ import org.usfirst.frc.team4561.robot.commands.DriveArcadeTwoStick;
 import org.usfirst.frc.team4561.robot.commands.DriveTank;
 
 import com.ctre.CANTalon;
+import com.ctre.CANTalon.TalonControlMode;
+
 import edu.wpi.first.wpilibj.RobotDrive;
 
 /**
@@ -32,6 +34,7 @@ public class DriveTrain extends Subsystem {
     }
 	
 	public DriveTrain() {
+		
 		frontRight = new CANTalon(RobotMap.FRONT_RIGHT_MOTOR_PORT);
 		frontLeft = new CANTalon(RobotMap.FRONT_LEFT_MOTOR_PORT);
 		
@@ -146,7 +149,44 @@ public class DriveTrain extends Subsystem {
 	 * @param leftpower
 	 * @param rightpower
 	 */
+	public void SwitchToVelocity(){
+		frontRight.changeControlMode(TalonControlMode.Speed);	//changes talons to velocity pid mode
+		frontLeft.changeControlMode(TalonControlMode.Speed);
+		frontRight.setF(0);
+		frontRight.setP(.25);
+		frontRight.setI(0);
+		frontRight.setD(0);
+	
+		frontLeft.setF(0);
+		frontLeft.setP(0);
+		frontLeft.setI(0);
+		frontLeft.setD(0);
+	}
+
+	public void SwitchToPositional(){
+		frontRight.changeControlMode(TalonControlMode.Position);	//changes talons to positional pid mode
+		frontLeft.changeControlMode(TalonControlMode.Position);
+		frontRight.set(1000);				//set to pos pid testing target position
+		frontLeft.set(1000);
+	
+		frontRight.setF(0);
+		frontRight.setP(.25);
+		frontRight.setI(0);
+		frontRight.setD(0);
+	
+		frontLeft.setF(0);
+		frontLeft.setP(0);
+		frontLeft.setI(0);
+		frontLeft.setD(0);
+	}
+	
+	public void SwitchToDefault(){
+		frontRight.changeControlMode(TalonControlMode.PercentVbus);	//changes talons to percentvbus mode
+		frontLeft.changeControlMode(TalonControlMode.PercentVbus);	//TODO: verify that percentvbus is correct mode
+	}
+	
 	public void tankDrive(double leftpower, double rightpower) {
+		leftpower *= 0.925;
 		robotDrive.tankDrive(leftpower, -rightpower);
 	}
 	

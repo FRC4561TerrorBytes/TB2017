@@ -33,7 +33,7 @@ public class AutoDriveToLine extends CommandGroup {
     	
     	addSequential(new TorqueGear());
     	// Drive forward at full speed
-    	addSequential(new DriveTankTimed(1, 1, 10));
+    	addSequential(new DriveTankTimed(1, 1, 2));
     	addSequential(new WaitCommand(5));
     }
 }

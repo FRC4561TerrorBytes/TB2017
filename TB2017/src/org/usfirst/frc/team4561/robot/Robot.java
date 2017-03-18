@@ -14,7 +14,9 @@ import org.usfirst.frc.team4561.robot.automodes.AutoDoNothing;
 import org.usfirst.frc.team4561.robot.automodes.AutoDriveToLine;
 import org.usfirst.frc.team4561.robot.automodes.AutoGearStation1CP;
 import org.usfirst.frc.team4561.robot.automodes.AutoGearStation1LP;
-import org.usfirst.frc.team4561.robot.automodes.AutoHighGoal;
+import org.usfirst.frc.team4561.robot.automodes.AutoGearStation1RP;
+import org.usfirst.frc.team4561.robot.automodes.AutoHighGoalBlue;
+import org.usfirst.frc.team4561.robot.automodes.AutoHighGoalRed;
 import org.usfirst.frc.team4561.robot.automodes.AutoHopperHighGoal;
 import org.usfirst.frc.team4561.robot.automodes.AutoGearStation2;
 import org.usfirst.frc.team4561.robot.automodes.AutoGearStation3CP;
@@ -95,6 +97,8 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void disabledInit() {
+		if (autonomousCommand != null)
+			autonomousCommand.cancel();
 		if (RobotMap.MASTER_VERBOSE) {
 			System.out.println("[Robot] Disabled");
 		}
@@ -122,6 +126,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
+
 		//The following code is how we select an automode with a slider on the smartdashboard
 		//DO NOT INTIALIZE AT THE SAME TIME AS TESTMODE OR ANY OTHER MODE INVOLVING SLIDERS
 		
@@ -145,24 +150,20 @@ public class Robot extends IterativeRobot {
 			case 3:
 				autonomousCommand = new AutoGearStation1CP();
 				break;
-			
+				
 			case 4:
-				autonomousCommand = new AutoGearStation2();
+				autonomousCommand = new AutoGearStation1RP();
 				break;
 			
 			case 5:
-				autonomousCommand = new AutoGearStation3RP();
+				autonomousCommand = new AutoHighGoalBlue();
 				break;
-			
+				
 			case 6:
-				autonomousCommand = new AutoGearStation3CP();
+				autonomousCommand = new AutoHighGoalRed();
 				break;
 			
 			case 7:
-				autonomousCommand = new AutoHighGoal();
-				break;
-			
-			case 8:
 				autonomousCommand = new AutoHopperHighGoal();
 				break;
 			}
@@ -178,6 +179,7 @@ public class Robot extends IterativeRobot {
 		if (RobotMap.MASTER_VERBOSE) {
 			System.out.println("[Robot] Started autonomous");
 		}
+//		Robot.driveTrain.SwitchToVelocity();			//switches to Velocity PID at beginning of auto
 	}
 
 	/**
@@ -194,7 +196,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopInit() {
 
-		//Robot.driveTrain.SwitchToVelocity();
+//		Robot.driveTrain.SwitchToDefault();			//sets the drivetrain to non pid at beginning of teleop
 		
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();

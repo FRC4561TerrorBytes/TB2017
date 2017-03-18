@@ -21,7 +21,7 @@ public class ShooterPID extends Subsystem {
 		shootMotorRight.set(RobotMap.SHOOTER_LEFT_MOTOR_PORT);
 		shootMotorLeft.changeControlMode(TalonControlMode.Speed);
 		shootMotorLeft.setFeedbackDevice(FeedbackDevice.QuadEncoder);
-		shootMotorLeft.reverseOutput(true);
+		shootMotorLeft.reverseSensor(true);
 		shootMotorLeft.setF(2.9);
 		shootMotorLeft.setP(5);
 		shootMotorLeft.setI(0);
@@ -62,7 +62,7 @@ public class ShooterPID extends Subsystem {
     }
     
     public void shootAtPercent(double percent) {
-    	percent *= 200;
+    	percent *= 350;
     	shootMotorLeft.setSetpoint(percent);
     }
     

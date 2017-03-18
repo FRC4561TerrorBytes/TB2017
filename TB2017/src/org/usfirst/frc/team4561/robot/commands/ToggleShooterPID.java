@@ -5,7 +5,7 @@ import org.usfirst.frc.team4561.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class ToggleShooterPIDOff extends Command {
+public class ToggleShooterPID extends Command {
 	
 	protected void initialize(){
 		if (RobotMap.SHOOTER_VERBOSE){

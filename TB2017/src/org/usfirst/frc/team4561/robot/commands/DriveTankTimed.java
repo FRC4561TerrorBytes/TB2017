@@ -2,6 +2,10 @@ package org.usfirst.frc.team4561.robot.commands;
 
 import org.usfirst.frc.team4561.robot.Robot;
 import org.usfirst.frc.team4561.robot.RobotMap;
+import org.usfirst.frc.team4561.robot.subsystems.DriveTrain;
+
+import com.ctre.CANTalon.FeedbackDevice;
+import com.ctre.CANTalon.TalonControlMode;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -20,6 +24,7 @@ public class DriveTankTimed extends Command {
         this.rightpower = right;
         this.seconds = seconds;
         setTimeout(seconds);
+        
     }
     
 

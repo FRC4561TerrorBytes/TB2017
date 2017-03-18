@@ -5,9 +5,8 @@ import org.usfirst.frc.team4561.robot.Robot;
 import org.usfirst.frc.team4561.robot.RobotMap;
 
 /**
- * Default command for gear manipulator, actuates both holder and cover.
- * Is interrupted by GearOverride when both triggers are pressed.
- * @author: Lucas T, Kaiz
+ * Closes main mechanism for gear manipulator. NOT USED.
+ * @author: Lucas T
  */
 public class GearHolderClose extends Command {
 
@@ -24,21 +23,12 @@ public class GearHolderClose extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (Robot.oi.getGearHolderButton()) {
-    		Robot.gearManipulator.closeHolder();
-    	} else {
-    		Robot.gearManipulator.openHolder();
-    	}
-    	if (Robot.oi.getGearCoverButton()) {
-    		Robot.gearManipulator.openCover();
-    	} else {
-    		Robot.gearManipulator.closeCover();
-    	}
+    	Robot.gearManipulator.closeHolder();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
