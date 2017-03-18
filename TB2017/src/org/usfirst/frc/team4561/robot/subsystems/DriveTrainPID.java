@@ -29,10 +29,10 @@ public class DriveTrainPID extends Subsystem {
 	private CANTalon rearRight;
 	private CANTalon rearLeft;
 		
-	public RobotDrive robotDrive;z
+	public RobotDrive robotDrive;
 	
 	//TODO: FIND FOR REAL
-	double ticksPer100MS = 95000; // at full speed
+	private double ticksPer100MS = 95000; // at full speed
 	
 	public void initDefaultCommand() {
 		setDefaultCommand(new DriveArcadeTwoStick());
