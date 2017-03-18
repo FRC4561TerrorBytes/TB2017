@@ -60,6 +60,8 @@ public class DriveTrain extends Subsystem {
 		
 		// Puts motors into RobotDrive class
 		robotDrive = new RobotDrive(frontLeft, frontRight);
+		
+		SwitchToDefault();
 	}
     
 	/**

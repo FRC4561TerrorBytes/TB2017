@@ -6,8 +6,8 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class ToggleDriveTrainPIDOn extends Command {
 
-	protected void execute(){
-		Robot.driveTrain.SwitchToVelocity();
+	protected void initialize(){
+		Robot.driveTrain.switchToVelocity();
 	}
 	
 	@Override

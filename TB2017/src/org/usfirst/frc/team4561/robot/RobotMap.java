@@ -10,9 +10,9 @@ public class RobotMap {
 	
 	// Motor ports
 	public static final int FRONT_LEFT_MOTOR_PORT = 1;
-	public static final int MID_LEFT_MOTOR_PORT = 4;
+	public static final int MID_LEFT_MOTOR_PORT = 2;
 	public static final int REAR_LEFT_MOTOR_PORT = 3;
-	public static final int FRONT_RIGHT_MOTOR_PORT = 2;
+	public static final int FRONT_RIGHT_MOTOR_PORT = 4;
 	public static final int MID_RIGHT_MOTOR_PORT = 5;
 	public static final int REAR_RIGHT_MOTOR_PORT = 6;
 	public static final int SHOOTER_LEFT_MOTOR_PORT = 7;
@@ -79,8 +79,8 @@ public class RobotMap {
 	public static final int AGITATOR_BACKWARD_BUTTON = 7;
 	
 	// Climber buttons
-	public static final int CLIMBER_ON_BUTTON = 2;
-	public static final int CLIMBER_SLOW_BUTTON = 6;
+	public static final int CLIMBER_OVERRIDE_BUTTON = 2;
+	public static final int CLIMBER_LIMITED_BUTTON = 6;
 	
 	// Test mode button (left stick)
 	public static final int TEST_MODE_BUTTON = 11;

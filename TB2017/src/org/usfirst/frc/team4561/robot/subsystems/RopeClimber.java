@@ -17,6 +17,8 @@ public class RopeClimber extends Subsystem {
 	
 	public RopeClimber() {
 		climberMotor.enableBrakeMode(true);
+		climberMotor.setCurrentLimit(40);
+		climberMotor.reverseOutput(true);
 	}
 	
 	public void initDefaultCommand() {
@@ -41,6 +43,18 @@ public class RopeClimber extends Subsystem {
 	//send climber motor velocity to robot.java for debug
 	public double climbEncoderVel() {
 		return climberMotor.getEncVelocity();
+	}
+	
+	public double getCurrent() {
+		return climberMotor.getOutputCurrent();
+	}
+	
+	public double getVoltage() {
+		return climberMotor.getOutputVoltage();
+	}
+	
+	public void enableCurrentLimiting(boolean enable)  {
+		climberMotor.EnableCurrentLimit(enable);
 	}
 	
 	//stops climber motor

@@ -64,6 +64,5 @@ public class AutoGearStation1CP extends CommandGroup {
     	addSequential(new WaitCommand(1));
     	addSequential(new GearCoverOpen());
     	addSequential(new DriveTankTimed(-0.5, -0.5, 5));
-    	
     }
 }

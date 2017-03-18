@@ -126,7 +126,8 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-
+		Robot.driveTrain.switchToPower();
+		
 		//The following code is how we select an automode with a slider on the smartdashboard
 		//DO NOT INTIALIZE AT THE SAME TIME AS TESTMODE OR ANY OTHER MODE INVOLVING SLIDERS
 		
@@ -179,7 +180,6 @@ public class Robot extends IterativeRobot {
 		if (RobotMap.MASTER_VERBOSE) {
 			System.out.println("[Robot] Started autonomous");
 		}
-//		Robot.driveTrain.SwitchToVelocity();			//switches to Velocity PID at beginning of auto
 	}
 
 	/**
@@ -195,8 +195,7 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopInit() {
-
-//		Robot.driveTrain.SwitchToDefault();			//sets the drivetrain to non pid at beginning of teleop
+		Robot.driveTrain.switchToPower();			//sets the drivetrain to non pid at beginning of teleop
 		
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
@@ -245,14 +244,18 @@ public class Robot extends IterativeRobot {
 		/*getDebugTable().putNumber("Shooter Velocity", Robot.shooter.getLeftEncoderVelocity());
 		getDebugTable().putNumber("Shooter Setpoint", Robot.shooter.getSetpoint());
 		getDebugTable().putNumber("Shooter Current", Robot.shooter.getLeftMotorCurrent());
-		getDebugTable().putNumber("Rope Climber Velocity", Robot.ropeClimber.climbEncoderVel());
 		getDebugTable().putBoolean("Gear Manipulator Cover", Robot.gearManipulator.coverState());
 		getDebugTable().putBoolean("Gear Manipulator Holder", Robot.gearManipulator.holderState());
 		getDebugTable().putBoolean("Gear Manipulator Infrared", Robot.gearManipulator.detectorState());*/
-		getDebugTable().putNumber("Drive Train Front Left Pos", Robot.driveTrain.leftMotorPos());
-		getDebugTable().putNumber("Drive Train Front Right Pos", Robot.driveTrain.rightMotorPos());
-		getDebugTable().putNumber("Drive Train Front Left Vel", Robot.driveTrain.leftMotorVel());
-		getDebugTable().putNumber("Drive Train Front Right Vel", Robot.driveTrain.rightMotorVel());/*
+		getDebugTable().putNumber("Drivetrain Front Left Pos", Robot.driveTrain.leftMotorPos());
+		getDebugTable().putNumber("Drivetrain Front Right Pos", Robot.driveTrain.rightMotorPos());
+		getDebugTable().putNumber("Drivetrain Front Left Vel", Robot.driveTrain.leftMotorVel());
+		getDebugTable().putNumber("Drivetrain Front Right Vel", Robot.driveTrain.rightMotorVel());
+		System.out.println("Left: " + Robot.driveTrain.leftMotorVel() + ", Right: " + Robot.driveTrain.rightMotorVel());
+		getDebugTable().putNumber("Climber current", Robot.ropeClimber.getCurrent());
+		getDebugTable().putNumber("Climber voltage", Robot.ropeClimber.getVoltage());
+
+		/*
 		getDebugTable().putNumber("Agitator", Robot.agitator.agitatorState());
 		getDebugTable().putString("Transmission State", Robot.transmission.currentState);	*/
 	}

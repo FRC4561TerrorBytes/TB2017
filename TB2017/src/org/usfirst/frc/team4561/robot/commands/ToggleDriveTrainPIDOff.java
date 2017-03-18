@@ -6,9 +6,9 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class ToggleDriveTrainPIDOff extends Command {
 
-	protected void execute(){
-		Robot.driveTrain.switchToManual();
-		}
+	protected void initialize(){
+		Robot.driveTrain.switchToPower();
+	}
 	
 	@Override
 	protected boolean isFinished() {
