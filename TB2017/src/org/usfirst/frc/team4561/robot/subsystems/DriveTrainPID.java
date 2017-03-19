@@ -28,11 +28,9 @@ public class DriveTrainPID extends Subsystem {
 	
 	private CANTalon rearRight;
 	private CANTalon rearLeft;
-		
-	public RobotDrive robotDrive;
 	
-	//TODO: FIND FOR REAL
-	private double ticksPer100MS = 95000; // at full speed
+	private double leftTicksPer100MS =  1625; // at full speed
+	private double rightTicksPer100MS = 1535;
 	
 	public void initDefaultCommand() {
 		setDefaultCommand(new DriveArcadeTwoStick());
@@ -44,18 +42,9 @@ public class DriveTrainPID extends Subsystem {
 		frontRight.setFeedbackDevice(FeedbackDevice.QuadEncoder);		//right cantalon uses a quadencoder
 		frontRight.reverseSensor(false);
 		
-		frontRight.setProfile(0);
-		frontRight.configNominalOutputVoltage(+0.0f, -0.0f);			//sets min and max voltages
-		frontRight.configPeakOutputVoltage(+12.0f, -12.0f);
-	
-		
 		frontLeft = new CANTalon(RobotMap.FRONT_LEFT_MOTOR_PORT);		//new left cantalon
 		frontLeft.setFeedbackDevice(FeedbackDevice.QuadEncoder);		//left cantalon uses a quadencoder
-		frontLeft.reverseSensor(false);
-		
-		frontLeft.setProfile(0);
-		frontLeft.configNominalOutputVoltage(+0.0f, -0.0f);				//sets min and max voltages
-		frontLeft.configPeakOutputVoltage(+12.0f, -12.0f);
+		frontLeft.reverseSensor(true);
 		
 		midRight = new CANTalon(RobotMap.MID_RIGHT_MOTOR_PORT);			//new right cantalon
 		
@@ -75,9 +64,7 @@ public class DriveTrainPID extends Subsystem {
 		rearLeft.changeControlMode(CANTalon.TalonControlMode.Follower);
 		rearLeft.set(RobotMap.FRONT_LEFT_MOTOR_PORT);
 		
-		
-		// Puts motors into RobotDrive class
-		robotDrive = new RobotDrive(frontLeft, frontRight);	
+		frontLeft.setInverted(true);
 		
 		switchToPower();
 	}
@@ -86,12 +73,12 @@ public class DriveTrainPID extends Subsystem {
 		frontRight.changeControlMode(TalonControlMode.Speed);	//changes talons to velocity pid mode
 		frontLeft.changeControlMode(TalonControlMode.Speed);
 		
-		frontRight.setF(1023.0/ticksPer100MS);
+		frontRight.setF(1023.0/rightTicksPer100MS);
 		frontRight.setP(.25);
 		frontRight.setI(0);
 		frontRight.setD(0);
 		
-		frontLeft.setF(1023.0/ticksPer100MS);
+		frontLeft.setF(1023.0/leftTicksPer100MS);
 		frontLeft.setP(0.25);
 		frontLeft.setI(0);
 		frontLeft.setD(0);
@@ -181,12 +168,12 @@ public class DriveTrainPID extends Subsystem {
 			double leftMotorSpeed = 0.0;
 			double rightMotorSpeed = 0.0;
 			if (drive > 0.0) {
-			      if (rot > 0.0) {
-			        leftMotorSpeed = drive - rot;
-			        rightMotorSpeed = Math.max(drive, rot);
-			      } else {
-			        leftMotorSpeed = Math.max(drive, -rot);
-			        rightMotorSpeed = drive + rot;
+				if (rot > 0.0) {
+					leftMotorSpeed = drive - rot;
+					rightMotorSpeed = Math.max(drive, rot);
+			    } else {
+			    	leftMotorSpeed = Math.max(drive, -rot);
+			    	rightMotorSpeed = drive + rot;
 			      }
 			    } else {
 			      if (rot > 0.0) {
@@ -197,8 +184,9 @@ public class DriveTrainPID extends Subsystem {
 			        rightMotorSpeed = -Math.max(-drive, -rot);
 			      }
 			    }
-			frontRight.set(rightMotorSpeed);
+//			leftMotorSpeed *= 0.925;
 			frontLeft.set(leftMotorSpeed);
+			frontRight.set(-rightMotorSpeed);
 		} else if (frontLeft.getControlMode() == TalonControlMode.Speed) {
 			double leftMotorSpeed = 0.0;
 			double rightMotorSpeed = 0.0;
@@ -219,10 +207,11 @@ public class DriveTrainPID extends Subsystem {
 			        rightMotorSpeed = -Math.max(-drive, -rot);
 			      }
 			    }
-			frontRight.set(ticksPer100MS*rightMotorSpeed);
-			frontLeft.set(ticksPer100MS*leftMotorSpeed);
+			frontLeft.set(leftTicksPer100MS*leftMotorSpeed);
+			frontRight.set(rightTicksPer100MS*rightMotorSpeed);
 		}
 	}
+	
 
 /**
  * @param leftpower
@@ -232,11 +221,12 @@ public class DriveTrainPID extends Subsystem {
 	public void tankDrive(double leftPower, double rightPower) {
 		if (frontLeft.getControlMode() == TalonControlMode.PercentVbus) {
 			leftPower *= 0.925;
-			robotDrive.tankDrive(leftPower, -rightPower);
+			frontLeft.set(leftPower);
+			frontRight.set(rightPower);
 			return;
 		} else if (frontLeft.getControlMode() == TalonControlMode.Speed) {
-			leftPower *= ticksPer100MS;
-			rightPower *= ticksPer100MS;
+			leftPower *= rightTicksPer100MS;
+			rightPower *= rightTicksPer100MS;
 			frontLeft.set(leftPower);
 			frontRight.set(rightPower);
 			return;

@@ -18,6 +18,7 @@ import org.usfirst.frc.team4561.robot.automodes.AutoGearStation1RP;
 import org.usfirst.frc.team4561.robot.automodes.AutoHighGoalBlue;
 import org.usfirst.frc.team4561.robot.automodes.AutoHighGoalRed;
 import org.usfirst.frc.team4561.robot.automodes.AutoHopperHighGoal;
+import org.usfirst.frc.team4561.robot.automodes.AutoPIDDriveToLine;
 import org.usfirst.frc.team4561.robot.automodes.AutoGearStation2;
 import org.usfirst.frc.team4561.robot.automodes.AutoGearStation3CP;
 import org.usfirst.frc.team4561.robot.automodes.AutoGearStation3RP;
@@ -103,12 +104,12 @@ public class Robot extends IterativeRobot {
 			System.out.println("[Robot] Disabled");
 		}
 	}
-
+	
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 		if(Robot.isInDebugMode()) {
-			broadcastDebugData();	
+			broadcastDebugData();
 		}
 	}
 	
@@ -141,7 +142,7 @@ public class Robot extends IterativeRobot {
 				break;
 				
 			case 1:
-				autonomousCommand = new AutoDriveToLine();
+				autonomousCommand = new AutoPIDDriveToLine();
 				break;
 				
 			case 2:
