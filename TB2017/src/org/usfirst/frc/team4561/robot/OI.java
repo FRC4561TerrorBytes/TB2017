@@ -19,6 +19,7 @@ import org.usfirst.frc.team4561.robot.commands.Climb;
 import org.usfirst.frc.team4561.robot.commands.DebugButton;
 import org.usfirst.frc.team4561.robot.commands.DoNothing;
 import org.usfirst.frc.team4561.robot.commands.DriveHeadingForward;
+import org.usfirst.frc.team4561.robot.commands.EnableTouringMode;
 import org.usfirst.frc.team4561.robot.commands.DriveHeadingBackward;
 import org.usfirst.frc.team4561.robot.commands.TestMode;
 import org.usfirst.frc.team4561.robot.commands.ToggleCamera;
@@ -52,10 +53,10 @@ public class OI {
 	
 	private BothJoystickTriggers gearReleaseOverride = new BothJoystickTriggers();
 	
-	private JoystickButton cameraToggleButton = new JoystickButton(rightStick, RobotMap.TOGGLE_CAMERA_BUTTON);
-	
 	private JoystickButton leftTrigger = new JoystickButton(leftStick, RobotMap.GEAR_OVERRIDE_BUTTON_ONE);
 	private JoystickButton rightTrigger = new JoystickButton(rightStick, RobotMap.GEAR_OVERRIDE_BUTTON_TWO);
+	
+	private JoystickButton touringModeButton = new JoystickButton(rightStick, RobotMap.TOURING_MODE_BUTTON);
 	
 	// SECONDARY OPERATOR BUTTONS
 	private JoystickButton gearCoverButton = new JoystickButton(controller, RobotMap.GEAR_COVER_BUTTON);
@@ -103,14 +104,14 @@ public class OI {
 		
 		gearReleaseOverride.whileActive(new GearOverride());
 		
-		cameraToggleButton.whenPressed(new ToggleCamera());
-		
 		shooterButton.whileHeld(new Shoot());
 		
 		agitatorForwardButton.whileHeld(new SetAgitatorPower(1));
 		agitatorBackwardButton.whileHeld(new SetAgitatorPower(-1));
 		
 		gearDetectorTrigger.whenActive(new PrintInfrared());
+		
+		touringModeButton.whileHeld(new EnableTouringMode());
 		
 //		drivetrainPIDOn.whenPressed(new ToggleDriveTrainPIDOn());
 //		drivetrainPIDOff.whenPressed(new ToggleDriveTrainPIDOff());

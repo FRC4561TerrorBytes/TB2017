@@ -32,6 +32,10 @@ public class DriveTrainPID extends Subsystem {
 	private double leftTicksPer100MS =  1625; // at full speed
 	private double rightTicksPer100MS = 1535;
 	
+	private boolean touringMode = false;
+	private double touringModeDriveMultiplier = 0.7;
+	private double touringModeTurningMultiplier = 0.7;
+	
 	public void initDefaultCommand() {
 		setDefaultCommand(new DriveArcadeTwoStick());
     }
@@ -165,6 +169,10 @@ public class DriveTrainPID extends Subsystem {
 	
 	public void arcadeDrive(double drive, double rot) {
 		if (frontLeft.getControlMode() == TalonControlMode.PercentVbus) {
+			if (touringMode) {
+				drive *= touringModeDriveMultiplier;
+				rot *= touringModeTurningMultiplier;
+			}
 			double leftMotorSpeed = 0.0;
 			double rightMotorSpeed = 0.0;
 			if (drive > 0.0) {
@@ -184,7 +192,7 @@ public class DriveTrainPID extends Subsystem {
 			        rightMotorSpeed = -Math.max(-drive, -rot);
 			      }
 			    }
-//			leftMotorSpeed *= 0.925;
+			leftMotorSpeed *= 0.925;
 			frontLeft.set(leftMotorSpeed);
 			frontRight.set(-rightMotorSpeed);
 		} else if (frontLeft.getControlMode() == TalonControlMode.Speed) {
@@ -252,6 +260,14 @@ public class DriveTrainPID extends Subsystem {
 	
 	public double rightMotorPos() {
 		return frontRight.getEncPosition();
+	}
+	
+	public void setTouringMode(boolean enable) {
+		touringMode = enable;
+	}
+	
+	public boolean isInTouringMode() {
+		return touringMode;
 	}
 	
 /**

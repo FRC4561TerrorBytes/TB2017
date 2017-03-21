@@ -49,6 +49,7 @@ public class RobotMap {
 	// Drivetrain buttons (left stick)
 	public static final int FRONT_HEADING_BUTTON = 5;
 	public static final int BACKWARD_HEADING_BUTTON = 3;
+	public static final int TOURING_MODE_BUTTON = 2;
 	
 	// Gear manipulator buttons (both sticks)
 	public static final int GEAR_OVERRIDE_BUTTON_ONE = 1; // Left stick

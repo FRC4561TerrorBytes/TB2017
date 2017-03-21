@@ -29,6 +29,10 @@ public class DriveTrain extends Subsystem {
 		
 	private RobotDrive robotDrive;
 	
+	private boolean touringMode = false;
+	private double touringModeDriveMultiplier = 0.7;
+	private double touringModeTurningMultiplier = 0.7;
+	
 	public void initDefaultCommand() {
 		setDefaultCommand(new DriveArcadeTwoStick());
     }
@@ -121,6 +125,10 @@ public class DriveTrain extends Subsystem {
 	 * @param rot
 	 */
 	public void arcadeDrive(double drive, double rot) {
+		if (touringMode) {
+			drive *= touringModeDriveMultiplier;
+			rot *= touringModeTurningMultiplier;
+		}
 		double leftMotorSpeed = 0.0;
 		double rightMotorSpeed = 0.0;
 		if (drive > 0.0) {
