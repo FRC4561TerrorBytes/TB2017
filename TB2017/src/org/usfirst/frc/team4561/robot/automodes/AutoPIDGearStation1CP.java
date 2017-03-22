@@ -57,16 +57,14 @@ public class AutoPIDGearStation1CP extends CommandGroup {
     	addSequential(new ToggleDriveTrainPIDOn());
     	addSequential(new GearHolderClose());
     	addSequential(new GearCoverClose());
+    	addSequential(new TorqueGear());
     	addSequential(new WaitCommand(0.5));
-    	addSequential(new DriveTankTimed(1, 1, 0.8));
-    	addSequential(new DriveTankTimed(0.5, 0.5, 1.75));
-    	//addSequential(new DriveTankTimed(1, -1, 0.05));
-    	//addSequential(new DriveTankTimed(-1, 1, 0.05));
+    	addSequential(new DriveTankTimed(0.8, 0.8, 1.3));
     	addSequential(new WaitCommand(1));
     	addSequential(new GearHolderOpen());
     	addSequential(new WaitCommand(1));
     	addSequential(new GearCoverOpen());
-    	addSequential(new DriveTankTimed(-0.5, -0.5, 5));
+    	addSequential(new DriveTankTimed(-0.5, -0.5, 1));
     	addSequential(new ToggleDriveTrainPIDOff());
     }
 }

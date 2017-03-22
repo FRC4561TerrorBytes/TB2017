@@ -3,8 +3,11 @@ package org.usfirst.frc.team4561.robot.automodes;
 import org.usfirst.frc.team4561.robot.commands.AutoShootFullPower;
 import org.usfirst.frc.team4561.robot.commands.DriveTankTimed;
 import org.usfirst.frc.team4561.robot.commands.GearCoverClose;
+import org.usfirst.frc.team4561.robot.commands.GearHolderClose;
 import org.usfirst.frc.team4561.robot.commands.SetAgitatorPower;
 import org.usfirst.frc.team4561.robot.commands.SpeedGear;
+import org.usfirst.frc.team4561.robot.commands.ToggleDriveTrainPIDOff;
+import org.usfirst.frc.team4561.robot.commands.ToggleDriveTrainPIDOn;
 //import org.usfirst.frc.team4561.robot.commands.AutoTankDriveForward;
 //import org.usfirst.frc.team4561.robot.commands.AutoTankDriveLeft;
 import org.usfirst.frc.team4561.robot.commands.TorqueGear;
@@ -35,7 +38,6 @@ public class AutoHighGoalBlue extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
        
-        //TODO: Change placeholders from 10 to something not trash
 //    	addSequential(new GearCoverClose()); // make sure gear cover is down
 //        addSequential(new TorqueGear()); // Go into high torque but low speed gear
 //        addSequential(new DriveTankTimed(1, 1, 3)); // Forward
@@ -45,16 +47,17 @@ public class AutoHighGoalBlue extends CommandGroup {
 //        addSequential(new WaitCommand(2));
 //        addSequential(new SetAgitatorPower(1)); // Set Agitator to full power and FIRE AT WILL
     	
+    	addSequential(new ToggleDriveTrainPIDOn());
+    	addSequential(new GearHolderClose());
+    	addSequential(new GearCoverClose());
     	addSequential(new TorqueGear());
-    	addSequential(new DriveTankTimed(1, 1, 4));
-    	addSequential(new DriveTankTimed(-1, -1, 3.35));
-    	addSequential(new DriveTankTimed(1, 1, 0.65));
-    	addSequential(new DriveTankTimed(-0.7, 0.7, 1.3));
-    	addSequential(new DriveTankTimed(1, 1, 0.7));
-//    	addSequential(new DriveTankTimed(-1, 1, 0.2));
-//    	addSequential(new DriveTankTimed(1, 1, 0.68));
-//    	addSequential(new DriveTankTimed(-1, -1, 0.16));
-    	//addSequential(new DriveTankTimed(-1, -1, 0.5));
+    	addSequential(new WaitCommand(0.5));
+    	addSequential(new DriveTankTimed(-0.8, -0.8, 1.15));
+    	addSequential(new WaitCommand(0.5));
+    	addSequential(new DriveTankTimed(0.8, 0.8, 0.5));
+    	addSequential(new DriveTankTimed(0.4, -0.4, 0.6));
+    	addSequential(new DriveTankTimed(0.8, 0.8, 0.7)); // untested
+    	addSequential(new ToggleDriveTrainPIDOff());
     	addParallel(new AutoShootFullPower()); //spin up flywheel
         addSequential(new WaitCommand(2));
         addSequential(new SetAgitatorPower(1));

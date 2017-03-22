@@ -29,7 +29,7 @@ public class DriveTrainPID extends Subsystem {
 	private CANTalon rearRight;
 	private CANTalon rearLeft;
 	
-	private double leftTicksPer100MS =  1625; // at full speed
+	private double leftTicksPer100MS = 1535; // at full speed
 	private double rightTicksPer100MS = 1535;
 	
 	private boolean touringMode = false;
@@ -48,7 +48,7 @@ public class DriveTrainPID extends Subsystem {
 		
 		frontLeft = new CANTalon(RobotMap.FRONT_LEFT_MOTOR_PORT);		//new left cantalon
 		frontLeft.setFeedbackDevice(FeedbackDevice.QuadEncoder);		//left cantalon uses a quadencoder
-		frontLeft.reverseSensor(true);
+		frontLeft.reverseSensor(false);
 		
 		midRight = new CANTalon(RobotMap.MID_RIGHT_MOTOR_PORT);			//new right cantalon
 		
@@ -77,13 +77,13 @@ public class DriveTrainPID extends Subsystem {
 		frontRight.changeControlMode(TalonControlMode.Speed);	//changes talons to velocity pid mode
 		frontLeft.changeControlMode(TalonControlMode.Speed);
 		
-		frontRight.setF(1023.0/rightTicksPer100MS);
-		frontRight.setP(.25);
+		frontRight.setF(0.67);//1023.0/(double)rightTicksPer100MS);
+		frontRight.setP(0.5);
 		frontRight.setI(0);
 		frontRight.setD(0);
 		
-		frontLeft.setF(1023.0/leftTicksPer100MS);
-		frontLeft.setP(0.25);
+		frontLeft.setF(0.67);//1023.0/(double)leftTicksPer100MS);
+		frontLeft.setP(0.5);
 		frontLeft.setI(0);
 		frontLeft.setD(0);
 	}
@@ -229,12 +229,14 @@ public class DriveTrainPID extends Subsystem {
 	public void tankDrive(double leftPower, double rightPower) {
 		if (frontLeft.getControlMode() == TalonControlMode.PercentVbus) {
 			leftPower *= 0.925;
+			System.out.println("percent mode :O");
 			frontLeft.set(leftPower);
 			frontRight.set(rightPower);
 			return;
 		} else if (frontLeft.getControlMode() == TalonControlMode.Speed) {
 			leftPower *= rightTicksPer100MS;
 			rightPower *= rightTicksPer100MS;
+			System.out.println("speed mode: " + Double.toString(leftPower) + ", " + Double.toString(rightPower));
 			frontLeft.set(leftPower);
 			frontRight.set(rightPower);
 			return;

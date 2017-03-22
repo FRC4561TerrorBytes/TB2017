@@ -200,6 +200,14 @@ public class DriveTrain extends Subsystem {
 		robotDrive.tankDrive(leftpower, -rightpower);
 	}
 	
+	public void setTouringMode(boolean enable) {
+		touringMode = enable;
+	}
+	
+	public boolean isInTouringMode() {
+		return touringMode;
+	}
+	
 	/**
 	 * Stops the drivetrain.
 	 * @see {@link #stopLeft() stopLeft}, {@link #stopRight() stopRight}

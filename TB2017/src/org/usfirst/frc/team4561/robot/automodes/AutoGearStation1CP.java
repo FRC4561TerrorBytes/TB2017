@@ -1,6 +1,8 @@
 package org.usfirst.frc.team4561.robot.automodes;
  
 import org.usfirst.frc.team4561.robot.commands.GearOverride;
+import org.usfirst.frc.team4561.robot.commands.ToggleDriveTrainPIDOff;
+import org.usfirst.frc.team4561.robot.commands.ToggleDriveTrainPIDOn;
 import org.usfirst.frc.team4561.robot.commands.GearOverride;
 import org.usfirst.frc.team4561.robot.commands.TorqueGear;
 import org.usfirst.frc.team4561.robot.Robot;
@@ -52,17 +54,17 @@ public class AutoGearStation1CP extends CommandGroup {
 //        	addSequential(new DriveTankTimed(1, 1, 3)); // Move back to peg (TODO: change number of seconds)
 //        	addSequential(new GearHolderOpen()); // Open the gear holder
 //        }
+    	addSequential(new ToggleDriveTrainPIDOn());
     	addSequential(new GearHolderClose());
     	addSequential(new GearCoverClose());
+    	addSequential(new TorqueGear());
     	addSequential(new WaitCommand(0.5));
-    	addSequential(new DriveTankTimed(1, 1, 0.8));
-    	addSequential(new DriveTankTimed(0.5, 0.5, 1.75));
-    	//addSequential(new DriveTankTimed(1, -1, 0.05));
-    	//addSequential(new DriveTankTimed(-1, 1, 0.05));
+    	addSequential(new DriveTankTimed(0.8, 0.8, 1.3));
     	addSequential(new WaitCommand(1));
     	addSequential(new GearHolderOpen());
     	addSequential(new WaitCommand(1));
     	addSequential(new GearCoverOpen());
-    	addSequential(new DriveTankTimed(-0.5, -0.5, 5));
+    	addSequential(new DriveTankTimed(-0.5, -0.5, 1));
+    	addSequential(new ToggleDriveTrainPIDOff());
     }
 }

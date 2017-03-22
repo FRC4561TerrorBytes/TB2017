@@ -108,9 +108,9 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
-		if(Robot.isInDebugMode()) {
-			broadcastDebugData();
-		}
+//		if(Robot.isInDebugMode()) {
+//			broadcastDebugData();
+//		}
 	}
 	
 
