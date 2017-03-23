@@ -18,9 +18,9 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
 /**
  *
  */
-public class AutoHighGoalRed extends CommandGroup {
+public class AutoPIDHighGoalRed extends CommandGroup {
  
-    public AutoHighGoalRed() {
+    public AutoPIDHighGoalRed() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

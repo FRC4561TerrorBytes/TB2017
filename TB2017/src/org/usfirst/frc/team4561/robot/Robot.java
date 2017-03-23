@@ -15,10 +15,11 @@ import org.usfirst.frc.team4561.robot.automodes.AutoDriveToLine;
 import org.usfirst.frc.team4561.robot.automodes.AutoGearStation1CP;
 import org.usfirst.frc.team4561.robot.automodes.AutoGearStation1LP;
 import org.usfirst.frc.team4561.robot.automodes.AutoGearStation1RP;
-import org.usfirst.frc.team4561.robot.automodes.AutoHighGoalBlue;
-import org.usfirst.frc.team4561.robot.automodes.AutoHighGoalRed;
+import org.usfirst.frc.team4561.robot.automodes.AutoPIDHighGoalBlue;
+import org.usfirst.frc.team4561.robot.automodes.AutoPIDHighGoalRed;
 import org.usfirst.frc.team4561.robot.automodes.AutoHopperHighGoal;
 import org.usfirst.frc.team4561.robot.automodes.AutoPIDDriveToLine;
+import org.usfirst.frc.team4561.robot.automodes.AutoPIDGearStation1CP;
 import org.usfirst.frc.team4561.robot.automodes.AutoGearStation2;
 import org.usfirst.frc.team4561.robot.automodes.AutoGearStation3CP;
 import org.usfirst.frc.team4561.robot.automodes.AutoGearStation3RP;
@@ -146,28 +147,26 @@ public class Robot extends IterativeRobot {
 				break;
 				
 			case 2:
-				autonomousCommand = new AutoGearStation1LP();
+				autonomousCommand = new AutoPIDGearStation1CP(); // Center peg auto w/ PID
 				break;
 				
 			case 3:
-				autonomousCommand = new AutoGearStation1CP();
+				autonomousCommand = new AutoPIDHighGoalRed();
 				break;
 				
 			case 4:
-				autonomousCommand = new AutoGearStation1RP();
+				autonomousCommand = new AutoPIDHighGoalBlue();
 				break;
 			
 			case 5:
-				autonomousCommand = new AutoHighGoalBlue();
+				autonomousCommand = new AutoDriveToLine();
 				break;
 				
-			case 6:
-				autonomousCommand = new AutoHighGoalRed();
-				break;
-			
 			case 7:
-				autonomousCommand = new AutoHopperHighGoal();
+				autonomousCommand = new AutoGearStation1CP(); // Center peg auto w/out PID
 				break;
+				
+			
 			}
 		}
 		catch(Throwable t) {
