@@ -1,9 +1,13 @@
 package org.usfirst.frc.team4561.robot.automodes;
 
 import org.usfirst.frc.team4561.robot.commands.SpeedGear;
+import org.usfirst.frc.team4561.robot.commands.ToggleDriveTrainPIDOff;
+import org.usfirst.frc.team4561.robot.commands.ToggleDriveTrainPIDOn;
 import org.usfirst.frc.team4561.robot.commands.TorqueGear;
 import org.usfirst.frc.team4561.robot.commands.DriveTankTimed;
 import org.usfirst.frc.team4561.robot.commands.GearCoverClose;
+import org.usfirst.frc.team4561.robot.commands.GearHolderClose;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
 
@@ -11,9 +15,9 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
  * TODO: Document
  * @author Ben G
  */
-public class AutoDriveToLine extends CommandGroup {
+public class AutoPIDDriveToLine extends CommandGroup {
 
-    public AutoDriveToLine() {
+    public AutoPIDDriveToLine() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -31,9 +35,14 @@ public class AutoDriveToLine extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
+    	addSequential(new ToggleDriveTrainPIDOn());
+    	addSequential(new GearHolderClose());
+    	addSequential(new GearCoverClose());
     	addSequential(new TorqueGear());
+    	addSequential(new WaitCommand(0.5));
     	// Drive forward at full speed
-    	addSequential(new DriveTankTimed(1, 1, 2));
+    	addSequential(new DriveTankTimed(0.8, 0.8, 2));
+    	addSequential(new ToggleDriveTrainPIDOff());
     	addSequential(new WaitCommand(5));
     }
 }

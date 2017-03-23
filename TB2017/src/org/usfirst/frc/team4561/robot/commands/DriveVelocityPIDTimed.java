@@ -6,29 +6,32 @@ import org.usfirst.frc.team4561.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * Changes the gear to the torque gear.
- * Requires the Transmission solenoid.
- * TODO: Change names
- * @author Zane T, Ben G
+ *
  */
-public class TorqueGear extends Command {
+public class DriveVelocityPIDTimed extends Command {
 
-    public TorqueGear() {
-        requires(Robot.transmission);
+	double leftVel;
+	double rightVel;
+	double seconds;
+	
+    public DriveVelocityPIDTimed(double leftVel, double rightVel, double seconds) {
+        requires(Robot.driveTrain);
+        this.leftVel = leftVel;
+        this.rightVel = rightVel;
+        this.seconds = seconds;
+        setTimeout(seconds);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	setTimeout(1);
-    	if (RobotMap.TRANSMISSION_VERBOSE) {
-    		System.out.println("[C:TorqueGear] Intializing...");
+    	if (RobotMap.DRIVETRAIN_VERBOSE) {
+    		System.out.println("[Command] Intializing DriveVelocityPIDTimed for " + seconds + " seconds");
     	}
+    	Robot.driveTrain.tankDrive(leftVel, rightVel);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	//Actually change the gear
-    	Robot.transmission.torqueGear();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -38,15 +41,11 @@ public class TorqueGear extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.transmission.stop();
-    	if (RobotMap.TRANSMISSION_VERBOSE) {
-    		System.out.println("[C:TorqueGear] Command finished.");
-    	}
+    	Robot.driveTrain.stop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
     }
 }

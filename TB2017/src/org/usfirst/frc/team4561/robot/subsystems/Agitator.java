@@ -18,6 +18,10 @@ public class Agitator extends Subsystem {
 	// makes a motor variable for the agitator
 	private CANTalon agitatorMotor = new CANTalon(RobotMap.AGITATOR_MOTOR_PORT);
 	
+	public Agitator() {
+		agitatorMotor.setInverted(true);
+	}
+	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
@@ -49,6 +53,11 @@ public class Agitator extends Subsystem {
     	// Run agitator motor at set power
 		agitatorMotor.set(power);
 	}
+    
+    //sends agitator velocity to robot.java for debug
+    public double agitatorState() {
+		return agitatorMotor.getEncVelocity();
+    }
     
     /**
      * Function to stop agitator motor

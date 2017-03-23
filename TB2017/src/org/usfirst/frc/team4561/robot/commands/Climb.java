@@ -13,6 +13,7 @@ public class Climb extends Command {
 
     public Climb() {
     	requires(Robot.ropeClimber);
+    	setInterruptible(false);
     }
     
     // Called just before this Command runs the first time
@@ -24,7 +25,15 @@ public class Climb extends Command {
     
     // Called repeatedly when this Command is scheduled to run
   	protected void execute() {
-  		Robot.ropeClimber.setClimber(1.0);
+  		if (Robot.oi.getClimbButton()) {
+  			Robot.ropeClimber.enableCurrentLimiting(false);
+  			Robot.ropeClimber.setClimber(1.0);
+  		} else if (Robot.oi.getClimbSlowButton()) {
+  			Robot.ropeClimber.enableCurrentLimiting(true);
+  			Robot.ropeClimber.setClimber(1.0);
+  		} else {
+  			Robot.ropeClimber.stop();
+  		}
   	}
   	
     // Make this return true when this Command no longer needs to run execute()
