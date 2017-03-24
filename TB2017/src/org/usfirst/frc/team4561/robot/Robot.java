@@ -162,7 +162,7 @@ public class Robot extends IterativeRobot {
 				autonomousCommand = new AutoDriveToLine();
 				break;
 				
-			case 7:
+			case 6:
 				autonomousCommand = new AutoGearStation1CP(); // Center peg auto w/out PID
 				break;
 				

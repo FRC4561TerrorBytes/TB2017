@@ -67,8 +67,10 @@ public class OI {
 	private JoystickButton agitatorForwardButton = new JoystickButton(controller, RobotMap.AGITATOR_FORWARD_BUTTON);
 	private JoystickButton agitatorBackwardButton = new JoystickButton(controller, RobotMap.AGITATOR_BACKWARD_BUTTON);
 	
-	private JoystickButton climbOverrideButton = new JoystickButton(controller, RobotMap.CLIMBER_OVERRIDE_BUTTON);
-	private JoystickButton climbLimitedButton = new JoystickButton(controller, RobotMap.CLIMBER_LIMITED_BUTTON);
+	private JoystickButton climbButton = new JoystickButton(controller, RobotMap.CLIMBER_BUTTON);
+	private JoystickButton climbOverrideLimitButton = new JoystickButton(controller, RobotMap.CLIMBER_OVERRIDE_LIMIT_BUTTON);
+	private JoystickButton climbSlowModeButton = new JoystickButton(controller, RobotMap.CLIMBER_SLOW_MODE_BUTTON);
+	
 	
 	//private JoystickButton shooterPIDOn = new JoystickButton(controller, RobotMap.SHOOTER_PID_ON_PORT);
 	//private JoystickButton shooterPIDToggle = new JoystickButton(controller, RobotMap.SHOOTER_PID_OFF_PORT);
@@ -273,12 +275,16 @@ public class OI {
 		return gearCoverButton.get();
 	}
 	
-	public boolean getClimbSlowButton() {
-		return climbLimitedButton.get();
+	public boolean getClimbButton() {
+		return climbButton.get();
 	}
 	
-	public boolean getClimbButton() {
-		return climbOverrideButton.get();
+	public boolean getClimbSlowModeButton() {
+		return climbSlowModeButton.get();
+	}
+	
+	public boolean getClimbOverrideLimitButton() {
+		return climbOverrideLimitButton.get();
 	}
 	
 	/**

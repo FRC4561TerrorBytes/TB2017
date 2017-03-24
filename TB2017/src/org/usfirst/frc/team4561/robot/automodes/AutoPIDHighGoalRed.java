@@ -55,7 +55,7 @@ public class AutoPIDHighGoalRed extends CommandGroup {
     	addSequential(new WaitCommand(0.5));
     	addSequential(new DriveTankTimed(-0.8, -0.8, 1.15));
     	addSequential(new WaitCommand(0.5));
-    	addSequential(new DriveTankTimed(0.8, 0.8, 0.7));
+    	addSequential(new DriveTankTimed(0.8, 0.8, 0.85));
     	addSequential(new DriveTankTimed(-0.4, 0.4, 0.6));
     	addSequential(new DriveTankTimed(0.8, 0.8, 0.7)); // untested
     	addSequential(new ToggleDriveTrainPIDOff());
