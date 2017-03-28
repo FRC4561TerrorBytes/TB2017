@@ -26,7 +26,8 @@ public class RobotMap {
 	public static final int TRANSMISSION_SOLENOID_PORT = 1;
 	public static final int TRANSMISSION_SOLENOID_TWO_PORT = 0;
 	public static final int HOLDER_SOLENOID_PORT = 2;
-	public static final int COVER_SOLENOID_PORT = 3;
+	public static final int HOLDER_SOLENOID_PORT_TWO = 3;
+	public static final int COVER_SOLENOID_PORT = 4;
 	public static final String TRANSMISSION_SOLENOID_TYPE = "double"; // If this is "single", then transmission will use single solenoid.
 	// Else, the transmission will use a double solenoid.
 	
