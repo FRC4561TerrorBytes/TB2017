@@ -25,12 +25,20 @@ public class Climb extends Command {
     
     // Called repeatedly when this Command is scheduled to run
   	protected void execute() {
-  		if (Robot.oi.getClimbButton()) {
-  			Robot.ropeClimber.enableCurrentLimiting(false);
-  			Robot.ropeClimber.setClimber(1.0);
-  		} else if (Robot.oi.getClimbSlowButton()) {
+  		boolean climberOn = Robot.oi.getClimbButton();
+  		boolean climberSlow = Robot.oi.getClimbSlowModeButton();
+  		boolean climberCurrentLimit = Robot.oi.getClimbOverrideLimitButton();
+  		if (climberCurrentLimit) {
   			Robot.ropeClimber.enableCurrentLimiting(true);
-  			Robot.ropeClimber.setClimber(1.0);
+  		} else {
+  			Robot.ropeClimber.enableCurrentLimiting(false);
+  		}
+  		if (climberOn) {
+  			if (climberSlow) {
+  				Robot.ropeClimber.setClimber(0.7);
+  			} else {
+  				Robot.ropeClimber.setClimber(1.0);
+  			}
   		} else {
   			Robot.ropeClimber.stop();
   		}

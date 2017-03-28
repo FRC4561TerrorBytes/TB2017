@@ -81,8 +81,9 @@ public class RobotMap {
 	public static final int AGITATOR_BACKWARD_BUTTON = 7;
 	
 	// Climber buttons
-	public static final int CLIMBER_OVERRIDE_BUTTON = 2;
-	public static final int CLIMBER_LIMITED_BUTTON = 6;
+	public static final int CLIMBER_BUTTON = 2;
+	public static final int CLIMBER_SLOW_MODE_BUTTON = 6;
+	public static final int CLIMBER_OVERRIDE_LIMIT_BUTTON = 11;
 	
 	// Test mode button (left stick)
 	public static final int TEST_MODE_BUTTON = 11;

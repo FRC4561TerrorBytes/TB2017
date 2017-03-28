@@ -18,9 +18,9 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
 /**
  *
  */
-public class AutoHighGoalRed extends CommandGroup {
+public class AutoPIDHighGoalRed extends CommandGroup {
  
-    public AutoHighGoalRed() {
+    public AutoPIDHighGoalRed() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -55,7 +55,7 @@ public class AutoHighGoalRed extends CommandGroup {
     	addSequential(new WaitCommand(0.5));
     	addSequential(new DriveTankTimed(-0.8, -0.8, 1.15));
     	addSequential(new WaitCommand(0.5));
-    	addSequential(new DriveTankTimed(0.8, 0.8, 0.7));
+    	addSequential(new DriveTankTimed(0.8, 0.8, 0.85));
     	addSequential(new DriveTankTimed(-0.4, 0.4, 0.6));
     	addSequential(new DriveTankTimed(0.8, 0.8, 0.7)); // untested
     	addSequential(new ToggleDriveTrainPIDOff());
