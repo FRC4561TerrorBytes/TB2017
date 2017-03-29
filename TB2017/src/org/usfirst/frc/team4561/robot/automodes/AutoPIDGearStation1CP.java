@@ -10,8 +10,8 @@ import org.usfirst.frc.team4561.robot.commands.DriveTankTimed;
 import org.usfirst.frc.team4561.robot.commands.GearCoverClose;
 import org.usfirst.frc.team4561.robot.commands.GearCoverOpen;
 import org.usfirst.frc.team4561.robot.commands.GearDefaultCommand;
-import org.usfirst.frc.team4561.robot.commands.GearHolderClose;
 import org.usfirst.frc.team4561.robot.commands.GearHolderOpen;
+import org.usfirst.frc.team4561.robot.commands.GearHolderClose;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
@@ -55,14 +55,14 @@ public class AutoPIDGearStation1CP extends CommandGroup {
 //        	addSequential(new GearHolderOpen()); // Open the gear holder
 //        }
     	addSequential(new ToggleDriveTrainPIDOn());
-    	addSequential(new GearHolderClose());
+    	addSequential(new GearHolderOpen());
     	addSequential(new GearCoverClose());
     	addSequential(new TorqueGear());
     	addSequential(new WaitCommand(0.5));
     	//addSequential(new DriveTankTimed(0.8, 0.8, 1.5));
     	addSequential(new DriveTankTimed(0.65, 0.65, 3.5));
     	//addSequential(new WaitCommand(1));
-    	addSequential(new GearHolderOpen());
+    	addSequential(new GearHolderClose());
     	addSequential(new WaitCommand(1));
     	addSequential(new GearCoverOpen());
     	addSequential(new DriveTankTimed(-0.4, -0.4, 1.5));

@@ -25,9 +25,9 @@ public class GearDefaultCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if (Robot.oi.getGearHolderButton()) {
-    		Robot.gearManipulator.closeHolder();
-    	} else {
     		Robot.gearManipulator.openHolder();
+    	} else {
+    		Robot.gearManipulator.closeHolder();
     	}
     	if (Robot.oi.getGearCoverButton()) {
     		Robot.gearManipulator.openCover();

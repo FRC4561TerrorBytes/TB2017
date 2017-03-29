@@ -3,8 +3,8 @@ package org.usfirst.frc.team4561.robot.automodes;
 import org.usfirst.frc.team4561.robot.Robot;
 import org.usfirst.frc.team4561.robot.commands.DriveTankTimed;
 import org.usfirst.frc.team4561.robot.commands.GearDefaultCommand;
-import org.usfirst.frc.team4561.robot.commands.GearHolderClose;
 import org.usfirst.frc.team4561.robot.commands.GearHolderOpen;
+import org.usfirst.frc.team4561.robot.commands.GearHolderClose;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
@@ -31,13 +31,13 @@ public class AutoGearStation1RP extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new GearHolderClose());
+    	addSequential(new GearHolderOpen());
     	addSequential(new WaitCommand(1));
     	addSequential(new DriveTankTimed(1, 1, 1.22));
     	addSequential(new DriveTankTimed(-0.7, 0.7, .125)); //Turn Right ~45 degrees
     	addSequential(new DriveTankTimed(0.5, 0.5, 5)); // Move forward
     	addSequential(new WaitCommand(2));
-    	addSequential(new GearHolderOpen());
+    	addSequential(new GearHolderClose());
     	addSequential(new WaitCommand(2));
     	addSequential(new DriveTankTimed(-0.5, -0.5, 5));
 //    	addSequential(new GearHolderOpen()); // Open the gear holder

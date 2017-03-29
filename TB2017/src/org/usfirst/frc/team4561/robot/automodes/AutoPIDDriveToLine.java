@@ -6,7 +6,7 @@ import org.usfirst.frc.team4561.robot.commands.ToggleDriveTrainPIDOn;
 import org.usfirst.frc.team4561.robot.commands.TorqueGear;
 import org.usfirst.frc.team4561.robot.commands.DriveTankTimed;
 import org.usfirst.frc.team4561.robot.commands.GearCoverClose;
-import org.usfirst.frc.team4561.robot.commands.GearHolderClose;
+import org.usfirst.frc.team4561.robot.commands.GearHolderOpen;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
@@ -36,7 +36,7 @@ public class AutoPIDDriveToLine extends CommandGroup {
         // arm.
     	
     	addSequential(new ToggleDriveTrainPIDOn());
-    	addSequential(new GearHolderClose());
+    	addSequential(new GearHolderOpen());
     	addSequential(new GearCoverClose());
     	addSequential(new TorqueGear());
     	addSequential(new WaitCommand(0.5));

@@ -34,14 +34,14 @@ public class GearManipulator extends Subsystem {
 	 * Method to close gear manipulator
 	 */
 	public void closeHolder() {
-    	holderSolenoid.set(DoubleSolenoid.Value.kReverse);
+    	holderSolenoid.set(DoubleSolenoid.Value.kForward);
     }
     
 	/**
 	 * Method to open gear manipulator
 	 */
 	public void openHolder() {
-		holderSolenoid.set(DoubleSolenoid.Value.kForward);
+		holderSolenoid.set(DoubleSolenoid.Value.kReverse);
     }
 	
 	public void holderOff(){
