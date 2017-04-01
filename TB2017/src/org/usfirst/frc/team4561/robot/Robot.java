@@ -21,6 +21,8 @@ import org.usfirst.frc.team4561.robot.automodes.AutoTest;
 import org.usfirst.frc.team4561.robot.automodes.AutoHopperHighGoal;
 import org.usfirst.frc.team4561.robot.automodes.AutoPIDDriveToLine;
 import org.usfirst.frc.team4561.robot.automodes.AutoPIDGearStation1CP;
+import org.usfirst.frc.team4561.robot.automodes.AutoPIDGearStation1LP;
+import org.usfirst.frc.team4561.robot.automodes.AutoPIDGearStation1RP;
 import org.usfirst.frc.team4561.robot.automodes.AutoGearStation2;
 import org.usfirst.frc.team4561.robot.automodes.AutoGearStation3CP;
 import org.usfirst.frc.team4561.robot.automodes.AutoGearStation3RP;
@@ -168,7 +170,15 @@ public class Robot extends IterativeRobot {
 				break;
 				
 			case 7:
+				autonomousCommand = new AutoPIDGearStation1RP();
+				break;
+				
+			case 8:
 				autonomousCommand = new AutoTest();
+				break;
+				
+			case 9:
+				autonomousCommand = new AutoPIDGearStation1LP();
 				break;
 			
 			}
