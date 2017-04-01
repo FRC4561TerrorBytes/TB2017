@@ -3,6 +3,7 @@ package org.usfirst.frc.team4561.robot.automodes;
 import org.usfirst.frc.team4561.robot.commands.AutoShootFullPower;
 import org.usfirst.frc.team4561.robot.commands.DriveTankTimed;
 import org.usfirst.frc.team4561.robot.commands.GearCoverClose;
+import org.usfirst.frc.team4561.robot.commands.GearHolderClose;
 import org.usfirst.frc.team4561.robot.commands.GearHolderOpen;
 import org.usfirst.frc.team4561.robot.commands.SetAgitatorPower;
 import org.usfirst.frc.team4561.robot.commands.SpeedGear;
@@ -48,7 +49,7 @@ public class AutoPIDHighGoalBlue extends CommandGroup {
 //        addSequential(new SetAgitatorPower(1)); // Set Agitator to full power and FIRE AT WILL
     	
     	addSequential(new ToggleDriveTrainPIDOn());
-    	addSequential(new GearHolderOpen());
+    	addSequential(new GearHolderClose());
     	addSequential(new GearCoverClose());
     	addSequential(new TorqueGear());
     	addSequential(new WaitCommand(0.5));

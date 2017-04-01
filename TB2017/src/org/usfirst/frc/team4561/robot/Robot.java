@@ -78,6 +78,8 @@ public class Robot extends IterativeRobot {
 		ropeClimber = new RopeClimber();
         transmission = new Transmission();
 		oi = new OI();
+		CameraServer.getInstance().startAutomaticCapture();
+		
 		/*
 		UsbCamera cam1 = CameraServer.getInstance().startAutomaticCapture(0);
 		UsbCamera cam2 = CameraServer.getInstance().startAutomaticCapture(1);

@@ -4,6 +4,8 @@ import org.usfirst.frc.team4561.robot.commands.SpeedGear;
 import org.usfirst.frc.team4561.robot.commands.TorqueGear;
 import org.usfirst.frc.team4561.robot.commands.DriveTankTimed;
 import org.usfirst.frc.team4561.robot.commands.GearCoverClose;
+import org.usfirst.frc.team4561.robot.commands.GearHolderClose;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
 
@@ -31,6 +33,8 @@ public class AutoDriveToLine extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
+    	addSequential(new GearHolderClose());
+    	addSequential(new GearCoverClose());
     	addSequential(new TorqueGear());
     	// Drive forward at full speed
     	addSequential(new DriveTankTimed(1, 1, 2));
