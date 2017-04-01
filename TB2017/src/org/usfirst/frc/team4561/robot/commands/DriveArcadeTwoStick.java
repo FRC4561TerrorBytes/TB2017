@@ -1,46 +1,40 @@
-package org.usfirst.frc.team4561.robot.commands;
+	package org.usfirst.frc.team4561.robot.commands;
 
+import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team4561.robot.Robot;
 import org.usfirst.frc.team4561.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.command.Command;
-
 /**
- * Changes the gear to the torque gear.
- * Requires the Transmission solenoid.
- * TODO: Change names
- * @author Zane T, Ben G
+ * TODO: The code for the Two Stick Arcade Drive
+ * @author Ose
  */
-public class TorqueGear extends Command {
+public class DriveArcadeTwoStick extends Command {
 
-    public TorqueGear() {
-        requires(Robot.transmission);
+    public DriveArcadeTwoStick() {
+    	requires(Robot.driveTrain);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	setTimeout(1);
-    	if (RobotMap.TRANSMISSION_VERBOSE) {
-    		System.out.println("[C:TorqueGear] Intializing...");
+    	if (RobotMap.DRIVETRAIN_VERBOSE) {
+    		System.out.println("[Command] Intializing DriveArcade");
     	}
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	//Actually change the gear
-    	Robot.transmission.torqueGear();
+    	Robot.driveTrain.arcadeDrive(Robot.oi.getRightStickX(), Robot.oi.getLeftStickY());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return isTimedOut();
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.transmission.stop();
-    	if (RobotMap.TRANSMISSION_VERBOSE) {
-    		System.out.println("[C:TorqueGear] Command finished.");
+    	if (RobotMap.DRIVETRAIN_VERBOSE) {
+    		System.out.println("[Command] Ending DriveArcade");
     	}
     }
 

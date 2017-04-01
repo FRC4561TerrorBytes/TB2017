@@ -1,33 +1,33 @@
 package org.usfirst.frc.team4561.robot.commands;
 
 import org.usfirst.frc.team4561.robot.Robot;
+import org.usfirst.frc.team4561.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
 /**
- * TODO: Document
- * @author Zane T
+ *
  */
-public class AutoTankDriveRight extends Command {
+public class DebugButton extends Command {
 
-    public AutoTankDriveRight() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+	
+    public DebugButton() {
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+		Robot.debugTable = NetworkTable.getTable("Debugging");
+    	Robot.debug = !Robot.debug;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	// drive forward at full speed
-    	Robot.driveTrain.tankDrive(1, 0);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
@@ -37,5 +37,6 @@ public class AutoTankDriveRight extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }

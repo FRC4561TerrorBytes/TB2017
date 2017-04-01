@@ -1,18 +1,43 @@
 package org.usfirst.frc.team4561.robot;
 
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-//import edu.wpi.first.wpilibj.networktables.NetworkTable;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team4561.robot.automodes.AutoDoNothing;
+import org.usfirst.frc.team4561.robot.automodes.AutoDriveToLine;
+import org.usfirst.frc.team4561.robot.automodes.AutoGearStation1CP;
+import org.usfirst.frc.team4561.robot.automodes.AutoGearStation1LP;
+import org.usfirst.frc.team4561.robot.automodes.AutoGearStation1RP;
+import org.usfirst.frc.team4561.robot.automodes.AutoPIDHighGoalBlue;
+import org.usfirst.frc.team4561.robot.automodes.AutoPIDHighGoalRed;
+import org.usfirst.frc.team4561.robot.automodes.AutoTest;
+import org.usfirst.frc.team4561.robot.automodes.AutoHopperHighGoal;
+import org.usfirst.frc.team4561.robot.automodes.AutoPIDDriveToLine;
+import org.usfirst.frc.team4561.robot.automodes.AutoPIDGearStation1CP;
+import org.usfirst.frc.team4561.robot.automodes.AutoPIDGearStation1LP;
+import org.usfirst.frc.team4561.robot.automodes.AutoPIDGearStation1RP;
+import org.usfirst.frc.team4561.robot.automodes.AutoGearStation2;
+import org.usfirst.frc.team4561.robot.automodes.AutoGearStation3CP;
+import org.usfirst.frc.team4561.robot.automodes.AutoGearStation3RP;
+import org.usfirst.frc.team4561.robot.commands.DoNothing;
 import org.usfirst.frc.team4561.robot.subsystems.Agitator;
 import org.usfirst.frc.team4561.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team4561.robot.subsystems.DriveTrainPID;
 import org.usfirst.frc.team4561.robot.subsystems.GearManipulator;
 import org.usfirst.frc.team4561.robot.subsystems.Intake;
 import org.usfirst.frc.team4561.robot.subsystems.RopeClimber;
 import org.usfirst.frc.team4561.robot.subsystems.Shooter;
+import org.usfirst.frc.team4561.robot.subsystems.ShooterPID;
 import org.usfirst.frc.team4561.robot.subsystems.Transmission;
+
+import com.ctre.CANTalon.TalonControlMode;
 
 
 /**
@@ -24,16 +49,20 @@ import org.usfirst.frc.team4561.robot.subsystems.Transmission;
  */
 public class Robot extends IterativeRobot {
 
-	public static DriveTrain driveTrain;
-	public static Shooter shooter;
-	public static Intake intake;
+	public static DriveTrainPID driveTrain;
+	public static ShooterPID shooter;
+	//public static Intake intake;
 	public static RopeClimber ropeClimber;
 	public static GearManipulator gearManipulator;
 	public static Agitator agitator;
     public static Transmission transmission;
+    public static NetworkTable debugTable;
     public static OI oi;
 	
 	Command autonomousCommand;
+	
+	public static boolean debug = false;
+	public static Object camera;
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -41,16 +70,30 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
-		shooter = new Shooter();
-		driveTrain = new DriveTrain();
+		shooter = new ShooterPID();
+		driveTrain = new DriveTrainPID();
 		gearManipulator = new GearManipulator();	
-		intake = new Intake();
+		//intake = new Intake();
 		agitator = new Agitator();
 		ropeClimber = new RopeClimber();
         transmission = new Transmission();
 		oi = new OI();
+		CameraServer.getInstance().startAutomaticCapture();
+		
+		/*
+		UsbCamera cam1 = CameraServer.getInstance().startAutomaticCapture(0);
+		UsbCamera cam2 = CameraServer.getInstance().startAutomaticCapture(1);
+		cam1.setResolution(480, 640);
+		cam2.setResolution(480, 640);
+		cam1.setFPS(15);
+		cam2.setFPS(15);
+		*/
 		if(RobotMap.MASTER_VERBOSE) {
 			System.out.println("[Robot] Subsystems constructed");
+		}
+		
+		if(isInDebugMode()) { 
+			debugTable = NetworkTable.getTable("Debugging");
 		}
 	}
 
@@ -61,15 +104,21 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void disabledInit() {
+		if (autonomousCommand != null)
+			autonomousCommand.cancel();
 		if (RobotMap.MASTER_VERBOSE) {
 			System.out.println("[Robot] Disabled");
 		}
 	}
-
+	
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
+//		if(Robot.isInDebugMode()) {
+//			broadcastDebugData();
+//		}
 	}
+	
 
 	/**
 	 * This autonomous (along with the chooser code above) shows how to select
@@ -84,14 +133,62 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-
-		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector",
-		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-		 * = new MyAutoCommand(); break; case "Default Auto": default:
-		 * autonomousCommand = new ExampleCommand(); break; }
-		 */
-
+		Robot.driveTrain.switchToPower();
+		
+		//The following code is how we select an automode with a slider on the smartdashboard
+		//DO NOT INTIALIZE AT THE SAME TIME AS TESTMODE OR ANY OTHER MODE INVOLVING SLIDERS
+		
+		try {
+			int slider1 = (int)Robot.oi.getDashboardSlider0();
+			
+			switch (slider1) {
+			
+			case 0:
+				autonomousCommand = new AutoDoNothing();
+				break;
+				
+			case 1:
+				autonomousCommand = new AutoPIDDriveToLine();
+				break;
+				
+			case 2:
+				autonomousCommand = new AutoPIDGearStation1CP(); // Center peg auto w/ PID
+				break;
+				
+			case 3:
+				autonomousCommand = new AutoPIDHighGoalRed();
+				break;
+				
+			case 4:
+				autonomousCommand = new AutoPIDHighGoalBlue();
+				break;
+			
+			case 5:
+				autonomousCommand = new AutoDriveToLine();
+				break;
+				
+			case 6:
+				autonomousCommand = new AutoGearStation1CP(); // Center peg auto w/out PID
+				break;
+				
+			case 7:
+				autonomousCommand = new AutoPIDGearStation1RP();
+				break;
+				
+			case 8:
+				autonomousCommand = new AutoTest();
+				break;
+				
+			case 9:
+				autonomousCommand = new AutoPIDGearStation1LP();
+				break;
+			
+			}
+		}
+		catch(Throwable t) {
+			System.out.println("Autonomous Picking Failed.");
+		}
+		
 		// Schedule the autonomous command (example)
 		if (autonomousCommand != null) {
 			autonomousCommand.start();
@@ -106,25 +203,27 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
-		Scheduler.getInstance().run();
+        Scheduler.getInstance().run();
+        if(Robot.isInDebugMode()) {
+        	broadcastDebugData();
+		}
 	}
 
 	@Override
 	public void teleopInit() {
-		// This makes sure that the autonomous stops running when
-		// teleop starts running. If you want the autonomous to
-		// continue until interrupted by another command, remove
-		// this line or comment it out.
+		Robot.driveTrain.switchToPower();			//sets the drivetrain to non pid at beginning of teleop
+		
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
-		if (this.isTest()) {
-			oi.testMode();
-		} else {
-			oi.matchMode();
-		}
+		oi.matchMode();
 		if (RobotMap.MASTER_VERBOSE) {
 			System.out.println("[Robot] Started teleop");
 		}
+	}
+	
+	@Override
+	public void testInit(){
+		oi.testMode();
 	}
 
 	/**
@@ -132,7 +231,10 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		Scheduler.getInstance().run();
+        Scheduler.getInstance().run();
+        if(Robot.isInDebugMode()) {
+        	broadcastDebugData();	
+        }
 	}
 
 	/**
@@ -141,5 +243,37 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void testPeriodic() {
 		LiveWindow.run();
+        if(Robot.isInDebugMode()) {
+			broadcastDebugData();
+		}
 	}
+	
+	public static boolean isInDebugMode() {
+		return debug;
+	}
+	
+	public static NetworkTable getDebugTable() {
+		return debugTable;
+	}
+	
+	public static void broadcastDebugData() {
+		/*getDebugTable().putNumber("Shooter Velocity", Robot.shooter.getLeftEncoderVelocity());
+		getDebugTable().putNumber("Shooter Setpoint", Robot.shooter.getSetpoint());
+		getDebugTable().putNumber("Shooter Current", Robot.shooter.getLeftMotorCurrent());
+		getDebugTable().putBoolean("Gear Manipulator Cover", Robot.gearManipulator.coverState());
+		getDebugTable().putBoolean("Gear Manipulator Holder", Robot.gearManipulator.holderState());
+		getDebugTable().putBoolean("Gear Manipulator Infrared", Robot.gearManipulator.detectorState());*/
+		getDebugTable().putNumber("Drivetrain Front Left Pos", Robot.driveTrain.leftMotorPos());
+		getDebugTable().putNumber("Drivetrain Front Right Pos", Robot.driveTrain.rightMotorPos());
+		getDebugTable().putNumber("Drivetrain Front Left Vel", Robot.driveTrain.leftMotorVel());
+		getDebugTable().putNumber("Drivetrain Front Right Vel", Robot.driveTrain.rightMotorVel());
+		System.out.println("Left: " + Robot.driveTrain.leftMotorVel() + ", Right: " + Robot.driveTrain.rightMotorVel());
+		getDebugTable().putNumber("Climber current", Robot.ropeClimber.getCurrent());
+		getDebugTable().putNumber("Climber voltage", Robot.ropeClimber.getVoltage());
+
+		/*
+		getDebugTable().putNumber("Agitator", Robot.agitator.agitatorState());
+		getDebugTable().putString("Transmission State", Robot.transmission.currentState);	*/
+	}
+	
 }
