@@ -63,6 +63,7 @@ public class OI {
 	private JoystickButton gearHolderButton = new JoystickButton(controller, RobotMap.GEAR_HOLDER_BUTTON);
 	
 	private JoystickButton shooterButton = new JoystickButton(controller, RobotMap.SHOOTER_BUTTON);
+	private JoystickButton shooterOverdriveButton = new JoystickButton(controller, RobotMap.SHOOTER_OVERDRIVE_BUTTON);
 	
 	private JoystickButton agitatorForwardButton = new JoystickButton(controller, RobotMap.AGITATOR_FORWARD_BUTTON);
 	private JoystickButton agitatorBackwardButton = new JoystickButton(controller, RobotMap.AGITATOR_BACKWARD_BUTTON);
@@ -287,6 +288,10 @@ public class OI {
 		return climbOverrideLimitButton.get();
 	}
 	
+	public boolean getShooterOverdriveButton() {
+		return shooterOverdriveButton.get();
+	}
+	
 	/**
 	 * Gets the position of the throttle on the left joystick.
 	 * @return Throttle on the left stick -1...1
@@ -305,6 +310,20 @@ public class OI {
 	 */
 	public double getRightStickThrottle() {
 		return rightStick.getThrottle();
+	}
+	
+	public double getNormalizedLeftStickThrottle() {
+		double throttle = -getLeftStickThrottle();
+		throttle *= 0.5;
+		throttle += 0.5;
+		return throttle;
+	}
+	
+	public double getNormalizedRightStickThrottle() {
+		double throttle = -getRightStickThrottle();
+		throttle *= 0.5;
+		throttle += 0.5;
+		return throttle;
 	}
 	
 	/**

@@ -75,6 +75,7 @@ public class RobotMap {
 	
 	// Shooter buttons
 	public static final int SHOOTER_BUTTON = 1;
+	public static final int SHOOTER_OVERDRIVE_BUTTON = 10;
 	
 	// Agitator buttons
 	public static final int AGITATOR_FORWARD_BUTTON = 5;

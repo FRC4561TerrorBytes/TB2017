@@ -23,8 +23,15 @@ public class Shoot extends Command {
 		}
     }
 	protected void execute() {
-		Robot.shooter.shootAtPercent(0.51); // Run the shooter at the default speed
-//		Robot.shooter.shootAtPercent(0.2); // Run the shooter at the default speed
+		if (Robot.oi.getShooterOverdriveButton()) {
+			double shooterPower = 0.52;
+			double amplifier = Math.max(Robot.oi.getNormalizedLeftStickThrottle(), Robot.oi.getNormalizedRightStickThrottle());
+			amplifier *= 1 - shooterPower;
+			Robot.shooter.shootAtPercent(0.52 + amplifier);
+		} else {
+			Robot.shooter.shootAtPercent(0.51); // Run the shooter at the default speed
+		}
+		
 	}
 	
 	protected boolean isFinished() {
