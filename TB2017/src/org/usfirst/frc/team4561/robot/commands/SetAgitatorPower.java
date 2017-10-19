@@ -25,6 +25,7 @@ public class SetAgitatorPower extends Command {
     public SetAgitatorPower(double power) {
     	// makes sure Robot.agitator actually exists
     	requires(Robot.agitator);
+    	setInterruptible(false);
     	// sets the global variable power to the argument to this function
     	this.power = power;
     }

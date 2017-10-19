@@ -1,29 +1,24 @@
-package org.usfirst.frc.team4561.robot.commands;
+package org.usfirst.frc.team4561.robot.automodes;
 
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc.team4561.robot.Robot;
-import org.usfirst.frc.team4561.robot.RobotMap;
 
 /**
- * Closes main mechanism for gear manipulator. NOT USED.
- * @author: Lucas T
+ *
  */
-public class GearHolderOpen extends Command {
+public class AutoIncrementDetectPeg extends Command {
 
-    public GearHolderOpen() {
-    	requires(Robot.gearManipulator);
+	public static boolean stopped = false;
+	
+    public AutoIncrementDetectPeg() {
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	if (RobotMap.GEAR_MANIPULATOR_VERBOSE) {
-    		System.out.println("[Command] Intializing GearHolderClose");
-    	}
+    	stopped = true;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.gearManipulator.openHolder();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -33,14 +28,10 @@ public class GearHolderOpen extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	if (RobotMap.GEAR_MANIPULATOR_VERBOSE) {
-    		System.out.println("[Command] Ending GearHolderClose");
-    	}
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
     }
 }

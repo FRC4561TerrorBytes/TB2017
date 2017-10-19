@@ -5,7 +5,7 @@ import org.usfirst.frc.team4561.robot.Robot;
 import org.usfirst.frc.team4561.robot.RobotMap;
 
 /**
- * Closes main mechanism for gear manipulator.
+ * Closes main mechanism for gear manipulator. NOT USED.
  * @author: Lucas T
  */
 public class GearHolderClose extends Command {

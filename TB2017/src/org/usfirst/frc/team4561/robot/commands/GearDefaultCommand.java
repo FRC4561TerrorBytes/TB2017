@@ -5,36 +5,46 @@ import org.usfirst.frc.team4561.robot.Robot;
 import org.usfirst.frc.team4561.robot.RobotMap;
 
 /**
- * Closes main mechanism for gear manipulator. NOT USED.
- * @author: Lucas T
+ * Default command for gear manipulator, actuates both holder and cover.
+ * Is interrupted by GearOverride when both triggers are pressed.
+ * @author: Lucas T, Kaiz
  */
-public class GearHolderOpen extends Command {
+public class GearDefaultCommand extends Command {
 
-    public GearHolderOpen() {
+    public GearDefaultCommand() {
     	requires(Robot.gearManipulator);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	if (RobotMap.GEAR_MANIPULATOR_VERBOSE) {
-    		System.out.println("[Command] Intializing GearHolderClose");
+    		System.out.println("[Command] Intializing GearDefaultCommand");
     	}
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.gearManipulator.openHolder();
+    	if (Robot.oi.getGearHolderButton()) {
+    		Robot.gearManipulator.openHolder();
+    	} else {
+    		Robot.gearManipulator.closeHolder();
+    	}
+    	if (Robot.oi.getGearCoverButton()) {
+    		Robot.gearManipulator.openCover();
+    	} else {
+    		Robot.gearManipulator.closeCover();
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
     	if (RobotMap.GEAR_MANIPULATOR_VERBOSE) {
-    		System.out.println("[Command] Ending GearHolderClose");
+    		System.out.println("[Command] Ending GearDefaultCommand");
     	}
     }
 

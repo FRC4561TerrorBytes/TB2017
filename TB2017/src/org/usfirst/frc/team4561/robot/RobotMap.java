@@ -9,24 +9,27 @@ package org.usfirst.frc.team4561.robot;
 public class RobotMap {
 	
 	// Motor ports
-	public static final int FRONT_RIGHT_MOTOR_PORT = 0;//TODO: Find Port
-	public static final int FRONT_LEFT_MOTOR_PORT = 9; //TODO: Find Port
-	public static final int REAR_RIGHT_MOTOR_PORT = 10; //TODO: Find Port
-	public static final int REAR_LEFT_MOTOR_PORT = 3; //TODO: Find Port
-	public static final int MID_RIGHT_MOTOR_PORT = 4; //TODO: Find Port
-	public static final int MID_LEFT_MOTOR_PORT = 5; //TODO: Find Port
-	public static final int CLIMBER_MOTOR = 6; //TODO: Find Port
-	public static final int LEFT_INTAKE_MOTOR_PORT = 7; //TODO: Find Port
-	public static final int RIGHT_INTAKE_MOTOR_PORT = 8; //TODO: Find Port
-	public static final int SHOOTER_LEFT_MOTOR_PORT = 1; //TODO: Find port
-	public static final int SHOOTER_RIGHT_MOTOR_PORT = 2; //TODO: Find Port
-	public static final int AGITATOR_MOTOR_PORT = 11; //TODO: Find Port
+	public static final int FRONT_LEFT_MOTOR_PORT = 1;
+	public static final int MID_LEFT_MOTOR_PORT = 2;
+	public static final int REAR_LEFT_MOTOR_PORT = 3;
+	public static final int FRONT_RIGHT_MOTOR_PORT = 4;
+	public static final int MID_RIGHT_MOTOR_PORT = 5;
+	public static final int REAR_RIGHT_MOTOR_PORT = 6;
+	public static final int SHOOTER_LEFT_MOTOR_PORT = 7;
+	public static final int SHOOTER_RIGHT_MOTOR_PORT = 8;
+	public static final int AGITATOR_MOTOR_PORT = 9;
+	public static final int CLIMBER_MOTOR = 10;
+	
 	
 	//Solenoids and PCM
-	public static final int PCM = 3;
-	public static final int HOLDER_SOLENOID_PORT = 0;
-	public static final int COVER_SOLENOID_PORT = 1;
-	public static final int TRANSMISSION_SOLENOID_PORT = 2;
+	public static final int PCM = 12;
+	public static final int TRANSMISSION_SOLENOID_PORT = 0;
+	public static final int TRANSMISSION_SOLENOID_TWO_PORT = 1;
+	public static final int HOLDER_SOLENOID_PORT = 4;
+	public static final int HOLDER_SOLENOID_PORT_TWO = 5;
+	public static final int COVER_SOLENOID_PORT = 3;
+	public static final String TRANSMISSION_SOLENOID_TYPE = "double"; // If this is "single", then transmission will use single solenoid.
+	// Else, the transmission will use a double solenoid.
 	
 	// Joystick configuration
 	public static final double RIGHT_JOYSTICK_DEAD_ZONE = 0.25;
@@ -47,10 +50,11 @@ public class RobotMap {
 	// Drivetrain buttons (left stick)
 	public static final int FRONT_HEADING_BUTTON = 5;
 	public static final int BACKWARD_HEADING_BUTTON = 3;
+	public static final int TOURING_MODE_BUTTON = 2;
 	
 	// Gear manipulator buttons (both sticks)
-	public static final int MAIN_GEAR_RELEASE_BUTTON_ONE = 1; // Left stick
-	public static final int MAIN_GEAR_RELEASE_BUTTON_TWO = 1; // Right stick
+	public static final int GEAR_OVERRIDE_BUTTON_ONE = 1; // Left stick
+	public static final int GEAR_OVERRIDE_BUTTON_TWO = 1; // Right stick
 	
 	// Camera buttons (right stick)
 	public static final int TOGGLE_CAMERA_BUTTON = 2;
@@ -60,28 +64,40 @@ public class RobotMap {
 	// Controller port
 	public static final int CONTROLLER_PORT = 2;
 	
+	// Gear Manipulator Infrared Sensor
+	public static final int GEAR_DETECTOR_DIO = 1;
+	public static final int PEG_DETECTOR_DIO = 0;
+	
 	// Gear manipulator buttons
-	public static final int GEAR_COVER_OPEN_BUTTON = 1; //TODO: Button number
-	public static final int GEAR_COVER_CLOSE_BUTTON = 2;//TODO: Button number
-	public static final int GEAR_HOLDER_OPEN_BUTTON = 3; //TODO: Button number
-	public static final int GEAR_HOLDER_CLOSE_BUTTON = 4; //TODO: Button number
+	public static final int GEAR_COVER_BUTTON = 4; //TODO: Button number
+	public static final int GEAR_HOLDER_BUTTON = 3; //TODO: Button number
 	public static final int SERVO_OPEN_BUTTON = 5; // TODO: Button number
 	public static final int SERVO_CLOSE_BUTTON = 6; // TODO: Button number
 	
 	// Shooter buttons
-	public static final int SHOOTER_ON_BUTTON = 7;
-	public static final int SHOOTER_OFF_BUTTON = 8;
+	public static final int SHOOTER_BUTTON = 1;
+	public static final int SHOOTER_OVERDRIVE_BUTTON = 10;
 	
 	// Agitator buttons
-	public static final int AGITATOR_FORWARD_BUTTON = 9;
-	public static final int AGITATOR_OFF_BUTTON = 10;
-	public static final int AGITATOR_BACKWARD_BUTTON = 11;
+	public static final int AGITATOR_FORWARD_BUTTON = 5;
+	public static final int AGITATOR_BACKWARD_BUTTON = 7;
 	
 	// Climber buttons
-	public static final int CLIMBER_ON_BUTTON = 12;
+	public static final int CLIMBER_BUTTON = 2;
+	public static final int CLIMBER_SLOW_MODE_BUTTON = 6;
+	public static final int CLIMBER_OVERRIDE_LIMIT_BUTTON = 11;
 	
 	// Test mode button (left stick)
-	public static final int TEST_MODE_BUTTON = 1;
+	public static final int TEST_MODE_BUTTON = 11;
+	
+	//Debug mode button (right stick)
+	public static final int DEBUG_MODE_BUTTON = 12;
+	
+	//PID Switches
+	public static final int SHOOTER_PID_ON_PORT = 13;
+	public static final int SHOOTER_PID_OFF_PORT = 14;
+	public static final int DRIVETRAIN_PID_ON_PORT = 15;
+	public static final int DRIVETRAIN_PID_OFF_PORT = 16;
 	
 	// Verbose Flags
 	public static final boolean MASTER_VERBOSE = false;
