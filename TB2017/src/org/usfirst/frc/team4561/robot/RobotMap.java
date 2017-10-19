@@ -65,7 +65,8 @@ public class RobotMap {
 	public static final int CONTROLLER_PORT = 2;
 	
 	// Gear Manipulator Infrared Sensor
-	public static final int GEAR_DETECTOR_DIO = 0;
+	public static final int GEAR_DETECTOR_DIO = 1;
+	public static final int PEG_DETECTOR_DIO = 0;
 	
 	// Gear manipulator buttons
 	public static final int GEAR_COVER_BUTTON = 4; //TODO: Button number
@@ -99,14 +100,14 @@ public class RobotMap {
 	public static final int DRIVETRAIN_PID_OFF_PORT = 16;
 	
 	// Verbose Flags
-	public static final boolean MASTER_VERBOSE = true;
+	public static final boolean MASTER_VERBOSE = false;
 	public static final boolean AGITATOR_VERBOSE = false || MASTER_VERBOSE;
 	public static final boolean DRIVETRAIN_VERBOSE = false || MASTER_VERBOSE;
 	public static final boolean GEAR_MANIPULATOR_VERBOSE = false || MASTER_VERBOSE;	//TODO: should there be a verbose for this?
 	public static final boolean INTAKE_VERBOSE = false || MASTER_VERBOSE;
 	public static final boolean ROPE_CLIMBER_VERBOSE = false || MASTER_VERBOSE;
 	public static final boolean SHOOTER_VERBOSE = false || MASTER_VERBOSE;
-	public static final boolean TRANSMISSION_VERBOSE = true || MASTER_VERBOSE;		//TODO: should there be a verbose for this?
+	public static final boolean TRANSMISSION_VERBOSE = false || MASTER_VERBOSE;		//TODO: should there be a verbose for this?
 	
 	// For example to map the left and right motors, you could define the
 	// following variables to use with your drivetrain subsystem.

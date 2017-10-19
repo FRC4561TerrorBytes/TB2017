@@ -24,7 +24,9 @@ public class GearManipulator extends Subsystem {
 	private Solenoid coverSolenoid = new Solenoid(RobotMap.PCM, RobotMap.COVER_SOLENOID_PORT);
 	
 	//Infrared Sensor Declaration
-	public DigitalInput gearDetector = new DigitalInput(0);
+	public DigitalInput gearDetector = new DigitalInput(RobotMap.GEAR_DETECTOR_DIO);
+	
+	public DigitalInput pegDetector = new DigitalInput(RobotMap.PEG_DETECTOR_DIO);
     
 	public void initDefaultCommand() {
 		setDefaultCommand(new GearDefaultCommand());
@@ -69,7 +71,7 @@ public class GearManipulator extends Subsystem {
 		return holderSolenoid.get();
 	}
 	
-	public boolean detectorState() {
+	public boolean getGearDetectorState() {
 		return gearDetector.get();
 	}
 	
@@ -78,5 +80,10 @@ public class GearManipulator extends Subsystem {
 	 */
 	public boolean coverState() {
 		return coverSolenoid.get();
+	}
+	
+	public boolean isPegDetected() {
+		System.out.println(pegDetector.get());
+		return pegDetector.get();
 	}
 }

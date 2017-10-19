@@ -10,6 +10,8 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team4561.robot.automodes.AutoCenterDetectPeg;
+import org.usfirst.frc.team4561.robot.automodes.AutoCenterPegShimmy;
 import org.usfirst.frc.team4561.robot.automodes.AutoDoNothing;
 import org.usfirst.frc.team4561.robot.automodes.AutoDriveToLine;
 import org.usfirst.frc.team4561.robot.automodes.AutoGearStation1CP;
@@ -19,6 +21,9 @@ import org.usfirst.frc.team4561.robot.automodes.AutoPIDHighGoalBlue;
 import org.usfirst.frc.team4561.robot.automodes.AutoPIDHighGoalRed;
 import org.usfirst.frc.team4561.robot.automodes.AutoTest;
 import org.usfirst.frc.team4561.robot.automodes.AutoHopperHighGoal;
+import org.usfirst.frc.team4561.robot.automodes.AutoIncrementDetectPeg;
+import org.usfirst.frc.team4561.robot.automodes.AutoPIDCenterPegShootBlue;
+import org.usfirst.frc.team4561.robot.automodes.AutoPIDCenterPegShootRed;
 import org.usfirst.frc.team4561.robot.automodes.AutoPIDDriveToLine;
 import org.usfirst.frc.team4561.robot.automodes.AutoPIDGearStation1CP;
 import org.usfirst.frc.team4561.robot.automodes.AutoPIDGearStation1LP;
@@ -134,7 +139,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		Robot.driveTrain.switchToPower();
-		
+		AutoIncrementDetectPeg.stopped = false;
 		//The following code is how we select an automode with a slider on the smartdashboard
 		//DO NOT INTIALIZE AT THE SAME TIME AS TESTMODE OR ANY OTHER MODE INVOLVING SLIDERS
 		
@@ -176,17 +181,32 @@ public class Robot extends IterativeRobot {
 				break;
 				
 			case 8:
-				autonomousCommand = new AutoTest();
+				autonomousCommand = new AutoCenterPegShimmy();
 				break;
 				
 			case 9:
 				autonomousCommand = new AutoPIDGearStation1LP();
 				break;
-			
+				
+			case 10:
+				autonomousCommand = new AutoPIDCenterPegShootRed();
+				break;
+				
+			case 11:
+				autonomousCommand = new AutoPIDCenterPegShootBlue();
+				break;
+				
+			case 12:
+				autonomousCommand = new AutoCenterDetectPeg();
+				break;
 			}
 		}
 		catch(Throwable t) {
 			System.out.println("Autonomous Picking Failed.");
+			System.out.println(t.getMessage());
+			System.out.println(t.toString());
+			System.out.println(t.getCause());
+			System.out.println(t.getStackTrace());
 		}
 		
 		// Schedule the autonomous command (example)
@@ -267,10 +287,9 @@ public class Robot extends IterativeRobot {
 		getDebugTable().putNumber("Drivetrain Front Right Pos", Robot.driveTrain.rightMotorPos());
 		getDebugTable().putNumber("Drivetrain Front Left Vel", Robot.driveTrain.leftMotorVel());
 		getDebugTable().putNumber("Drivetrain Front Right Vel", Robot.driveTrain.rightMotorVel());
-		System.out.println("Left: " + Robot.driveTrain.leftMotorVel() + ", Right: " + Robot.driveTrain.rightMotorVel());
 		getDebugTable().putNumber("Climber current", Robot.ropeClimber.getCurrent());
 		getDebugTable().putNumber("Climber voltage", Robot.ropeClimber.getVoltage());
-
+		getDebugTable().putBoolean("Peg Detector", Robot.gearManipulator.isPegDetected());
 		/*
 		getDebugTable().putNumber("Agitator", Robot.agitator.agitatorState());
 		getDebugTable().putString("Transmission State", Robot.transmission.currentState);	*/

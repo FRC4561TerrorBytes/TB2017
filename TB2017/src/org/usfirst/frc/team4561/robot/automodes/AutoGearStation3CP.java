@@ -46,7 +46,7 @@ public class AutoGearStation3CP extends CommandGroup {
         addSequential(new GearHolderOpen()); // raise trapdoors for another attempt at the peg or for another gear in teleop
         
         /*SECOND ATTEMPT, IF NECESSARY*/
-        if(Robot.gearManipulator.detectorState() == true){
+        if(Robot.gearManipulator.getGearDetectorState() == true){
         	addSequential(new DriveTankTimed(1, 1, 3)); // Move back to peg (TODO: change number of seconds)
         	addSequential(new GearHolderClose()); // Open the gear holder
         }
