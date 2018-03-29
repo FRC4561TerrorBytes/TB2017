@@ -2,13 +2,15 @@ package org.usfirst.frc.team4561.robot.subsystems;
 // import RobotMap.java
 import org.usfirst.frc.team4561.robot.RobotMap;
 // import motor controller library
-import com.ctre.CANTalon;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+
 // And import the class Subsystem
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  * This is the subsystem file for the agitator.
- * @author Ben G
+ * @author Ben G, Zane
  */
 public class Agitator extends Subsystem {
 
@@ -16,7 +18,7 @@ public class Agitator extends Subsystem {
     // here. Call these from Commands.
 	
 	// makes a motor variable for the agitator
-	private CANTalon agitatorMotor = new CANTalon(RobotMap.AGITATOR_MOTOR_PORT);
+	private TalonSRX agitatorMotor = new TalonSRX(RobotMap.AGITATOR_MOTOR_PORT);
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -47,7 +49,7 @@ public class Agitator extends Subsystem {
     		power = -1;
     	}
     	// Run agitator motor at set power
-		agitatorMotor.set(power);
+		agitatorMotor.set(ControlMode.Follower, power);
 	}
     
     /**
@@ -55,6 +57,6 @@ public class Agitator extends Subsystem {
      */
     public void stop() {
     	// Stop the agitator motor
-    	agitatorMotor.set(0);
+    	agitatorMotor.set(ControlMode.Follower, 0);
     }
 }

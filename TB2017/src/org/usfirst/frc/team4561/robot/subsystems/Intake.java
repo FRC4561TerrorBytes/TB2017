@@ -4,17 +4,18 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 import org.usfirst.frc.team4561.robot.RobotMap;
 
-import com.ctre.CANTalon;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 /**
  * TODO: Document
- * @author Ben G
+ * @author Ben G, Zane
  */
 public class Intake extends Subsystem {
 	
 	// Declaring two objects of type CANTalon called leftIntakeMotor and rightIntakeMotor
-	private CANTalon leftIntakeMotor = new CANTalon(RobotMap.LEFT_INTAKE_MOTOR_PORT);
-	private CANTalon rightIntakeMotor = new CANTalon(RobotMap.RIGHT_INTAKE_MOTOR_PORT);
+	private TalonSRX leftIntakeMotor = new TalonSRX(RobotMap.LEFT_INTAKE_MOTOR_PORT);
+	private TalonSRX rightIntakeMotor = new TalonSRX(RobotMap.RIGHT_INTAKE_MOTOR_PORT);
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -37,15 +38,15 @@ public class Intake extends Subsystem {
     		}
     		power = -1;
     	}
-		leftIntakeMotor.set(power);
-		rightIntakeMotor.set(power);
+		leftIntakeMotor.set(ControlMode.Follower, power);
+		rightIntakeMotor.set(ControlMode.Follower, power);
 	}
     
     /**
      * TODO: Document
      */
     public void stop() {
-    	leftIntakeMotor.set(0);
-		rightIntakeMotor.set(0);
+    	leftIntakeMotor.set(ControlMode.Follower, 0);
+		rightIntakeMotor.set(ControlMode.Follower, 0);
     }
 }

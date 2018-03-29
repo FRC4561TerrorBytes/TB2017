@@ -2,17 +2,18 @@ package org.usfirst.frc.team4561.robot.subsystems;
 
 import org.usfirst.frc.team4561.robot.RobotMap;
 
-import com.ctre.CANTalon;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  * This is the core subsystem file for the RopeClimber.
- * @author Ose, Morgan, Joseph
+ * @author Ose, Morgan, Joseph, Zane
  */
 public class RopeClimber extends Subsystem {
 	
-	private CANTalon climberMotor = new CANTalon(RobotMap.CLIMBER_MOTOR);
+	private TalonSRX climberMotor = new TalonSRX(RobotMap.CLIMBER_MOTOR);
 	
 	public void initDefaultCommand() {
 		//TODO: Create command commandsetDefaultCommand(new );
@@ -30,10 +31,10 @@ public class RopeClimber extends Subsystem {
 			}
 			power = 0;
 		}
-		climberMotor.set(power);
+		climberMotor.set(ControlMode.Follower, power);
 	}
 	//stops climber motor
 	public void stop() {
-		climberMotor.set(0);
+		climberMotor.set(ControlMode.Follower, 0);
 	}
 }

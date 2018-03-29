@@ -1,11 +1,13 @@
 package org.usfirst.frc.team4561.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+
 import org.usfirst.frc.team4561.robot.RobotMap;
 import org.usfirst.frc.team4561.robot.commands.DriveTank;
 
-import com.ctre.CANTalon;
-import edu.wpi.first.wpilibj.RobotDrive;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 /**
  * TODO: Document
@@ -14,45 +16,40 @@ import edu.wpi.first.wpilibj.RobotDrive;
 public class DriveTrain extends Subsystem {
 	
 	// Front motors are masters
-	private CANTalon frontRight;
-	private CANTalon frontLeft;
+	private WPI_TalonSRX frontRight;
+	private WPI_TalonSRX frontLeft;
 	
-	private CANTalon midRight;
-	private CANTalon midLeft;
+	private WPI_TalonSRX midRight;
+	private WPI_TalonSRX midLeft;
 	
-	private CANTalon rearRight;
-	private CANTalon rearLeft;
+	private WPI_TalonSRX rearRight;
+	private WPI_TalonSRX rearLeft;
 		
-	private RobotDrive robotDrive;
+	private DifferentialDrive robotDrive;
 	
 	public void initDefaultCommand() {
 		setDefaultCommand(new DriveTank());
     }
 	
 	public DriveTrain() {
-		frontRight = new CANTalon(RobotMap.FRONT_RIGHT_MOTOR_PORT);
-		frontLeft = new CANTalon(RobotMap.FRONT_LEFT_MOTOR_PORT);
-		
-		midRight = new CANTalon(RobotMap.MID_RIGHT_MOTOR_PORT);
+		frontRight = new WPI_TalonSRX(RobotMap.FRONT_RIGHT_MOTOR_PORT);
+		frontLeft = new WPI_TalonSRX(RobotMap.FRONT_LEFT_MOTOR_PORT);
 		
 		// Sets other motors as slaves to masters FrontLeft/Right, set doesn't set power, it sets a slave
-		midRight.changeControlMode(CANTalon.TalonControlMode.Follower);
-		midRight.set(RobotMap.FRONT_RIGHT_MOTOR_PORT);
+		midRight = new WPI_TalonSRX(RobotMap.MID_RIGHT_MOTOR_PORT);
+		midRight.set(ControlMode.Follower, RobotMap.FRONT_RIGHT_MOTOR_PORT);
 		
-		rearRight = new CANTalon(RobotMap.REAR_RIGHT_MOTOR_PORT);
-		rearRight.changeControlMode(CANTalon.TalonControlMode.Follower);
-		rearRight.set(RobotMap.FRONT_RIGHT_MOTOR_PORT);
+		rearRight = new WPI_TalonSRX(RobotMap.REAR_RIGHT_MOTOR_PORT);
+		rearRight.set(ControlMode.Follower, RobotMap.FRONT_RIGHT_MOTOR_PORT);
 		
-		midLeft = new CANTalon(RobotMap.MID_LEFT_MOTOR_PORT);
-		midLeft.changeControlMode(CANTalon.TalonControlMode.Follower);
-		midLeft.set(RobotMap.FRONT_LEFT_MOTOR_PORT);
+		midLeft = new WPI_TalonSRX(RobotMap.MID_LEFT_MOTOR_PORT);
+		midLeft.set(ControlMode.Follower, RobotMap.FRONT_LEFT_MOTOR_PORT);
 		
-		rearLeft = new CANTalon(RobotMap.REAR_LEFT_MOTOR_PORT);
-		rearLeft.changeControlMode(CANTalon.TalonControlMode.Follower);
-		rearLeft.set(RobotMap.FRONT_LEFT_MOTOR_PORT);
+		rearLeft = new WPI_TalonSRX(RobotMap.REAR_LEFT_MOTOR_PORT);
+		rearLeft.set(ControlMode.Follower, RobotMap.FRONT_LEFT_MOTOR_PORT);
 		
 		// Puts motors into RobotDrive class
-		robotDrive = new RobotDrive(frontLeft, frontRight);
+		robotDrive = new DifferentialDrive(frontLeft, frontRight);
 
 	}
     

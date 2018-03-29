@@ -2,17 +2,14 @@ package org.usfirst.frc.team4561.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.buttons.Trigger;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4561.robot.commands.GearCoverClose;
 import org.usfirst.frc.team4561.robot.commands.GearCoverOpen;
-import org.usfirst.frc.team4561.robot.commands.IntakeBall;
 import org.usfirst.frc.team4561.robot.commands.ServoClose;
 import org.usfirst.frc.team4561.robot.commands.ServoOpen;
 import org.usfirst.frc.team4561.robot.commands.GearHolderClose;
 import org.usfirst.frc.team4561.robot.commands.GearHolderOpen;
-import org.usfirst.frc.team4561.robot.commands.Climb;
 import org.usfirst.frc.team4561.robot.commands.DoNothing;
 import org.usfirst.frc.team4561.robot.commands.DriveHeadingForward;
 import org.usfirst.frc.team4561.robot.commands.DriveHeadingBackward;
